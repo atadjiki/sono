@@ -15,7 +15,7 @@ nchnls 	= 	2
 ;FFT table
 giampFFT  ftgen 1001,0,1024,2,0
 
-;instrument writes FFT data to a table, it writes 1024 bands, but we
+;instrument writes FFT table to a table, it writes 1024 bands, but we
 ;only access the lower bands in Unity. 
 instr FFT2Table
 
@@ -44,7 +44,7 @@ endin
 
 ;simple band-pass filter instrument. It reads data from a channel called
 ;bandNamp", where N is the band, and reduces energy at that spectrum by
-;reducing the output volume. Roll off is is more prominant in the higher frequency
+;reducing the output volum. Roll off is is more prominant in the higher frequency
 ;bands 
 instr EQ_BANDS
 	SChannel sprintf "band%damp", p4
