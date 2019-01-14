@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using MidiJack;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +20,14 @@ public class TurntableManager : MonoBehaviour
     private float fadeAmount;
     private float currentLeft;
     private float currentRight;
-    private int frames = 180;
-    private int currentFrames = 0;
 
+    private MidiJack.MidiChannel leftTurnChannel;
+    private MidiJack.MidiChannel rightTurnChannel;
+    private MidiJack.MidiChannel crossFadeChannel;
+    private int leftTurnKnob;
+    private int rightTurnKnob;
+    private int crossFadeKnob;
+ 
     public float getLeft()
     {
         return currentLeft;
@@ -40,6 +47,9 @@ public class TurntableManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        LoadPlayerPrefs();
+
         csoundUnity = Camera.main.GetComponent<CsoundUnity>();
         crossFadeBar.value = 0.5f;
         currentLeft = fetchLeftTurntable();
@@ -48,6 +58,11 @@ public class TurntableManager : MonoBehaviour
         fadeText.text = "";
         leftText.text = "";
         rightText.text = "";
+    }
+
+    private MidiChannel GetChannelByString(string v)
+    {
+        return (MidiChannel) Enum.Parse(typeof(MidiChannel), v);
     }
 
     // Update is called once per frame
@@ -71,8 +86,8 @@ public class TurntableManager : MonoBehaviour
         float crossFade = fetchCrossFade();
         if(crossFade != crossFadeBar.value)
         {
-            fadeText.text = "Crossfade - 17 - ch1 - " + crossFade + "\n";
-            Debug.Log("Crossfade - 17 - ch1 - " + crossFade);
+            fadeText.text = "Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade + "\n";
+            Debug.Log("Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade);
             crossFadeBar.value = crossFade;
         } 
 
@@ -83,8 +98,8 @@ public class TurntableManager : MonoBehaviour
         float leftTurntable = fetchLeftTurntable();
         if(leftTurntable != currentLeft)
         {
-            leftText.text = "Left Turntable - 17 - ch2 - " + leftTurntable + "\n";
-            Debug.Log("Left Turntable - 17 - ch2 - " + leftTurntable);
+            leftText.text = "Left Turntable - " + leftTurnKnob + " - " + leftTurnChannel.ToString() + " - " + leftTurntable + "\n";
+            Debug.Log("Left Turntable - " + leftTurnKnob + " - " + leftTurnChannel.ToString() + " - " + leftTurntable);
             if (leftTurntable < 0.5f)
             {
                 leftImage.transform.Rotate(new Vector3(0, 0, -rotation));
@@ -103,8 +118,8 @@ public class TurntableManager : MonoBehaviour
         float rightTurntable = fetchRightTurntable();
         if(rightTurntable != currentRight)
         {
-            rightText.text = "Right Turntable - 17 - ch3 - " + rightTurntable + "\n";
-            Debug.Log("Right Turntable - 17 - ch3 - " + rightTurntable);
+            rightText.text = "Right Turntable - " + rightTurnKnob + " - " +rightTurnChannel.ToString() + " - " + rightTurntable + "\n";
+            Debug.Log("Right Turntable - " + rightTurnKnob + " - " + rightTurnChannel.ToString() + " - " + rightTurntable);
             if (rightTurntable < 0.5f)
             {
                 rightImage.transform.Rotate(new Vector3(0, 0, -rotation));
@@ -120,23 +135,79 @@ public class TurntableManager : MonoBehaviour
 
     public float fetchLeftTurntable()
     {
-        return MidiJack.MidiMaster.GetKnob(MidiJack.MidiChannel.Ch2, 17, 0f); //Left is channel two, knob 17
+        return MidiJack.MidiMaster.GetKnob(leftTurnChannel, leftTurnKnob, 0f); //Left is channel two, knob 17
     }
 
     public float fetchRightTurntable()
     {
-        return MidiJack.MidiMaster.GetKnob(MidiJack.MidiChannel.Ch3, 17, 0f); //Left is channel two, knob 17
+        return MidiJack.MidiMaster.GetKnob(rightTurnChannel, rightTurnKnob, 0f); //Left is channel two, knob 17
     }
 
     public float fetchCrossFade()
     {
-        return MidiJack.MidiMaster.GetKnob(MidiJack.MidiChannel.Ch1, 7, 0f); //Left is channel two, knob 17
+        return MidiJack.MidiMaster.GetKnob(crossFadeChannel, crossFadeKnob, 0f); //Left is channel two, knob 17
     }
 
     public void playTest()
     {
         csoundUnity.sendScoreEvent("i1 0 1 1 200");
 
+
+    }
+
+    void LoadPlayerPrefs()
+    {
+        if (PlayerPrefs.HasKey(Resources.crossFadeKnob))
+        {
+            crossFadeKnob = PlayerPrefs.GetInt(Resources.crossFadeKnob);
+        }
+        else
+        {
+            crossFadeKnob = Resources.defaultCrossFade;
+        }
+        if (PlayerPrefs.HasKey(Resources.leftTurnKnob))
+        {
+            leftTurnKnob = PlayerPrefs.GetInt(Resources.leftTurnKnob);
+        }
+        else
+        {
+            leftTurnKnob = Resources.defaultLeftTurn;
+        }
+        if (PlayerPrefs.HasKey(Resources.rightTurnKnob))
+        {
+            rightTurnKnob = PlayerPrefs.GetInt(Resources.rightTurnKnob);
+        }
+        else
+        {
+            rightTurnKnob = Resources.defaultRightTurn;
+        }
+        if (PlayerPrefs.HasKey(Resources.crossFadeChnl))
+        {
+            //crossFadeChannel = GetChannelByString(PlayerPrefs.GetString(Resources.crossFadeChnl));
+            crossFadeChannel = Resources.defaultFadeChnl;
+        }
+        else
+        {
+            crossFadeChannel = Resources.defaultFadeChnl;
+        }
+        if (PlayerPrefs.HasKey(Resources.leftTurnChnl))
+        {
+            //leftTurnChannel = GetChannelByString(PlayerPrefs.GetString(Resources.leftTurnChnl));
+            leftTurnChannel = Resources.defaultLeftChnl;
+        }
+        else
+        {
+            leftTurnChannel = Resources.defaultLeftChnl;
+        }
+        if (PlayerPrefs.HasKey(Resources.rightTurnChnl))
+        {
+            //rightTurnChannel = GetChannelByString(PlayerPrefs.GetString(Resources.rightTurnChnl));
+            rightTurnChannel = Resources.defaultRightChnl;
+        }
+        else
+        {
+            rightTurnChannel = Resources.defaultRightChnl;
+        }
 
     }
 }

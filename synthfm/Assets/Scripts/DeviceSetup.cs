@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DeviceSetup : MonoBehaviour
@@ -8,6 +9,7 @@ public class DeviceSetup : MonoBehaviour
 
     public MidiJack.MidiChannel leftTurnChnl;
     public MidiJack.MidiChannel rightTurnChnl;
+    public MidiJack.MidiChannel crossFadeChnl;
 
     public int leftTurnKnob;
     public int rightTurnKnob;
@@ -134,6 +136,20 @@ public class DeviceSetup : MonoBehaviour
 
         }
 
+    }
+
+    public void finalizeSettings()
+    {
+
+        //PlayerPrefs.SetInt(Resources.leftTurnKnob, leftTurnKnob);
+        //PlayerPrefs.SetInt(Resources.rightTurnKnob, rightTurnKnob);
+        //PlayerPrefs.SetInt(Resources.crossFadeKnob, crossFadeKnob);
+        //PlayerPrefs.SetString(Resources.leftTurnChnl, leftTurnChnl.ToString());
+        //PlayerPrefs.SetString(Resources.rightTurnChnl, rightTurnChnl.ToString());
+        //PlayerPrefs.SetString(Resources.crossFadeChnl, crossFadeChnl.ToString());
+        //PlayerPrefs.Save();
+
+        SceneManager.LoadScene(Resources.gameScene);
     }
 
 }
