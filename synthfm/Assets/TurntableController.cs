@@ -26,7 +26,7 @@ public class TurntableController : MonoBehaviour {
     public KeyCode alt_right_1 = KeyCode.LeftArrow;
     public KeyCode alt_right_2 = KeyCode.RightArrow;
 
-    public bool UseAlternativeControls = false;
+    public bool ForceAlternativeControls = false;
 
 
     private Rigidbody2D rigidbody;
@@ -45,13 +45,14 @@ public class TurntableController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (UseAlternativeControls)
+        if (ForceAlternativeControls)
         {
             DoAltInput();
 
         }
         else
         {
+            DoAltInput();
             DoMIDIInput();
         }
     }
@@ -109,7 +110,7 @@ public class TurntableController : MonoBehaviour {
             {
                 rigidbody.AddTorque(-torqueAmount);
             }
-            else if (rightTurntable > 0.5f)
+            else
             {
                 rigidbody.AddTorque(torqueAmount);
             }
