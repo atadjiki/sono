@@ -13,10 +13,10 @@ public class TurntableController : MonoBehaviour {
     private float previousRight;
     private float previousFade;
 
-    public float acceleration;
-    public float accel_mod;
-    public float accel_incr;
-    public float accel_clamp;
+    public float acceleration = 5000;
+    private float accel_mod;
+    public float accel_incr = 0.05f;
+    public float accel_clamp = 1f;
 
     public float torqueAmount;
 
@@ -67,31 +67,17 @@ public class TurntableController : MonoBehaviour {
 
     void DoAltInput()
     {
-        if (Input.GetKey(alt_left_1) || Input.GetKey(alt_left_2))
+        if (Input.GetAxis("Acceleration") != 0)
         {
-            if (Input.GetKey(alt_left_1))
-            {
-                accel_mod -= accel_incr;
-            }
-            if (Input.GetKey(alt_left_2))
-            {
-                accel_mod += accel_incr;
-            }
+            accel_mod += Input.GetAxis("Acceleration");
             previousLeft = leftTurntable;
         }
         accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
         rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
 
-        if (Input.GetKey(alt_right_1) || Input.GetKey(alt_right_2))
+        if (Input.GetAxis("Torque") != 0)
         {
-            if (Input.GetKey(alt_right_2))
-            {
-                rigidbody.AddTorque(-torqueAmount);
-            }
-            if (Input.GetKey(alt_right_1))
-            {
-                rigidbody.AddTorque(torqueAmount);
-            }
+            rigidbody.AddTorque(Input.GetAxis("Torque") * torqueAmount);
             previousRight = rightTurntable;
         }
     }
