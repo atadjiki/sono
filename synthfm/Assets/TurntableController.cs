@@ -20,11 +20,11 @@ public class TurntableController : MonoBehaviour {
 
     public float torqueAmount;
 
-    public KeyCode alt_left_1;
-    public KeyCode alt_left_2;
+    public KeyCode alt_left_1 = KeyCode.A;
+    public KeyCode alt_left_2 = KeyCode.D;
 
-    public KeyCode alt_right_1;
-    public KeyCode alt_right_2;
+    public KeyCode alt_right_1 = KeyCode.LeftArrow;
+    public KeyCode alt_right_2 = KeyCode.RightArrow;
 
     public bool UseAlternativeControls = false;
 
@@ -47,68 +47,12 @@ public class TurntableController : MonoBehaviour {
 
         if (UseAlternativeControls)
         {
-            if (Input.GetKey(alt_left_1) || Input.GetKey(alt_left_2))
-            {
-                if (Input.GetKey(alt_left_1))
-                {
-                    accel_mod -= accel_incr;
-                }
-               if (Input.GetKey(alt_left_2))
-                {
-                    accel_mod += accel_incr;
-                }
-                previousLeft = leftTurntable;
-            }
-            accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
-            rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
-
-            if (Input.GetKey(alt_right_1) || Input.GetKey(alt_right_2))
-            {
-                if (Input.GetKey(alt_right_2))
-                {
-                    rigidbody.AddTorque(-torqueAmount);
-                }
-                if (Input.GetKey(alt_right_1))
-                {
-                    rigidbody.AddTorque(torqueAmount);
-                }
-                previousRight = rightTurntable;
-            }
+            DoAltInput();
 
         }
         else
         {
-            UpdateVariables();
-
-            if (previousLeft != leftTurntable)
-            {
-                if (leftTurntable > 0.5f)
-                {
-                    accel_mod -= accel_incr;
-                }
-                else if (leftTurntable < 0.5f)
-                {
-                    accel_mod += accel_incr;
-                }
-                previousLeft = leftTurntable;
-            }
-            accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
-            rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
-
-
-
-            if (previousRight != rightTurntable)
-            {
-                if (rightTurntable < 0.5f)
-                {
-                    rigidbody.AddTorque(-torqueAmount);
-                }
-                else if (rightTurntable > 0.5f)
-                {
-                    rigidbody.AddTorque(torqueAmount);
-                }
-                previousRight = rightTurntable;
-            }
+            DoMIDIInput();
         }
     }
 
@@ -118,6 +62,72 @@ public class TurntableController : MonoBehaviour {
         leftTurntable = turntableManager.getLeft();
         rightTurntable = turntableManager.getRight();
         crossFade = turntableManager.getFade();
-        Debug.Log("Update Variables: " + leftTurntable + "," + +rightTurntable + "," + crossFade);
+        Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
     }    
+
+    void DoAltInput()
+    {
+        if (Input.GetKey(alt_left_1) || Input.GetKey(alt_left_2))
+        {
+            if (Input.GetKey(alt_left_1))
+            {
+                accel_mod -= accel_incr;
+            }
+            if (Input.GetKey(alt_left_2))
+            {
+                accel_mod += accel_incr;
+            }
+            previousLeft = leftTurntable;
+        }
+        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
+        rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+
+        if (Input.GetKey(alt_right_1) || Input.GetKey(alt_right_2))
+        {
+            if (Input.GetKey(alt_right_2))
+            {
+                rigidbody.AddTorque(-torqueAmount);
+            }
+            if (Input.GetKey(alt_right_1))
+            {
+                rigidbody.AddTorque(torqueAmount);
+            }
+            previousRight = rightTurntable;
+        }
+    }
+
+    void DoMIDIInput()
+    {
+        UpdateVariables();
+
+        if (previousLeft != leftTurntable)
+        {
+            if (leftTurntable > 0.5f)
+            {
+                accel_mod -= accel_incr;
+            }
+            else if (leftTurntable < 0.5f)
+            {
+                accel_mod += accel_incr;
+            }
+            previousLeft = leftTurntable;
+        }
+        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
+        rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+
+
+
+        if (previousRight != rightTurntable)
+        {
+            if (rightTurntable < 0.5f)
+            {
+                rigidbody.AddTorque(-torqueAmount);
+            }
+            else if (rightTurntable > 0.5f)
+            {
+                rigidbody.AddTorque(torqueAmount);
+            }
+            previousRight = rightTurntable;
+        }
+    }
 }
