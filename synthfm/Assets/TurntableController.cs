@@ -18,6 +18,9 @@ public class TurntableController : MonoBehaviour {
     public float accel_incr;
     public float accel_clamp;
 
+    public float torqueAmount;
+
+
     private Rigidbody2D rigidbody;
 
     public TurntableManager turntableManager;
@@ -58,11 +61,13 @@ public class TurntableController : MonoBehaviour {
         {
             if (rightTurntable < 0.5f)
             {
-                this.gameObject.transform.Rotate(Vector3.forward * -rotation);
+                //this.gameObject.transform.Rotate(Vector3.forward * -rotation);
+                rigidbody.AddTorque(-torqueAmount);
             }
             else if (rightTurntable > 0.5f)
             {
-                this.gameObject.transform.Rotate(Vector3.forward * rotation);
+                //this.gameObject.transform.Rotate(Vector3.forward * rotation);
+                rigidbody.AddTorque(torqueAmount);
             }
             previousRight = rightTurntable;
         }
