@@ -47,48 +47,69 @@ public class TurntableController : MonoBehaviour {
 
         if (UseAlternativeControls)
         {
-            UpdateUserInput();
+            if (Input.GetKey(alt_left_1) || Input.GetKey(alt_left_2))
+            {
+                if (Input.GetKey(alt_left_1))
+                {
+                    accel_mod -= accel_incr;
+                }
+               if (Input.GetKey(alt_left_2))
+                {
+                    accel_mod += accel_incr;
+                }
+                previousLeft = leftTurntable;
+            }
+            accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
+            rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+
+            if (Input.GetKey(alt_right_1) || Input.GetKey(alt_right_2))
+            {
+                if (Input.GetKey(alt_right_2))
+                {
+                    rigidbody.AddTorque(-torqueAmount);
+                }
+                if (Input.GetKey(alt_right_1))
+                {
+                    rigidbody.AddTorque(torqueAmount);
+                }
+                previousRight = rightTurntable;
+            }
+
         }
         else
         {
             UpdateVariables();
+
+            if (previousLeft != leftTurntable)
+            {
+                if (leftTurntable > 0.5f)
+                {
+                    accel_mod -= accel_incr;
+                }
+                else if (leftTurntable < 0.5f)
+                {
+                    accel_mod += accel_incr;
+                }
+                previousLeft = leftTurntable;
+            }
+            accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
+            rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+
+
+
+            if (previousRight != rightTurntable)
+            {
+                if (rightTurntable < 0.5f)
+                {
+                    rigidbody.AddTorque(-torqueAmount);
+                }
+                else if (rightTurntable > 0.5f)
+                {
+                    rigidbody.AddTorque(torqueAmount);
+                }
+                previousRight = rightTurntable;
+            }
         }
-            
-
-       // float accel_modifier = Mathf.Clamp(leftTurntable, 0.0f, 1f);
-        if (previousLeft != leftTurntable)
-        {
-            if (leftTurntable > 0.5f)
-            {
-                accel_mod -= accel_incr;
-            }
-            else if (leftTurntable < 0.5f)
-            {
-                accel_mod += accel_incr;
-            }
-            previousLeft = leftTurntable;
-        }
-        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
-        rigidbody.AddForce(transform.up* accel_mod * acceleration * Time.deltaTime);
-
-
-
-        if (previousRight != rightTurntable)
-        {
-            if (rightTurntable < 0.5f)
-            {
-                //this.gameObject.transform.Rotate(Vector3.forward * -rotation);
-                rigidbody.AddTorque(-torqueAmount);
-            }
-            else if (rightTurntable > 0.5f)
-            {
-                //this.gameObject.transform.Rotate(Vector3.forward * rotation);
-                rigidbody.AddTorque(torqueAmount);
-            }
-            previousRight = rightTurntable;
-        }
-        
-
     }
 
     void UpdateVariables()
@@ -97,25 +118,6 @@ public class TurntableController : MonoBehaviour {
         leftTurntable = turntableManager.getLeft();
         rightTurntable = turntableManager.getRight();
         crossFade = turntableManager.getFade();
-      //Debug.Log("Update Variables: " + leftTurntable + ""
+        Debug.Log("Update Variables: " + leftTurntable + "," + +rightTurntable + "," + crossFade);
     }    
-
-    void UpdateUserInput()
-    {
-        if (Input.GetKey(alt_left_1))
-        {
-            leftTurntable = 0.6f;
-        } else if (Input.GetKey(alt_left_2))
-        {
-            leftTurntable = .1f;
-        } if (Input.GetKey(alt_right_1))
-        {
-            rightTurntable = 0.6f;
-        }
-        else if (Input.GetKey(alt_right_2))
-        {
-            rightTurntable = .1f;
-        }
-
-            }
 }
