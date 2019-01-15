@@ -48,7 +48,14 @@ public class TurntableManager : MonoBehaviour
     void Start()
     {
 
-        LoadPlayerPrefs();
+        // LoadPlayerPrefs();
+        crossFadeKnob = 7;
+        crossFadeChannel = MidiChannel.Ch1;     
+        leftTurnKnob = 17;
+        leftTurnChannel = MidiChannel.Ch2;
+        rightTurnKnob = 17;
+        rightTurnChannel = MidiChannel.Ch3;
+        
 
         csoundUnity = Camera.main.GetComponent<CsoundUnity>();
         crossFadeBar.value = 0.5f;
