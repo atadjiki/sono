@@ -18,7 +18,7 @@ public class TurntableController : MonoBehaviour {
     public float accel_incr = 0.05f;
     public float accel_clamp = 1f;
 
-    public float torqueAmount;
+    public float torqueAmount = 10;
 
     public KeyCode alt_left_1 = KeyCode.A;
     public KeyCode alt_left_2 = KeyCode.D;

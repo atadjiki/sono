@@ -212,16 +212,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 5000
-  accel_mod: 0
   accel_incr: 0.05
   accel_clamp: 1
-  torqueAmount: 0
-  alt_left_1: 0
-  alt_left_2: 0
-  alt_right_1: 0
-  alt_right_2: 0
+  torqueAmount: 10
+  alt_left_1: 97
+  alt_left_2: 100
+  alt_right_1: 276
+  alt_right_2: 275
   UseAlternativeControls: 0
-  turntableManager: {fileID: 1981209547}
+  turntableManager: {fileID: 0}
 --- !u!50 &347054875
 Rigidbody2D:
   serializedVersion: 4
