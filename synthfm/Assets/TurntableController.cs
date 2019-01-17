@@ -19,6 +19,7 @@ public class TurntableController : MonoBehaviour {
     public float accel_clamp = 1f;
 
     public float torqueAmount = 10;
+    public float maxAngularVelocity;
 
     public KeyCode alt_left_1 = KeyCode.A;
     public KeyCode alt_left_2 = KeyCode.D;
@@ -114,6 +115,7 @@ public class TurntableController : MonoBehaviour {
             {
                 rigidbody.AddTorque(torqueAmount);
             }
+            rigidbody.angularVelocity = Mathf.Clamp(rigidbody.angularVelocity, -maxAngularVelocity, maxAngularVelocity);
             previousRight = rightTurntable;
         }
     }

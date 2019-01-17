@@ -14,26 +14,28 @@ public class BuddyController : MonoBehaviour
     public float maxSpeed;
     public float turnSpeed;
 
+    public Transform followTarget;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        currentState = states.FLEE;
+        currentState = states.FOLLOW;
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if(currentState == states.FLEE)
+        if(currentState == states.FOLLOW)
         {
-            Flee();
+            Follow();
         }
     }
 
-    private void Flee()
+    private void Follow()
     {
         //get direction to add torque
-        Vector3 evadeDirection = (player.position - transform.position).normalized;
+        Vector3 evadeDirection = (followTarget.position - transform.position).normalized;
         float angle = Mathf.Atan2(evadeDirection.y, evadeDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
