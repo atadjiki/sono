@@ -14,7 +14,7 @@ public class TurntableController : MonoBehaviour {
     private float previousFade;
     private int currentFrames = 0;
     public int maxFrames = 60;
-    private int torqueCount = 0;
+    private float torqueCount = 1;
 
     public float acceleration = 5000;
     private float accel_mod;
@@ -22,6 +22,8 @@ public class TurntableController : MonoBehaviour {
     public float accel_clamp = 1f;
 
     public float torqueAmount = 10;
+    public float torqueIncrement = 1;
+    public bool multiplyTorque = false;
 
     public KeyCode alt_left_1 = KeyCode.A;
     public KeyCode alt_left_2 = KeyCode.D;
@@ -30,6 +32,8 @@ public class TurntableController : MonoBehaviour {
     public KeyCode alt_right_2 = KeyCode.RightArrow;
 
     public bool ForceAlternativeControls = false;
+
+    public AnimationCurve curve;
 
 
     private Rigidbody2D rigidbody;
@@ -107,8 +111,9 @@ public class TurntableController : MonoBehaviour {
 
         if (previousRight != rightTurntable)
         {
-
+          //  float input = curve.Evaluate(1-rightTurntable);
             float torque = torqueCount + torqueAmount;
+          //  torque *= input;
 
             if (rightTurntable < 0.5f)
             {
@@ -119,13 +124,19 @@ public class TurntableController : MonoBehaviour {
                 rigidbody.AddTorque(torque);
             }
             previousRight = rightTurntable;
-            torqueCount*=2;
+
+            if(multiplyTorque)
+                torqueCount*=torqueIncrement;
+            else
+            {
+                torqueCount += torqueIncrement;
+            }
         }
         currentFrames++;
         if(currentFrames > maxFrames)
         {
             currentFrames = 0;
-            torqueCount = 0;
+            torqueCount = 1;
         }
     }
 } 
