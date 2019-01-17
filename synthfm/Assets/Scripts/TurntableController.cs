@@ -45,6 +45,11 @@ public class TurntableController : MonoBehaviour {
 
     public TurntableManager turntableManager;
 
+    public GameObject head;
+    private float angle = 0f;
+    public float maxTiltAngle;
+    public float tiltSpeed = 30f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -53,9 +58,10 @@ public class TurntableController : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody2D>();
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (ForceAlternativeControls)
         {
@@ -75,7 +81,7 @@ public class TurntableController : MonoBehaviour {
         leftTurntable = turntableManager.getLeft();
         rightTurntable = turntableManager.getRight();
         crossFade = turntableManager.getFade();
-        Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
+        //Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
     }    
 
     void DoAltInput()
@@ -113,7 +119,7 @@ public class TurntableController : MonoBehaviour {
         }
         accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
         rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
-
+        
         if (previousRight != rightTurntable)
         {
           //  float input = curve.Evaluate(1-rightTurntable);
@@ -137,6 +143,7 @@ public class TurntableController : MonoBehaviour {
                 torqueCount += torqueIncrement;
             }
         }
+
         currentFrames++;
         if(currentFrames > maxFrames)
         {

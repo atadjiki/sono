@@ -94,7 +94,7 @@ public class TurntableManager : MonoBehaviour
         if(crossFade != crossFadeBar.value)
         {
             fadeText.text = "Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade + "\n";
-            Debug.Log("Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade);
+            //Debug.Log("Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade);
             crossFadeBar.value = crossFade;
             fadeAmount = crossFade;
         } 
