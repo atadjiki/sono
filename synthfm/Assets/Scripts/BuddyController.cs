@@ -33,7 +33,7 @@ public class BuddyController : MonoBehaviour
     private void Flee()
     {
         //get direction to add torque
-        Vector3 evadeDirection = (transform.position - player.position).normalized;
+        Vector3 evadeDirection = (player.position - transform.position).normalized;
         float angle = Mathf.Atan2(evadeDirection.y, evadeDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
