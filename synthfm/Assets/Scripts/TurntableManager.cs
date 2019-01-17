@@ -8,7 +8,9 @@ using UnityEngine.UI;
 public class TurntableManager : MonoBehaviour
 {
 
-    private CsoundUnity csoundUnity;
+    public Cinemachine.CinemachineVirtualCamera camera;
+    public int minOrthSize = 5;
+    public int maxOrthSize = 50;
     public GameObject leftImage;
     public GameObject rightImage;
     public Slider crossFadeBar;
@@ -55,9 +57,7 @@ public class TurntableManager : MonoBehaviour
         leftTurnChannel = MidiChannel.Ch2;
         rightTurnKnob = 17;
         rightTurnChannel = MidiChannel.Ch3;
-        
-
-        csoundUnity = Camera.main.GetComponent<CsoundUnity>();
+       
         crossFadeBar.value = 0.5f;
         currentLeft = fetchLeftTurntable();
         currentRight = fetchRightTurntable();
@@ -96,6 +96,7 @@ public class TurntableManager : MonoBehaviour
             fadeText.text = "Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade + "\n";
             Debug.Log("Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade);
             crossFadeBar.value = crossFade;
+            fadeAmount = crossFade;
         } 
 
     }
@@ -153,13 +154,6 @@ public class TurntableManager : MonoBehaviour
     public float fetchCrossFade()
     {
         return MidiJack.MidiMaster.GetKnob(crossFadeChannel, crossFadeKnob, 0f); //Left is channel two, knob 17
-    }
-
-    public void playTest()
-    {
-        csoundUnity.sendScoreEvent("i1 0 1 1 200");
-
-
     }
 
     void LoadPlayerPrefs()
