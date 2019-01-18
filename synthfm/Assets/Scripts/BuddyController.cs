@@ -6,8 +6,8 @@ public class BuddyController : MonoBehaviour
 {
     private Transform player;
 
-    private enum states { IDLE, FLEE, FOLLOW };
-    private states currentState;
+    public enum states { IDLE, FLEE, FOLLOW };
+    public states currentState;
 
     private Rigidbody2D rb;
     public float acceleration;
@@ -20,7 +20,7 @@ public class BuddyController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        currentState = states.FOLLOW;
+      //  currentState = states.FOLLOW;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -29,6 +29,9 @@ public class BuddyController : MonoBehaviour
         if(currentState == states.FOLLOW)
         {
             Follow();
+        }else if(currentState == states.IDLE)
+        {
+            Idle();
         }
     }
 
@@ -42,5 +45,11 @@ public class BuddyController : MonoBehaviour
 
         //accelerate
         rb.AddForce(transform.up * acceleration * Time.deltaTime);
+    }
+
+    private void Idle()
+    {
+        rb.velocity = Vector2.zero;
+
     }
 }
