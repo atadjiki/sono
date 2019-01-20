@@ -50,6 +50,10 @@ public class TurntableController : MonoBehaviour {
     public float maxTiltAngle;
     public float tiltSpeed = 30f;
 
+    public AudioSource audioSource;
+    public Transform[] fragmentSlots;
+    public bool[] slotsFilled;
+
 	// Use this for initialization
 	void Start () {
 
@@ -165,7 +169,5 @@ public class TurntableController : MonoBehaviour {
             camera.m_Lens.OrthographicSize = Mathf.Clamp(orthSize * crossFade , minOrthSize, maxOrthSize);
             previousFade = crossFade;
         }
-
-
     }
 } 

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using MidiJack;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurntableManager : MonoBehaviour
 {
@@ -11,12 +10,6 @@ public class TurntableManager : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera camera;
     public int minOrthSize = 5;
     public int maxOrthSize = 50;
-    public GameObject leftImage;
-    public GameObject rightImage;
-    public Slider crossFadeBar;
-    public Text leftText;
-    public Text rightText;
-    public Text fadeText;
     public int rotation = 5;
 
     private float fadeAmount;
@@ -58,13 +51,8 @@ public class TurntableManager : MonoBehaviour
         rightTurnKnob = 17;
         rightTurnChannel = MidiChannel.Ch3;
        
-        crossFadeBar.value = 0.5f;
         currentLeft = fetchLeftTurntable();
         currentRight = fetchRightTurntable();
-
-        fadeText.text = "";
-        leftText.text = "";
-        rightText.text = "";
     }
 
     private MidiChannel GetChannelByString(string v)
@@ -91,13 +79,6 @@ public class TurntableManager : MonoBehaviour
     {
         
         float crossFade = fetchCrossFade();
-        if(crossFade != crossFadeBar.value)
-        {
-            fadeText.text = "Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade + "\n";
-            //Debug.Log("Crossfade - " + crossFadeKnob + " - " + crossFadeChannel.ToString() + " - " + crossFade);
-            crossFadeBar.value = crossFade;
-            fadeAmount = crossFade;
-        } 
 
     }
 
@@ -106,16 +87,6 @@ public class TurntableManager : MonoBehaviour
         float leftTurntable = fetchLeftTurntable();
         if(leftTurntable != currentLeft)
         {
-            leftText.text = "Left Turntable - " + leftTurnKnob + " - " + leftTurnChannel.ToString() + " - " + leftTurntable + "\n";
-            Debug.Log("Left Turntable - " + leftTurnKnob + " - " + leftTurnChannel.ToString() + " - " + leftTurntable);
-            if (leftTurntable < 0.5f)
-            {
-                leftImage.transform.Rotate(new Vector3(0, 0, -rotation));
-            }
-            else if (leftTurntable > 0.5f)
-            {
-                leftImage.transform.Rotate(new Vector3(0, 0, rotation));
-            }
             currentLeft = leftTurntable;
         }
 
@@ -126,16 +97,6 @@ public class TurntableManager : MonoBehaviour
         float rightTurntable = fetchRightTurntable();
         if(rightTurntable != currentRight)
         {
-            rightText.text = "Right Turntable - " + rightTurnKnob + " - " +rightTurnChannel.ToString() + " - " + rightTurntable + "\n";
-            Debug.Log("Right Turntable - " + rightTurnKnob + " - " + rightTurnChannel.ToString() + " - " + rightTurntable);
-            if (rightTurntable < 0.5f)
-            {
-                rightImage.transform.Rotate(new Vector3(0, 0, -rotation));
-            }
-            else if (rightTurntable > 0.5f)
-            {
-                rightImage.transform.Rotate(new Vector3(0, 0, rotation));
-            }
             currentRight = rightTurntable;
         }
        
