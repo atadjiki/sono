@@ -33,14 +33,6 @@ public class TurntableController : MonoBehaviour {
 
     public bool ForceAlternativeControls = false;
 
-    public AnimationCurve curve;
-
-    public Cinemachine.CinemachineVirtualCamera camera;
-    public int minOrthSize = 5;
-    public int maxOrthSize = 50;
-    public int orthSize = 50;
-
-
     private Rigidbody2D rigidbody;
 
     public TurntableManager turntableManager;
@@ -50,7 +42,6 @@ public class TurntableController : MonoBehaviour {
     public float maxTiltAngle;
     public float tiltSpeed = 30f;
 
-    public AudioSource audioSource;
     public Transform[] fragmentSlots;
     public bool[] slotsFilled;
 
@@ -126,9 +117,7 @@ public class TurntableController : MonoBehaviour {
         
         if (previousRight != rightTurntable)
         {
-          //  float input = curve.Evaluate(1-rightTurntable);
             float torque = torqueCount + torqueAmount;
-          //  torque *= input;
 
             if (rightTurntable < 0.5f)
             {
@@ -159,14 +148,13 @@ public class TurntableController : MonoBehaviour {
         {
             if (crossFade > 0.5f)
             {
-                orthSize++;
+
             }
             else if (crossFade < 0.5f)
             {
-                orthSize--;
+                
             }
-            orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
-            camera.m_Lens.OrthographicSize = Mathf.Clamp(orthSize * crossFade , minOrthSize, maxOrthSize);
+
             previousFade = crossFade;
         }
     }
