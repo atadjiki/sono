@@ -9,7 +9,6 @@ public class Navpoint : MonoBehaviour
     public GameObject target;
     public GameObject pointer;
     public float minDistance = 200;
-    private Vector3 center;
     public float radius = 50;
 
 
@@ -29,14 +28,21 @@ public class Navpoint : MonoBehaviour
         if(Vector3.Distance(sphere.transform.position, target.transform.position) > minDistance)
         {
             pointer.gameObject.SetActive(true);
-            pointer.transform.position = sphere.GetComponent<SphereCollider>().ClosestPointOnBounds(target.transform.position);
+
+            //find vector on sphere to draw the pointer
+            Vector3 position = sphere.GetComponent<SphereCollider>().ClosestPointOnBounds(target.transform.position);
+
+            float angle = Vector3.Angle(sphere.transform.position, target.transform.position);
+            Debug.Log("Angle between " + angle);
+            Vector3 rotation = new Vector3(0, 0, angle);
+
+            pointer.transform.position = position;
+
+            pointer.transform.eulerAngles = rotation;
         }
         else
         {
             pointer.gameObject.SetActive(false);
         }
-
- 
-
     }
 }
