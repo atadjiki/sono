@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class SetPiece : MonoBehaviour
+public class Puzzle : MonoBehaviour
 {
 
     public Cinemachine.CinemachineVirtualCamera mainCamera;
     public Cinemachine.CinemachineVirtualCamera setCamera;
 
     public TurntableController player;
+
+    public bool solved = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,16 @@ public class SetPiece : MonoBehaviour
             setCamera.enabled = false;
 
         }
+    }
+
+    public void SetStatus(bool status)
+    {
+        solved = status;
+    }
+
+    public bool GetStatus()
+    {
+        return solved;
     }
 
 }

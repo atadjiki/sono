@@ -10,7 +10,7 @@ public class Navpoint : MonoBehaviour
     public GameObject pointer;
     public float minDistance = 200;
     public float radius = 50;
-
+    public bool active = true;
 
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class Navpoint : MonoBehaviour
     void Update()
     {
 
-        if(Vector3.Distance(sphere.transform.position, target.transform.position) > minDistance)
+        if(active && Vector3.Distance(sphere.transform.position, target.transform.position) > minDistance)
         {
             pointer.gameObject.SetActive(true);
 
@@ -33,7 +33,7 @@ public class Navpoint : MonoBehaviour
             Vector3 position = sphere.GetComponent<SphereCollider>().ClosestPointOnBounds(target.transform.position);
 
             float angle = Vector3.Angle(sphere.transform.position, target.transform.position);
-            Debug.Log("Angle between " + angle);
+          //  Debug.Log("Angle between " + angle);
             Vector3 rotation = new Vector3(0, 0, angle);
 
             pointer.transform.position = position;
