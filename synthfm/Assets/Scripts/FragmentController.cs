@@ -16,13 +16,13 @@ public class FragmentController : MonoBehaviour
 
     public AudioSource audioSource;
 
-    private Transform followTarget;
+    public Transform followTarget;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        currentState = states.IDLE;
+        currentState = states.FOLLOW;
         rb = GetComponent<Rigidbody2D>();
 
         audioSource = GetComponent<AudioSource>();

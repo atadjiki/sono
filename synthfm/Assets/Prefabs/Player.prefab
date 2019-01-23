@@ -5182,7 +5182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1855229569609794049}
   m_Layer: 0
-  m_Name: FragmentSlots
+  m_Name: FragmentTargets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5415,6 +5415,9 @@ MonoBehaviour:
   head: {fileID: 1855229569319389407}
   maxTiltAngle: 50
   tiltSpeed: 1
+  audioSource: {fileID: 0}
+  fragmentSlots: []
+  slotsFilled: 
 --- !u!1 &1855229569839276768
 GameObject:
   m_ObjectHideFlags: 0
@@ -5677,10 +5680,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1855229568441822119}
     m_Modifications:
-    - target: {fileID: 100000, guid: 88743dc1203547f488c27c88654bd828, type: 3}
-      propertyPath: m_Name
-      value: Head
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88743dc1203547f488c27c88654bd828, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5736,6 +5735,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 88743dc1203547f488c27c88654bd828, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 88743dc1203547f488c27c88654bd828, type: 3}
+      propertyPath: m_Name
+      value: Head
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 88743dc1203547f488c27c88654bd828, type: 3}
       propertyPath: m_Materials.Array.data[0]
