@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     private Hub currentHub;
     private Puzzle currentPuzzle;
     private bool levelComplete;
+    public GameObject center;
 
 
     private void Awake()
@@ -54,32 +55,50 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+
         if (!levelComplete)
         {
-            //check if the current puzzle has been completed
-            if (currentPuzzle != null && currentPuzzle.GetStatus())
+            //if the current hub is completed
+            if (!currentHub.getStatus())
             {
-                //check if the hub has any more puzzles
-
-                if (currentHub.getStatus())
+                //if the current puzzle in the hub is completed
+                if (currentPuzzle.GetStatus())
                 {
-                    currentPuzzle = currentHub.nextPuzzle();
-                    //go to next hub if this one is done
-                    NextHub();
-                    Debug.Log("Moving to next hub");
-                    currentPuzzle = currentHub.nextPuzzle(); //get the first puzzle in the hub
+                //move to next puzzle
+                   currentPuzzle = currentHub.nextPuzzle();
+                
+                    //if there is no next puzzle, move to next hub
+                    if(currentPuzzle == null)
+                    {
+                        currentHub = NextHub();
+                        if(currentHub == null)
+                        {
+                            levelComplete = true;
+                            navPoint.target = center;
+                        }
+                        else
+                        {
+                            currentPuzzle = currentHub.nextPuzzle();
+                        }
+                    }
+
+                    updateNavPoint();
+   
+                }
+            }
+            else
+            {
+                currentHub = NextHub();
+                if (currentHub == null)
+                {
+                    levelComplete = true;
+                    navPoint.target = center;
                 }
                 else
                 {
-                    currentPuzzle = currentHub.nextPuzzle(); //if the hub still has puzzles, move to next one
+                    currentPuzzle = currentHub.nextPuzzle();
                 }
-
-                updateNavPoint();
             }
-        }
-        else
-        {
-
         }
         
     }
@@ -99,7 +118,7 @@ public class LevelManager : MonoBehaviour
 
     void updateNavPoint()
     {
-        if(currentPuzzle == null)
+        if (currentPuzzle == null && !levelComplete)
         {
             navPoint.active = false;
         }
