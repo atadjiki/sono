@@ -47,6 +47,7 @@ public class GatePuzzle : MonoBehaviour
                     trigger.PlayAudioClip(AssetManager.instance.gateTones[index]);
                     currentIndex = index; //make this the first gate in the list
                     UpdateList(index); //re-order the list around the new starting index
+                    currentIndex = 0;
                     inProgress = true;
                 }
                 else
@@ -84,7 +85,7 @@ public class GatePuzzle : MonoBehaviour
     {
         currentList = new List<GateTrigger>(gates.Count);
         currentList.AddRange(gates.GetRange(index, gateLength - index));
-        currentList.AddRange(gates.GetRange(0, index));
+        currentList.InsertRange(gateLength - index, gates.GetRange(0, index));
     }
 
     void DeleteGates()
