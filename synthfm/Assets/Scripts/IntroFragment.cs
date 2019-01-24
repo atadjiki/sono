@@ -21,7 +21,7 @@ public class IntroFragment : MonoBehaviour
 
     private void Start()
     {
-        followTarget = LevelManager.instance.player.transform;
+        followTarget = LevelManager.instance.getPlayer().transform;
         previousTargetPosition = followTarget.position;
 
         currentState = states.CIRCLE;

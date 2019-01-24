@@ -6,16 +6,18 @@ using UnityEngine;
 public class Puzzle : MonoBehaviour
 {
 
-    public Cinemachine.CinemachineVirtualCamera mainCamera;
-    public Cinemachine.CinemachineVirtualCamera setCamera;
+    private Cinemachine.CinemachineVirtualCamera mainCamera;
+    private TurntableController player;
 
-    public TurntableController player;
-
-    public bool solved = false;
+    public bool complete = false;
+    public Cinemachine.CinemachineVirtualCamera puzzleCamera;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        player = GameObject.Find("Player").GetComponent<TurntableController>();
+
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class Puzzle : MonoBehaviour
         {
             Debug.Log("On Trigger Enter");
             mainCamera.enabled = false;
-            setCamera.enabled = true;
+            puzzleCamera.enabled = true;
         }
     }
 
@@ -42,19 +44,19 @@ public class Puzzle : MonoBehaviour
         {
             Debug.Log("On Trigger Close");
             mainCamera.enabled = true;
-            setCamera.enabled = false;
+            puzzleCamera.enabled = false;
 
         }
     }
 
     public void SetStatus(bool status)
     {
-        solved = status;
+        complete = status;
     }
 
     public bool GetStatus()
     {
-        return solved;
+        return complete;
     }
 
 }

@@ -5,10 +5,20 @@ using UnityEngine;
 public class GateTrigger : MonoBehaviour
 {
     private AudioSource audioSource;
+    private GatePuzzle parent;
+    private bool partOfPuzzle = false;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (GetComponentInParent<GatePuzzle>() != null)
+        {
+            Debug.Log(this.name + " - found parent");
+            partOfPuzzle = true;
+        }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -22,6 +32,16 @@ public class GateTrigger : MonoBehaviour
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 audioSource.Play();
             }
+            NotifyPuzzle();
         }
+    }
+
+    private void NotifyPuzzle()
+    {
+        if (partOfPuzzle)
+        {
+            GetComponentInParent<GatePuzzle>().GateTriggered(this);
+        }
+        
     }
 }
