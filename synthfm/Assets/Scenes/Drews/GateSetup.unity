@@ -9688,6 +9688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 91605548}
+  - component: {fileID: 91605549}
   m_Layer: 0
   m_Name: Gate (5)
   m_TagString: Untagged
@@ -9711,6 +9712,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
+--- !u!114 &91605549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91605547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &95088574
 GameObject:
   m_ObjectHideFlags: 0
@@ -28642,6 +28655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210434979}
+  - component: {fileID: 210434980}
   m_Layer: 0
   m_Name: Gate (3)
   m_TagString: Untagged
@@ -28665,6 +28679,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &210434980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210434978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &256008371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 415d33ad839e8ca4d995e5f3c7f0dd69,
@@ -33505,6 +33531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284493692}
+  - component: {fileID: 284493693}
   m_Layer: 0
   m_Name: GateSection
   m_TagString: Untagged
@@ -33534,6 +33561,28 @@ Transform:
   m_Father: {fileID: 311504075}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 22.5}
+--- !u!114 &284493693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284493691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a2eb0cfc0392f41a35ca25ad6bc6eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gates:
+  - {fileID: 1481971449}
+  - {fileID: 1193009918}
+  - {fileID: 1379743379}
+  - {fileID: 91605549}
+  - {fileID: 1633359581}
+  - {fileID: 2003341741}
+  - {fileID: 210434980}
+  - {fileID: 841799691}
+  complete: 0
 --- !u!1001 &289905178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33768,34 +33817,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a678acc3dfe94587a95c1f29710c391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 372151919}
-  setCamera: {fileID: 1231934266}
-  player: {fileID: 347054873}
   solved: 0
+  puzzleCamera: {fileID: 1231934266}
 --- !u!4 &334300844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 415d33ad839e8ca4d995e5f3c7f0dd69,
     type: 3}
   m_PrefabInstance: {fileID: 2128015585}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &347054872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1855229569708447584, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1855229569383691384}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &347054873 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1855229569383691384}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347054872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dc62040a77c7c43b2ac861ac2e238b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &347054874 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 1855229569708447586, guid: b8a011f487dba2644adbd6046cdde4d9,
@@ -34062,10 +34091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a678acc3dfe94587a95c1f29710c391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 372151919}
-  setCamera: {fileID: 1231934266}
-  player: {fileID: 347054873}
   solved: 0
+  puzzleCamera: {fileID: 1231934266}
 --- !u!250 &405718424
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -38951,7 +38978,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 100
+  field of view: 40
   orthographic: 0
   orthographic size: 50
   m_Depth: -1
@@ -38977,7 +39004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 372151918}
@@ -53771,6 +53798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841799690}
+  - component: {fileID: 841799691}
   m_Layer: 0
   m_Name: Gate (7)
   m_TagString: Untagged
@@ -53794,6 +53822,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
+--- !u!114 &841799691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841799689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &856309029
 GameObject:
   m_ObjectHideFlags: 0
@@ -63229,7 +63269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b7de98b896db64d99e4d483236ba99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 347054872}
   playerAudioSource: {fileID: 0}
   fragmentPrefab: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
     type: 3}
@@ -63239,8 +63278,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0665546f2125c742ba5d9f059985739, type: 3}
   - {fileID: 8300000, guid: b6742fd1ded626a46aeddb34989be414, type: 3}
   visualizerRing: {fileID: 0}
-  hubList:
-  - {fileID: 485136496}
+  center: {fileID: 0}
 --- !u!4 &912886219
 Transform:
   m_ObjectHideFlags: 0
@@ -68381,6 +68419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193009917}
+  - component: {fileID: 1193009918}
   m_Layer: 0
   m_Name: Gate (4)
   m_TagString: Untagged
@@ -68404,6 +68443,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &1193009918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193009916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1197040202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 415d33ad839e8ca4d995e5f3c7f0dd69,
@@ -82695,6 +82746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379743378}
+  - component: {fileID: 1379743379}
   m_Layer: 0
   m_Name: Gate (1)
   m_TagString: Untagged
@@ -82718,6 +82770,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1379743379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379743377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1400139009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5332951722880558305, guid: abd49df7cb79d334daa051d2e29a8f80,
@@ -87553,6 +87617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1481971448}
+  - component: {fileID: 1481971449}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -87576,6 +87641,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481971449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481971447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1567526449
 GameObject:
   m_ObjectHideFlags: 0
@@ -115797,6 +115874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633359580}
+  - component: {fileID: 1633359581}
   m_Layer: 0
   m_Name: Gate (2)
   m_TagString: Untagged
@@ -115820,6 +115898,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1633359581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633359579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1656403985
 GameObject:
   m_ObjectHideFlags: 0
@@ -115849,7 +115939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656403985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1231934267}
@@ -116080,7 +116170,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 100
+  field of view: 40
   orthographic: 0
   orthographic size: 50
   m_Depth: -1
@@ -125723,10 +125813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a678acc3dfe94587a95c1f29710c391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 372151919}
-  setCamera: {fileID: 1231934266}
-  player: {fileID: 347054873}
   solved: 1
+  puzzleCamera: {fileID: 0}
 --- !u!4 &1824210565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5332951722880558305, guid: abd49df7cb79d334daa051d2e29a8f80,
@@ -125860,10 +125948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a678acc3dfe94587a95c1f29710c391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 372151919}
-  setCamera: {fileID: 1231934266}
-  player: {fileID: 347054873}
   solved: 1
+  puzzleCamera: {fileID: 0}
 --- !u!4 &1898214319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 415d33ad839e8ca4d995e5f3c7f0dd69,
@@ -125958,6 +126044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2003341740}
+  - component: {fileID: 2003341741}
   m_Layer: 0
   m_Name: Gate (6)
   m_TagString: Untagged
@@ -125981,6 +126068,18 @@ Transform:
   m_Father: {fileID: 284493692}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 225}
+--- !u!114 &2003341741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003341739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2010969840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 415d33ad839e8ca4d995e5f3c7f0dd69,
@@ -135591,16 +135690,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 1981209547}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 347054874}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -135656,6 +135745,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 347054874}
     - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_UsedByEffector

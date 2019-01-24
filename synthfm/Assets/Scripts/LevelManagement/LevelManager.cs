@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    public GameObject player;
+    private GameObject player;
     [HideInInspector]
     public AudioSource playerAudioSource;
 
@@ -38,6 +38,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.Find("Player");
+
         playerAudioSource = player.GetComponent<AudioSource>();
         playerAudioSource.clip = audioFragments[0];
         playerAudioSource.Play();
@@ -73,6 +75,7 @@ public class LevelManager : MonoBehaviour
                         currentHub = NextHub();
                         if(currentHub == null)
                         {
+                            Debug.Log("Level complete!");
                             levelComplete = true;
                             navPoint.target = center;
                         }
@@ -103,6 +106,11 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public GameObject getPlayer()
+    {
+        return player;
+    }
+
     Hub NextHub()
     {
         if(hubs.Count == 0)
@@ -122,9 +130,15 @@ public class LevelManager : MonoBehaviour
         {
             navPoint.active = false;
         }
+        else if(currentPuzzle == null && levelComplete)
+        {
+            Debug.Log("New target " + center.name);
+            levelComplete = true;
+            navPoint.target = center;
+        }
         else
         {
-            navPoint.target = currentPuzzle.gameObject;
+            navPoint.active = false;
         }
         
     }

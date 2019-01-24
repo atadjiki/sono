@@ -16,9 +16,9 @@ public class FragmentCase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.gameObject == LevelManager.instance.player)
+        if(collision.gameObject == LevelManager.instance.getPlayer())
         {
-            fragment.SetFollow(LevelManager.instance.player.transform);
+            fragment.SetFollow(LevelManager.instance.getPlayer().transform);
         }
        
     }
