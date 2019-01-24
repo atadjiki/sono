@@ -95,6 +95,7 @@ public class GatePuzzle : MonoBehaviour
         }
 
         forceField.GetComponent<PointEffector2D>().enabled = false;
+        forceField.GetComponent<AudioSource>().enabled = false;
         ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
         
         foreach(ParticleSystem particle in particles)
