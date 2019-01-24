@@ -6,7 +6,9 @@ public class AssetManager : MonoBehaviour
 {
     public static AssetManager instance;
 
+    [Header("SOUND EFFECTS")]
     public AudioClip[] gateTones;
+    public AudioClip fragmentCollection;
 
     private void Awake()
     {

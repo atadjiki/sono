@@ -17,6 +17,8 @@ public class FragmentController : MonoBehaviour
     public AudioSource audioSource;
 
     public Transform followTarget;
+    [HideInInspector]
+    public GameObject fragmentCase;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class FragmentController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0f;
     }
 
     private void Update()
@@ -53,7 +56,6 @@ public class FragmentController : MonoBehaviour
     private void Idle()
     {
         rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
-
     }
 
     private void Follow()
@@ -73,16 +75,34 @@ public class FragmentController : MonoBehaviour
         }
     }
 
-    public void SetFollow(Transform newFollowTarget)
+    public void Collect(Transform newFollowTarget)
     {
         followTarget = newFollowTarget;
         currentState = states.FOLLOW;
         audioSource.time = LevelManager.instance.playerAudioSource.time;
         audioSource.Play();
+        StartCoroutine(FadeInAudio());
+        transform.SetParent(LevelManager.instance.transform);
+        Destroy(fragmentCase);
     }
 
     public void SetClip(AudioClip newClip)
     {
         audioSource.clip = newClip;
+    }
+
+    private IEnumerator FadeInAudio()
+    {
+        float volume = 0f;
+
+        while(volume < 0.5f)
+        {
+            volume += Time.deltaTime / 2f;
+            audioSource.volume = volume;
+
+            yield return null;
+        }
+
+        audioSource.volume = 0.5f;
     }
 }
