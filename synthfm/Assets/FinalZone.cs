@@ -6,13 +6,12 @@ public class FinalZone : MonoBehaviour
 {
 
     public GameObject portal;
-    public Navpoint navpoint;
+    public LevelManager levelManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-
-        navpoint.enabled = false;
+        levelManager.Completed();
 
         if (collision.gameObject.CompareTag("Player"))
         {

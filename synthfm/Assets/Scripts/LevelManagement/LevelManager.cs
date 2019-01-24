@@ -20,7 +20,8 @@ public class LevelManager : MonoBehaviour
 
     private Hub currentHub;
     private Puzzle currentPuzzle;
-    private bool levelComplete;
+    private bool puzzlesComplete;
+    private bool levelComplete = false;
     public GameObject finalZone;
 
 
@@ -59,7 +60,7 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
 
-        if (!levelComplete)
+        if (!puzzlesComplete)
         {
             //if the current hub is completed
             if (!currentHub.getStatus())
@@ -78,7 +79,7 @@ public class LevelManager : MonoBehaviour
                         if(currentHub == null)
                         {
                             Debug.Log("Level complete!");
-                            levelComplete = true;
+                            puzzlesComplete = true;
                         }
                         else
                         {
@@ -96,7 +97,7 @@ public class LevelManager : MonoBehaviour
                 currentHub = NextHub();
                 if (currentHub == null)
                 {
-                    levelComplete = true;
+                    puzzlesComplete = true;
                     updateNavPoint();
                 }
                 else
@@ -129,22 +130,29 @@ public class LevelManager : MonoBehaviour
 
     void updateNavPoint()
     {
-        if (currentPuzzle == null && !levelComplete)
+        if (currentPuzzle == null && !puzzlesComplete)
         {
            navPoint.active = false;
         }
-        else if(currentPuzzle == null && levelComplete)
+        else if(currentPuzzle == null && puzzlesComplete)
         {
             Debug.Log("No target");
-            levelComplete = true;
+            puzzlesComplete = true;
             navPoint.target = finalZone;
         }
-        else if(currentPuzzle != null && !levelComplete)
+        else if(currentPuzzle != null && !puzzlesComplete)
         {
             Debug.Log("New Target - " + currentPuzzle);
             navPoint.target = currentPuzzle.gameObject;
             navPoint.active = true;
         }
-        
+        if (levelComplete)
+        {
+            navPoint.active = false;
+        }
+    }
+    public void Completed()
+    {
+        levelComplete = true;
     }
 }
