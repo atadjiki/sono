@@ -7,7 +7,6 @@ using UnityEngine;
 public class TurntableManager : MonoBehaviour
 {
 
-    public Cinemachine.CinemachineVirtualCamera camera;
     public int minOrthSize = 5;
     public int maxOrthSize = 50;
     public int rotation = 5;
