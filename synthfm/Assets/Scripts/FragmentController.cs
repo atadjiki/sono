@@ -83,8 +83,6 @@ public class FragmentController : MonoBehaviour
 
     public void SetClip(AudioClip newClip)
     {
-        Debug.Log(audioSource);
-        Debug.Log(newClip);
         audioSource.clip = newClip;
     }
 }
