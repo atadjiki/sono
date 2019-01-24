@@ -31,7 +31,7 @@ public class GateTrigger : MonoBehaviour
             if(angle > 0.5f)
             {
                 //audioSource.clip = AssetManager.instance.gateTones[0];
-                audioSource.Play();
+                //audioSource.Play();
                 NotifyPuzzle();
             }
             
@@ -49,8 +49,16 @@ public class GateTrigger : MonoBehaviour
 
     public void PlayAudioClip(AudioClip clip)
     {
-        audioSource.clip = clip;
-        audioSource.Play();
+        //audioSource.clip = clip;
+        //AudioSource.PlayClipAtPoint(clip, transform.position);
+        //audioSource.Play();
 
+        GameObject tempGO = new GameObject("TempAudio");
+        tempGO.transform.position = transform.position;
+        AudioSource aSource = tempGO.AddComponent<AudioSource>();
+        aSource.spatialBlend = 0f;
+        aSource.clip = clip;
+        aSource.Play();
+        Destroy(tempGO, clip.length);
     }
 }
