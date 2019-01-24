@@ -56,10 +56,10 @@ public class GatePuzzle : MonoBehaviour
                     //if the player is touching the gates in order, increment 
                     Debug.Log("Gate " + index + " hit");
                     currentIndex++;
-                    trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
+                    
                     if (index == currentIndex)
                     {
-                       
+                        trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
                         if (currentIndex == gateLength - 1)
                         {
                             complete = true;
