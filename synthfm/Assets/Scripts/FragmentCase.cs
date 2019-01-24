@@ -5,11 +5,11 @@ using UnityEngine;
 public class FragmentCase : MonoBehaviour
 {
     public int fragmentNumber;
-    private FragmentController fragment;
+    public FragmentController fragment;
 
     private void Start()
     {
-        fragment = Instantiate(LevelManager.instance.fragmentPrefab, transform).GetComponent<FragmentController>();
+       // fragment = Instantiate(LevelManager.instance.fragmentPrefab, transform).GetComponent<FragmentController>();
         fragment.SetClip(LevelManager.instance.audioFragments[fragmentNumber]);
     }
 
@@ -21,5 +21,10 @@ public class FragmentCase : MonoBehaviour
             fragment.Collect(LevelManager.instance.getPlayer().transform);
         }
        
+    }
+
+    public FragmentController getFragment()
+    {
+        return fragment;
     }
 }

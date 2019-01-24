@@ -15,6 +15,8 @@ public class GatePuzzle : MonoBehaviour
 
     public Puzzle parent;
 
+    public GameObject forceField;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -89,6 +91,14 @@ public class GatePuzzle : MonoBehaviour
         foreach(GateTrigger gate in gates)
         {
             GameObject.Destroy(gate.gameObject);
+        }
+
+        forceField.GetComponent<PointEffector2D>().enabled = false;
+        ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
+        
+        foreach(ParticleSystem particle in particles)
+        {
+            particle.Stop();
         }
     }
 

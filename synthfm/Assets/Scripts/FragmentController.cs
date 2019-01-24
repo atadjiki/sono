@@ -6,7 +6,7 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    private enum states { IDLE, FLEE, FOLLOW };
+    public enum states { IDLE, FLEE, FOLLOW };
     private states currentState;
 
     private Rigidbody2D rb;
@@ -20,11 +20,11 @@ public class FragmentController : MonoBehaviour
     [HideInInspector]
     public GameObject fragmentCase;
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        currentState = states.FOLLOW;
+        currentState = states.IDLE;
         rb = GetComponent<Rigidbody2D>();
 
         audioSource = GetComponent<AudioSource>();
@@ -104,5 +104,10 @@ public class FragmentController : MonoBehaviour
         }
 
         audioSource.volume = 0.5f;
+    }
+
+    public states GetState()
+    {
+        return currentState;
     }
 }

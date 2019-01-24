@@ -15691,6 +15691,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setPieceCamera: {fileID: 1251758878}
   complete: 0
+  disableCameraOnComplete: 1
+  fragmentCase: {fileID: 1491681139}
 --- !u!58 &1078430458
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15791,6 +15793,7 @@ MonoBehaviour:
   - {fileID: 498373417}
   complete: 0
   parent: {fileID: 1078430457}
+  forceField: {fileID: 1257317809}
 --- !u!1 &1209789632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1855229569708447584, guid: b8a011f487dba2644adbd6046cdde4d9,
@@ -16390,6 +16393,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467304327}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1491681139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5332951722880558367, guid: abd49df7cb79d334daa051d2e29a8f80,
+    type: 3}
+  m_PrefabInstance: {fileID: 1789877898}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571a2cf1389824ea3af0c9dc7b1013d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1533301306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 569044138603753871, guid: e83d2c0f0ee3c9446b3499f1fb3cbd63,

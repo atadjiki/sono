@@ -39,4 +39,9 @@ public class SetPiece : MonoBehaviour
         }
     }
 
+    public Cinemachine.CinemachineVirtualCamera getMainCamera()
+    {
+        return mainCamera;
+    }
+
 }

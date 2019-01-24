@@ -32,8 +32,9 @@ public class GateTrigger : MonoBehaviour
             {
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 audioSource.Play();
+                NotifyPuzzle();
             }
-            NotifyPuzzle();
+            
         }
     }
 
