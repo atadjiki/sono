@@ -35,6 +35,7 @@ public class Puzzle : SetPiece
                 Debug.Log("Switching camera to " + getMainCamera().name);
                 getMainCamera().enabled = true;
                 setPieceCamera.enabled = false;
+                this.enabled = false;
             }
         }
     }

@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     private Hub currentHub;
     private Puzzle currentPuzzle;
     private bool levelComplete;
-  //  public GameObject center;
+    public GameObject finalZone;
 
 
     private void Awake()
@@ -69,7 +69,7 @@ public class LevelManager : MonoBehaviour
                 {
                 //move to next puzzle
                    currentPuzzle = currentHub.nextPuzzle();
-                    Debug.Log("Current puzzle: " + currentPuzzle.name);
+                    
 
                     //if there is no next puzzle, move to next hub
                     if (currentPuzzle == null)
@@ -137,18 +137,13 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("No target");
             levelComplete = true;
-            navPoint.target = null;
-            navPoint.active = false;
+            navPoint.target = finalZone;
         }
         else if(currentPuzzle != null && !levelComplete)
         {
             Debug.Log("New Target - " + currentPuzzle);
             navPoint.target = currentPuzzle.gameObject;
             navPoint.active = true;
-        }
-        else
-        {
-           navPoint.active = false;
         }
         
     }

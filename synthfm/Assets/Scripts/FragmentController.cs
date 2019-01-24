@@ -36,7 +36,7 @@ public class FragmentController : MonoBehaviour
         RunState(currentState);
     }
 
-    private void RunState(states state)
+    public void RunState(states state)
     {
         switch(state)
         {
