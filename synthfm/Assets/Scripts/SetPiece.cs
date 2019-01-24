@@ -6,7 +6,7 @@ public class SetPiece : MonoBehaviour
 {
     private Cinemachine.CinemachineVirtualCamera mainCamera;
     private TurntableController player;
-    public Cinemachine.CinemachineVirtualCamera camera;
+    public Cinemachine.CinemachineVirtualCamera setPieceCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,9 @@ public class SetPiece : MonoBehaviour
 
         if (collision.gameObject == player.gameObject)
         {
-            Debug.Log("On Trigger Enter");
+            Debug.Log("Switching camera to " + setPieceCamera.name);
             mainCamera.enabled = false;
-            camera.enabled = true;
+            setPieceCamera.enabled = true;
         }
     }
 
@@ -32,9 +32,9 @@ public class SetPiece : MonoBehaviour
 
         if (collision.gameObject == player.gameObject)
         {
-            Debug.Log("On Trigger Close");
+            Debug.Log("Switching camera to " + mainCamera.Name);
             mainCamera.enabled = true;
-            camera.enabled = false;
+            setPieceCamera.enabled = false;
 
         }
     }

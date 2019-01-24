@@ -5215,8 +5215,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a678acc3dfe94587a95c1f29710c391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   complete: 0
-  puzzleCamera: {fileID: 1231934266}
+--- !u!114 &347054873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1855229569383691384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0dc62040a77c7c43b2ac861ac2e238b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &347054874 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 1855229569708447586, guid: b8a011f487dba2644adbd6046cdde4d9,
@@ -19967,6 +19979,7 @@ GameObject:
   - component: {fileID: 912886219}
   - component: {fileID: 912886218}
   - component: {fileID: 912886220}
+  - component: {fileID: 912886221}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -20036,6 +20049,20 @@ MonoBehaviour:
   minDistance: 200
   radius: 50
   active: 1
+--- !u!114 &912886221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912886217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc51e9fe0308844683ec741dc77dc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockTime: 10
+  player: {fileID: 347054873}
 --- !u!4 &1037047111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5332951722880558305, guid: abd49df7cb79d334daa051d2e29a8f80,
@@ -35164,7 +35191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4a6b55a3ad84a9c9d7849e401695cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   minOrthSize: 5
   maxOrthSize: 50
   rotation: 9

@@ -16,8 +16,9 @@ public class Hub : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        puzzles = new Queue<Puzzle>(puzzleList);
         hubComplete = false;
+        puzzles = new Queue<Puzzle>(puzzleList);
+        Debug.Log("Found " + puzzles.Count + " puzzles");
     }
 
     public bool getStatus()

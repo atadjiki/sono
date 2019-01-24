@@ -18,7 +18,7 @@ public class FragmentCase : MonoBehaviour
 
         if(collision.gameObject == LevelManager.instance.getPlayer())
         {
-            fragment.SetFollow(LevelManager.instance.getPlayer().transform);
+            fragment.Collect(LevelManager.instance.getPlayer().transform);
         }
        
     }

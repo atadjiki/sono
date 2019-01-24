@@ -11,6 +11,7 @@ public class GateTrigger : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        parent = GetComponentInParent<GatePuzzle>();
 
         if (GetComponentInParent<GatePuzzle>() != null)
         {
