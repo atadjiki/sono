@@ -14,7 +14,7 @@ public class Hub : MonoBehaviour
     private bool hubComplete;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         hubComplete = false;
         puzzles = new Queue<Puzzle>(puzzleList);

@@ -16,7 +16,7 @@ public class GatePuzzle : MonoBehaviour
     public Puzzle parent;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isCurrentEntered = false;
         gateLength = gates.Count;
