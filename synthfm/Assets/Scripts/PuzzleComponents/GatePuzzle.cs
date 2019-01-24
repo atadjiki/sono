@@ -72,6 +72,7 @@ public class GatePuzzle : MonoBehaviour
                     {
                         //if this gate was triggered in the wrong order, reset the puzzle
                         Debug.Log("Puzzle reset");
+                        trigger.PlayAudioClip(AssetManager.instance.gateTones[6]);
                         currentIndex = 0;
                         UpdateList(currentIndex);
                         inProgress = false;
