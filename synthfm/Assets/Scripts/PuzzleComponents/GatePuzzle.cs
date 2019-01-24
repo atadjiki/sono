@@ -39,7 +39,6 @@ public class GatePuzzle : MonoBehaviour
             {
 
                 int index = currentList.IndexOf(trigger);
-                Debug.Log("index - " + index);
                 //if the start index has not been set
                 if (!inProgress)
                 {
@@ -80,18 +79,16 @@ public class GatePuzzle : MonoBehaviour
 
     void UpdateList(int index)
     {
-        Debug.Log("gates.count " + gates.Count);
         currentList = new List<GateTrigger>(gates.Count);
         currentList.AddRange(gates.GetRange(index, gateLength - index));
         currentList.AddRange(gates.GetRange(0, index));
-        Debug.Log("New list size: " + currentList.Count.ToString());
     }
 
     void DeleteGates()
     {
         foreach(GateTrigger gate in gates)
         {
-            GameObject.Destroy(gate);
+            GameObject.Destroy(gate.gameObject);
         }
     }
 
