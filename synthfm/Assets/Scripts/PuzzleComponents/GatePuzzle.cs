@@ -53,12 +53,12 @@ public class GatePuzzle : MonoBehaviour
                 else
                 {
                     //if the player is touching the gates in order, increment 
+                    Debug.Log("Gate " + index + " hit");
                     currentIndex++;
                     if (index == currentIndex)
                     {
-                        Debug.Log("Gate " + index + " hit");
-                        
-                        if (currentIndex == gateLength -1)
+                       
+                        if (currentIndex == gateLength - 1)
                         {
                             complete = true;
                             Debug.Log("Gate puzzle complete!");
@@ -71,6 +71,7 @@ public class GatePuzzle : MonoBehaviour
                         //if this gate was triggered in the wrong order, reset the puzzle
                         Debug.Log("Puzzle reset");
                         currentIndex = 0;
+                        UpdateList(currentIndex);
                         inProgress = false;
                     }
                 }
