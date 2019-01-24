@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &97076509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7072540297158679886, guid: 1a9190b5731affe499cced8f907fdccf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148158399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &99919090
 GameObject:
   m_ObjectHideFlags: 0
@@ -15382,6 +15388,7 @@ GameObject:
   - component: {fileID: 912886219}
   - component: {fileID: 912886218}
   - component: {fileID: 912886221}
+  - component: {fileID: 912886220}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -15411,6 +15418,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0665546f2125c742ba5d9f059985739, type: 3}
   - {fileID: 8300000, guid: b6742fd1ded626a46aeddb34989be414, type: 3}
   visualizerRing: {fileID: 0}
+  navPoint: {fileID: 912886220}
   hubList:
   - {fileID: 1397907971}
 --- !u!4 &912886219
@@ -15432,6 +15440,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &912886220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912886217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd2bce2a13cc4bc89af34113e829bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphere: {fileID: 99919090}
+  target: {fileID: 0}
+  pointer: {fileID: 97076509}
+  minDistance: 100
+  radius: 45
+  active: 0
 --- !u!114 &912886221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15446,6 +15472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockTime: 11
   player: {fileID: 347054873}
+  navPoint: {fileID: 912886220}
 --- !u!1 &993883296
 GameObject:
   m_ObjectHideFlags: 3
@@ -15743,6 +15770,75 @@ MonoBehaviour:
   complete: 0
   parent: {fileID: 1078430457}
   forceField: {fileID: 1257317809}
+--- !u!1001 &1148158399
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 347054877}
+    m_Modifications:
+    - target: {fileID: 7072540297158679886, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_Name
+      value: Pointer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072540297158679887, guid: 1a9190b5731affe499cced8f907fdccf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a9190b5731affe499cced8f907fdccf, type: 3}
 --- !u!1 &1209789632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1855229569708447584, guid: b8a011f487dba2644adbd6046cdde4d9,
@@ -26696,6 +26792,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 347054874}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: torqueAmount
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26750,21 +26861,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 1981209547}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 347054874}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: torqueAmount
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}

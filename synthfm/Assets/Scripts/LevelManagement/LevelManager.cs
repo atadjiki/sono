@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     public GameObject fragmentPrefab;
     public AudioClip[] audioFragments;
     public GameObject visualizerRing;
-   // private Navpoint navPoint;
+    public Navpoint navPoint;
 
     public Hub[] hubList;
     private Queue<Hub> hubs;
@@ -44,15 +44,15 @@ public class LevelManager : MonoBehaviour
         playerAudioSource.Play();
 
         //initialize vars
-       // navPoint = GetComponent<Navpoint>();
-       // Debug.Log("Found nav point " + navPoint.name);
+        Debug.Log("Found nav point " + navPoint.name);
         hubs = new Queue<Hub>(hubList);
         currentHub = hubs.Dequeue();
         Debug.Log("Found " + hubs.Count + " hubs");
         Debug.Log("First hub has " + currentHub.puzzleList.Length + " puzzles");
         currentPuzzle = currentHub.nextPuzzle();
+        Debug.Log("Current puzzle: " + currentPuzzle.name);
 
-       // updateNavPoint();
+        updateNavPoint();
 
     }
 
@@ -69,20 +69,21 @@ public class LevelManager : MonoBehaviour
                 {
                 //move to next puzzle
                    currentPuzzle = currentHub.nextPuzzle();
-                
+                    Debug.Log("Current puzzle: " + currentPuzzle.name);
+
                     //if there is no next puzzle, move to next hub
-                    if(currentPuzzle == null)
+                    if (currentPuzzle == null)
                     {
                         currentHub = NextHub();
                         if(currentHub == null)
                         {
                             Debug.Log("Level complete!");
                             levelComplete = true;
-                          //  navPoint.target = center;
                         }
                         else
                         {
                             currentPuzzle = currentHub.nextPuzzle();
+                            Debug.Log("Current puzzle: " + currentPuzzle.name);
                         }
                     }
 
@@ -96,11 +97,12 @@ public class LevelManager : MonoBehaviour
                 if (currentHub == null)
                 {
                     levelComplete = true;
-                   // navPoint.target = center;
+                    updateNavPoint();
                 }
                 else
                 {
                     currentPuzzle = currentHub.nextPuzzle();
+                    Debug.Log("Current puzzle: " + currentPuzzle.name);
                 }
             }
         }
@@ -129,17 +131,24 @@ public class LevelManager : MonoBehaviour
     {
         if (currentPuzzle == null && !levelComplete)
         {
-           // navPoint.active = false;
+           navPoint.active = false;
         }
         else if(currentPuzzle == null && levelComplete)
         {
-          //  Debug.Log("New target " + center.name);
+            Debug.Log("No target");
             levelComplete = true;
-           // navPoint.target = center;
+            navPoint.target = null;
+            navPoint.active = false;
+        }
+        else if(currentPuzzle != null && !levelComplete)
+        {
+            Debug.Log("New Target - " + currentPuzzle);
+            navPoint.target = currentPuzzle.gameObject;
+            navPoint.active = true;
         }
         else
         {
-          //  navPoint.active = false;
+           navPoint.active = false;
         }
         
     }

@@ -8,18 +8,22 @@ public class LockTitle : MonoBehaviour
 
     public float lockTime = 10.0f;
     public TurntableController player;
+    public Navpoint navPoint;
 
     void Start()
     {
         StartCoroutine(Lock());
+
     }
 
     IEnumerator Lock()
     {
         Debug.Log(Time.time);
         player.enabled = false;
+        navPoint.active = false;
         yield return new WaitForSecondsRealtime(lockTime);
         player.enabled = true;
+        navPoint.active = true;
         Debug.Log(Time.time);
     }
 }
