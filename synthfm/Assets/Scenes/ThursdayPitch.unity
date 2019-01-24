@@ -10419,7 +10419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705638742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 509, y: 702, z: -100}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1412285069}
@@ -15439,7 +15439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912886217}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cc51e9fe0308844683ec741dc77dc9f, type: 3}
   m_Name: 
@@ -15491,8 +15491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.25
-  m_FrequencyGain: 0.05
+  m_AmplitudeGain: 0.75
+  m_FrequencyGain: 0.25
   mNoiseOffsets: {x: -470.85657, y: 224.35107, z: -851.9375}
 --- !u!114 &993883299
 MonoBehaviour:
@@ -16073,8 +16073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.25
-  m_FrequencyGain: 0.05
+  m_AmplitudeGain: 0.75
+  m_FrequencyGain: 0.25
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1384466428
 PrefabInstance:
@@ -21811,8 +21811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.25
-  m_FrequencyGain: 0.05
+  m_AmplitudeGain: 0.75
+  m_FrequencyGain: 0.25
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1802301391
 GameObject:
@@ -26699,12 +26699,12 @@ PrefabInstance:
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 509
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 702
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
