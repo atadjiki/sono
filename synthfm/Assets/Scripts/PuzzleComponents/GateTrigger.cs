@@ -46,4 +46,11 @@ public class GateTrigger : MonoBehaviour
         }
         
     }
+
+    public void PlayAudioClip(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+
+    }
 }

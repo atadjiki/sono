@@ -27,8 +27,6 @@ public class GatePuzzle : MonoBehaviour
         complete = false;
         inProgress = false;
         Debug.Log("Found " + gateLength + " gates");
-       
-
     }
 
     public void GateTriggered(GateTrigger trigger)
@@ -46,6 +44,7 @@ public class GatePuzzle : MonoBehaviour
                 {
                     Debug.Log("Puzzle started at index " + index);
                     Debug.Log("Gate " + index + " hit");
+                    trigger.PlayAudioClip(AssetManager.instance.gateTones[index]);
                     currentIndex = index; //make this the first gate in the list
                     UpdateList(index); //re-order the list around the new starting index
                     inProgress = true;
@@ -54,6 +53,7 @@ public class GatePuzzle : MonoBehaviour
                 {
                     //if the player is touching the gates in order, increment 
                     Debug.Log("Gate " + index + " hit");
+                    trigger.PlayAudioClip(AssetManager.instance.gateTones[index]);
                     currentIndex++;
                     if (index == currentIndex)
                     {
