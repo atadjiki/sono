@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GatePuzzle : MonoBehaviour
+/*
+ * An example gate puzzle inheriting from Puzzle.cs
+ * The player can enter the gate system at any point, but must complete
+ * the puzzle in sequential order from then on.
+ * On completion, the puzzle will lower its force field 
+ * and allow the player to collect a fragment
+ */ 
+public class GatePuzzle : Puzzle
 {
 
     public List<GateTrigger> gates;
     private List<GateTrigger> currentList;
-    private bool isCurrentEntered;
     private int gateLength;
     private int currentIndex;
-    public bool complete;
     private bool inProgress;
-
-    public Puzzle parent;
 
     public GameObject forceField;
 
     // Start is called before the first frame update
     void Awake()
     {
-        isCurrentEntered = false;
+        base.Initialize(); //Make sure to call the parent class's initializer!
+
         gateLength = gates.Count;
         currentList = gates;
         currentIndex = 0;
@@ -65,7 +69,7 @@ public class GatePuzzle : MonoBehaviour
                             complete = true;
                             Debug.Log("Gate puzzle complete!");
                             DeleteGates();
-                            parent.SetStatus(complete);
+                            SetStatus(complete);
                         }
                     }
                     else
@@ -94,7 +98,7 @@ public class GatePuzzle : MonoBehaviour
     {
         foreach(GateTrigger gate in gates)
         {
-            GameObject.Destroy(gate.gameObject);
+            Destroy(gate.gameObject);
         }
 
         forceField.GetComponent<PointEffector2D>().enabled = false;

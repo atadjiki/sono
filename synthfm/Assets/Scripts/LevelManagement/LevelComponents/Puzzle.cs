@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
+/*
+ * Extends the set piece class, with some additional logic
+ * Puzzles contain flags that mark if they have been completed, as well
+ * as references to the fragment they are protecting.
+ * 
+ */ 
 public class Puzzle : SetPiece
 {
 
-    public bool complete = false;
+    public bool complete;
     public bool disableCameraOnComplete = true;
     public FragmentCase fragmentCase;
     private FragmentController fragment;
 
-    private void Awake()
+    public void Initialize()
     {
         fragment = fragmentCase.getFragment();
     }
@@ -26,7 +32,7 @@ public class Puzzle : SetPiece
         return complete;
     }
 
-    private void Update()
+    void Update()
     {
         if(fragment.GetState() == FragmentController.states.FOLLOW)
         {

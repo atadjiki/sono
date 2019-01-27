@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Represents an important location on the map that the player can encounter
+ * Set pieces must have a Cinemachine virtual camera to switch to upon the player encountering them, 
+ * as well as a 2D Collider to mark their area. 
+ */ 
 public class SetPiece : MonoBehaviour
 {
     private Cinemachine.CinemachineVirtualCamera mainCamera;
@@ -11,6 +17,8 @@ public class SetPiece : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         player = GameObject.Find("Player").GetComponent<TurntableController>();
 
