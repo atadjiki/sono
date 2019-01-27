@@ -15776,7 +15776,6 @@ GameObject:
   - component: {fileID: 1078430460}
   - component: {fileID: 1078430459}
   - component: {fileID: 1078430458}
-  - component: {fileID: 1078430457}
   - component: {fileID: 1078430462}
   m_Layer: 0
   m_Name: Cage
@@ -15785,22 +15784,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1078430457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078430456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a678acc3dfe94587a95c1f29710c391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setPieceCamera: {fileID: 1251758878}
-  complete: 0
-  disableCameraOnComplete: 1
-  fragmentCase: {fileID: 1491681139}
 --- !u!58 &1078430458
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15894,13 +15877,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a2eb0cfc0392f41a35ca25ad6bc6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setPieceCamera: {fileID: 1251758878}
+  complete: 0
+  disableCameraOnComplete: 1
+  fragmentCase: {fileID: 1491681139}
   gates:
   - {fileID: 1533301306}
   - {fileID: 554617599}
   - {fileID: 219290559}
   - {fileID: 498373417}
-  complete: 0
-  parent: {fileID: 1078430457}
   forceField: {fileID: 1257317809}
 --- !u!1001 &1148158399
 PrefabInstance:
@@ -16428,7 +16413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleList:
-  - {fileID: 1078430457}
+  - {fileID: 1078430462}
 --- !u!1 &1412285068
 GameObject:
   m_ObjectHideFlags: 3
