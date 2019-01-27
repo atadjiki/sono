@@ -12,7 +12,7 @@ using UnityEngine;
 public class Puzzle : SetPiece
 {
 
-    public bool complete;
+    public bool complete = false;
     public bool disableCameraOnComplete = true;
     public FragmentCase fragmentCase;
     private FragmentController fragment;

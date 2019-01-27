@@ -28,7 +28,6 @@ public class GatePuzzle : Puzzle
         gateLength = gates.Count;
         currentList = gates;
         currentIndex = 0;
-        complete = false;
         inProgress = false;
         Debug.Log("Found " + gateLength + " gates");
     }
@@ -87,6 +86,10 @@ public class GatePuzzle : Puzzle
         }
     }
 
+    /*
+     * Split the current list of gates based on what index 
+     * the player happened to enter. 
+     */ 
     void UpdateList(int index)
     {
         currentList = new List<GateTrigger>(gates.Count);
@@ -98,16 +101,17 @@ public class GatePuzzle : Puzzle
     {
         foreach(GateTrigger gate in gates)
         {
-            Destroy(gate.gameObject);
+            Destroy(gate.gameObject); //TODO: Replace this with something more elegant :^)
         }
 
+        //lower the force field and turn off its noise
         forceField.GetComponent<PointEffector2D>().enabled = false;
         forceField.GetComponent<AudioSource>().enabled = false;
         ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
         
         foreach(ParticleSystem particle in particles)
         {
-            particle.Stop();
+            particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
         }
     }
 
