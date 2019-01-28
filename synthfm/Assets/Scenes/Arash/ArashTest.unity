@@ -5196,10 +5196,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 381497988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ab608cc5b3ac24bbc27ec64c92ba6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1032e70d3d4c04151952f65f22c24c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   setPieceCamera: {fileID: 1741696622}
+  multiplier: 10
 --- !u!61 &381497991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15696,7 +15697,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912886217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cc51e9fe0308844683ec741dc77dc9f, type: 3}
   m_Name: 

@@ -17,12 +17,18 @@ public class SetPiece : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         player = GameObject.Find("Player").GetComponent<TurntableController>();
 
     }
+
+
+    public void Initialize()
+    {
+        Start();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -45,6 +51,16 @@ public class SetPiece : MonoBehaviour
             setPieceCamera.enabled = false;
 
         }
+    }
+
+    public void TriggerEnter(Collider2D collision)
+    {
+        OnTriggerEnter2D(collision);
+    }
+
+    public void TriggerExit(Collider2D collision)
+    {
+        OnTriggerExit2D(collision);
     }
 
     public Cinemachine.CinemachineVirtualCamera getMainCamera()
