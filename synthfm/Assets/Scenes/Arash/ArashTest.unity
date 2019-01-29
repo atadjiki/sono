@@ -5163,6 +5163,7 @@ GameObject:
   - component: {fileID: 381497989}
   - component: {fileID: 381497991}
   - component: {fileID: 381497990}
+  - component: {fileID: 381497993}
   m_Layer: 0
   m_Name: CubesSetPiece
   m_TagString: Untagged
@@ -5200,7 +5201,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setPieceCamera: {fileID: 1741696622}
-  multiplier: 10
+  multiplier: 2
+  min: 0
+  max: 10
+  center: {fileID: 0}
+  target: {fileID: 0}
 --- !u!61 &381497991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5227,6 +5232,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 263.90186, y: 209.85889}
   m_EdgeRadius: 0
+--- !u!114 &381497993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381497988}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0715067f3a24d4a42a159c402be76865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setPieceCamera: {fileID: 1741696622}
+  multiplier: 0.1
+  min: 0.41
+  max: 1
+  center: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &462220811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,

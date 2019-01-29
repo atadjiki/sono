@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class ChromaticAbberationSP : SetPiece
+public class VignetteSP : SetPiece
 {
-
     public float multiplier = 2;
     public float min = 0.25f;
     public float max = 10;
@@ -20,11 +19,11 @@ public class ChromaticAbberationSP : SetPiece
     void Start()
     {
         base.Initialize();
-        if(target == null)
+        if (target == null)
         {
             target = GameObject.Find("Player").GetComponent<Transform>();
         }
-        if(center == null)
+        if (center == null)
         {
             center = this.transform;
         }
@@ -40,7 +39,7 @@ public class ChromaticAbberationSP : SetPiece
         {
             applyEffect();
         }
-       
+
 
     }
 
@@ -49,10 +48,10 @@ public class ChromaticAbberationSP : SetPiece
 
         if (postProcess != null)
         {
-        
-            ChromaticAberration chromaticAberration;
-            postProcess.profile.TryGetSettings(out chromaticAberration);
-            if (chromaticAberration != null)
+
+            Vignette vignette;
+            postProcess.profile.TryGetSettings(out vignette);
+            if (vignette != null)
             {
 
                 //the closer the player is to the target, apply more effect
@@ -64,8 +63,8 @@ public class ChromaticAbberationSP : SetPiece
                 //calculate current value 
                 currentAmount = (max - min) - distance;
 
-                chromaticAberration.intensity.value = currentAmount * multiplier;
-                Debug.Log("Chromatic Abberation = " + chromaticAberration.intensity.value);
+                vignette.intensity.value = currentAmount * multiplier;
+                Debug.Log("Vignette = " + vignette.intensity.value);
             }
         }
 
@@ -78,15 +77,15 @@ public class ChromaticAbberationSP : SetPiece
 
         if (postProcess != null)
         {
-            ChromaticAberration chromaticAberration;
-            postProcess.profile.TryGetSettings(out chromaticAberration);
-            if (chromaticAberration != null)
+            Vignette vignette;
+            postProcess.profile.TryGetSettings(out vignette);
+            if (vignette != null)
             {
 
                 //the closer the player is to the target, apply more effect
-                defaultAmount = chromaticAberration.intensity.value;
+                defaultAmount = vignette.intensity.value;
 
-                Debug.Log("Default Chromatic Abberation = " + defaultAmount);
+                Debug.Log("Default Vignette = " + defaultAmount);
             }
         }
 
@@ -99,12 +98,12 @@ public class ChromaticAbberationSP : SetPiece
 
         if (postProcess != null)
         {
-            ChromaticAberration chromaticAberration;
-            postProcess.profile.TryGetSettings(out chromaticAberration);
-            if (chromaticAberration != null)
+            Vignette vignette;
+            postProcess.profile.TryGetSettings(out vignette);
+            if (vignette != null)
             {
-                chromaticAberration.intensity.value = defaultAmount;
-                Debug.Log("Chromatic Abberation = " + chromaticAberration.intensity.value);
+                vignette.intensity.value = defaultAmount;
+                Debug.Log("Vignette = " + vignette.intensity.value);
             }
         }
     }
