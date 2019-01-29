@@ -109,11 +109,11 @@ public class TurntableController : MonoBehaviour {
 
             if (rightStickX < 0)
             {
-                rightTurntable = -1f;
+                rightTurntable = 1f;
             }
             else if (rightStickX > 0)
             {
-                rightTurntable = 1f;
+                rightTurntable = -1f;
             }
             else
             {
