@@ -5163,7 +5163,6 @@ GameObject:
   - component: {fileID: 381497989}
   - component: {fileID: 381497991}
   - component: {fileID: 381497990}
-  - component: {fileID: 381497992}
   m_Layer: 0
   m_Name: CubesSetPiece
   m_TagString: Untagged
@@ -5195,7 +5194,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381497988}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1032e70d3d4c04151952f65f22c24c70, type: 3}
   m_Name: 
@@ -5232,24 +5231,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 263.90186, y: 209.85889}
   m_EdgeRadius: 0
---- !u!114 &381497992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381497988}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ec391e71a23476dab5d4e48a078571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setPieceCamera: {fileID: 1741696622}
-  multiplier: 1
-  min: 6
-  max: 15
-  center: {fileID: 0}
-  target: {fileID: 0}
 --- !u!1 &462220811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
@@ -10569,7 +10550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeffb8af9d174ab7936d21f5ca27aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 5
+  multiplier: 25
 --- !u!1 &784934301
 GameObject:
   m_ObjectHideFlags: 0
@@ -27124,6 +27105,21 @@ PrefabInstance:
         type: 3}
       propertyPath: torqueAmount
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: JoystickControls
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: TurntableControls
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: KeyboardControls
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class TurntableController : MonoBehaviour {
 
@@ -31,7 +32,9 @@ public class TurntableController : MonoBehaviour {
     public KeyCode alt_right_1 = KeyCode.LeftArrow;
     public KeyCode alt_right_2 = KeyCode.RightArrow;
 
-    public bool ForceAlternativeControls = false;
+    public bool KeyboardControls = true;
+    public bool TurntableControls = true;
+    public bool JoystickControls = true;
 
     private Rigidbody2D rigidbody;
 
@@ -57,17 +60,12 @@ public class TurntableController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        if (ForceAlternativeControls)
-        {
+        if(JoystickControls)
+            DoJoyStickInput();
+        if(KeyboardControls)
             DoAltInput();
-
-        }
-        else
-        {
-            DoAltInput();
+        if(TurntableControls)
             DoMIDIInput();
-        }
     }
 
     void UpdateVariables()
@@ -78,6 +76,53 @@ public class TurntableController : MonoBehaviour {
         crossFade = turntableManager.getFade();
         //Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
     }    
+
+    void DoJoyStickInput()
+    {
+
+        float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
+        float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
+
+        if (leftStickX != 0)
+        {
+            if (leftStickX < 0)
+            {
+                leftTurntable = -1f;
+            }
+            else if (leftStickX > 0)
+            {
+                leftTurntable = 1f;
+            }
+            else
+            {
+                leftTurntable = 0;
+            }
+
+            accel_mod += leftTurntable;
+            previousLeft = leftTurntable;
+        }
+        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
+        rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+
+        if (rightStickX != 0)
+        {
+
+            if (rightStickX < 0)
+            {
+                rightTurntable = -1f;
+            }
+            else if (rightStickX > 0)
+            {
+                rightTurntable = 1f;
+            }
+            else
+            {
+                rightTurntable = 0;
+            }
+            rigidbody.AddTorque(rightTurntable * torqueAmount);
+            previousRight = rightTurntable;
+        }
+    }
 
     void DoAltInput()
     {

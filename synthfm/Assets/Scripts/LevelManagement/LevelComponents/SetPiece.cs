@@ -37,25 +37,31 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.gameObject == player.gameObject)
+        if (!(collision is null) && !(player is null))
         {
-            Debug.Log("Switching camera to " + setPieceCamera.name);
-            mainCamera.enabled = false;
-            setPieceCamera.enabled = true;
+            if (collision.gameObject == player.gameObject)
+            {
+                Debug.Log("Switching camera to " + setPieceCamera.name);
+                mainCamera.enabled = false;
+                setPieceCamera.enabled = true;
+            }
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-        if (collision.gameObject == player.gameObject)
+        if (!(collision is null) && !(player is null))
         {
-            Debug.Log("Switching camera to " + mainCamera.Name);
-            mainCamera.enabled = true;
-            setPieceCamera.enabled = false;
+            if (collision.gameObject == player.gameObject)
+            {
+                Debug.Log("Switching camera to " + mainCamera.Name);
+                mainCamera.enabled = true;
+                setPieceCamera.enabled = false;
 
+            }
         }
+        
     }
 
     public void TriggerEnter(Collider2D collision)
