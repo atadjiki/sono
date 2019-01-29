@@ -6,8 +6,8 @@ using UnityEngine.Rendering.PostProcessing;
 public class BloomSP : SetPiece
 {
     public float multiplier = 2;
-    public float min = 0.25f;
-    public float max = 10;
+    public float min = 6;
+    public float max = 12;
     public Transform center;
     public Transform target;
     private float defaultAmount;

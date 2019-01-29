@@ -5,9 +5,8 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class VignetteSP : SetPiece
 {
-    public float multiplier = 2;
-    public float min = 0.25f;
-    public float max = 10;
+    public float min = 0.41f;
+    public float max = 0.5f;
     public Transform center;
     public Transform target;
     private float defaultAmount;
@@ -63,7 +62,7 @@ public class VignetteSP : SetPiece
                 //calculate current value 
                 currentAmount = (max - min) - distance;
 
-                vignette.intensity.value = currentAmount * multiplier;
+                vignette.intensity.value = Mathf.Abs(currentAmount)/10000;
                 Debug.Log("Vignette = " + vignette.intensity.value);
             }
         }
