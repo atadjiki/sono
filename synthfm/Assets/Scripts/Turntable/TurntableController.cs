@@ -98,7 +98,7 @@ public class TurntableController : MonoBehaviour {
 
         if (right != 0)
         {
-            rigidbody.AddTorque(right * torqueAmount);
+            rigidbody.AddTorque(-1 * right * torqueAmount);
             previousRight = rightTurntable;
         }
 
