@@ -33,8 +33,8 @@ public class TurntableController : MonoBehaviour {
     public KeyCode alt_right_2 = KeyCode.RightArrow;
 
     public bool KeyboardControls = true;
-    public bool TurntableControls = true;
     public bool JoystickControls = true;
+    private bool TurntableControls = true;
 
     private Rigidbody2D rigidbody;
 
@@ -82,46 +82,27 @@ public class TurntableController : MonoBehaviour {
 
         float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
         float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
+        float leftStickY = XCI.GetAxis(XboxAxis.LeftStickY);
+        float rightStickY = XCI.GetAxis(XboxAxis.RightStickY);
 
-        if (leftStickX != 0)
+        float left = leftStickX + leftStickY;
+        float right = rightStickX + rightStickY;
+
+        if (left != 0)
         {
-            if (leftStickX < 0)
-            {
-                leftTurntable = -1f;
-            }
-            else if (leftStickX > 0)
-            {
-                leftTurntable = 1f;
-            }
-            else
-            {
-                leftTurntable = 0;
-            }
-
-            accel_mod += leftTurntable;
+            accel_mod += left;
             previousLeft = leftTurntable;
         }
         accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
         rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
 
-        if (rightStickX != 0)
+        if (right != 0)
         {
-
-            if (rightStickX < 0)
-            {
-                rightTurntable = 1f;
-            }
-            else if (rightStickX > 0)
-            {
-                rightTurntable = -1f;
-            }
-            else
-            {
-                rightTurntable = 0;
-            }
-            rigidbody.AddTorque(rightTurntable * torqueAmount);
+            rigidbody.AddTorque(right * torqueAmount);
             previousRight = rightTurntable;
         }
+
+
     }
 
     void DoAltInput()
