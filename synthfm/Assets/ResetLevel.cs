@@ -15,9 +15,8 @@ public class ResetLevel : MonoBehaviour
     void Start()
     {
         timer = 0.0f;
-        m_Fading = true;
-        //m_Image.color = new Color(m_Image.color.r, m_Image.color.g, m_Image.color.b, 0f);
-        StartCoroutine(FadeIn());
+        //m_Fading = true;
+        //StartCoroutine(FadeIn());
     }
 
     // Update is called once per frame
