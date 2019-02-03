@@ -7,12 +7,14 @@ public class ProceduralTest : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject playerPos;
     [SerializeField] private List<GameObject> puzzles;
+    [SerializeField] private GameObject cinCamera;
 
     private GameObject left;
     private GameObject leftPuzzle;
     private GameObject right;
     private GameObject above;
     private GameObject below;
+    private GameObject temp;
 
     // Start is called before the first frame update
     void Start()
@@ -57,10 +59,14 @@ public class ProceduralTest : MonoBehaviour
 
 
         leftPuzzle = Instantiate(puzzles[puzzleIndex], leftTransform.GetComponent<Transform>());
-        leftPuzzle.AddComponent<Cinemachine.CinemachineVirtualCamera>();
-        leftPuzzle.GetComponent<SetPiece>().setPieceCamera = leftPuzzle.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        leftPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = leftPuzzle.transform;
-        
+        temp = GameObject.Instantiate(cinCamera);
+        temp.transform.parent = leftPuzzle.transform;
+        leftPuzzle.GetComponent<SetPiece>().setPieceCamera = temp.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        temp.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
+        leftPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = null;
+
+
+
         leftPuzzle.name = "Left Puzzzle";
         
         Debug.Log("Left puzzle at " + leftPuzzle.transform.position.ToString());
@@ -70,6 +76,10 @@ public class ProceduralTest : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DespawnObjects(collision.gameObject.tag);
+        leftPuzzle.GetComponent<SetPiece>().setPieceCamera = temp.GetComponent<Cinemachine.CinemachineVirtualCamera>(); 
+
+        //temp.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
+        leftPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = leftPuzzle.transform;
     }
 
     private void DespawnObjects(string dir)
