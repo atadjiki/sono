@@ -11,6 +11,7 @@ public class ProceduralTest : MonoBehaviour
 
     private GameObject left;
     private GameObject leftPuzzle;
+    private GameObject rightPuzzle;
     private GameObject right;
     private GameObject above;
     private GameObject below;
@@ -46,6 +47,14 @@ public class ProceduralTest : MonoBehaviour
         left.GetComponent<BoxCollider2D>().size = new Vector2(Screen.width, Screen.height);
         left.GetComponent<BoxCollider2D>().isTrigger = true;
         left.tag = "Left";
+
+        right = new GameObject();
+        right.name = "Right";
+        right.transform.position = new Vector2(screenPos.x + (Screen.width * 1.1f), screenPos.y + (Screen.height / 2));
+        right.AddComponent<BoxCollider2D>();
+        right.GetComponent<BoxCollider2D>().size = new Vector2(Screen.width, Screen.height);
+        right.GetComponent<BoxCollider2D>().isTrigger = true;
+        right.tag = "Right";
     }
 
     private void SpawnPuzzles()
@@ -68,18 +77,42 @@ public class ProceduralTest : MonoBehaviour
 
 
         leftPuzzle.name = "Left Puzzzle";
-        
-        Debug.Log("Left puzzle at " + leftPuzzle.transform.position.ToString());
+
+        GameObject rightTransform = new GameObject();
+        rightTransform.transform.position = new Vector2(Random.Range(right.transform.position.x, right.transform.position.x - Screen.width / 2),
+            rightTransform.transform.position.y);
+
+
+        rightPuzzle = Instantiate(puzzles[puzzleIndex], rightTransform.GetComponent<Transform>());
+        temp = GameObject.Instantiate(cinCamera);
+        temp.transform.parent = rightPuzzle.transform;
+        rightPuzzle.GetComponent<SetPiece>().setPieceCamera = temp.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        temp.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
+        rightPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = null;
+
+
+
+        rightPuzzle.name = "Right Puzzzle";
+
+
+        Debug.Log("Right puzzle at " + rightPuzzle.transform.position.ToString());
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DespawnObjects(collision.gameObject.tag);
-        leftPuzzle.GetComponent<SetPiece>().setPieceCamera = temp.GetComponent<Cinemachine.CinemachineVirtualCamera>(); 
+        //TO DO: Add if condition to check tag to zoom in to appropriate camera
+        leftPuzzle.GetComponent<SetPiece>().setPieceCamera = temp.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        leftPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = leftPuzzle.transform;
+
+        rightPuzzle.GetComponent<SetPiece>().setPieceCamera = temp.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        rightPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = rightPuzzle.transform;
+
+
 
         //temp.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
-        leftPuzzle.GetComponent<SetPiece>().setPieceCamera.Follow = leftPuzzle.transform;
+
     }
 
     private void DespawnObjects(string dir)
