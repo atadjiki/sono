@@ -29,7 +29,7 @@ public class GatePuzzle : Puzzle
         currentList = gates;
         currentIndex = 0;
         inProgress = false;
-        Debug.Log("Found " + gateLength + " gates");
+       // Debug.Log("Found " + gateLength + " gates");
     }
 
     public void GateTriggered(GateTrigger trigger)

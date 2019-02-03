@@ -47,11 +47,19 @@ public class LevelManager : MonoBehaviour
         //initialize vars
         Debug.Log("Found nav point " + navPoint.name);
         hubs = new Queue<Hub>(hubList);
-        currentHub = hubs.Dequeue();
-        Debug.Log("Found " + hubs.Count + " hubs");
-        Debug.Log("First hub has " + currentHub.puzzleList.Length + " puzzles");
-        currentPuzzle = currentHub.nextPuzzle();
-        Debug.Log("Current puzzle: " + currentPuzzle.name);
+        if(hubs.Count > 0)
+        {
+            currentHub = hubs.Dequeue();
+        }
+        
+      //  Debug.Log("Found " + hubs.Count + " hubs");
+        if(currentHub != null)
+        {
+            Debug.Log("First hub has " + currentHub.puzzleList.Length + " puzzles");
+            currentPuzzle = currentHub.nextPuzzle();
+            Debug.Log("Current puzzle: " + currentPuzzle.name);
+        }
+        
 
         updateNavPoint();
 
@@ -63,7 +71,7 @@ public class LevelManager : MonoBehaviour
         if (!puzzlesComplete)
         {
             //if the current hub is completed
-            if (!currentHub.getStatus())
+            if (currentHub != null && !currentHub.getStatus())
             {
                 //if the current puzzle in the hub is completed
                 if (currentPuzzle != null && currentPuzzle.GetStatus())

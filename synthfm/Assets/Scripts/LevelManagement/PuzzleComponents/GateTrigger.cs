@@ -15,7 +15,7 @@ public class GateTrigger : MonoBehaviour
 
         if (GetComponentInParent<GatePuzzle>() != null)
         {
-            Debug.Log(this.name + " - found parent");
+         //   Debug.Log(this.name + " - found parent");
             partOfPuzzle = true;
         }
 
