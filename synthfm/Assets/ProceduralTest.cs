@@ -47,38 +47,41 @@ public class ProceduralTest : MonoBehaviour
 
         float playerX = playerPos.transform.position.x;
         float playerY = playerPos.transform.position.y;
+        float scale = 4;
+
+        Vector2 boundary = new Vector2(mainCamera.pixelWidth / scale, mainCamera.pixelHeight / scale);
 
         left = new GameObject();
         left.name = "Left";
         left.tag = "Left";
-        left.transform.position = new Vector2(playerX - mainCamera.pixelWidth/2, playerY);
+        left.transform.position = new Vector2(playerX - mainCamera.pixelWidth/scale, playerY);
         left.AddComponent<BoxCollider2D>();
-        left.GetComponent<BoxCollider2D>().size = new Vector2(mainCamera.pixelWidth/2, mainCamera.pixelHeight/2);
+        left.GetComponent<BoxCollider2D>().size = boundary;
         left.GetComponent<BoxCollider2D>().isTrigger = true;
 
 
         right = new GameObject();
         right.name = "Right";
         right.tag = "Right";
-        right.transform.position = new Vector2(playerX + mainCamera.pixelWidth/2, playerY);
+        right.transform.position = new Vector2(playerX + mainCamera.pixelWidth/scale, playerY);
         right.AddComponent<BoxCollider2D>();
-        right.GetComponent<BoxCollider2D>().size = new Vector2(mainCamera.pixelWidth/2, mainCamera.pixelHeight/2);
+        right.GetComponent<BoxCollider2D>().size = boundary;
         right.GetComponent<BoxCollider2D>().isTrigger = true;
 
         up = new GameObject();
         up.name = "Up";
         up.tag = "Up";
-        up.transform.position = new Vector2(playerX, playerY + mainCamera.pixelWidth / 2);
+        up.transform.position = new Vector2(playerX, playerY + mainCamera.pixelWidth / scale);
         up.AddComponent<BoxCollider2D>();
-        up.GetComponent<BoxCollider2D>().size = new Vector2(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2);
+        up.GetComponent<BoxCollider2D>().size = boundary;
         up.GetComponent<BoxCollider2D>().isTrigger = true;
 
         down = new GameObject();
         down.name = "Down";
         down.tag = "Down";
-        down.transform.position = new Vector2(playerX, playerY - mainCamera.pixelWidth / 2);
+        down.transform.position = new Vector2(playerX, playerY - mainCamera.pixelWidth / scale);
         down.AddComponent<BoxCollider2D>();
-        down.GetComponent<BoxCollider2D>().size = new Vector2(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2);
+        down.GetComponent<BoxCollider2D>().size = boundary;
         down.GetComponent<BoxCollider2D>().isTrigger = true;
 
     }
@@ -153,33 +156,39 @@ public class ProceduralTest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TO DO: Add if condition to check tag to zoom in to appropriate camera
-        DespawnObjects(collision.gameObject.tag);
+
+        Debug.Log("Collided with " + collision.gameObject.tag);
+        DespawnOtherObjects(collision.gameObject.tag);
 
     }
 
-    private void DespawnObjects(string dir)
+    private void DespawnOtherObjects(string direction)
     {
 
         List<GameObject> toDestroy = new List<GameObject>();
 
-        if (dir != "Up")
+        if(direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
+        {
+            return;
+        }
+
+        if (direction != "Up")
         {
             Debug.Log("Destroying Up Puzzles");
             toDestroy.AddRange(GameObject.FindGameObjectsWithTag("Up"));
 
         }
-        else if(dir != "Down")
+        if(direction != "Down")
         {
             Debug.Log("Destroying Down Puzzles");
             toDestroy.AddRange(GameObject.FindGameObjectsWithTag("Down"));
         }
-        else if(dir != "Right")
+        if(direction != "Right")
         {
             Debug.Log("Destroying Right Puzzles");
             toDestroy.AddRange(GameObject.FindGameObjectsWithTag("Right"));
         }
-        else if(dir != "Left")
+        if(direction != "Left")
         {
             Debug.Log("Destroying Left Puzzles");
             toDestroy.AddRange(GameObject.FindGameObjectsWithTag("Left"));

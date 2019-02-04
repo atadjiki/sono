@@ -41,9 +41,17 @@ public class Puzzle : SetPiece
                 Debug.Log("Switching camera to " + getMainCamera().name);
                 getMainCamera().enabled = true;
                 setPieceCamera.enabled = false;
-                this.enabled = false;
+                StartCoroutine("DeletePuzzle");
+               
             }
         }
+    }
+
+    IEnumerator DeletePuzzle()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        Destroy(this.gameObject);
+       
     }
 
 }
