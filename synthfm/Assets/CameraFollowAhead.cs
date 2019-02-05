@@ -8,6 +8,7 @@ public class CameraFollowAhead : MonoBehaviour
     private GameObject player;
 
     public float maxAhead = 20f;
+    public float minAhead;
     private float currentAhead = 0f;
 
     private Vector2 playerPos; 
@@ -22,6 +23,7 @@ public class CameraFollowAhead : MonoBehaviour
     {
         player = GameObject.Find("Player");
         currentFrame = 0;
+        minAhead = maxAhead / 5;
 
     }
 
@@ -34,20 +36,26 @@ public class CameraFollowAhead : MonoBehaviour
             playerDirection = player.GetComponent<Transform>().up;
             playerRotation = player.GetComponent<Transform>().rotation;
 
+            float velocity = player.GetComponent<Rigidbody2D>().velocity.SqrMagnitude();
+
             //scale the value between min and max ceilings
-            currentAhead = (player.GetComponent<Rigidbody2D>().velocity.sqrMagnitude) / (maxAhead);
+            currentAhead = velocity / (maxAhead);
 
             //calculate current value 
             //scale the value between min and max ceilings
-            currentAhead = (currentAhead - 0) / (maxAhead - 0);
+            currentAhead = (currentAhead - minAhead) / (maxAhead - minAhead);
 
             //calculate current value 
-            currentAhead = (maxAhead - 0) - currentAhead;
+            currentAhead = (maxAhead - minAhead) - currentAhead;
 
             currentAhead *= -1;
 
+
+        //    currentAhead += Mathf.Abs((playerRotation.z)) * maxAhead;
+
             this.transform.position = playerPos + playerDirection * currentAhead;
             Debug.Log("Current ahead of player - " + currentAhead);
+            Debug.Log("Velocity " + velocity);
             currentFrame = 0;
         }
         else

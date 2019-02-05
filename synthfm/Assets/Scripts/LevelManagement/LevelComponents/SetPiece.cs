@@ -37,6 +37,7 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (!(collision is null) && !(player is null))
         {
             if (collision.gameObject == player.gameObject)
