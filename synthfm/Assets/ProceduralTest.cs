@@ -8,6 +8,8 @@ public class ProceduralTest : MonoBehaviour
     [SerializeField] private GameObject playerPos;
     [SerializeField] private List<GameObject> puzzles;
     [SerializeField] private GameObject cinCamera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private ColliderTest hitCollider;
 
     private GameObject left;
     private GameObject leftPuzzle;
@@ -24,7 +26,8 @@ public class ProceduralTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        hitCollider = player.GetComponent<ColliderTest>();
+        hitCollider.onObjectCollidedEvent += gameObjectCollided;
     }
 
     // Update is called once per frame
@@ -146,14 +149,6 @@ public class ProceduralTest : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        Debug.Log("Collided with " + collision.gameObject.tag);
-        DespawnOtherObjects(collision.gameObject.tag);
-
-    }
-
     private void DespawnOtherObjects(string direction)
     {
 
@@ -207,5 +202,10 @@ public class ProceduralTest : MonoBehaviour
             Destroy(item);
         }
 
+    }
+
+    private void gameObjectCollided(string gName, string gTag, string cName, string cTag)
+    {
+        DespawnOtherObjects(cTag);
     }
 }
