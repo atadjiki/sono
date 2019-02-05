@@ -43,8 +43,6 @@ public class ProceduralTest : MonoBehaviour
     void TakeSnapshot()
     {
         //get the screen dimensions for the player
-     //   Vector3 screenPos = mainCamera.WorldToScreenPoint(playerPos.transform.TransformPoint(Vector3.zero));
-
         float playerX = playerPos.transform.position.x;
         float playerY = playerPos.transform.position.y;
         float scale = 4;
@@ -52,38 +50,32 @@ public class ProceduralTest : MonoBehaviour
         Vector2 boundary = new Vector2(mainCamera.pixelWidth / scale, mainCamera.pixelHeight / scale);
 
         left = new GameObject();
-        left.name = "Left";
-        left.tag = "Left";
         left.transform.position = new Vector2(playerX - mainCamera.pixelWidth/scale, playerY);
-        left.AddComponent<BoxCollider2D>();
-        left.GetComponent<BoxCollider2D>().size = boundary;
-        left.GetComponent<BoxCollider2D>().isTrigger = true;
+        setupProceduralGen("Left", left, boundary);
 
 
         right = new GameObject();
-        right.name = "Right";
-        right.tag = "Right";
         right.transform.position = new Vector2(playerX + mainCamera.pixelWidth/scale, playerY);
-        right.AddComponent<BoxCollider2D>();
-        right.GetComponent<BoxCollider2D>().size = boundary;
-        right.GetComponent<BoxCollider2D>().isTrigger = true;
+        setupProceduralGen("Right", right, boundary);
+
 
         up = new GameObject();
-        up.name = "Up";
-        up.tag = "Up";
         up.transform.position = new Vector2(playerX, playerY + mainCamera.pixelWidth / scale);
-        up.AddComponent<BoxCollider2D>();
-        up.GetComponent<BoxCollider2D>().size = boundary;
-        up.GetComponent<BoxCollider2D>().isTrigger = true;
+        setupProceduralGen("Up", up, boundary);
+
 
         down = new GameObject();
-        down.name = "Down";
-        down.tag = "Down";
         down.transform.position = new Vector2(playerX, playerY - mainCamera.pixelWidth / scale);
-        down.AddComponent<BoxCollider2D>();
-        down.GetComponent<BoxCollider2D>().size = boundary;
-        down.GetComponent<BoxCollider2D>().isTrigger = true;
+        setupProceduralGen("Down", down, boundary);
+    }
 
+    private void setupProceduralGen(string tag, GameObject direction, Vector2 boundary)
+    {
+        direction.name = tag;
+        direction.tag = tag;
+        direction.AddComponent<BoxCollider2D>();
+        direction.GetComponent<BoxCollider2D>().size = boundary;
+        direction.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     private void SpawnPuzzles()
