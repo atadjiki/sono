@@ -45,7 +45,11 @@ public class LevelManager : MonoBehaviour
         playerAudioSource.Play();
 
         //initialize vars
-        Debug.Log("Found nav point " + navPoint.name);
+        if(navPoint != null)
+        {
+            Debug.Log("Found nav point " + navPoint.name);
+        }
+       
         hubs = new Queue<Hub>(hubList);
         if(hubs.Count > 0)
         {
@@ -60,8 +64,11 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Current puzzle: " + currentPuzzle.name);
         }
         
+        if(navPoint != null)
+        {
+            updateNavPoint();
+        }
 
-        updateNavPoint();
 
     }
 
@@ -96,8 +103,11 @@ public class LevelManager : MonoBehaviour
                         }
                     }
 
-                    updateNavPoint();
-   
+                    if (navPoint != null)
+                    {
+                        updateNavPoint();
+                    }
+
                 }
             }
             else
@@ -106,7 +116,10 @@ public class LevelManager : MonoBehaviour
                 if (currentHub == null)
                 {
                     puzzlesComplete = true;
-                    updateNavPoint();
+                    if (navPoint != null)
+                    {
+                        updateNavPoint();
+                    }
                 }
                 else
                 {
@@ -146,7 +159,11 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("No target");
             puzzlesComplete = true;
-            navPoint.target = finalZone;
+            if(navPoint != null)
+            {
+                navPoint.target = finalZone;
+            }
+
         }
         else if(currentPuzzle != null && !puzzlesComplete)
         {
