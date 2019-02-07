@@ -21,6 +21,11 @@ public class TurntableController : MonoBehaviour {
     private float accel_mod;
     public float accel_incr = 0.05f;
     public float accel_clamp = 1f;
+    public float accel_floor = 0.1f;
+
+    public float accel_slow = 0.25f;
+    public float accel_normal = 0.75f;
+    public float accel_fast = 1.25f;
 
     public float torqueAmount = 10;
     public float torqueIncrement = 1;
@@ -75,7 +80,28 @@ public class TurntableController : MonoBehaviour {
         rightTurntable = turntableManager.getRight();
         crossFade = turntableManager.getFade();
         //Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
-    }    
+    }   
+
+    float normalizeAcceleration(float accel)
+    {
+
+        float slowDif = Mathf.Abs(accel - accel_slow);
+        float normalDif = Mathf.Abs(accel - accel_normal);
+        float fastDif = Mathf.Abs(accel - accel_fast);
+
+        if(slowDif < normalDif && slowDif < fastDif)
+        {
+            return accel_slow;
+        }else if(normalDif < slowDif && normalDif < fastDif)
+        {
+            return accel_normal;
+        }
+        else
+        {
+            return accel_fast;
+        }
+
+    }
 
     void DoJoyStickInput()
     {
@@ -101,8 +127,8 @@ public class TurntableController : MonoBehaviour {
             accel_mod += leftTurntable;
             previousLeft = leftTurntable;
         }
-        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
-        rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+        accel_mod = Mathf.Clamp(accel_mod, accel_floor, accel_clamp);
+        rigidbody.AddForce(transform.up * normalizeAcceleration(accel_mod) * acceleration * Time.deltaTime);
 
         if (rightStickX != 0)
         {
@@ -131,8 +157,8 @@ public class TurntableController : MonoBehaviour {
             accel_mod += Input.GetAxis("Acceleration");
             previousLeft = leftTurntable;
         }
-        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
-        rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+        accel_mod = Mathf.Clamp(accel_mod, accel_floor, accel_clamp);
+        rigidbody.AddForce(transform.up * normalizeAcceleration(accel_mod) * acceleration * Time.deltaTime);
 
         if (Input.GetAxis("Torque") != 0)
         {
@@ -157,8 +183,8 @@ public class TurntableController : MonoBehaviour {
             }
             previousLeft = leftTurntable;
         }
-        accel_mod = Mathf.Clamp(accel_mod, -accel_clamp, accel_clamp);
-        rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
+        accel_mod = Mathf.Clamp(accel_mod, accel_floor, accel_clamp);
+        rigidbody.AddForce(transform.up * normalizeAcceleration(accel_mod) * acceleration * Time.deltaTime);
         
         if (previousRight != rightTurntable)
         {
