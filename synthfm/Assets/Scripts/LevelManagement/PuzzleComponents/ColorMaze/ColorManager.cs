@@ -25,19 +25,22 @@ public class ColorManager : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void changeToActive()
     {
-        if (LevelManager.instance.getPlayer() == collision.gameObject)
-        {
-           
-            // check puzzle state and update the color if true sequence
-            // if(this.sequenceNo == puzle.getCurrentSequenceNo(); )
-                _renderer.color = activeColor;
-            // else error color
+        _renderer.color = activeColor;
+    }
 
-                // Start coroutine to change back to normal color
+    public void changeToFail()
+    {
+        _renderer.color = errorColor;
 
-        }
+        StartCoroutine(setBaseColor());
+    }
+   
+    IEnumerator setBaseColor()
+    {
+        yield return new WaitForSeconds(3);
+        _renderer.color = baseColor;
     }
 
     // Set
