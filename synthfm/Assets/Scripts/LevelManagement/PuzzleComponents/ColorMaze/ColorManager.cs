@@ -39,7 +39,7 @@ public class ColorManager : MonoBehaviour
    
     IEnumerator setBaseColor()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         _renderer.color = baseColor;
     }
 
