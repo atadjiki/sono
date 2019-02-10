@@ -13,7 +13,7 @@ public class CirclePuzzle : Puzzle
     public Transform playerTransform;
 
     private int currentFrames = 0;
-    private int maxFrames = 60/3; //how frequently we want to check for an intersection 
+    private int maxFrames = 60 / 3; //how frequently we want to check for an intersection 
 
     private bool playerEntered = false; //only check if the player is actually inside the puzzle!
 
@@ -114,7 +114,7 @@ public class CirclePuzzle : Puzzle
     void ReleaseCage()
     {
 
-        foreach(GameObject target in targets)
+        foreach (GameObject target in targets)
         {
             Destroy(target);
         }
@@ -138,15 +138,16 @@ public class CirclePuzzle : Puzzle
         int startIndex = positionsToCheck.IndexOf(intersection);
         positionsToCheck = positionsToCheck.GetRange(startIndex, positionsToCheck.Count - startIndex);
 
-        foreach(GameObject target in targets)
+        foreach (GameObject target in targets)
         {
-            if(!ContainsPoint(positionsToCheck.ToArray(), target.transform.position))
+            if (!ContainsPoint(positionsToCheck.ToArray(), target.transform.position))
             {
                 return false; //make sure every target is inside the shape
             }
         }
 
         Debug.Log("Loop contains targets!");
+       // GenerateMesh(positionsToCheck.ToArray(), intersection);
         return true;
     }
 
@@ -162,6 +163,17 @@ public class CirclePuzzle : Puzzle
                 inside = !inside;
         }
         return inside;
+    }
+
+    static void GenerateMesh(Vector3[] polyPoints, Vector3 origin)
+    {
+        Debug.Log("Generating mesh out of " + polyPoints.Length + " vertices");
+        Mesh mesh = new Mesh();
+        GameObject shape = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        shape.transform.position = origin;
+        shape.transform.localScale = new Vector3(5, 5, 5);
+        
+     //   mesh.vertices = polyPoints;
     }
 
 }
