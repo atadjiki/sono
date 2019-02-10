@@ -12,7 +12,7 @@ public class CirclePuzzle : Puzzle
     public Transform playerTransform;
 
     private int currentFrames = 0;
-    private int maxFrames = 60;
+    private int maxFrames = 60/3;
 
     private bool playerEntered = false;
 
