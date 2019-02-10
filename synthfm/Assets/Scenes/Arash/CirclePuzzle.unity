@@ -167,7 +167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68912939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 200, z: -125}
+  m_LocalPosition: {x: 0, y: 200, z: -250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1473362575}
@@ -331,10 +331,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4134496700412985192, guid: 897195f16565ad543b8573b82df113b3,
+        type: 3}
+      propertyPath: m_Radius
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4505016307981780011, guid: 897195f16565ad543b8573b82df113b3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4505016308665245679, guid: 897195f16565ad543b8573b82df113b3,
         type: 3}
@@ -5791,6 +5796,8 @@ MonoBehaviour:
   playerTrail: {fileID: 1615024071}
   playerTransform: {fileID: 347054877}
   forceField: {fileID: 873186943}
+  targets:
+  - {fileID: 1858783946}
 --- !u!4 &1270680667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4134496700588183584, guid: 897195f16565ad543b8573b82df113b3,
@@ -5942,10 +5949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0, z: -125}
+  m_FollowOffset: {x: 0, y: 0, z: -250}
   m_XDamping: 0.25
   m_YDamping: 0.25
-  m_ZDamping: 0.25
+  m_ZDamping: 8.3
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -6125,6 +6132,12 @@ Transform:
   m_Father: {fileID: 845809514}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1858783946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4505016307981780011, guid: 897195f16565ad543b8573b82df113b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 115918022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1906437834
 GameObject:
   m_ObjectHideFlags: 0
