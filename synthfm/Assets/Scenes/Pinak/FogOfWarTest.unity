@@ -5140,7 +5140,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705638744}
   - component: {fileID: 705638743}
-  - component: {fileID: 705638745}
   m_Layer: 0
   m_Name: CM_Main
   m_TagString: Untagged
@@ -5200,24 +5199,6 @@ Transform:
   m_Father: {fileID: 2078650136}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &705638745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705638742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2136e170af2d0341b653316369d87b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fogOfWarPlane: {fileID: 1967203771}
-  m_player: {fileID: 347054877}
-  m_fogLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  m_radius: 5
 --- !u!1001 &855701783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5906,6 +5887,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 347054874}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: torqueAmount
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5960,21 +5956,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 1981209547}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 347054874}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: torqueAmount
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}

@@ -22,19 +22,17 @@ public class FogOfWar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Ray r = new Ray(transform.position, m_player.position - transform.position);
         RaycastHit hit;
-        if (Physics.Raycast(r, out hit, Mathf.Infinity, m_fogLayer, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(r, out hit, 10000, m_fogLayer, QueryTriggerInteraction.Collide))
         {
             
             for (int i = 0; i < m_vertices.Length; i++)
             {
                 Vector3 v = m_fogOfWarPlane.transform.TransformPoint(m_vertices[i]);
                 float dist = Vector3.Distance(v, hit.point);
-
-                //  Debug.Log(dist);
                 if (dist < m_radiusSqr)
                 {
                     float alpha = Mathf.Min(m_colors[i].a, dist / m_radiusSqr);
