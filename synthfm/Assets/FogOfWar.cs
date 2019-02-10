@@ -26,8 +26,9 @@ public class FogOfWar : MonoBehaviour
     {
         Ray r = new Ray(transform.position, m_player.position - transform.position);
         RaycastHit hit;
-        if (Physics.Raycast(r, out hit, 1000, m_fogLayer, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(r, out hit, Mathf.Infinity, m_fogLayer, QueryTriggerInteraction.Collide))
         {
+            Debug.Log("HIT");
             for (int i = 0; i < m_vertices.Length; i++)
             {
                 Vector3 v = m_fogOfWarPlane.transform.TransformPoint(m_vertices[i]);
