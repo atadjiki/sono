@@ -30,7 +30,7 @@ public class CirclePuzzle : Puzzle
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!complete && playerEntered)
         {
@@ -42,6 +42,7 @@ public class CirclePuzzle : Puzzle
                 {
                     if (DoesContain)
                     {
+
                         complete = true;
                         ReleaseCage();
                     }
