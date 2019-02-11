@@ -6,7 +6,7 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    public enum states { IDLE, FLEE, FOLLOW };
+    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT };
     private states currentState;
 
     private Rigidbody2D rb;
@@ -48,6 +48,9 @@ public class FragmentController : MonoBehaviour
                 break;
             case states.FLEE:
                 break;
+            case states.DEPOSIT:
+                Deposit();
+                break;
             default:
                 break;
         }
@@ -56,6 +59,11 @@ public class FragmentController : MonoBehaviour
     private void Idle()
     {
         rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
+    }
+
+    private void Deposit()
+    {
+
     }
 
     private void Follow()
