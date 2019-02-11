@@ -17,6 +17,6 @@ public class ColliderTest : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(gameObject.transform.position);
+        //Debug.Log(gameObject.transform.position);
     }
 }

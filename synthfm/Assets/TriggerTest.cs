@@ -15,7 +15,7 @@ public class TriggerTest : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
         }
     }
