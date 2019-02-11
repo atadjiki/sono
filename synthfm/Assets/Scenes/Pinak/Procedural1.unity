@@ -5325,7 +5325,6 @@ GameObject:
   m_Component:
   - component: {fileID: 894168246}
   - component: {fileID: 894168247}
-  - component: {fileID: 894168248}
   m_Layer: 0
   m_Name: CinemachineManager
   m_TagString: Untagged
@@ -5360,19 +5359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Main: {fileID: 705638742}
---- !u!114 &894168248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894168245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ab608cc5b3ac24bbc27ec64c92ba6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setPieceCamera: {fileID: 0}
 --- !u!1 &993883296
 GameObject:
   m_ObjectHideFlags: 3
@@ -5916,7 +5902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920959810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10000, y: -66.43739, z: -218}
+  m_LocalPosition: {x: 5500, y: -66.43739, z: -218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 862394187}
@@ -6087,12 +6073,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cinManager
       value: 
-      objectReference: {fileID: 894168245}
+      objectReference: {fileID: 0}
     - target: {fileID: 4134496700588183587, guid: 897195f16565ad543b8573b82df113b3,
         type: 3}
       propertyPath: puzzleCam
       value: 
-      objectReference: {fileID: 1251758877}
+      objectReference: {fileID: 0}
     - target: {fileID: 4134496700588183591, guid: 897195f16565ad543b8573b82df113b3,
         type: 3}
       propertyPath: m_Enabled
