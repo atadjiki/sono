@@ -8,6 +8,8 @@ public class GateTrigger : MonoBehaviour
     private GatePuzzle parent;
     private bool partOfPuzzle = false;
 
+
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -37,6 +39,7 @@ public class GateTrigger : MonoBehaviour
             
         }
     }
+
 
     private void NotifyPuzzle()
     {
