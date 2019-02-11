@@ -8,7 +8,7 @@ public class FogOfWar : MonoBehaviour
     public GameObject m_fogOfWarPlane;
     public Transform m_player;
     public LayerMask m_fogLayer;
-    public float m_radius = 5f;
+    public float m_radius = 25f;
     private float m_radiusSqr { get { return m_radius * m_radius; } }
 
     private Mesh m_mesh;
@@ -36,12 +36,15 @@ public class FogOfWar : MonoBehaviour
                 if (dist < m_radiusSqr)
                 {
                     float alpha = Mathf.Min(m_colors[i].a, dist / m_radiusSqr);
+                    //print(dist);
+                    //float alpha = 0.1f;
+                    //alpha = 0.05f;
                     m_colors[i].a = alpha;
-                    
                 }
             }
-            UpdateColor();
         }
+        UpdateColor();
+
     }
 
     void Initialize()
