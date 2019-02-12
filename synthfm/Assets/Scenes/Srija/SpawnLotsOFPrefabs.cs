@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnLotsOFPrefabs : MonoBehaviour //yeah... that's a typo in the class name. I'm too lazy to fix it.
+public class SpawnLotsOfPrefabs : MonoBehaviour //yeah... that's a typo in the class name. I'm too lazy to fix it.
 {
     public GameObject ObjectToSpawn;
     public int NumberOfObjectsToSpawn = 50;
@@ -15,7 +15,7 @@ public class SpawnLotsOFPrefabs : MonoBehaviour //yeah... that's a typo in the c
         // Yes I totally stole and modified the SpawnPrefab script, because that one spawns over time.
         for (int i = 0; i < NumberOfObjectsToSpawn; i++)
         {
-            Vector3 offset = Random.insideUnitSphere;
+            Vector3 offset = Random.insideUnitCircle;
             offset.z = 0f;
 
             Instantiate(ObjectToSpawn, transform.position + offset * SpawnRadius, Quaternion.identity);
