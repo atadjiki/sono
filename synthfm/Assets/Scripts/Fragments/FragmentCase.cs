@@ -15,7 +15,7 @@ public class FragmentCase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        //TO DO: Make this not grabbable after it is deposited
         if(collision.gameObject == LevelManager.instance.getPlayer())
         {
             fragment.Collect(LevelManager.instance.getPlayer().transform);
