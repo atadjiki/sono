@@ -15,14 +15,15 @@ public class TurntableController : MonoBehaviour
     private float previousRight;
     private float previousFade;
     private int currentFrames = 0;
-    public int maxFrames = 60;
+    private int maxFrames = 60;
     private float torqueCount = 1;
 
+    [Header("Player Physics")]
     public float acceleration = 5000;
     [SerializeField]
     private float accel_mod;
     private float accel_incr = 0.05f;
-    public float accel_clamp = 2f;
+    public float accel_clamp = 1.5f;
     public float accel_floor = 0.25f;
 
     private float accel_slow = 0.25f;
@@ -33,27 +34,24 @@ public class TurntableController : MonoBehaviour
     public float torqueIncrement = 1;
     private bool multiplyTorque = false;
 
+
+    public enum ControlType { Keyboard, Joystick, Turntable };
+
+    [Header("Controls")]
+    public ControlType controls = ControlType.Keyboard;
     public KeyCode alt_left_1 = KeyCode.A;
     public KeyCode alt_left_2 = KeyCode.D;
-
     public KeyCode alt_right_1 = KeyCode.LeftArrow;
     public KeyCode alt_right_2 = KeyCode.RightArrow;
 
-    public bool KeyboardControls = true;
-    public bool TurntableControls = true;
-    public bool JoystickControls = true;
+    private new Rigidbody2D rigidbody;
 
-    private Rigidbody2D rigidbody;
 
+    [Header("References")]
     public TurntableManager turntableManager;
-
-    public GameObject head;
-    private float angle = 0f;
-    public float maxTiltAngle;
-    public float tiltSpeed = 30f;
-
     public Transform[] fragmentSlots;
     public bool[] slotsFilled;
+
 
     // Use this for initialization
     void Start()
@@ -70,15 +68,14 @@ public class TurntableController : MonoBehaviour
     {
 
         UpdateVariables();
-
-        if (JoystickControls)
-            DoJoyStickInput();
-        if (KeyboardControls)
-            DoAltInput();
-        if (TurntableControls)
-            DoMIDIInput();
-
         ApplyForce();
+
+        if (controls == ControlType.Joystick)
+            DoJoyStickInput();
+        if (controls == ControlType.Keyboard)
+            DoAltInput();
+        if (controls == ControlType.Turntable)
+            DoMIDIInput();              
     }
 
     void UpdateVariables()
@@ -120,47 +117,54 @@ public class TurntableController : MonoBehaviour
 
     void DoJoyStickInput()
     {
-
-        float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
-        float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
-
-        if (leftStickX != 0)
+        try
         {
-            if (leftStickX < 0)
+            float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
+            float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
+
+            if (leftStickX != 0)
             {
-                leftTurntable = -1f;
-            }
-            else if (leftStickX > 0)
-            {
-                leftTurntable = 1f;
-            }
-            else
-            {
-                leftTurntable = 0;
+                if (leftStickX < 0)
+                {
+                    leftTurntable = -1f;
+                }
+                else if (leftStickX > 0)
+                {
+                    leftTurntable = 1f;
+                }
+                else
+                {
+                    leftTurntable = 0;
+                }
+
+                accel_mod += leftTurntable;
+                previousLeft = leftTurntable;
             }
 
-            accel_mod += leftTurntable;
-            previousLeft = leftTurntable;
+            if (rightStickX != 0)
+            {
+
+                if (rightStickX < 0)
+                {
+                    rightTurntable = 1f;
+                }
+                else if (rightStickX > 0)
+                {
+                    rightTurntable = -1f;
+                }
+                else
+                {
+                    rightTurntable = 0;
+                }
+                rigidbody.AddTorque(rightTurntable * torqueAmount);
+                previousRight = rightTurntable;
+            }
+        }
+        catch (System.ArgumentException e)
+        {
+            return;
         }
 
-        if (rightStickX != 0)
-        {
-
-            if (rightStickX < 0)
-            {
-                rightTurntable = 1f;
-            }
-            else if (rightStickX > 0)
-            {
-                rightTurntable = -1f;
-            }
-            else
-            {
-                rightTurntable = 0;
-            }
-            rigidbody.AddTorque(rightTurntable * torqueAmount);
-            previousRight = rightTurntable;
-        }
     }
 
     void DoAltInput()
