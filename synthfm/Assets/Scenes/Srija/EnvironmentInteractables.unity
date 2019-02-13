@@ -278,7 +278,7 @@ Transform:
 --- !u!199 &245882010
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5826,10 +5826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e658c0ed3ac494ba8c5047853dfee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToSpawn: {fileID: 4077841634667274183, guid: a3d6774f00da8244eb92a728be97b2e0,
-    type: 3}
-  NumberOfObjectsToSpawn: 1000
-  SpawnRadius: 50
 --- !u!4 &1211383485
 Transform:
   m_ObjectHideFlags: 0
@@ -6049,10 +6045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e658c0ed3ac494ba8c5047853dfee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToSpawn: {fileID: 4077841634667274183, guid: 5440213e141b009478ac9566ad3f434d,
-    type: 3}
-  NumberOfObjectsToSpawn: 1000
-  SpawnRadius: 50
 --- !u!114 &1665089327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6444,6 +6436,16 @@ PrefabInstance:
         type: 3}
       propertyPath: JoystickControls
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: acceleration
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: accel_clamp
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
