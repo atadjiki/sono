@@ -30,7 +30,7 @@ public class TurntableController : MonoBehaviour
     private float accel_normal = 0.75f;
     private float accel_fast = 1.5f;
 
-    public float torqueAmount = 10;
+    public float torqueAmount = 25;
     public float torqueIncrement = 1;
     private bool multiplyTorque = false;
 
