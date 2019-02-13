@@ -40,7 +40,7 @@ public class GatePuzzle : Puzzle
             cinManager.GetComponent<SetPiece>().setPieceCamera = puzzleCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
         }
     }
-    public void GateTriggered(GateTrigger trigger)
+    public override void GateTriggered(GateTrigger trigger)
     {
         if (!complete)
         {

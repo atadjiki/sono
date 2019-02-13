@@ -6,7 +6,9 @@ public class GateTrigger : MonoBehaviour
 {
     private AudioSource audioSource;
     private GatePuzzle parent;
+    [SerializeField]
     private bool partOfPuzzle = false;
+    public bool ignoreAngle = false;
 
 
 
@@ -30,13 +32,18 @@ public class GateTrigger : MonoBehaviour
         {
             Vector3 normalizedVelocity = collision.GetComponent<Rigidbody2D>().velocity.normalized;
             float angle = Vector3.Dot(transform.up, normalizedVelocity);
-            if(angle > 0.5f)
+            if(angle > 0.5f || ignoreAngle)
             {
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 //audioSource.Play();
+                Debug.Log("Hit gate");
                 NotifyPuzzle();
             }
-            
+            else
+            {
+                Debug.Log("Hit gate at wrong angle");
+            }
+
         }
     }
 
@@ -45,7 +52,10 @@ public class GateTrigger : MonoBehaviour
     {
         if (partOfPuzzle)
         {
-            GetComponentInParent<GatePuzzle>().GateTriggered(this);
+            if (GetComponentInParent<Puzzle>() != null)
+            {
+                GetComponentInParent<Puzzle>().GateTriggered(this);
+            }
         }
         
     }
@@ -63,5 +73,15 @@ public class GateTrigger : MonoBehaviour
         aSource.clip = clip;
         aSource.Play();
         Destroy(tempGO, clip.length);
+    }
+
+    public void setPartOfPuzzle(bool input)
+    {
+        partOfPuzzle = input;
+    }
+
+    public void setIgnoreAngle(bool input)
+    {
+        ignoreAngle = input;
     }
 }
