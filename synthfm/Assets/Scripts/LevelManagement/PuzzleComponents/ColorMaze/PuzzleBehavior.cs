@@ -20,6 +20,23 @@ public class PuzzleBehavior : MonoBehaviour
     [Header("AudioTones")]
     public AudioClip[] pianoKeys;
     public AudioClip errorTone;
+
+    // shaking effect
+    //private Transform transform;
+    //private float shakeDuration;
+    //private float shakeMagnitude = 0.8f;
+    //private float dampingSpeed = 1.0f;
+    //Vector3 initialPosition;
+
+
+    private void Awake()
+    {
+        //if (transform == null)
+        //{
+        //    transform = GetComponent(typeof(Transform)) as Transform;
+        //}
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +49,27 @@ public class PuzzleBehavior : MonoBehaviour
         {
             //   ColorManager x = transform.Find("ColorPlates").GetChild(1).GetComponent<ColorManager>();
         }
+
+      //  transform = this.GetComponent<Transform>();
+        //initialPosition = transform.localPosition;
+        //shakeDuration = 0;
+    }
+
+    // Update
+    private void Update()
+    {
+       // shakeDuration = 2;
+        //if (shakeDuration > 0)
+        //{
+        //    transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
+
+        //    shakeDuration -= Time.deltaTime * dampingSpeed;
+        //}
+        //else
+        //{
+        //    shakeDuration = 0f;
+        //    transform.localPosition = initialPosition;
+        //}
     }
 
     public void notify(Notifier i_notifier)
@@ -50,7 +88,7 @@ public class PuzzleBehavior : MonoBehaviour
 
                 currentSequence++;
             }
-            else
+            else // error state
             {
                 foreach (ColorManager _cm in colorPlates)
                 {
@@ -64,6 +102,8 @@ public class PuzzleBehavior : MonoBehaviour
                 i_notifier.changeState(State.OFF);
 
                 currentSequence = 0;
+
+              //  shakeDuration = 2f;
             }
         }
         if (currentSequence == 18)
