@@ -5,9 +5,16 @@ using UnityEngine;
 public class TriggerTest : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject memoryManager;
+    private GameObject BRscene;
+    private SceneMemoryManagement smm;
+
+    private float BRsceneDistance;
     void Start()
     {
-        
+        smm = memoryManager.GetComponent<SceneMemoryManagement>();
     }
 
     // Update is called once per frame
@@ -24,5 +31,8 @@ public class TriggerTest : MonoBehaviour
     {
         Debug.Log("HERE");
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        BRscene = GameObject.Find("Procedural1");
+        smm.BRsceneDistance = Vector3.Distance(player.transform.position, BRscene.transform.position);
     }
 }
