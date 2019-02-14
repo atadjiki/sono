@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270680662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 200, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2647931660946425619}
@@ -457,6 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a8a55eca5031c42b79b69648323eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partOfPuzzle: 0
+  ignoreAngle: 0
 --- !u!1 &1642719438678765373
 GameObject:
   m_ObjectHideFlags: 0
@@ -5410,8 +5412,10 @@ MonoBehaviour:
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 3
+  isAttached: 0
   audioSource: {fileID: 8747427201532422486}
   followTarget: {fileID: 0}
+  newTarget: {fileID: 0}
   fragmentCase: {fileID: 0}
 --- !u!1 &2644299535357565086
 GameObject:

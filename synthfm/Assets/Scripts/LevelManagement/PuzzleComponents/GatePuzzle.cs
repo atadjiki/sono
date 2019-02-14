@@ -19,8 +19,8 @@ public class GatePuzzle : Puzzle
     private bool inProgress;
 
     public GameObject forceField;
-    public GameObject cinManager;
-    public GameObject puzzleCam;
+  //  public GameObject cinManager;
+   // public GameObject puzzleCam;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,13 +33,13 @@ public class GatePuzzle : Puzzle
         inProgress = false;
        // Debug.Log("Found " + gateLength + " gates");
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            cinManager.GetComponent<SetPiece>().setPieceCamera = puzzleCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //     //   cinManager.GetComponent<SetPiece>().setPieceCamera = puzzleCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+    //    }
+    //}
     public override void GateTriggered(GateTrigger trigger)
     {
         if (!complete)
