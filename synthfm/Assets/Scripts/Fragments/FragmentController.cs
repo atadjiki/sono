@@ -6,7 +6,7 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    public enum states { IDLE, FLEE, FOLLOW };
+    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT };
     private states currentState;
 
     private Rigidbody2D rb;
@@ -14,9 +14,12 @@ public class FragmentController : MonoBehaviour
     public float maxSpeed;
     public float turnSpeed;
 
+    public bool isAttached;
+
     public AudioSource audioSource;
 
     public Transform followTarget;
+    public Transform newTarget;
     [HideInInspector]
     public GameObject fragmentCase;
 
@@ -48,6 +51,8 @@ public class FragmentController : MonoBehaviour
                 break;
             case states.FLEE:
                 break;
+            case states.DEPOSIT:
+                break;
             default:
                 break;
         }
@@ -56,6 +61,12 @@ public class FragmentController : MonoBehaviour
     private void Idle()
     {
         rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
+    }
+
+    public void Deposit(Transform newTarget)
+    {
+        transform.position = newTarget.transform.position;
+        print("Deposit fragment");
     }
 
     private void Follow()
@@ -82,6 +93,7 @@ public class FragmentController : MonoBehaviour
         audioSource.time = LevelManager.instance.playerAudioSource.time;
         audioSource.Play();
         StartCoroutine(FadeInAudio());
+        isAttached = true;
         transform.SetParent(LevelManager.instance.transform);
         Destroy(fragmentCase);
     }

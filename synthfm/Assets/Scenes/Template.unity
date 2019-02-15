@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -112,36 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &42093523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 42093524}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &42093524
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42093523}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4521.213, y: 185.73167, z: 48.415176}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 347054877}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99919090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6240,7 +6210,7 @@ PrefabInstance:
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -6270,12 +6240,12 @@ PrefabInstance:
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: torqueAmount
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: JoystickControls
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -6285,7 +6255,27 @@ PrefabInstance:
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: accel_clamp
-      value: 1.25
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: acceleration
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 1209789632}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: maxTiltAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: tiltSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}

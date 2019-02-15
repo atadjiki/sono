@@ -17,8 +17,9 @@ public class Puzzle : SetPiece
     public FragmentCase fragmentCase;
     private FragmentController fragment;
 
-    public void Initialize()
+    private void Start()
     {
+        base.Initialize();
         fragment = fragmentCase.getFragment();
     }
 
@@ -53,6 +54,10 @@ public class Puzzle : SetPiece
         yield return new WaitForSecondsRealtime(3);
         Destroy(this.gameObject);
        
+    }
+
+    public virtual void GateTriggered(GateTrigger trigger)
+    {
     }
 
 }

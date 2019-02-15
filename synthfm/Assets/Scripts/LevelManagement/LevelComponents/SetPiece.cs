@@ -19,12 +19,20 @@ public class SetPiece : MonoBehaviour
     { 
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+       
         player = GameObject.Find("Player").GetComponent<TurntableController>();
+       
 
         if (setPieceCamera == null)
         {
             setPieceCamera = mainCamera;
         }
+        else
+        {
+            setPieceCamera.enabled = false;
+        }
+
+        
 
     }
 

@@ -14,4 +14,9 @@ public class ColliderTest : MonoBehaviour
             onObjectCollidedEvent(gameObject.name, gameObject.tag,collision.gameObject.name,collision.gameObject.tag);
         }
     }
+
+    private void Update()
+    {
+        //Debug.Log(gameObject.transform.position);
+    }
 }
