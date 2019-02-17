@@ -118,56 +118,56 @@ public class TurntableManager : MonoBehaviour
 
     void LoadPlayerPrefs()
     {
-        if (PlayerPrefs.HasKey(Resources.crossFadeKnob))
+        if (PlayerPrefs.HasKey(GameResources.crossFadeKnob))
         {
-            crossFadeKnob = PlayerPrefs.GetInt(Resources.crossFadeKnob);
+            crossFadeKnob = PlayerPrefs.GetInt(GameResources.crossFadeKnob);
         }
         else
         {
-            crossFadeKnob = Resources.defaultCrossFade;
+            crossFadeKnob = GameResources.defaultCrossFade;
         }
-        if (PlayerPrefs.HasKey(Resources.leftTurnKnob))
+        if (PlayerPrefs.HasKey(GameResources.leftTurnKnob))
         {
-            leftTurnKnob = PlayerPrefs.GetInt(Resources.leftTurnKnob);
-        }
-        else
-        {
-            leftTurnKnob = Resources.defaultLeftTurn;
-        }
-        if (PlayerPrefs.HasKey(Resources.rightTurnKnob))
-        {
-            rightTurnKnob = PlayerPrefs.GetInt(Resources.rightTurnKnob);
+            leftTurnKnob = PlayerPrefs.GetInt(GameResources.leftTurnKnob);
         }
         else
         {
-            rightTurnKnob = Resources.defaultRightTurn;
+            leftTurnKnob = GameResources.defaultLeftTurn;
         }
-        if (PlayerPrefs.HasKey(Resources.crossFadeChnl))
+        if (PlayerPrefs.HasKey(GameResources.rightTurnKnob))
         {
-            //crossFadeChannel = GetChannelByString(PlayerPrefs.GetString(Resources.crossFadeChnl));
-            crossFadeChannel = Resources.defaultFadeChnl;
-        }
-        else
-        {
-            crossFadeChannel = Resources.defaultFadeChnl;
-        }
-        if (PlayerPrefs.HasKey(Resources.leftTurnChnl))
-        {
-            //leftTurnChannel = GetChannelByString(PlayerPrefs.GetString(Resources.leftTurnChnl));
-            leftTurnChannel = Resources.defaultLeftChnl;
+            rightTurnKnob = PlayerPrefs.GetInt(GameResources.rightTurnKnob);
         }
         else
         {
-            leftTurnChannel = Resources.defaultLeftChnl;
+            rightTurnKnob = GameResources.defaultRightTurn;
         }
-        if (PlayerPrefs.HasKey(Resources.rightTurnChnl))
+        if (PlayerPrefs.HasKey(GameResources.crossFadeChnl))
         {
-            //rightTurnChannel = GetChannelByString(PlayerPrefs.GetString(Resources.rightTurnChnl));
-            rightTurnChannel = Resources.defaultRightChnl;
+            //crossFadeChannel = GetChannelByString(PlayerPrefs.GetString(GameResources.crossFadeChnl));
+            crossFadeChannel = GameResources.defaultFadeChnl;
         }
         else
         {
-            rightTurnChannel = Resources.defaultRightChnl;
+            crossFadeChannel = GameResources.defaultFadeChnl;
+        }
+        if (PlayerPrefs.HasKey(GameResources.leftTurnChnl))
+        {
+            //leftTurnChannel = GetChannelByString(PlayerPrefs.GetString(GameResources.leftTurnChnl));
+            leftTurnChannel = GameResources.defaultLeftChnl;
+        }
+        else
+        {
+            leftTurnChannel = GameResources.defaultLeftChnl;
+        }
+        if (PlayerPrefs.HasKey(GameResources.rightTurnChnl))
+        {
+            //rightTurnChannel = GetChannelByString(PlayerPrefs.GetString(GameResources.rightTurnChnl));
+            rightTurnChannel = GameResources.defaultRightChnl;
+        }
+        else
+        {
+            rightTurnChannel = GameResources.defaultRightChnl;
         }
 
     }
