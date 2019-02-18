@@ -14,23 +14,29 @@ public class SetPiece : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera mainCamera;
     private TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
-    private bool initialized = false;
+    private static bool initialized = false;
+    private GameObject center;
+    private GameObject VCam;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if(initialized) { return; }
 
-        Debug.Log("Adding collider");
+    private void OnEnable()
+    {
+        if (!Application.isEditor || Application.isPlaying || initialized) { Debug.Log("Initialized " + initialized); return; }
+
+        if (GameObject.Find("Center"))
+
+            Debug.Log("Adding collider");
         this.gameObject.AddComponent<CircleCollider2D>();
         this.gameObject.GetComponent<CircleCollider2D>().radius = 200;
+        this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
 
 
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         player = GameObject.Find("Player").GetComponent<TurntableController>();
 
-        GameObject VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
+        VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
         VCam.name = "CM_" + this.name;
         VCam.transform.parent = GameObject.Find("Camera Rig").transform;
         setPieceCamera = VCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
@@ -52,6 +58,12 @@ public class SetPiece : MonoBehaviour
         setPieceCamera.LookAt = center.transform;
 
         initialized = true;
+    }
+
+    void Start()
+    {
+
+       
 
     }
 
