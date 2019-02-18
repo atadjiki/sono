@@ -12,8 +12,10 @@ public class TriggerTest : MonoBehaviour
     private SceneMemoryManagement smm;
 
     private float BRsceneDistance;
+    private bool findDistance;
     void Start()
     {
+        findDistance = false;
         smm = memoryManager.GetComponent<SceneMemoryManagement>();
     }
 
@@ -25,14 +27,18 @@ public class TriggerTest : MonoBehaviour
             //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
         }
+
+        if(findDistance == true)
+        {
+            BRscene = GameObject.Find("Procedural1");
+            smm.BRsceneDistance = Vector3.Distance(player.transform.position, BRscene.transform.position);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HERE");
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,UnityEngine.SceneManagement.LoadSceneMode.Additive);
-
-        BRscene = GameObject.Find("Procedural1");
-        smm.BRsceneDistance = Vector3.Distance(player.transform.position, BRscene.transform.position);
+        findDistance = true;
     }
 }
