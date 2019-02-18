@@ -21,14 +21,7 @@ public class PuzzleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.AddComponent<CircleCollider2D>();
-        GameObject center = new GameObject();
-        center.name = "Center";
-        center.transform.parent = this.transform;
-
-        GameObject VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
-        VCam.name = "CM_" + this.name;
-        VCam.transform.parent = GameObject.Find("Camera Rig").transform;
+       
 
     }
 
