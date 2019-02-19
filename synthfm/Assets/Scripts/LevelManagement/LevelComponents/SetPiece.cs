@@ -14,6 +14,7 @@ public class SetPiece : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera mainCamera;
     public TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
+    public GameObject center;
 
     // Start is called before the first frame update
 
@@ -52,7 +53,7 @@ public class SetPiece : MonoBehaviour
         AssetDatabase.LoadAssetAtPath<Cinemachine.NoiseSettings>("Packages/com.Unity.Cinemachine/Presets/Noise/Handheld_tele_mild.asset");
 
 
-        GameObject center = new GameObject();
+        center = new GameObject();
         center.name = "Center";
         center.transform.parent = this.transform;
         center.transform.position = Vector3.zero;
