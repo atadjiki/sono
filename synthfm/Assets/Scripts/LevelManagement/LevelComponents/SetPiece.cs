@@ -11,8 +11,8 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class SetPiece : MonoBehaviour
 {
-    private Cinemachine.CinemachineVirtualCamera mainCamera;
-    private TurntableController player;
+    public Cinemachine.CinemachineVirtualCamera mainCamera;
+    public TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
 
     // Start is called before the first frame update
@@ -26,11 +26,12 @@ public class SetPiece : MonoBehaviour
     public void DoSetup()
     {
 
-
+        this.transform.position = Vector3.zero;
         Debug.Log("Adding collider");
         this.gameObject.AddComponent<CircleCollider2D>();
         this.gameObject.GetComponent<CircleCollider2D>().radius = 75;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+
 
 
         //get player and main camera
@@ -54,6 +55,7 @@ public class SetPiece : MonoBehaviour
         GameObject center = new GameObject();
         center.name = "Center";
         center.transform.parent = this.transform;
+        center.transform.position = Vector3.zero;
 
         setPieceCamera.Follow = center.transform;
         setPieceCamera.LookAt = center.transform;
@@ -68,8 +70,9 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (!(collision is null) && !(player is null))
+        Debug.Log(collision.name);
+        Debug.Log(player.gameObject.name);
+        if (collision != null && player != null)
         {
             if (collision.gameObject == player.gameObject)
             {
@@ -77,13 +80,14 @@ public class SetPiece : MonoBehaviour
                 mainCamera.enabled = false;
                 setPieceCamera.enabled = true;
             }
+           
         }
 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!(collision is null) && !(player is null))
+        if (collision != null && player != null)
         {
             if (collision.gameObject == player.gameObject)
             {
