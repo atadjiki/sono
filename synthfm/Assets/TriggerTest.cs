@@ -13,6 +13,7 @@ public class TriggerTest : MonoBehaviour
 
     private float BRsceneDistance;
     private bool findDistance;
+    private float collPosition;
     void Start()
     {
         findDistance = false;
@@ -22,23 +23,41 @@ public class TriggerTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-
-        }
-
-        if(findDistance == true)
-        {
-            BRscene = GameObject.Find("Procedural1");
-            smm.BRsceneDistance = Vector3.Distance(player.transform.position, BRscene.transform.position);
-        }
+        if (findDistance == true)
+         {
+             float distX = collPosition - (player.transform.position).magnitude;
+             smm.BRsceneDistance = distX;
+         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("HERE");
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm1")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+        else if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm2")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+        else if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm3")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+        else if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm4")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
         findDistance = true;
+        collPosition = (collision.transform.position).magnitude;
     }
 }

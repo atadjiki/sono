@@ -47,7 +47,6 @@ public class FragmentController : MonoBehaviour
         if(currentState == states.DEPOSIT)
         {
             transform.RotateAround(GameObject.FindGameObjectWithTag("Hub").transform.position, new Vector3(0, 0, 1), 50 * Time.deltaTime);
-            print("Rotating around Hub");
         }
     }
 

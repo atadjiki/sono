@@ -8,6 +8,7 @@ public class SceneMemoryManagement : MonoBehaviour
     [SerializeField] private GameObject player;
 
     public float BRsceneDistance;
+    public float initialBRsceneDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,35 @@ public class SceneMemoryManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(BRsceneDistance);
         if(GameObject.Find("Procedural1"))
         {
-            //print("Distance between Player and Scene Procedural 1" + Vector3.Distance(player.transform.position, (GameObject.Find("Procedural1").transform.position)));
-            print(BRsceneDistance);
-            //if()
+            if(BRsceneDistance > 450f)
+            {
+                SceneManager.UnloadSceneAsync(1);
+            }
+        }
+        else if(GameObject.Find("Procedural2"))
+        {
+            if(BRsceneDistance > 450f)
+            {
+                SceneManager.UnloadSceneAsync(2);
+            }
+
+        }
+        else if (GameObject.Find("Procedural3"))
+        {
+            if (BRsceneDistance > 450f)
+            {
+                SceneManager.UnloadSceneAsync(3);
+            }
+        }
+        else if (GameObject.Find("Procedural4"))
+        {
+            if (BRsceneDistance > 450f)
+            {
+                SceneManager.UnloadSceneAsync(4);
+            }
         }
     }
 }
