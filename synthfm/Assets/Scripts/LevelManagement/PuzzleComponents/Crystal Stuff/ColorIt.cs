@@ -10,17 +10,23 @@ public class ColorIt: MonoBehaviour
     public Color activeColor;
 
     public int sequenceNo;
-    
-    private SpriteRenderer _renderer;
-    private Color currentColor;
+
+    [Header("The State Of this Crystal ON = Active")]
+    public PuzzleManager.State _state = PuzzleManager.State.OFF;
 
     [Header("Rotation Speed")]
     public float speed = 0f;
 
+    [Header("Error State Timing in Seconds")]
+    public float _errorTime = 1f;
+
     [Header("Direction")]
     public bool ForwardZ = false;
     public bool ReverseZ = false;
-  
+
+    private SpriteRenderer _renderer;
+    private Color currentColor;
+
     void Update()
     {
             if (ForwardZ == true)
@@ -46,7 +52,8 @@ public class ColorIt: MonoBehaviour
 
     public void changeToActive()
     {
-       // currentColor = activeColor;
+        _state = PuzzleManager.State.ON;
+        // currentColor = activeColor;
         _renderer.color = activeColor;
 
         int x = Random.Range(0, 3);
@@ -58,10 +65,13 @@ public class ColorIt: MonoBehaviour
             ForwardZ = true;
         }
         speed = Random.Range(10,15);
+
+      
     }
 
     public void changeToFail()
     {
+        _state = PuzzleManager.State.OFF;
         _renderer.color = errorColor;
 
         StartCoroutine(setBaseColor());
@@ -69,11 +79,13 @@ public class ColorIt: MonoBehaviour
         ForwardZ = false;
         ReverseZ = false;
         speed = 0;
+
+       
     }
    
     IEnumerator setBaseColor()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(_errorTime);
         _renderer.color = baseColor;
     }
 

@@ -6,24 +6,32 @@ public class NotifierP : MonoBehaviour
 {
     public int seqNo;
     public PuzzleManager puzzleManager;
-    public PuzzleBehavior.State _curState;
 
+   
     // Start is called before the first frame update
     void Start()
     {
-        _curState = PuzzleBehavior.State.OFF;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      //  if (!(_curState == PuzzleBehavior.State.ON))
+        if(!(this.gameObject.name == "Rock"))
         {
-            puzzleManager.Notify(this);
+            ColorIt _crystal = this.gameObject.GetComponent<ColorIt>();
+            if (!(_crystal._state == PuzzleManager.State.ON))
+            {
+                puzzleManager.Notify(this);
+            }
+        }
+        else // if it is a rock
+        {
+            RockIt _rock = this.gameObject.GetComponent<RockIt>();
+            if(!_rock.ToDeactivate)
+            {
+                puzzleManager.Notify(this);
+            }
         }
     }
-
-    public void changeState(PuzzleBehavior.State i_state) { _curState = i_state; }
-
-    public PuzzleBehavior.State getState() { return _curState; }
 
 }
