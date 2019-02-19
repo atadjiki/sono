@@ -7,6 +7,7 @@ public class Rotator : MonoBehaviour
     private float rotationSpeed;
     public float rotationSpeedMin;
     public float rotationSpeedMax;
+    public bool onZ;
 
     private void Start()
     {
@@ -15,6 +16,9 @@ public class Rotator : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(transform.up * Time.deltaTime * rotationSpeed);
+        if(onZ)
+            transform.Rotate(transform.forward * Time.deltaTime * rotationSpeed);
+        else
+            transform.Rotate(transform.up * Time.deltaTime * rotationSpeed);
     }
 }
