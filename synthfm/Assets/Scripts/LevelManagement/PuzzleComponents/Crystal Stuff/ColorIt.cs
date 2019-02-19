@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorManager : MonoBehaviour
+public class ColorIt: MonoBehaviour
 {
     [Header("Colors for the brick")]
     public Color baseColor;
@@ -10,11 +10,30 @@ public class ColorManager : MonoBehaviour
     public Color activeColor;
 
     public int sequenceNo;
-
+    
     private SpriteRenderer _renderer;
     private Color currentColor;
-    // add a couroutine to change from error to default
 
+    [Header("Rotation Speed")]
+    public float speed = 0f;
+
+    [Header("Direction")]
+    public bool ForwardZ = false;
+    public bool ReverseZ = false;
+  
+    void Update()
+    {
+            if (ForwardZ == true)
+            {
+                transform.Rotate(0, 0, Time.deltaTime * speed, Space.Self);
+            }
+            if (ReverseZ == true)
+            {
+                transform.Rotate(0, 0, -Time.deltaTime * speed, Space.Self);
+            }
+
+    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +42,22 @@ public class ColorManager : MonoBehaviour
         _renderer.color = baseColor;
         currentColor = baseColor;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        changeToActive();
-    }
+    
 
     public void changeToActive()
     {
-        currentColor = activeColor;
-        _renderer.color = errorColor;
+       // currentColor = activeColor;
+        _renderer.color = activeColor;
+
+        int x = Random.Range(0, 3);
+        if(x == 0)
+        {
+            ReverseZ = true;
+        }
+        else{
+            ForwardZ = true;
+        }
+        speed = Random.Range(10,15);
     }
 
     public void changeToFail()
@@ -40,6 +65,10 @@ public class ColorManager : MonoBehaviour
         _renderer.color = errorColor;
 
         StartCoroutine(setBaseColor());
+
+        ForwardZ = false;
+        ReverseZ = false;
+        speed = 0;
     }
    
     IEnumerator setBaseColor()
