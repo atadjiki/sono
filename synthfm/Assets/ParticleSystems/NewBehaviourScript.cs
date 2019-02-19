@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public GameObject particle;
-    public List<ParticleCollisionEvent> collisionEvents;
-    public Material newMaterial;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        collisionEvents = new List<ParticleCollisionEvent>();
+
     }
 
     // Update is called once per frame
@@ -18,11 +17,10 @@ public class NewBehaviourScript : MonoBehaviour
     {
         
     }
-    void OnParticleCollision(GameObject other)
+    void OnParticleCollision()
     {
-        if (other.transform.tag == "Player")
-        {
-            System.Console.WriteLine("heekjfaslk;");
-        }
+
+        System.Console.WriteLine("heekjfaslk;");
+
     }
 }
