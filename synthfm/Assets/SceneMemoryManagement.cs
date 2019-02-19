@@ -21,14 +21,14 @@ public class SceneMemoryManagement : MonoBehaviour
         print(BRsceneDistance);
         if(GameObject.Find("Procedural1"))
         {
-            if(BRsceneDistance > 450f)
+            if(BRsceneDistance > 350f)
             {
                 SceneManager.UnloadSceneAsync(1);
             }
         }
         else if(GameObject.Find("Procedural2"))
         {
-            if(BRsceneDistance > 450f)
+            if(BRsceneDistance > 350f)
             {
                 SceneManager.UnloadSceneAsync(2);
             }
@@ -36,14 +36,14 @@ public class SceneMemoryManagement : MonoBehaviour
         }
         else if (GameObject.Find("Procedural3"))
         {
-            if (BRsceneDistance > 450f)
+            if (BRsceneDistance > 350f)
             {
                 SceneManager.UnloadSceneAsync(3);
             }
         }
         else if (GameObject.Find("Procedural4"))
         {
-            if (BRsceneDistance > 450f)
+            if (BRsceneDistance > 350f)
             {
                 SceneManager.UnloadSceneAsync(4);
             }
