@@ -18,7 +18,11 @@ public class FragmentCase : MonoBehaviour
         //TO DO: Make this not grabbable after it is deposited
         if(collision.gameObject == LevelManager.instance.getPlayer())
         {
-            fragment.Collect(LevelManager.instance.getPlayer().transform);
+            if (fragment.currentState != FragmentController.states.DEPOSIT)
+            {
+                fragment.Collect(LevelManager.instance.getPlayer().transform);
+            }
+
         }
        
     }
