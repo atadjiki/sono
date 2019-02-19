@@ -4,37 +4,29 @@ using UnityEngine;
 
 public class ProceduralGatePuzzle : Puzzle
 {
-
-    public GameObject gatePrefab;
     public int gateCount = 5;
     [SerializeField]
     private int currentGate = 0;
     public float radius = 100f;
-    public Transform center;
 
     private float puzzleX;
     private float puzzleY;
 
-    public GameObject forceField;
-
     // Start is called before the first frame update
-    void Awake()
+    public new void DoSetup()
     {
-        if(center == null)
-        {
-            center = this.transform;
-        }
+        base.DoPuzzleSetup();
+
         puzzleX = this.transform.position.x;
         puzzleY = this.transform.position.y;
 
         SpawnGate();
-
     }
 
     void SpawnGate()
     {
         //clone a gate prefab
-        GameObject gate = Instantiate(gatePrefab);
+        GameObject gate = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Puzzles/Gate"));
         gate.transform.parent = this.transform; //make child of this object (for trigger)
         gate.GetComponent<GateTrigger>().setPartOfPuzzle(true);
         gate.GetComponent<GateTrigger>().setIgnoreAngle(true);
@@ -82,15 +74,8 @@ public class ProceduralGatePuzzle : Puzzle
         {
             Destroy(gate.gameObject);
         }
-        //lower the force field and turn off its noise
-        forceField.GetComponent<PointEffector2D>().enabled = false;
-        forceField.GetComponent<AudioSource>().enabled = false;
-        ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
 
-        foreach (ParticleSystem particle in particles)
-        {
-            particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
-        }
+        base.ReleaseCage();
     }
 
 }

@@ -15,27 +15,33 @@ public class Puzzle : SetPiece
 
     public bool complete = false;
     public bool disableCameraOnComplete = true;
-    public static FragmentCase fragmentCase;
-    private static FragmentController fragment;
+    public FragmentCase fragmentCase;
+    public FragmentController fragment;
+    public  GameObject forceField;
 
-
-
-    private void OnEnable()
+    public void ReleaseCage()
     {
+        //lower the force field and turn off its noise
+        forceField.GetComponent<AudioSource>().enabled = false;
+        forceField.GetComponent<PointEffector2D>().enabled = false; 
+        ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
 
-      //  if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log("Puzzle Initialized "); return; }
-
-       // DoPuzzleSetup();
+        foreach (ParticleSystem particle in particles)
+        {
+            particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
+        }
     }
 
     public void DoPuzzleSetup()
     {
         base.DoSetup();
 
-        GameObject forcefield = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Puzzles/Forcefield"));
-        forcefield.transform.parent = this.transform;
+        forceField = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Puzzles/Forcefield"));
+        forceField.transform.parent = this.transform;
+        forceField.transform.position = Vector3.zero;
         GameObject fragment_case = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Puzzles/FragmentCase"));
         fragment_case.transform.parent = this.transform;
+        fragment_case.transform.position = Vector3.zero;
         fragmentCase = fragment_case.GetComponent<FragmentCase>();
 
         fragment = fragmentCase.getFragment();
