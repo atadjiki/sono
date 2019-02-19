@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 1270680667}
   - component: {fileID: 4838728875667901146}
   - component: {fileID: 6690078169369872139}
-  - component: {fileID: 3693080883972940631}
   - component: {fileID: 1270680663}
   m_Layer: 0
   m_Name: CirclePuzzle
@@ -251,22 +250,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!58 &3693080883972940631
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270680662}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 107
 --- !u!114 &1270680663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +265,6 @@ MonoBehaviour:
   setPieceCamera: {fileID: 0}
   complete: 0
   disableCameraOnComplete: 1
-  fragmentCase: {fileID: 458614374}
   playerTrail: {fileID: 0}
   playerTransform: {fileID: 0}
   forceField: {fileID: 873186943}
@@ -4936,7 +4918,7 @@ ParticleSystem:
 --- !u!199 &6900948864868008474
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9643,7 +9625,7 @@ ParticleSystem:
 --- !u!199 &4768113992422507561
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14350,7 +14332,7 @@ ParticleSystem:
 --- !u!199 &2708495413581183742
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19057,7 +19039,7 @@ ParticleSystem:
 --- !u!199 &5668186273044764976
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19204,11 +19186,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1270680667}
     m_Modifications:
-    - target: {fileID: 6937963459539805272, guid: 951976a22a61743f9b8b56cb4fc38374,
-        type: 3}
-      propertyPath: m_Name
-      value: FragmentCase
-      objectReference: {fileID: 0}
     - target: {fileID: 5655347059207560586, guid: 951976a22a61743f9b8b56cb4fc38374,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19264,6 +19241,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6937963459539805272, guid: 951976a22a61743f9b8b56cb4fc38374,
+        type: 3}
+      propertyPath: m_Name
+      value: FragmentCase
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 951976a22a61743f9b8b56cb4fc38374, type: 3}
 --- !u!4 &334626511610741051 stripped
@@ -19272,15 +19254,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5395032141155359921}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &458614374 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5395032141034994391, guid: 951976a22a61743f9b8b56cb4fc38374,
-    type: 3}
-  m_PrefabInstance: {fileID: 5395032141155359921}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571a2cf1389824ea3af0c9dc7b1013d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
