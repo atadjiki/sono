@@ -14,17 +14,20 @@ public class SetPiece : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera mainCamera;
     private TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
-    private static bool setPieceInitialized = false;
 
     // Start is called before the first frame update
 
     private void OnEnable()
     {
-        if (!Application.isEditor || Application.isPlaying || setPieceInitialized) { Debug.Log(" Set Piece Initialized " + setPieceInitialized); return; }
+       // if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log(" Set Piece Initialized "); return; }
+      //  DoSetup();
+    }
 
-        if (GameObject.Find("Center"))
+    public void DoSetup()
+    {
 
-            Debug.Log("Adding collider");
+
+        Debug.Log("Adding collider");
         this.gameObject.AddComponent<CircleCollider2D>();
         this.gameObject.GetComponent<CircleCollider2D>().radius = 75;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
@@ -54,8 +57,6 @@ public class SetPiece : MonoBehaviour
 
         setPieceCamera.Follow = center.transform;
         setPieceCamera.LookAt = center.transform;
-
-        setPieceInitialized = true;
     }
 
 

@@ -17,23 +17,30 @@ public class Puzzle : SetPiece
     public bool disableCameraOnComplete = true;
     public static FragmentCase fragmentCase;
     private static FragmentController fragment;
-    private static bool puzzleInitialized = false;
+
+
 
     private void OnEnable()
     {
 
-        if (!Application.isEditor || Application.isPlaying || puzzleInitialized) { Debug.Log("Puzzle Initialized " + puzzleInitialized); return; }
+      //  if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log("Puzzle Initialized "); return; }
 
-        base.Initialize();
+       // DoPuzzleSetup();
+    }
 
-        GameObject forcefield = Resources.Load<GameObject>("Prefabs/Puzzles/Forcefield");
-        GameObject fragment_case = Resources.Load<GameObject>("Prefabs/Puzzles/FragmentCase");
+    public void DoPuzzleSetup()
+    {
+        base.DoSetup();
+
+        GameObject forcefield = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Puzzles/Forcefield"));
+        forcefield.transform.parent = this.transform;
+        GameObject fragment_case = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Puzzles/FragmentCase"));
+        fragment_case.transform.parent = this.transform;
         fragmentCase = fragment_case.GetComponent<FragmentCase>();
 
         fragment = fragmentCase.getFragment();
         Debug.Log("Fragment : " + fragment.name);
 
-        puzzleInitialized = true;
     }
 
     public void SetStatus(bool status)
@@ -48,7 +55,7 @@ public class Puzzle : SetPiece
 
     void Update()
     {
-        if (Application.isPlaying)
+        if (Application.isPlaying && fragment != null)
         {
             if (fragment.GetState() == FragmentController.states.FOLLOW)
             {
