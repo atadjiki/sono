@@ -6,7 +6,7 @@ public class PuzzleManager : MonoBehaviour
 {
     public enum State { OFF, ON, Error };
 
-    public GameObject[] Crystals = new GameObject[3];
+    public GameObject[] Crystals = new GameObject[4];
 
     private ColorIt _colorIt;
 
@@ -18,15 +18,18 @@ public class PuzzleManager : MonoBehaviour
 
     public void Notify(NotifierP i_notifier)
     {
-        Debug.Log(i_notifier.gameObject.name);
+      //  Debug.Log(i_notifier.gameObject.name);
 
         // if it is rock then disable all
         if (i_notifier.gameObject.name == "Rock")
         {
+            // check sequencce number
+            int seq = i_notifier.seqNo;
+
             // deactivate all crystalls
-            for(int i=1; i<Crystals[0].transform.childCount; i++)
+            for(int i=1; i<Crystals[seq].transform.childCount; i++)
             { //0th is Rock
-                _colorIt = Crystals[0].transform.GetChild(i).GetComponent<ColorIt>();
+                _colorIt = Crystals[seq].transform.GetChild(i).GetComponent<ColorIt>();
                 _colorIt.changeToFail();
             }
 
