@@ -8,19 +8,32 @@ using UnityEngine;
  * Puzzles contain flags that mark if they have been completed, as well
  * as references to the fragment they are protecting.
  * 
- */ 
+ */
+[ExecuteInEditMode]
 public class Puzzle : SetPiece
 {
 
     public bool complete = false;
     public bool disableCameraOnComplete = true;
-    public FragmentCase fragmentCase;
-    private FragmentController fragment;
+    public static FragmentCase fragmentCase;
+    private static FragmentController fragment;
+    private static bool puzzleInitialized = false;
 
-    private void Start()
+    private void OnEnable()
     {
+
+        if (!Application.isEditor || Application.isPlaying || puzzleInitialized) { Debug.Log("Puzzle Initialized " + puzzleInitialized); return; }
+
         base.Initialize();
+
+        GameObject forcefield = Resources.Load<GameObject>("Prefabs/Puzzles/Forcefield");
+        GameObject fragment_case = Resources.Load<GameObject>("Prefabs/Puzzles/FragmentCase");
+        fragmentCase = fragment_case.GetComponent<FragmentCase>();
+
         fragment = fragmentCase.getFragment();
+        Debug.Log("Fragment : " + fragment.name);
+
+        puzzleInitialized = true;
     }
 
     public void SetStatus(bool status)
@@ -35,18 +48,22 @@ public class Puzzle : SetPiece
 
     void Update()
     {
-        if(fragment.GetState() == FragmentController.states.FOLLOW)
+        if (Application.isPlaying)
         {
-            if (complete && disableCameraOnComplete)
+            if (fragment.GetState() == FragmentController.states.FOLLOW)
             {
-                Debug.Log("Switching camera to " + getMainCamera().name);
-                getMainCamera().enabled = true;
-                setPieceCamera.enabled = false;
-                Debug.Log("Puzzle Complete" + gameObject.name);
-                StartCoroutine("DeletePuzzle");
-               
+                if (complete && disableCameraOnComplete)
+                {
+                    Debug.Log("Switching camera to " + getMainCamera().name);
+                    getMainCamera().enabled = true;
+                    setPieceCamera.enabled = false;
+                    Debug.Log("Puzzle Complete" + gameObject.name);
+                    StartCoroutine("DeletePuzzle");
+
+                }
             }
         }
+
     }
 
     IEnumerator DeletePuzzle()
