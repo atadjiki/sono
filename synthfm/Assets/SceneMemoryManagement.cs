@@ -11,19 +11,20 @@ public class SceneMemoryManagement : MonoBehaviour
     [SerializeField] private float unloadDistance; 
 
     public float BRsceneDistance;
+
     // Update is called once per frame
     void Update()
     {
         if(GameObject.Find("Procedural1"))
         {
-            if(BRsceneDistance > 350f)
+            if(BRsceneDistance > unloadDistance)
             {
                 SceneManager.UnloadSceneAsync(1);
             }
         }
         else if(GameObject.Find("Procedural2"))
         {
-            if(BRsceneDistance > 350f)
+            if(BRsceneDistance > unloadDistance)
             {
                 SceneManager.UnloadSceneAsync(2);
             }
@@ -31,14 +32,14 @@ public class SceneMemoryManagement : MonoBehaviour
         }
         else if (GameObject.Find("Procedural3"))
         {
-            if (BRsceneDistance > 350f)
+            if (BRsceneDistance > unloadDistance)
             {
                 SceneManager.UnloadSceneAsync(3);
             }
         }
         else if (GameObject.Find("Procedural4"))
         {
-            if (BRsceneDistance > 350f)
+            if (BRsceneDistance > unloadDistance)
             {
                 SceneManager.UnloadSceneAsync(4);
             }

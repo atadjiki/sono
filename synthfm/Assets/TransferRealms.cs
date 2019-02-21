@@ -10,13 +10,12 @@ public class TransferRealms : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject memoryManager;
 
-    private GameObject BRscene;
-    private SceneMemoryManagement smm;
+    [Tooltip("Boolean that is true when we exit a realm and want to know how far away we are from it.")]
+    private bool findDistance;
 
+    private SceneMemoryManagement smm;
     private float BRsceneDistance;
     private float collPosition;
-
-    private bool findDistance;
     void Start()
     {
         findDistance = false;
@@ -35,25 +34,24 @@ public class TransferRealms : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm1")
+        if (collision.gameObject.tag == "Player")
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-
-        }
-        else if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm2")
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-
-        }
-        else if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm3")
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-
-        }
-        else if (collision.gameObject.tag == "Player" && gameObject.tag == "Realm4")
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-
+            if (gameObject.tag == "Realm1")
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
+            else if(gameObject.tag == "Realm2")
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
+            else if(gameObject.tag == "Realm3")
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
+            else if(gameObject.tag == "Realm4")
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
         }
 
     }
