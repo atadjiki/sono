@@ -24,8 +24,35 @@ public class ColorIt: MonoBehaviour
     public bool ForwardZ = false;
     public bool ReverseZ = false;
 
+    // Shake Stuff
+    private Transform transform;
+    private float shakeDuration;
+    public float shakeMagnitude = 0.2f;
+    public float dampingSpeed = 5.0f;
+    Vector3 initialPosition;
+
     private SpriteRenderer _renderer;
     private Color currentColor;
+    private void Awake()
+    {
+        if (transform == null)
+        {
+            transform = GetComponent(typeof(Transform)) as Transform;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _renderer = this.GetComponent<SpriteRenderer>();
+        _renderer.color = baseColor;
+        currentColor = baseColor;
+
+        transform = this.GetComponent<Transform>();
+        initialPosition = transform.localPosition;
+        shakeDuration = 0;
+    }
+
 
     void Update()
     {
@@ -38,20 +65,26 @@ public class ColorIt: MonoBehaviour
                 transform.Rotate(0, 0, -Time.deltaTime * speed, Space.Self);
             }
 
-    }
-    
+        // shaky shaky
+        if (shakeDuration > 0)
+        {
+            transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
+            shakeDuration -= Time.deltaTime * dampingSpeed;
+        }
+        //else
+        //{
+        //    //shakeDuration = 0f;
+        //    //transform.localPosition = initialPosition;
+        //}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _renderer = this.GetComponent<SpriteRenderer>();
-        _renderer.color = baseColor;
-        currentColor = baseColor;
     }
-    
+
 
     public void changeToActive()
     {
+        // shaky shaky
+        shakeDuration = 0.5f;
+
         _state = PuzzleManager.State.ON;
         // currentColor = activeColor;
         _renderer.color = activeColor;
