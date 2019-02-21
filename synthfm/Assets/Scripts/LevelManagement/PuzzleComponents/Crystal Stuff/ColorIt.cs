@@ -104,7 +104,7 @@ public class ColorIt: MonoBehaviour
 
     public void changeToFail()
     {
-        _state = PuzzleManager.State.OFF;
+        _state = PuzzleManager.State.Error;
         _renderer.color = errorColor;
 
         StartCoroutine(setBaseColor());
@@ -113,6 +113,7 @@ public class ColorIt: MonoBehaviour
         ReverseZ = false;
         speed = 0;
 
+        
        
     }
    
@@ -120,6 +121,8 @@ public class ColorIt: MonoBehaviour
     {
         yield return new WaitForSeconds(_errorTime);
         _renderer.color = baseColor;
+
+        _state = PuzzleManager.State.OFF;
     }
 
     // Set

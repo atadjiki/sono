@@ -5,7 +5,7 @@ using System;
 
 public class PuzzleManager : MonoBehaviour
 {
-    public enum State { OFF, ON };
+    public enum State { OFF, ON, Error };
 
     [Header("Cluster Parents (Each Puzzle)")]
     public GameObject[] clusterParent = new GameObject[4];
