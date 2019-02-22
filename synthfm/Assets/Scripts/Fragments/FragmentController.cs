@@ -7,7 +7,9 @@ public class FragmentController : MonoBehaviour
     private Transform player;
 
     public enum states { IDLE, FLEE, FOLLOW, DEPOSIT };
-    private states currentState;
+    public states currentState;
+
+    
 
     private Rigidbody2D rb;
     public float acceleration;
@@ -32,11 +34,20 @@ public class FragmentController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0f;
+
     }
 
     private void Update()
     {
         RunState(currentState);
+    }
+
+    private void FixedUpdate()
+    {
+        if(currentState == states.DEPOSIT)
+        {
+            transform.RotateAround(GameObject.FindGameObjectWithTag("Hub").transform.position, new Vector3(0, 0, 1), 50 * Time.deltaTime);
+        }
     }
 
     public void RunState(states state)
@@ -65,7 +76,16 @@ public class FragmentController : MonoBehaviour
 
     public void Deposit(Transform newTarget)
     {
-        transform.position = newTarget.transform.position;
+        //transform.position = newTarget.transform.position;
+        currentState = states.DEPOSIT;
+        isAttached = false;
+
+       // GameObject hub = GameObject.FindGameObjectWithTag("Hub");
+       // transform.LookAt(newTarget.transform);
+       // transform.Translate(transform.forward * Time.deltaTime * acceleration);
+       // transform.position = newTarget.transform.position;
+
+
         print("Deposit fragment");
     }
 
@@ -89,11 +109,11 @@ public class FragmentController : MonoBehaviour
     public void Collect(Transform newFollowTarget)
     {
         followTarget = newFollowTarget;
+        isAttached = true;
         currentState = states.FOLLOW;
         audioSource.time = LevelManager.instance.playerAudioSource.time;
         audioSource.Play();
         StartCoroutine(FadeInAudio());
-        isAttached = true;
         transform.SetParent(LevelManager.instance.transform);
         Destroy(fragmentCase);
     }

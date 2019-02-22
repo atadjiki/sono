@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ColorManager : MonoBehaviour
 {
-  
     [Header("Colors for the brick")]
     public Color baseColor;
     public Color errorColor;
@@ -22,12 +21,18 @@ public class ColorManager : MonoBehaviour
     {
         _renderer = this.GetComponent<SpriteRenderer>();
         _renderer.color = baseColor;
-        
+        currentColor = baseColor;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        changeToActive();
     }
 
     public void changeToActive()
     {
-        _renderer.color = activeColor;
+        currentColor = activeColor;
+        _renderer.color = errorColor;
     }
 
     public void changeToFail()

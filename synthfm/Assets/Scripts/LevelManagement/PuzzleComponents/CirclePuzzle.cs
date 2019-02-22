@@ -17,17 +17,16 @@ public class CirclePuzzle : Puzzle
 
     private bool playerEntered = false; //only check if the player is actually inside the puzzle!
 
-    public GameObject forceField;
-
     public GameObject[] targets; // game objects we want the player to encircle 
 
     float threshhold = 1f; //how close the player can be to a trail vertice count as an intersection 
     Vector3[] positions = new Vector3[1024];
 
-    // Start is called before the first frame update
-    void Awake()
+    public new void DoSetup()
     {
-        base.Initialize(); //Make sure you include this call!
+        base.DoPuzzleSetup();
+        playerTrail = GameObject.Find("MainTrail").GetComponent<TrailRenderer>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -37,7 +36,7 @@ public class CirclePuzzle : Puzzle
         {
             if (currentFrames == maxFrames)
             {
-                Debug.Log("Checking for loop");
+            //    Debug.Log("Checking for loop");
                 bool DoesContain = false;
                 if (CheckForClosedLoop(ref DoesContain)) //check if the player has drawn an enclosed shaped with their trail
                 {
@@ -62,7 +61,7 @@ public class CirclePuzzle : Puzzle
     bool CheckForClosedLoop(ref bool DoesContain)
     {
 
-        Debug.Log("Found " + playerTrail.positionCount + " vertices in trail");
+       // Debug.Log("Found " + playerTrail.positionCount + " vertices in trail");
         positions = new Vector3[playerTrail.positionCount];
         int result = playerTrail.GetPositions(positions); //find how many vertices are in the player's trail
         bool closed = false;
@@ -76,8 +75,8 @@ public class CirclePuzzle : Puzzle
 
             if (xDist < threshhold && yDist < threshhold) //if the player was close enough, claim this as a loop
             {
-                Debug.Log("Loop closed!");
-                Debug.Log(position.ToString() + ", collided with " + playerTransform.position.ToString());
+              //  Debug.Log("Loop closed!");
+            //    Debug.Log(position.ToString() + ", collided with " + playerTransform.position.ToString());
                 closed = true;
                 intersection = position;
                 break;
@@ -111,23 +110,16 @@ public class CirclePuzzle : Puzzle
         playerEntered = false;
     }
 
-    void ReleaseCage()
+    new void ReleaseCage()
     {
+        base.ReleaseCage();
 
         foreach (GameObject target in targets)
         {
             Destroy(target);
         }
 
-        //lower the force field and turn off its noise
-        forceField.GetComponent<PointEffector2D>().enabled = false;
-        forceField.GetComponent<AudioSource>().enabled = false;
-        ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
-
-        foreach (ParticleSystem particle in particles)
-        {
-            particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
-        }
+        
     }
 
     bool CheckObjectsInside(Vector3 intersection)
@@ -163,17 +155,6 @@ public class CirclePuzzle : Puzzle
                 inside = !inside;
         }
         return inside;
-    }
-
-    static void GenerateMesh(Vector3[] polyPoints, Vector3 origin)
-    {
-        Debug.Log("Generating mesh out of " + polyPoints.Length + " vertices");
-        Mesh mesh = new Mesh();
-        GameObject shape = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        shape.transform.position = origin;
-        shape.transform.localScale = new Vector3(5, 5, 5);
-        
-     //   mesh.vertices = polyPoints;
     }
 
 }

@@ -18,28 +18,15 @@ public class GatePuzzle : Puzzle
     private int currentIndex;
     private bool inProgress;
 
-    public GameObject forceField;
-  //  public GameObject cinManager;
-   // public GameObject puzzleCam;
-
-    // Start is called before the first frame update
-    void Awake()
+    public new void DoSetup()
     {
-        base.Initialize(); //Make sure to call the parent class's initializer!
-
+        base.DoPuzzleSetup();
         gateLength = gates.Count;
         currentList = gates;
         currentIndex = 0;
         inProgress = false;
-       // Debug.Log("Found " + gateLength + " gates");
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //     //   cinManager.GetComponent<SetPiece>().setPieceCamera = puzzleCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-    //    }
-    //}
+
     public override void GateTriggered(GateTrigger trigger)
     {
         if (!complete)
@@ -94,10 +81,21 @@ public class GatePuzzle : Puzzle
         }
     }
 
+    private void Update()
+    {
+        if(gates.Count == 0)
+        {
+            complete = true;
+            Debug.Log("Gate puzzle complete!");
+            DeleteGates();
+            SetStatus(complete);
+        }
+    }
+
     /*
      * Split the current list of gates based on what index 
      * the player happened to enter. 
-     */ 
+     */
     void UpdateList(int index)
     {
         currentList = new List<GateTrigger>(gates.Count);
@@ -112,15 +110,7 @@ public class GatePuzzle : Puzzle
             Destroy(gate.gameObject); //TODO: Replace this with something more elegant :^)
         }
 
-        //lower the force field and turn off its noise
-        forceField.GetComponent<PointEffector2D>().enabled = false;
-        forceField.GetComponent<AudioSource>().enabled = false;
-        ParticleSystem[] particles = forceField.GetComponentsInChildren<ParticleSystem>();
-        
-        foreach(ParticleSystem particle in particles)
-        {
-            particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
-        }
+        base.ReleaseCage();
     }
 
 

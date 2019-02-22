@@ -20,7 +20,11 @@ public class FinalZone : MonoBehaviour
             FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
             foreach(FragmentController fragment in fragments)
             {
-                fragment.Collect(this.transform);
+
+                if (fragment.currentState != FragmentController.states.DEPOSIT)
+                {
+                    fragment.Collect(this.transform);
+                }
             }
 
         }

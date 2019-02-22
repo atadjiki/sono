@@ -149,7 +149,7 @@ public class DeviceSetup : MonoBehaviour
         //PlayerPrefs.SetString(Resources.crossFadeChnl, crossFadeChnl.ToString());
         //PlayerPrefs.Save();
 
-        SceneManager.LoadScene(Resources.gameScene);
+        SceneManager.LoadScene(GameResources.gameScene);
     }
 
 }
