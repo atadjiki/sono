@@ -21,6 +21,15 @@ public class FragmentCase : MonoBehaviour
             if (fragment.currentState != FragmentController.states.DEPOSIT)
             {
                 fragment.Collect(LevelManager.instance.getPlayer().transform);
+                if (GetComponentInParent<Puzzle>() == null)
+                {
+                    Debug.Log("parent doesn't have puzzle component!");
+                }
+                else
+                {
+                    GetComponentInParent<Puzzle>().setPieceCamera.enabled = false;
+                }
+
             }
 
         }

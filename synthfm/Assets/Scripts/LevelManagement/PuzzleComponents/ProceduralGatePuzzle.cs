@@ -16,13 +16,15 @@ public class ProceduralGatePuzzle : Puzzle
     public new void DoSetup()
     {
         base.DoPuzzleSetup();
-
-        puzzleX = this.transform.position.x;
-        puzzleY = this.transform.position.y;
-
         SpawnGate();
     }
 
+
+    private void Awake()
+    {
+        puzzleX = this.transform.position.x;
+        puzzleY = this.transform.position.y;
+    }
     void SpawnGate()
     {
         //clone a gate prefab

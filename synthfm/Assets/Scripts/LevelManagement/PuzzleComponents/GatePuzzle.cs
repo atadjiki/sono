@@ -11,20 +11,48 @@ using UnityEngine;
  */ 
 public class GatePuzzle : Puzzle
 {
-
+    public float timeUntilReset = 10;
+    private float timeLeft = 0;
+    private bool timer = false;
     public List<GateTrigger> gates;
     private List<GateTrigger> currentList;
     private int gateLength;
     private int currentIndex;
     private bool inProgress;
+    public bool useTimer = false;
 
     public new void DoSetup()
     {
         base.DoPuzzleSetup();
+
+    }
+
+    private void Start()
+    {
+
         gateLength = gates.Count;
         currentList = gates;
         currentIndex = 0;
         inProgress = false;
+        SetStatus(false);
+    }
+
+    private void Update()
+    {
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0 && timer && useTimer)
+        {
+            ResetPuzzle();
+        }
+
+
+        if (gates.Count == 0)
+        {
+            Debug.Log("Gate puzzle complete!");
+            DeleteGates();
+            SetStatus(complete);
+        }
     }
 
     public override void GateTriggered(GateTrigger trigger)
@@ -48,6 +76,9 @@ public class GatePuzzle : Puzzle
                     currentIndex = 0;
                     trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
                     inProgress = true;
+
+                    StartTimer();
+                    
                 }
                 else
                 {
@@ -64,31 +95,18 @@ public class GatePuzzle : Puzzle
                             Debug.Log("Gate puzzle complete!");
                             DeleteGates();
                             SetStatus(complete);
+                            timer = false;
                         }
                     }
                     else
                     {
                         //if this gate was triggered in the wrong order, reset the puzzle
-                        Debug.Log("Puzzle reset");
                         trigger.PlayAudioClip(AssetManager.instance.gateTones[6]);
-                        currentIndex = 0;
-                        UpdateList(currentIndex);
-                        inProgress = false;
+                        ResetPuzzle();
                     }
                 }
 
             }
-        }
-    }
-
-    private void Update()
-    {
-        if(gates.Count == 0)
-        {
-            complete = true;
-            Debug.Log("Gate puzzle complete!");
-            DeleteGates();
-            SetStatus(complete);
         }
     }
 
@@ -113,5 +131,20 @@ public class GatePuzzle : Puzzle
         base.ReleaseCage();
     }
 
+    void StartTimer()
+    {
+        timeLeft = timeUntilReset;
+        timer = true;
+
+    }
+
+    void ResetPuzzle()
+    {
+        Debug.Log("Puzzle reset");
+        currentIndex = 0;
+        UpdateList(currentIndex);
+        inProgress = false;
+        timer = false;
+    }
 
 }

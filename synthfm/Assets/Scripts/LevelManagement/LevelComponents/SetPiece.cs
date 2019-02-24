@@ -80,6 +80,7 @@ public class SetPiece : MonoBehaviour
                 Debug.Log("Switching camera to " + setPieceCamera.name);
                 mainCamera.enabled = false;
                 setPieceCamera.enabled = true;
+                setPieceCamera.Priority = 20;
             }
            
         }
@@ -95,6 +96,7 @@ public class SetPiece : MonoBehaviour
                 Debug.Log("Switching camera to " + mainCamera.Name);
                 mainCamera.enabled = true;
                 setPieceCamera.enabled = false;
+                setPieceCamera.Priority = 10;
 
             }
         }
