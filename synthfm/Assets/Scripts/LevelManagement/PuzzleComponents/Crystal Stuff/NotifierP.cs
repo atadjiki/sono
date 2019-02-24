@@ -18,7 +18,7 @@ public class NotifierP : MonoBehaviour
     {
         if(!(this.gameObject.name == "Rock"))
         {
-            ColorIt _crystal = this.gameObject.GetComponent<ColorIt>();
+            Crystal _crystal = this.gameObject.GetComponent<Crystal>();
             if ((_crystal._state == PuzzleManager.State.OFF)) 
             {
                 puzzleManager.Notify(this);

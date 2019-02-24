@@ -6,13 +6,19 @@ using UnityEngine;
 
 public class RockIt : MonoBehaviour
 {
+
+    public bool ToDeactivate = false;
+    
+    // essentials
+    private ClusterManager _cMamnager;
+
     [Header("Speed of Disappearing Rock")]
     public float speed = 0.2f;
     public PuzzleManager _Manager;
 
     private SpriteRenderer _thisRender;
     private Color _color;
-    public bool ToDeactivate = false;
+   
     private float _opacity;
 
     //shake stuff
@@ -30,10 +36,14 @@ public class RockIt : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
+        // get
+        _cMamnager = transform.parent.gameObject.GetComponent<ClusterManager>();
+
+
+        // minor
         _thisRender = this.GetComponent<SpriteRenderer>();
         _color = _thisRender.color;
         _opacity = _color.a;
@@ -43,11 +53,17 @@ public class RockIt : MonoBehaviour
         shakeDuration = 0;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!ToDeactivate) // notify if not deactivated
+        {
+            _cMamnager._NotifyFromROck(this);
+        }
+    }
 
     public void DestroyIt()
     {
         // lower down opacity and disable/ destroy eventually
-
         ToDeactivate = true;
     }
 

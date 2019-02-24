@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorIt: MonoBehaviour
+// attached to every Crystall
+
+public class Crystal: MonoBehaviour
 {
+    [Header(" The Sequence number for Seq mode")]
+    public int sequenceNo;
+
     [Header("Colors for the brick")]
     public Color baseColor;
     public Color errorColor;
     public Color activeColor;
-
-    public int sequenceNo;
 
     [Header("The State Of this Crystal ON = Active")]
     public PuzzleManager.State _state = PuzzleManager.State.OFF;
@@ -33,6 +36,10 @@ public class ColorIt: MonoBehaviour
 
     private SpriteRenderer _renderer;
     private Color currentColor;
+
+    // essentials
+    private ClusterManager _cMamnager;
+
     private void Awake()
     {
         if (transform == null)
@@ -44,6 +51,9 @@ public class ColorIt: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // get
+        _cMamnager = transform.parent.gameObject.GetComponent<ClusterManager>();
+
         _renderer = this.GetComponent<SpriteRenderer>();
         _renderer.color = baseColor;
         currentColor = baseColor;
@@ -53,6 +63,13 @@ public class ColorIt: MonoBehaviour
         shakeDuration = 0;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if ((_state == PuzzleManager.State.OFF)) // notify if this OFF
+       {
+            _cMamnager._Notify(this);             
+       } 
+    }
 
     void Update()
     {
@@ -112,9 +129,7 @@ public class ColorIt: MonoBehaviour
         ForwardZ = false;
         ReverseZ = false;
         speed = 0;
-
-        
-       
+   
     }
    
     IEnumerator setBaseColor()
@@ -125,15 +140,4 @@ public class ColorIt: MonoBehaviour
         _state = PuzzleManager.State.OFF;
     }
 
-    // Set
-    public void setCurrentColor()
-    {
-
-    }
-
-    // Set
-    public void setBaseColor(Color i_color)
-    {
-        baseColor = i_color;
-    }
 }
