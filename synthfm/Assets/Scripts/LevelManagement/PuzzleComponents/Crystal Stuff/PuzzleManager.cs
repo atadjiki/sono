@@ -5,18 +5,33 @@ using System;
 
 public class PuzzleManager : MonoBehaviour
 {
+
     public enum State { OFF, ON, Error };
 
+    public enum Mode { Rock, Sequencial};
+
+    [Header("Number of Clusters")]
+    public int N;       // Editor
+
+    [Header("Rock mode OR Sequencial Mode")]
+    [Header("Enter size as equals to N")]
+    public Mode[] _Mode;        // Editor
+
+    [Header("Drag Clusters Objects Here")]
+    public GameObject Obj_Clusters_Parent;
+
     [Header("Cluster Parents (Each Puzzle)")]
-    public GameObject[] clusterParent = new GameObject[4];
+    public GameObject[] Obj_clusters; // based on N
 
     [Header("Indiacte if the puzzle is complete OR Not")]
-    public bool[] IsComplete = new bool[4];
+    public bool[] IsComplete; // based on N
 
-    [Header("The Nimber of Crystals active Now")]
-    public int[] _activeCrystalls = new int[4]; // if int[i] is equal to number of crystalls int the puzzle,
-                                                // then puzzle[i] is complete
-
+    [Header("The Number of Crystals active Now")]
+    public int[] _activeCrystalls; // based on N
+                                        //if int[i] is equal to number of crystalls int the puzzle,
+                                               // then puzzle[i] is complete
+    
+    private static int size;
     private ColorIt _colorIt;
 
     private RockIt[] _rocks = new RockIt[4];
@@ -24,10 +39,15 @@ public class PuzzleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        size = N;
+        Obj_clusters = new GameObject[size];
+        IsComplete = new bool[size];
+
         // get all rocks
         for (int i = 0; i < 4; i++)
         {
-            _rocks[i] = clusterParent[i].transform.GetChild(0).GetComponent<RockIt>();
+
+            //_rocks[i] = clusterParent[i].transform.GetChild(0).GetComponent<RockIt>();
         }
         
     }
