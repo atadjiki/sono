@@ -30,6 +30,9 @@ public class TurntableController : MonoBehaviour
     public float accel_normal = 0.75f;
     public float accel_fast = 1.5f;
 
+    private bool fast_override = false;
+    private bool slow_override = false;
+
     public float torqueAmount = 25;
     public float torqueIncrement = 1;
     private bool multiplyTorque = false;
@@ -78,7 +81,8 @@ public class TurntableController : MonoBehaviour
         if (controls == ControlType.Turntable)
             DoMIDIInput();
 
-        DoSpeedInput();           
+        DoSpeedInput();
+        DoCheckForOverrides();      
     }
 
     void UpdateVariables()
@@ -119,6 +123,16 @@ public class TurntableController : MonoBehaviour
 
     public float getSpeed()
     {
+
+        if (fast_override)
+        {
+            return accel_fast;
+        }
+        if (slow_override)
+        {
+            return accel_slow;
+        }
+
         if (currentSpeed == Speed.Slow)
         {
             return accel_slow;
@@ -136,13 +150,34 @@ public class TurntableController : MonoBehaviour
     void DoSpeedInput()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)){
-
             ChangeSpeed(Speed.Slow);
         }else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)){
             ChangeSpeed(Speed.Normal);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)){
             ChangeSpeed(Speed.Fast);
+        }
+    }
+
+    void DoCheckForOverrides()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            fast_override = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.W))
+        {
+            Debug.Log("Speed back to " + currentSpeed.ToString());
+            fast_override = false;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            slow_override = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.S)){
+            slow_override = false;
+            Debug.Log("Speed back to " + currentSpeed.ToString());
         }
     }
 
