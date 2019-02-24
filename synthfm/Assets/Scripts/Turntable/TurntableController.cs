@@ -26,15 +26,16 @@ public class TurntableController : MonoBehaviour
     public float accel_clamp = 1.5f;
     public float accel_floor = 0.25f;
 
-    private float accel_slow = 0.25f;
-    private float accel_normal = 0.75f;
-    private float accel_fast = 1.5f;
+    public float accel_slow = 0.25f;
+    public float accel_normal = 0.75f;
+    public float accel_fast = 1.5f;
 
     public float torqueAmount = 25;
     public float torqueIncrement = 1;
     private bool multiplyTorque = false;
 
-
+    public enum Speed { Slow, Normal, Fast };
+    public Speed currentSpeed;
     public enum ControlType { Keyboard, Joystick, Turntable };
 
     [Header("Controls")]
@@ -75,7 +76,9 @@ public class TurntableController : MonoBehaviour
         if (controls == ControlType.Keyboard)
             DoAltInput();
         if (controls == ControlType.Turntable)
-            DoMIDIInput();              
+            DoMIDIInput();
+
+        DoSpeedInput();           
     }
 
     void UpdateVariables()
@@ -89,22 +92,38 @@ public class TurntableController : MonoBehaviour
 
     void ApplyForce()
     {
-        accel_mod = Mathf.Clamp(accel_mod, accel_floor, accel_clamp);
+        accel_mod = getSpeed();
         rigidbody.AddForce(transform.up * accel_mod * acceleration * Time.deltaTime);
     }
 
-    float normalizeAcceleration(float accel)
+    Speed ChangeSpeed(Speed speed)
     {
+        if(speed == Speed.Slow)
+        {
+           
+            currentSpeed = Speed.Slow;
 
-        float slowDif = Mathf.Abs(accel - accel_slow);
-        float normalDif = Mathf.Abs(accel - accel_normal);
-        float fastDif = Mathf.Abs(accel - accel_fast);
+        }else if(speed == Speed.Normal)
+        {
+          
+            currentSpeed = Speed.Normal;
+        }else if(speed == Speed.Fast)
+        {
 
-        if (slowDif < normalDif && slowDif < fastDif)
+            currentSpeed = Speed.Fast;
+        }
+        Debug.Log("Speed changed to " + currentSpeed.ToString());
+        return currentSpeed;
+
+    }
+
+    public float getSpeed()
+    {
+        if (currentSpeed == Speed.Slow)
         {
             return accel_slow;
         }
-        else if (normalDif < slowDif && normalDif < fastDif)
+        else if (currentSpeed == Speed.Normal)
         {
             return accel_normal;
         }
@@ -112,7 +131,19 @@ public class TurntableController : MonoBehaviour
         {
             return accel_fast;
         }
+    }
 
+    void DoSpeedInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)){
+
+            ChangeSpeed(Speed.Slow);
+        }else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)){
+            ChangeSpeed(Speed.Normal);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)){
+            ChangeSpeed(Speed.Fast);
+        }
     }
 
     void DoJoyStickInput()
