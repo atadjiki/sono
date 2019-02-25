@@ -20,6 +20,8 @@ public class GatePuzzle : Puzzle
     private int currentIndex;
     private bool inProgress;
     public bool useTimer = false;
+    public bool inOrder = true;
+    private int gatesHit = 0;// for out of order puzzles
 
     public new void DoSetup()
     {
@@ -55,13 +57,13 @@ public class GatePuzzle : Puzzle
         }
     }
 
-    public override void GateTriggered(GateTrigger trigger)
+    void DoGatesInOrder(GateTrigger trigger)
     {
         if (!complete)
         {
             //check which gate was triggered
-            
-            if(gates.Contains(trigger))
+
+            if (gates.Contains(trigger))
             {
 
                 int index = currentList.IndexOf(trigger);
@@ -70,7 +72,7 @@ public class GatePuzzle : Puzzle
                 {
                     Debug.Log("Puzzle started at index " + index);
                     Debug.Log("Gate " + index + " hit");
-                    
+
                     currentIndex = index; //make this the first gate in the list
                     UpdateList(index); //re-order the list around the new starting index
                     currentIndex = 0;
@@ -78,24 +80,20 @@ public class GatePuzzle : Puzzle
                     inProgress = true;
 
                     StartTimer();
-                    
+
                 }
                 else
                 {
                     //if the player is touching the gates in order, increment 
                     Debug.Log("Gate " + index + " hit");
                     currentIndex++;
-                    
+
                     if (index == currentIndex)
                     {
                         trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
                         if (currentIndex == gateLength - 1)
                         {
-                            complete = true;
-                            Debug.Log("Gate puzzle complete!");
-                            DeleteGates();
-                            SetStatus(complete);
-                            timer = false;
+                            CompletePuzzle();
                         }
                     }
                     else
@@ -107,6 +105,76 @@ public class GatePuzzle : Puzzle
                 }
 
             }
+        }
+    }
+
+    void DoGatesOutOfOrder(GateTrigger trigger)
+    {
+        if (!complete)
+        {
+            //check which gate was triggered
+
+            if (gates.Contains(trigger))
+            {
+
+                int index = currentList.IndexOf(trigger);
+                //if the start index has not been set
+                if (!inProgress)
+                {
+                    Debug.Log("Puzzle started at index " + index);
+                    Debug.Log("Gate " + index + " hit");
+
+
+                    trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
+                    inProgress = true;
+                    gatesHit++;
+                    Debug.Log(gates.Count - gatesHit + " gates left!");
+                    StartTimer();
+
+                }
+                else
+                {
+                    //if the player touched another gate, update accordingly 
+                    Debug.Log("Gate " + index + " hit");
+                    gatesHit++;
+                    Debug.Log(gates.Count - gatesHit + " gates left!");
+                    trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
+                    if (gatesHit == gateLength)
+                    {
+                        CompletePuzzle();
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    public void CompletePuzzle()
+    {
+        complete = true;
+        Debug.Log("Gate puzzle complete!");
+        DeleteGates();
+        SetStatus(complete);
+        timer = false;
+    }
+
+    public override void GateTriggered(GateTrigger trigger)
+    {
+
+        //check if we only have one gate
+        if(gates.Count == 1)
+        {
+            CompletePuzzle();
+        }
+
+        if (inOrder)
+        {
+            DoGatesInOrder(trigger);
+        }
+        else
+        {
+            DoGatesOutOfOrder(trigger);
         }
     }
 
