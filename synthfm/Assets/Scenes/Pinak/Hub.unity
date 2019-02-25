@@ -278,7 +278,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 347054877}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &63095592
 GameObject:
@@ -7688,6 +7688,11 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5332951722880558304, guid: abd49df7cb79d334daa051d2e29a8f80,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5332951723901274601, guid: abd49df7cb79d334daa051d2e29a8f80,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10574,6 +10579,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1901577429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 178670977}
+    m_Modifications:
+    - target: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
+        type: 3}
+      propertyPath: m_Name
+      value: Fragment (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238824860898326245, guid: e6dd88324781df7488f6758c5af68ce4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 213.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238824860898326245, guid: e6dd88324781df7488f6758c5af68ce4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6dd88324781df7488f6758c5af68ce4, type: 3}
 --- !u!1 &1905470661
 GameObject:
   m_ObjectHideFlags: 0
@@ -11153,35 +11182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2025093254
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 178670977}
-    m_Modifications:
-    - target: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
-        type: 3}
-      propertyPath: m_Name
-      value: Fragment (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238824860898326245, guid: e6dd88324781df7488f6758c5af68ce4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 234.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238824860898326245, guid: e6dd88324781df7488f6758c5af68ce4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238824860898326245, guid: e6dd88324781df7488f6758c5af68ce4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 151.7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e6dd88324781df7488f6758c5af68ce4, type: 3}
 --- !u!1 &2032087596
 GameObject:
   m_ObjectHideFlags: 0
