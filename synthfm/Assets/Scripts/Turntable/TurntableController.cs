@@ -75,7 +75,7 @@ public class TurntableController : MonoBehaviour
         if (controls == ControlType.Keyboard)
             DoAltInput();
         if (controls == ControlType.Turntable)
-            DoMIDIInput();              
+            DoMIDIInput();
     }
 
     void UpdateVariables()
@@ -241,4 +241,19 @@ public class TurntableController : MonoBehaviour
             previousFade = crossFade;
         }
     }
+
+    /*Property to wrap the accel_mod variable. It'll come in handy for boosting.
+     Maybe we can come up with a better way to do this later.*/
+    public float AccelerationModifier
+    {
+        get
+        {
+            return accel_mod;
+        }
+        set
+        {
+            accel_mod = value;
+        }
+    }
+
 }
