@@ -27,7 +27,7 @@ public class Boost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //it'd be nice if we could localize the acceleration assignment to here. 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,16 +37,11 @@ public class Boost : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //playerRigidBody.AddForce((transform.up) * accelerationBoost);
         controller.acceleration += accelerationBoost;
-        //playerRigidBody.velocity
-        //Debug.Log("trigger");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //oldAccel_mod = controller.AccelerationModifier;
-        //controller.AccelerationModifier = ;
         StartCoroutine(deccelerateOnExit());
     }
 
