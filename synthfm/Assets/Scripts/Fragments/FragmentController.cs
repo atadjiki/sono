@@ -46,8 +46,14 @@ public class FragmentController : MonoBehaviour
     {
         if(currentState == states.DEPOSIT)
         {
-            transform.RotateAround(GameObject.FindGameObjectWithTag("Hub").transform.position, new Vector3(0, 0, 1), 50 * Time.deltaTime);
+            //StartCoroutine(RotateFragments());
+            transform.RotateAround(GameObject.FindGameObjectWithTag("Hub").transform.position, new Vector3(0, 0, 1), 60 * Time.deltaTime);
         }
+    }
+
+    public IEnumerator RotateFragments()
+    {
+        yield return null;
     }
 
     public void RunState(states state)

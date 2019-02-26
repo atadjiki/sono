@@ -35,6 +35,25 @@ public class DepositFragments : MonoBehaviour
         {
             CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().Priority = 10;
 
+            FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+            foreach (FragmentController fragment in fragments)
+            {
+                if (fragment.currentState == FragmentController.states.DEPOSIT)
+                {
+
+                    StartCoroutine(DeleteFragments(fragment));
+                }
+
+            }
         }
+
+    }
+
+    private IEnumerator DeleteFragments(FragmentController fragment)
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        Destroy(fragment.gameObject);
+
     }
 }
