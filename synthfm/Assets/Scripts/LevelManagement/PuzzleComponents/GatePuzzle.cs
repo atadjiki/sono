@@ -16,7 +16,6 @@ public class GatePuzzle : Puzzle
     private bool timer = false;
     public List<GateTrigger> gates;
     private List<GateTrigger> currentList;
-    private int gateLength;
     private int currentIndex;
     private bool inProgress;
     public bool useTimer = false;
@@ -31,8 +30,7 @@ public class GatePuzzle : Puzzle
 
     private void Start()
     {
-
-        gateLength = gates.Count;
+    
         currentList = gates;
         currentIndex = 0;
         inProgress = false;
@@ -71,11 +69,11 @@ public class GatePuzzle : Puzzle
                 if (!inProgress)
                 {
                     Debug.Log("Puzzle started at index " + index);
+
                     Debug.Log("Gate " + index + " hit");
 
-                    currentIndex = index; //make this the first gate in the list
                     UpdateList(index); //re-order the list around the new starting index
-                    currentIndex = 0;
+                    Debug.Log("Current list: " + PrintGateList());
                     trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
                     inProgress = true;
 
@@ -91,8 +89,10 @@ public class GatePuzzle : Puzzle
                     if (index == currentIndex)
                     {
                         trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
-                        if (currentIndex == gateLength - 1)
+                        Debug.Log("Index " + index + " Current Index " + currentIndex + " Gate Length " + (currentList.Count - 1));
+                        if (index == currentList.Count-1)
                         {
+                            Debug.Log("Complete!");
                             CompletePuzzle();
                         }
                     }
@@ -139,7 +139,7 @@ public class GatePuzzle : Puzzle
                     gatesHit++;
                     Debug.Log(gates.Count - gatesHit + " gates left!");
                     trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
-                    if (gatesHit == gateLength)
+                    if (gatesHit == currentList.Count)
                     {
                         CompletePuzzle();
                     }
@@ -152,8 +152,8 @@ public class GatePuzzle : Puzzle
 
     public void CompletePuzzle()
     {
-        complete = true;
         Debug.Log("Gate puzzle complete!");
+        complete = true;
         DeleteGates();
         SetStatus(complete);
         timer = false;
@@ -185,8 +185,17 @@ public class GatePuzzle : Puzzle
     void UpdateList(int index)
     {
         currentList = new List<GateTrigger>(gates.Count);
-        currentList.AddRange(gates.GetRange(index, gateLength - index));
-        currentList.InsertRange(gateLength - index, gates.GetRange(0, index));
+        if (gates.Count % 2 == 0)
+        {
+            currentList.AddRange(gates.GetRange(index, gates.Count - index));
+            currentList.InsertRange(gates.Count - index, gates.GetRange(0, index-1));
+        }
+        else
+        {
+            currentList.AddRange(gates.GetRange(index, gates.Count - index));
+            currentList.InsertRange(gates.Count - index, gates.GetRange(0, index));
+        }
+
     }
 
     void DeleteGates()
@@ -213,6 +222,20 @@ public class GatePuzzle : Puzzle
         UpdateList(currentIndex);
         inProgress = false;
         timer = false;
+    }
+
+    string PrintGateList()
+    {
+        string result = "{ ";
+
+        foreach(GateTrigger gate in currentList)
+        {
+            result += gate.name;
+            result += ", ";
+        }
+
+        result += " }";
+        return result;
     }
 
 }
