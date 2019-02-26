@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class EasingFunctions
 {
+    public static float EaseOutQuint(float start, float end, float value)
+    {
+        value--;
+        end -= start;
+        return end * (value * value * value * value * value + 1) + start;
+    }
+
+    public static float EaseInSine(float start, float end, float value)
+    {
+        end -= start;
+        return -end * Mathf.Cos(value * (Mathf.PI * 0.5f)) + end + start;
+    }
+
     public static float EaseInOutQuad(float start, float end, float value)
     {
         value /= .5f;

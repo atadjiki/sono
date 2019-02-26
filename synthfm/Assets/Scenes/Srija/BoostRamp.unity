@@ -6158,7 +6158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819147050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.74, y: 23.43, z: 0}
+  m_LocalPosition: {x: 0, y: 40.7, z: 0}
   m_LocalScale: {x: 12.824758, y: 53.42137, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6202,7 +6202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db24b0ad0b9c9ec45ae1106defc10724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationBoost: 100
+  accelerationBoost: 2000
+  BoostHoldTime: 5
+  boostHoldTimer: 0
 --- !u!1 &1906437834
 GameObject:
   m_ObjectHideFlags: 0
@@ -6503,6 +6505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: accel_clamp
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
