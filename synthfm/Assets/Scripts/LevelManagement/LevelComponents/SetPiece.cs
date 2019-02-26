@@ -16,6 +16,7 @@ public class SetPiece : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
     public GameObject center;
 
+    private bool centerExists = false;
     // Start is called before the first frame update
 
     private void OnEnable()
@@ -27,14 +28,14 @@ public class SetPiece : MonoBehaviour
     public void DoSetup()
     {
 
-        this.transform.position = Vector3.zero;
-        Debug.Log("Adding collider");
-        this.gameObject.AddComponent<CircleCollider2D>();
-        this.gameObject.GetComponent<CircleCollider2D>().radius = 75;
-        this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-
-
-
+        //this.transform.position = Vector3.zero;
+        if(this.gameObject.GetComponent<BoxCollider2D>() == null && this.gameObject.GetComponent<CircleCollider2D>() == null)
+        {
+            this.gameObject.AddComponent<CircleCollider2D>();
+            this.gameObject.GetComponent<CircleCollider2D>().radius = 75;
+            this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+            Debug.Log("Already has collider");
+        }
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         player = GameObject.Find("Player").GetComponent<TurntableController>();
@@ -52,14 +53,22 @@ public class SetPiece : MonoBehaviour
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_NoiseProfile =
         AssetDatabase.LoadAssetAtPath<Cinemachine.NoiseSettings>("Packages/com.Unity.Cinemachine/Presets/Noise/Handheld_tele_mild.asset");
 
-
-        center = new GameObject();
-        center.name = "Center";
-        center.transform.parent = this.transform;
-        center.transform.position = Vector3.zero;
-
-        setPieceCamera.Follow = center.transform;
-        setPieceCamera.LookAt = center.transform;
+        foreach(Transform child in transform)
+        {
+            if(child.gameObject.name == "Center")
+            {
+                centerExists = true;
+            }
+        }
+        if(centerExists == false)
+        {
+            center = new GameObject();
+            center.name = "Center";
+            center.transform.parent = this.transform;
+            center.transform.position = Vector3.zero;
+            setPieceCamera.Follow = center.transform;
+            setPieceCamera.LookAt = center.transform;
+        }
     }
 
 
