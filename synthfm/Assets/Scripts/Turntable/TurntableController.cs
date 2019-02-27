@@ -47,6 +47,11 @@ public class TurntableController : MonoBehaviour
     public KeyCode alt_left_2 = KeyCode.D;
     public KeyCode alt_right_1 = KeyCode.LeftArrow;
     public KeyCode alt_right_2 = KeyCode.RightArrow;
+    public KeyCode alt_speed_up = KeyCode.W;
+    public KeyCode alt_slow_down = KeyCode.S;
+    public KeyCode alt_slow = KeyCode.Alpha1;
+    public KeyCode alt_normal = KeyCode.Alpha2;
+    public KeyCode alt_fast = KeyCode.Alpha3;
 
     private new Rigidbody2D rigidbody;
 
@@ -149,35 +154,38 @@ public class TurntableController : MonoBehaviour
 
     void DoSpeedInput()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)){
+        if(Input.GetKeyDown(alt_slow)){
             ChangeSpeed(Speed.Slow);
-        }else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)){
+        }else if (Input.GetKeyDown(alt_normal)){
             ChangeSpeed(Speed.Normal);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)){
+        else if (Input.GetKeyDown(alt_fast))
+        {
             ChangeSpeed(Speed.Fast);
         }
     }
 
     void DoCheckForOverrides()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(alt_speed_up))
         {
             fast_override = true;
         }
-        else if(Input.GetKeyUp(KeyCode.W))
+        else if(Input.GetKeyUp(alt_speed_up))
         {
             Debug.Log("Speed back to " + currentSpeed.ToString());
+            ChangeSpeed(Speed.Normal);
             fast_override = false;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(alt_slow_down))
         {
             slow_override = true;
         }
-        else if(Input.GetKeyUp(KeyCode.S)){
-            slow_override = false;
+        else if(Input.GetKeyUp(alt_slow_down)){
             Debug.Log("Speed back to " + currentSpeed.ToString());
+            ChangeSpeed(Speed.Normal);
+            slow_override = false;
         }
     }
 
