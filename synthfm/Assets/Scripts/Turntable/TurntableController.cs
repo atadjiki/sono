@@ -155,39 +155,76 @@ public class TurntableController : MonoBehaviour
 
     void DoSpeedInput()
     {
-        if(Input.GetKeyDown(alt_slow)){
-            ChangeSpeed(Speed.Slow);
-        }else if (Input.GetKeyDown(alt_normal)){
-            ChangeSpeed(Speed.Normal);
-        }
-        else if (Input.GetKeyDown(alt_fast))
+        if(controls == ControlType.Keyboard)
         {
-            ChangeSpeed(Speed.Fast);
+            if (Input.GetKeyDown(alt_slow))
+            {
+                ChangeSpeed(Speed.Slow);
+            }
+            else if (Input.GetKeyDown(alt_normal))
+            {
+                ChangeSpeed(Speed.Normal);
+            }
+            else if (Input.GetKeyDown(alt_fast))
+            {
+                ChangeSpeed(Speed.Fast);
+            }
         }
+
     }
 
     void DoCheckForOverrides()
     {
-        if (Input.GetKey(alt_speed_up))
+
+        if(controls == ControlType.Keyboard)
         {
-            fast_override = true;
-        }
-        else if(Input.GetKeyUp(alt_speed_up))
+            if (Input.GetKey(alt_speed_up))
+            {
+                fast_override = true;
+            }
+            else if (Input.GetKeyUp(alt_speed_up))
+            {
+                Debug.Log("Speed back to " + currentSpeed.ToString());
+                ChangeSpeed(Speed.Normal);
+                fast_override = false;
+            }
+
+            if (Input.GetKey(alt_slow_down))
+            {
+                slow_override = true;
+            }
+            else if (Input.GetKeyUp(alt_slow_down))
+            {
+                Debug.Log("Speed back to " + currentSpeed.ToString());
+                ChangeSpeed(Speed.Normal);
+                slow_override = false;
+            }
+        }else if(controls == ControlType.Joystick)
         {
-            Debug.Log("Speed back to " + currentSpeed.ToString());
-            ChangeSpeed(Speed.Normal);
-            fast_override = false;
+            if(Input.GetAxis("Speed_Up") > 0)
+            {
+                fast_override = true;
+            }
+            else if(Input.GetAxis("Speed_Up") <= 0)
+            {
+                Debug.Log("Speed back to " + currentSpeed.ToString());
+                ChangeSpeed(Speed.Normal);
+                fast_override = false;
+            }
+
+            if(Input.GetAxis("Slow_Down") > 0)
+            {
+                slow_override = true;
+
+            }
+            else if (Input.GetAxis("Slow_Down") <= 0)
+            {
+                Debug.Log("Speed back to " + currentSpeed.ToString());
+                ChangeSpeed(Speed.Normal);
+                slow_override = false;
+            }
         }
 
-        if (Input.GetKey(alt_slow_down))
-        {
-            slow_override = true;
-        }
-        else if(Input.GetKeyUp(alt_slow_down)){
-            Debug.Log("Speed back to " + currentSpeed.ToString());
-            ChangeSpeed(Speed.Normal);
-            slow_override = false;
-        }
     }
 
     void DoJoyStickInput()
