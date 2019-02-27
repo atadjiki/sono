@@ -69,6 +69,7 @@ public class TurntableController : MonoBehaviour
         rotation = turntableManager.rotation;
 
         rigidbody = GetComponent<Rigidbody2D>();
+        ChangeSpeed(Speed.Normal);
 
     }
 
