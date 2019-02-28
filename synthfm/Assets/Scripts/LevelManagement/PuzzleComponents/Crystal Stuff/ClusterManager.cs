@@ -13,15 +13,17 @@ public class ClusterManager : MonoBehaviour
     [Header("DO NOT TOUCH FOllowings")]
     public bool IsComplete = false;
 
+    [Header("The number of rocks only for sequencial mode")]
+    public int _NumOfRocks;
+
     public int Num_Of_Actives;     // ROCk Mode
     public int _curSeq;        // Seq Mode
 
-    public RockIt Rock;
+    public RockIt[] Rocks;
     public Crystal[] Crystalls;
 
     public int numOfCrystalls;
-
-    private int size;
+    public int size;
 
     // Start is called before the first frame update
     void Start()
@@ -31,18 +33,26 @@ public class ClusterManager : MonoBehaviour
         // get Rock
         if(_Mode == PuzzleManager.Mode.Rock)
         {
-            Rock = this.transform.Find("Rock").gameObject.GetComponent<RockIt>();
-            if (Rock == null) { Debug.Log("Error: Unable to finmd Rock"); }
+            Crystalls = new Crystal[size - _NumOfRocks];
+            Rocks = new RockIt[_NumOfRocks];
+            for (int i = 0; i < Rocks.Length; i++)
+            {
+                Rocks[i] = this.transform.GetChild(i).gameObject.GetComponent<RockIt>();
+                if (Rocks[i] == null) { Debug.Log("Error: Unable to find Rock"); }
+            }
         }
         else
         {
-            Rock = this.transform.Find("Rock").gameObject.GetComponent<RockIt>();
-            Rock.gameObject.SetActive(false);
-            // destroy
+            Crystalls = new Crystal[size - 1];
+            Rocks = new RockIt[1];
+            Rocks[0] = this.transform.Find("Rock").gameObject.GetComponent<RockIt>();
+           
+            Rocks[0].gameObject.SetActive(false);
+            
         }
 
         // get crystalls
-        Crystalls = new Crystal[size - 1];
+      
         for(int i=0; i< Crystalls.Length; i++)
         {
            Crystalls = this.transform.GetComponentsInChildren<Crystal>();
@@ -61,11 +71,12 @@ public class ClusterManager : MonoBehaviour
                 i_crystal.changeToActive();
             
                  Num_Of_Actives++;
-            if(Num_Of_Actives == size-1)
+            if(Num_Of_Actives == Crystalls.Length)
             {
                 IsComplete = true;
                 // destroy rock
-                Rock.DestroyIt();
+                foreach (RockIt R in Rocks)
+                    R.DestroyIt();
             }
             
         }
