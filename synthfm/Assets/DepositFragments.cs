@@ -22,7 +22,6 @@ public class DepositFragments : MonoBehaviour
                     fragment.Deposit(gameObject.transform);
                     CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = fragment.transform;
                     CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = fragment.transform;
-                    CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().Priority = 20;
                 }
             }
         }
@@ -33,8 +32,6 @@ public class DepositFragments : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().Priority = 10;
-
             FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
             foreach (FragmentController fragment in fragments)
             {

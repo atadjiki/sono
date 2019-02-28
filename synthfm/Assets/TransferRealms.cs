@@ -38,11 +38,11 @@ public class TransferRealms : MonoBehaviour
         {
             if (gameObject.tag == "Realm1")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
             }
             else if(gameObject.tag == "Realm2")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Procedural1", UnityEngine.SceneManagement.LoadSceneMode.Additive);
             }
 
             //TO DO: Re-enable Realms
