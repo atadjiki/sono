@@ -83,6 +83,54 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &128669130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128669132}
+  - component: {fileID: 128669131}
+  m_Layer: 8
+  m_Name: PostProcessLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128669132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128669130}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -51.209328}
+  m_LocalScale: {x: 0.78783584, y: 0.78783584, z: 0.78783584}
+  m_Children: []
+  m_Father: {fileID: 1855229569708447589}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128669131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128669130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e22131ff4cb125345893f7588bb14f7c, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &828374271
 GameObject:
   m_ObjectHideFlags: 0
@@ -10241,6 +10289,7 @@ Transform:
   - {fileID: 1809757824}
   - {fileID: 7919485860211731275}
   - {fileID: 828374275}
+  - {fileID: 128669132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10426,7 +10475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb7072aabe14f649a633a8be143318d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waves: {fileID: 0}
+  Waves: {fileID: 1809757826}
   Player: {fileID: 1855229569708447584}
   PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1855229569839276768
