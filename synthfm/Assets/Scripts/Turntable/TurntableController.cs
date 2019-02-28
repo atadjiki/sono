@@ -92,6 +92,7 @@ public class TurntableController : MonoBehaviour
 
         DoSpeedInput();
         DoCheckForOverrides();      
+
     }
 
     void UpdateVariables()
