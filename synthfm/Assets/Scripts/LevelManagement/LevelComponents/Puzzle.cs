@@ -66,13 +66,10 @@ public class Puzzle : SetPiece
     {
         if (Application.isPlaying && fragment != null)
         {
-            if (fragment.GetState() == FragmentController.states.FOLLOW)
-            {
+            print("Complete: "+complete);
                 if (complete && disableCameraOnComplete)
                 {
-                    Debug.Log("Switching camera to " + getMainCamera().name);
-                    getMainCamera().enabled = true;
-                    setPieceCamera.enabled = false;
+                    Debug.Log("********************************HERE*******************************************");
                     Debug.Log("Puzzle Complete" + gameObject.name);
                     StartCoroutine("DeletePuzzle");
 
@@ -80,7 +77,7 @@ public class Puzzle : SetPiece
             }
         }
 
-    }
+    
 
     IEnumerator DeletePuzzle()
     {
