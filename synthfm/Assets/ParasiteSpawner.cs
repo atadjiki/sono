@@ -33,7 +33,16 @@ public class ParasiteSpawner : MonoBehaviour
 
 
         Vector3 spawnLocation = player.position; //get position of player
-        spawnLocation += new Vector3(Screen.width, Screen.height, 0);
+        float xMod = 1, yMod = 1;
+        if(Random.Range(-1, 1) < 0)
+        {
+            xMod *= -1;
+        }
+        if (Random.Range(-1, 1) < 0)
+        {
+            yMod *= -1;
+        }
+        spawnLocation += new Vector3(xMod *= Screen.width, yMod * Screen.height, 0);
         parasite.transform.position = spawnLocation;
 
         parasite.GetComponent<ParasiteController>().followTarget = player;
