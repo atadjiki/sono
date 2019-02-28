@@ -7,17 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Coral
-  m_Shader: {fileID: 4800000, guid: 90c3506f13760604c99d14b2ffe2f684, type: 3}
+  m_Name: Sono_Placeholder Character
+  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 6
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    MotionVector: User
-  disabledShaderPasses:
-  - MOTIONVECTORS
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -66,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4e337d8200517284aa7c69cc2ce75682, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -79,66 +77,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_1415E944_Texture:
-        m_Texture: {fileID: 2800000, guid: 71b807198b936ad46b98257c14bf5e34, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_1E02E038_Texture:
-        m_Texture: {fileID: 2800000, guid: 89a69fd5ad7b872408365c0ac4c0862c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_1F70890C_Texture:
-        m_Texture: {fileID: 2800000, guid: 3517c919f77e96d47b08ed53079d66c9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_24F4189D_Texture:
-        m_Texture: {fileID: 2800000, guid: d524a4b50d6569547a59b227c69b4478, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_53E6DA1A_Texture:
-        m_Texture: {fileID: 2800000, guid: 028e93fc4ed4265408b8da388da8c119, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_61DFC6C4_Texture:
-        m_Texture: {fileID: 2800000, guid: 9189c45065abd9e4bae25c649842fc54, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_6CEDD519_Texture:
-        m_Texture: {fileID: 2800000, guid: 49089bfb2bf3a7047b76a0c657dcf6f5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_7B049A3E_Texture:
-        m_Texture: {fileID: 2800000, guid: 30ce180af15ab0b4288bbfd89db7bf35, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_7D95EE21_Texture:
-        m_Texture: {fileID: 2800000, guid: cfb73db217a4d124aa536a2a76497d4e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_97945EA_Texture:
-        m_Texture: {fileID: 2800000, guid: 49089bfb2bf3a7047b76a0c657dcf6f5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_9ABAC92C_Texture:
-        m_Texture: {fileID: 2800000, guid: 9189c45065abd9e4bae25c649842fc54, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_A7E930E9_Texture:
-        m_Texture: {fileID: 2800000, guid: 9189c45065abd9e4bae25c649842fc54, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_B765DB6D_Texture:
-        m_Texture: {fileID: 2800000, guid: 89a69fd5ad7b872408365c0ac4c0862c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_C1181442_Texture:
-        m_Texture: {fileID: 2800000, guid: 89a69fd5ad7b872408365c0ac4c0862c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_E1F4F281_Texture:
-        m_Texture: {fileID: 2800000, guid: 392836e793eee2540ae492d3bb126eaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -166,8 +104,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1DE7266A: 0
-    - Vector1_9E64C8EA: 0
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -280,8 +216,6 @@ Material:
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
     m_Colors:
-    - Color_A3AF2D0C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_AD98FD94: {r: 0, g: 0.21711774, b: 0.5188679, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
