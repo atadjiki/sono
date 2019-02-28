@@ -44,14 +44,16 @@ public class TransferRealms : MonoBehaviour
             {
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
             }
-            else if(gameObject.tag == "Realm3")
+
+            //TO DO: Re-enable Realms
+           /* else if(gameObject.tag == "Realm3")
             {
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
             }
             else if(gameObject.tag == "Realm4")
             {
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-            }
+            }*/
         }
 
     }
