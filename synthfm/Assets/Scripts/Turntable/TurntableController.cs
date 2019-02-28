@@ -30,10 +30,13 @@ public class TurntableController : MonoBehaviour
     public float accel_normal = 0.75f;
     public float accel_fast = 1.5f;
 
+    public float torque_slow = 25f;
+    public float torque_normal = 25f;
+    public float torque_fast = 25f;
+
     private bool fast_override = false;
     private bool slow_override = false;
 
-    public float torqueAmount = 25;
     public float torqueIncrement = 1;
     private bool multiplyTorque = false;
 
@@ -110,21 +113,17 @@ public class TurntableController : MonoBehaviour
     {
         if(speed == Speed.Slow)
         {
-           
             currentSpeed = Speed.Slow;
 
         }else if(speed == Speed.Normal)
         {
-          
             currentSpeed = Speed.Normal;
         }else if(speed == Speed.Fast)
         {
-
             currentSpeed = Speed.Fast;
         }
         Debug.Log("Speed changed to " + currentSpeed.ToString());
         return currentSpeed;
-
     }
 
     public float getSpeed()
@@ -268,7 +267,7 @@ public class TurntableController : MonoBehaviour
                 {
                     rightTurntable = 0;
                 }
-                rigidbody.AddTorque(rightTurntable * torqueAmount);
+                rigidbody.AddTorque(rightTurntable * getTorque());
                 previousRight = rightTurntable;
             }
         }
@@ -289,7 +288,7 @@ public class TurntableController : MonoBehaviour
 
         if (Input.GetAxis("Torque") != 0)
         {
-            rigidbody.AddTorque(Input.GetAxis("Torque") * torqueAmount);
+            rigidbody.AddTorque(Input.GetAxis("Torque") * getTorque());
             previousRight = rightTurntable;
         }
     }
@@ -312,7 +311,7 @@ public class TurntableController : MonoBehaviour
 
         if (previousRight != rightTurntable)
         {
-            float torque = torqueCount + torqueAmount;
+            float torque = torqueCount + getTorque();
 
             if (rightTurntable < 0.5f)
             {
@@ -351,6 +350,25 @@ public class TurntableController : MonoBehaviour
             }
 
             previousFade = crossFade;
+        }
+    }
+
+    float getTorque()
+    {
+        if(currentSpeed == Speed.Slow)
+        {
+            return torque_slow;
+        }else if(currentSpeed == Speed.Normal)
+        {
+            return torque_normal;
+        }
+        else if(currentSpeed == Speed.Fast)
+        {
+            return torque_fast;
+        }
+        else
+        {
+            return 0;
         }
     }
 }
