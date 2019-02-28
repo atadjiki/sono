@@ -77,6 +77,4 @@ public class ParasiteSpawner : MonoBehaviour
             Destroy(parasite);
         }
     }
-
-
 }
