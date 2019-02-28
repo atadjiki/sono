@@ -28,8 +28,6 @@ public class FragmentController : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        currentState = states.IDLE;
         rb = GetComponent<Rigidbody2D>();
 
         audioSource = GetComponent<AudioSource>();

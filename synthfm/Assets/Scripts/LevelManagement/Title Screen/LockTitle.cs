@@ -10,7 +10,7 @@ public class LockTitle : MonoBehaviour
     public TurntableController player;
     public Navpoint navPoint;
 
-    void Start()
+    void Awake()
     {
         StartCoroutine(Lock());
 
