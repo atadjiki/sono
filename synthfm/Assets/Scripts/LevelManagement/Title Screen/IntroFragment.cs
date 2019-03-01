@@ -6,22 +6,30 @@ public class IntroFragment : MonoBehaviour
 {
     private enum states { FLEE, CIRCLE };
     private states currentState;
-
+    public float timeUntilKill = 10f;
     private Rigidbody2D rb;
-    public float acceleration;
-    public float maxSpeed;
-    public float turnSpeed;
+    public float acceleration = 500;
+    public float maxSpeed = 50;
+    public float turnSpeed = 25;
 
     private AudioSource audioSource;
 
-    private Transform followTarget;
+    public Transform followTarget;
     private Vector3 previousTargetPosition;
 
     public TrailRenderer trail;
 
     private void Start()
     {
-        followTarget = LevelManager.instance.getPlayer().transform;
+        if(followTarget == null)
+        {
+            followTarget = GameObject.Find("Player").transform;
+        }
+        if(trail == null)
+        {
+            trail = GetComponentInChildren<TrailRenderer>();
+        }
+        
         previousTargetPosition = followTarget.position;
 
         currentState = states.CIRCLE;
@@ -80,7 +88,7 @@ public class IntroFragment : MonoBehaviour
 
     private IEnumerator KillTimer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(timeUntilKill);
 
         Destroy(gameObject);
     }
