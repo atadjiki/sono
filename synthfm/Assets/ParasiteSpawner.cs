@@ -13,8 +13,16 @@ public class ParasiteSpawner : MonoBehaviour
     private List<GameObject> parasites;
     public bool active = true;
 
+
+    private void Start()
+    {
+        player = GameObject.Find("Player").transform;
+
+    }
     private void Awake()
     {
+        player = GameObject.Find("Player").transform;
+
         if (player == null)
             player = GameObject.Find("Player").transform;
         if (mainCamera == null)
