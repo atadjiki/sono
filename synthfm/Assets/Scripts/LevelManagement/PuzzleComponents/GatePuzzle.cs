@@ -32,8 +32,10 @@ public class GatePuzzle : Puzzle
 
     private void Start()
     {
-        m_Main.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = GameObject.FindGameObjectWithTag("Player").transform;
         turnController = GameObject.Find("Player").GetComponent<TurntableController>();
+
+        player = turnController;
+        mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>(); 
         currentList = gates;
         currentIndex = 0;
         inProgress = false;
