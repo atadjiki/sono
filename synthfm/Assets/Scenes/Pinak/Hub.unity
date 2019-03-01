@@ -921,9 +921,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1725733388}
 --- !u!1 &212946805
 GameObject:
@@ -6339,9 +6341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1868041028}
 --- !u!1 &481288095
 GameObject:
@@ -6707,9 +6711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1730784396}
 --- !u!1 &563181325
 GameObject:
@@ -7962,6 +7968,7 @@ MonoBehaviour:
   lockTime: 11
   player: {fileID: 347054873}
   navPoint: {fileID: 912886220}
+  rbPlayer: {fileID: 1209789632}
 --- !u!1001 &1015741260
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,25 +8,26 @@ public class SceneMemoryManagement : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [Tooltip("The distance between the player and the scene where we want the scene to unload.")]
-    [SerializeField] private float unloadDistance; 
+    [SerializeField] private float unloadDistance;
 
     public float BRsceneDistance;
 
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.Find("Parasite"))
+        if (GameObject.Find("Parasite"))
         {
-            if(BRsceneDistance > unloadDistance)
+            if (BRsceneDistance > unloadDistance)
             {
                 SceneManager.UnloadSceneAsync("Parasite");
             }
         }
-        else if(GameObject.Find("Procedural1"))
+        else if (GameObject.Find("Procedural1"))
         {
-            if(BRsceneDistance > unloadDistance)
+            if (BRsceneDistance > unloadDistance)
             {
                 SceneManager.UnloadSceneAsync("Procedural1");
             }
+        }
     }
 }
