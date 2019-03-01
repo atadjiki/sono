@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
-public class WaveParticleCollider: MonoBehaviour
+public class Switchafterpuzzends : MonoBehaviour
 {
-    public VisualEffect Waves;
-    public GameObject Player;
-    public Vector3 PlayerLocation;
-
+    public VisualEffect VE;
+    public Texture3D tex;
+    public float Complete;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerLocation = Player.transform.position;
-        
-        
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+
+            print("Nice");
+            VE.SetFloat("SwitchInt", Complete);
+        }
     }
 }
