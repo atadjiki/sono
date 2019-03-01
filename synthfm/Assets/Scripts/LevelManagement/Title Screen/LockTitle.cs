@@ -10,19 +10,23 @@ public class LockTitle : MonoBehaviour
     public TurntableController player;
     public Navpoint navPoint;
 
+    [SerializeField] private GameObject rbPlayer;
+
     void Awake()
     {
-        StartCoroutine(Lock());
+        rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
+       StartCoroutine(Lock());
 
     }
 
     IEnumerator Lock()
     {
         Debug.Log(Time.time);
-        player.enabled = false;
         navPoint.active = false;
         yield return new WaitForSecondsRealtime(lockTime);
-        player.enabled = true;
+        rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
         navPoint.active = true;
         Debug.Log(Time.time);
     }
