@@ -364,6 +364,16 @@ PrefabInstance:
       propertyPath: disableCameraOnComplete
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4641221765636120885, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: turnController
+      value: 
+      objectReference: {fileID: 347054873}
+    - target: {fileID: 4641221765636120885, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: inOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01b8fd2db930a5245ab64f92bbb8a18d, type: 3}
 --- !u!4 &88114713 stripped
@@ -605,6 +615,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 347054873}
+    - target: {fileID: 4556877391439992889, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: turnController
+      value: 
+      objectReference: {fileID: 347054873}
+    - target: {fileID: 4556877391439992889, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: inOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4556877392726437357, guid: 26c9503309ec75c4e8323d04a8339731,
         type: 3}
       propertyPath: fragmentNumber
@@ -759,7 +779,7 @@ PrefabInstance:
     - target: {fileID: 2160230258565618381, guid: 58799014d2724764d9a738e360f97802,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 2160230258565618381, guid: 58799014d2724764d9a738e360f97802,
         type: 3}
@@ -5932,6 +5952,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 347054873}
+    - target: {fileID: 6573480297260699636, guid: 48a1d006ef60dc54aad1cbf5f3af26ce,
+        type: 3}
+      propertyPath: turnController
+      value: 
+      objectReference: {fileID: 347054873}
+    - target: {fileID: 6573480297260699636, guid: 48a1d006ef60dc54aad1cbf5f3af26ce,
+        type: 3}
+      propertyPath: inOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6573480298447790367, guid: 48a1d006ef60dc54aad1cbf5f3af26ce,
         type: 3}
       propertyPath: fragmentNumber
@@ -6067,7 +6097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411033791}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1350.9999, y: -6000, z: 0}
+  m_LocalPosition: {x: -1350.9999, y: -3526, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.3117147, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 1550519356}
@@ -9095,7 +9125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -200}
+  m_FollowOffset: {x: 0, y: 0, z: -150}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -9357,7 +9387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656461128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1351, y: -1978, z: 0}
+  m_LocalPosition: {x: -1351, y: -1996, z: 0}
   m_LocalScale: {x: 1, y: 0.31171194, z: 1}
   m_Children: []
   m_Father: {fileID: 1550519356}
@@ -10162,7 +10192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969531330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1148.186, y: -866.4374, z: -418}
+  m_LocalPosition: {x: 1148.186, y: -866.4374, z: -148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1511307804}
@@ -10672,6 +10702,11 @@ PrefabInstance:
       propertyPath: turntableManager
       value: 
       objectReference: {fileID: 1981209547}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: acceleration
+      value: 4000
+      objectReference: {fileID: 0}
     - target: {fileID: 888040040, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_IsActive
       value: 0

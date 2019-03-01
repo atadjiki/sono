@@ -20,8 +20,8 @@ public class DepositFragments : MonoBehaviour
                 if (fragment.currentState == FragmentController.states.FOLLOW)
                 {
                     fragment.Deposit(gameObject.transform);
-                    CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = fragment.transform;
-                    CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = fragment.transform;
+                    //GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = fragment.transform;
+                    //CM_Deposit.GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = fragment.transform;
                 }
             }
         }
