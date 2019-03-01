@@ -7,6 +7,8 @@ public class Switchafterpuzzends : MonoBehaviour
     public VisualEffect VE;
     public Texture3D tex;
     public float Complete;
+    public float Over;
+    public float hange;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class Switchafterpuzzends : MonoBehaviour
 
             print("Nice");
             VE.SetFloat("SwitchInt", Complete);
+            VE.SetFloat("Offandover", hange);
+            VE.SetFloat("OFF", Over);
         }
     }
 }
