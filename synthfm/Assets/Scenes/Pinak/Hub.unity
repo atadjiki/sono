@@ -6051,6 +6051,7 @@ GameObject:
   - component: {fileID: 411033792}
   - component: {fileID: 411033794}
   - component: {fileID: 411033793}
+  - component: {fileID: 411033795}
   m_Layer: 0
   m_Name: 'Second Realm Entry Point '
   m_TagString: Realm2
@@ -6112,6 +6113,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8178.688, y: 3238.4214}
   m_EdgeRadius: 0
+--- !u!114 &411033795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411033791}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25af1bc634cec7843b46bebb4647a621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Psystem: {fileID: 2015666927}
 --- !u!1 &443899060
 GameObject:
   m_ObjectHideFlags: 0
@@ -10250,6 +10264,12 @@ Transform:
   m_Father: {fileID: 667764381}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2015666927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7919485860211731272, guid: b8a011f487dba2644adbd6046cdde4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1855229569383691384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2078650135
 GameObject:
   m_ObjectHideFlags: 0
@@ -10592,11 +10612,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 1981209547}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10652,13 +10667,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
+    - target: {fileID: 888040040, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 888040040, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7919485860211731272, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -10669,6 +10689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FiberSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860211731274, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
