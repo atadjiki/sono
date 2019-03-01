@@ -113,7 +113,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 45
 --- !u!250 &4025103954902211456
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 45
 --- !u!250 &4025103955464905082
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -1139,6 +1139,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: efe735f8455900649abce555b016444d,
+        type: 3}
     - target: {fileID: 5863697302354160311, guid: f13e94f16290ffc438cefe7fd7e253fe,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2206,6 +2212,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: efe735f8455900649abce555b016444d,
+        type: 3}
     - target: {fileID: 5863697302354160311, guid: f13e94f16290ffc438cefe7fd7e253fe,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
