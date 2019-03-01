@@ -29,7 +29,7 @@ public class FragmentCase : MonoBehaviour
                 else
                 {
                     GetComponentInParent<Puzzle>().mainCamera.enabled = true;
-                    GetComponentInParent<Puzzle>().setPieceCamera.enabled = false;
+                    GetComponentInParent<Puzzle>().setPieceCamera.enabled = false; 
                 }
 
             }
