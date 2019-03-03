@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XboxCtrlrInput;
 
 public class TurntableController : MonoBehaviour
 {
@@ -43,18 +42,7 @@ public class TurntableController : MonoBehaviour
     public enum Speed { Slow, Normal, Fast };
     public Speed currentSpeed;
     public enum ControlType { Keyboard, Joystick, Turntable };
-
-    [Header("Controls")]
     public ControlType controls = ControlType.Keyboard;
-    public KeyCode alt_left_1 = KeyCode.A;
-    public KeyCode alt_left_2 = KeyCode.D;
-    public KeyCode alt_right_1 = KeyCode.LeftArrow;
-    public KeyCode alt_right_2 = KeyCode.RightArrow;
-    public KeyCode alt_speed_up = KeyCode.W;
-    public KeyCode alt_slow_down = KeyCode.S;
-    public KeyCode alt_slow = KeyCode.Alpha1;
-    public KeyCode alt_normal = KeyCode.Alpha2;
-    public KeyCode alt_fast = KeyCode.Alpha3;
 
     private new Rigidbody2D rigidbody;
 
@@ -157,15 +145,15 @@ public class TurntableController : MonoBehaviour
     {
         if(controls == ControlType.Keyboard)
         {
-            if (Input.GetKeyDown(alt_slow))
+            if (Input.GetKeyDown(InputBindings.slow))
             {
                 ChangeSpeed(Speed.Slow);
             }
-            else if (Input.GetKeyDown(alt_normal))
+            else if (Input.GetKeyDown(InputBindings.normal))
             {
                 ChangeSpeed(Speed.Normal);
             }
-            else if (Input.GetKeyDown(alt_fast))
+            else if (Input.GetKeyDown(InputBindings.fast))
             {
                 ChangeSpeed(Speed.Fast);
             }
@@ -178,22 +166,22 @@ public class TurntableController : MonoBehaviour
 
         if(controls == ControlType.Keyboard)
         {
-            if (Input.GetKey(alt_speed_up))
+            if (Input.GetKey(InputBindings.speed_up))
             {
                 fast_override = true;
             }
-            else if (Input.GetKeyUp(alt_speed_up))
+            else if (Input.GetKeyUp(InputBindings.speed_up))
             {
                 Debug.Log("Speed back to " + currentSpeed.ToString());
                 ChangeSpeed(Speed.Normal);
                 fast_override = false;
             }
 
-            if (Input.GetKey(alt_slow_down))
+            if (Input.GetKey(InputBindings.slow_down))
             {
                 slow_override = true;
             }
-            else if (Input.GetKeyUp(alt_slow_down))
+            else if (Input.GetKeyUp(InputBindings.slow_down))
             {
                 Debug.Log("Speed back to " + currentSpeed.ToString());
                 ChangeSpeed(Speed.Normal);
@@ -231,8 +219,10 @@ public class TurntableController : MonoBehaviour
     {
         try
         {
-            float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
-            float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
+            // float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
+            //float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
+            float leftStickX = 0;
+            float rightStickX = 0;
 
             if (leftStickX != 0)
             {
@@ -274,6 +264,7 @@ public class TurntableController : MonoBehaviour
         }
         catch (System.ArgumentException e)
         {
+            Debug.LogError(e.Message);
             return;
         }
 
@@ -283,13 +274,13 @@ public class TurntableController : MonoBehaviour
     {
         if (Input.GetAxis("Acceleration") != 0)
         {
-            accel_mod += Input.GetAxis("Acceleration");
+            accel_mod += Input.GetAxis(InputBindings.acceleration);
             previousLeft = leftTurntable;
         }
 
         if (Input.GetAxis("Torque") != 0)
         {
-            rigidbody.AddTorque(Input.GetAxis("Torque") * getTorque());
+            rigidbody.AddTorque(Input.GetAxis(InputBindings.torque) * getTorque());
             previousRight = rightTurntable;
         }
     }
