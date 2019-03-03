@@ -82,7 +82,9 @@ public class ParasiteSpawner : MonoBehaviour
 
         foreach (GameObject parasite in toDestroy)
         {
-            Destroy(parasite);
+            parasite.GetComponent<ParasiteController>().Kill();
         }
+
+        active = false;
     }
 }

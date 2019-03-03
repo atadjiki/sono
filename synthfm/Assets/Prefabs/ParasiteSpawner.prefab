@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9029931585338232254}
-  - component: {fileID: 6968031060391356059}
+  - component: {fileID: 6490336592850906790}
   m_Layer: 0
   m_Name: ParasiteSpawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6968031060391356059
+--- !u!114 &6490336592850906790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,3 +49,4 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   maxParasites: 20
   secsUntilNextSpawn: 5
+  active: 1

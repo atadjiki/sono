@@ -14,6 +14,7 @@ public class ParasiteController : MonoBehaviour
     public float acceleration;
     public float maxSpeed;
     public float turnSpeed;
+    private float timeUntilKill = 5;
 
     public bool isAttached;
 
@@ -49,6 +50,7 @@ public class ParasiteController : MonoBehaviour
                 Follow();
                 break;
             case states.FLEE:
+                Flee();
                 break;
             default:
                 break;
@@ -75,6 +77,25 @@ public class ParasiteController : MonoBehaviour
 
             rb.AddForce(transform.up * restrictedAccel * Time.deltaTime);
         }
+    }
+
+    private void Flee()
+    {
+        //accelerate
+        rb.AddForce(transform.up * acceleration * 2f * Time.deltaTime);
+    }
+
+    private IEnumerator KillTimer()
+    {
+        yield return new WaitForSeconds(timeUntilKill);
+
+        Destroy(gameObject);
+    }
+
+    public void Kill()
+    {
+        currentState = states.FLEE;
+        StartCoroutine(KillTimer());
     }
 
     public states GetState()

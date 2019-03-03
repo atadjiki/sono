@@ -74,8 +74,7 @@ public class IntroFragment : MonoBehaviour
 
         if(followTarget.position != previousTargetPosition)
         {
-            currentState = states.FLEE;
-            StartCoroutine(KillTimer());
+            Kill();
         }
     }
 
@@ -91,5 +90,11 @@ public class IntroFragment : MonoBehaviour
         yield return new WaitForSeconds(timeUntilKill);
 
         Destroy(gameObject);
+    }
+
+    public void Kill()
+    {
+        currentState = states.FLEE;
+        StartCoroutine(KillTimer());
     }
 }
