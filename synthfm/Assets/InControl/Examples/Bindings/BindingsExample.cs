@@ -13,11 +13,12 @@ namespace BindingsExample
 
 		void OnEnable()
 		{
-			// See PlayerActions.cs for this setup.
-			playerActions = PlayerActions.CreateWithDefaultBindings();
-			//playerActions.Move.OnLastInputTypeChanged += ( lastInputType ) => Debug.Log( lastInputType );
+            // See PlayerActions.cs for this setup.
 
-			LoadBindings();
+            //playerActions.Move.OnLastInputTypeChanged += ( lastInputType ) => Debug.Log( lastInputType );
+
+            playerActions = PlayerActions.CreateWithDefaultBindings();
+            LoadBindings();
 		}
 
 

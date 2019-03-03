@@ -1,6 +1,5 @@
-﻿
+﻿namespace PlayerInput{
 
-namespace PlayerInput{
     using InControl;
     using UnityEngine;
 
@@ -16,12 +15,10 @@ namespace PlayerInput{
         public PlayerAction FastSpeed;
         public PlayerAction Pause;
 
-
-
         public InputBindings()
         {
-            Left = CreatePlayerAction("Move Left");
-            Right = CreatePlayerAction("Move Right");
+            Left = CreatePlayerAction("Turn Left");
+            Right = CreatePlayerAction("Turn Right");
             SlowDown = CreatePlayerAction("Slow Down");
             SpeedUp = CreatePlayerAction("Speed Up");
             SlowSpeed = CreatePlayerAction("Slow Speed");
@@ -40,41 +37,34 @@ namespace PlayerInput{
             // playerActions.Next.AddDefaultBinding( KeyCombo.With( Key.Tab ).AndNot( Key.Shift ) );
 
             playerActions.Left.AddDefaultBinding(Key.LeftArrow);
+            playerActions.Left.AddDefaultBinding(Key.A);
             playerActions.Right.AddDefaultBinding(Key.RightArrow);
+            playerActions.Right.AddDefaultBinding(Key.D);
 
             playerActions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
             playerActions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
 
+            playerActions.Left.AddDefaultBinding(InputControlType.RightStickLeft);
+            playerActions.Right.AddDefaultBinding(InputControlType.RightStickRight);
 
-            playerActions.Left.AddDefaultBinding(InputControlType.DPadLeft);
-            playerActions.Right.AddDefaultBinding(InputControlType.DPadRight);
+            playerActions.SlowDown.AddDefaultBinding(Key.S);
+            playerActions.SlowDown.AddDefaultBinding(InputControlType.LeftTrigger);
 
+            playerActions.SpeedUp.AddDefaultBinding(Key.W);
+            playerActions.SpeedUp.AddDefaultBinding(InputControlType.RightTrigger);
 
+            playerActions.Pause.AddDefaultBinding(Key.Escape);
+            playerActions.Pause.AddDefaultBinding(InputControlType.Start);
 
-            playerActions.Left.AddDefaultBinding(Mouse.NegativeX);
-            playerActions.Right.AddDefaultBinding(Mouse.PositiveX);
+            playerActions.SlowSpeed.AddDefaultBinding(Key.Key1);
+            playerActions.NormalSpeed.AddDefaultBinding(Key.Key2);
+            playerActions.FastSpeed.AddDefaultBinding(Key.Key3);
+
 
             playerActions.ListenOptions.IncludeUnknownControllers = true;
             playerActions.ListenOptions.MaxAllowedBindings = 4;
             playerActions.ListenOptions.UnsetDuplicateBindingsOnSet = true;
 
-
-            playerActions.ListenOptions.OnBindingFound = (action, binding) => {
-                if (binding == new KeyBindingSource(Key.Escape))
-                {
-                    action.StopListeningForBinding();
-                    return false;
-                }
-                return true;
-            };
-
-            playerActions.ListenOptions.OnBindingAdded += (action, binding) => {
-                Debug.Log("Binding added... " + binding.DeviceName + ": " + binding.Name);
-            };
-
-            playerActions.ListenOptions.OnBindingRejected += (action, binding, reason) => {
-                Debug.Log("Binding rejected... " + reason);
-            };
 
             return playerActions;
         }

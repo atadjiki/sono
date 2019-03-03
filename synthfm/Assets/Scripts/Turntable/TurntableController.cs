@@ -10,15 +10,6 @@
     {
 
         [Header("Controls")]
-        public static KeyCode left_1 = KeyCode.A;
-        public static KeyCode left_2 = KeyCode.D;
-        public static KeyCode right_1 = KeyCode.LeftArrow;
-        public static KeyCode right_2 = KeyCode.RightArrow;
-        public static KeyCode speed_up = KeyCode.W;
-        public static KeyCode slow_down = KeyCode.S;
-        public static KeyCode slow = KeyCode.Alpha1;
-        public static KeyCode normal = KeyCode.Alpha2;
-        public static KeyCode fast = KeyCode.Alpha3;
 
         public static string accelerationKey = "Acceleration";
         public static string torqueKey = "Torque";
@@ -59,8 +50,6 @@
 
         public enum Speed { Slow, Normal, Fast };
         public Speed currentSpeed;
-        public enum ControlType { Keyboard, Joystick, Turntable };
-        public ControlType controls = ControlType.Keyboard;
 
         private new Rigidbody2D rigidbody;
 
@@ -70,6 +59,48 @@
         public Transform[] fragmentSlots;
         public bool[] slotsFilled;
 
+        InputBindings inputBindings;
+        string saveData;
+
+
+        void OnEnable()
+        {
+            // See PlayerActions.cs for this setup.
+
+            //playerActions.Move.OnLastInputTypeChanged += ( lastInputType ) => Debug.Log( lastInputType );
+
+            inputBindings = InputBindings.CreateWithDefaultBindings();
+            LoadBindings();
+        }
+
+        void OnDisable()
+        {
+            // This properly disposes of the action set and unsubscribes it from
+            // update events so that it doesn't do additional processing unnecessarily.
+            inputBindings.Destroy();
+        }
+
+        void SaveBindings()
+        {
+            saveData = inputBindings.Save();
+            PlayerPrefs.SetString("Bindings", saveData);
+        }
+
+
+        void LoadBindings()
+        {
+            if (PlayerPrefs.HasKey("Bindings"))
+            {
+                saveData = PlayerPrefs.GetString("Bindings");
+                inputBindings.Load(saveData);
+            }
+        }
+
+
+        void OnApplicationQuit()
+        {
+            PlayerPrefs.Save();
+        }
 
         // Use this for initialization
         void Start()
@@ -89,12 +120,9 @@
             UpdateVariables();
             ApplyForce();
 
-            if (controls == ControlType.Joystick)
-                DoJoyStickInput();
-            if (controls == ControlType.Keyboard)
-                DoAltInput();
-            if (controls == ControlType.Turntable)
-                DoMIDIInput();
+            DoAltInput();
+
+            DoMIDIInput();
 
             DoSpeedInput();
             DoCheckForOverrides();
@@ -163,20 +191,17 @@
 
         void DoSpeedInput()
         {
-            if (controls == ControlType.Keyboard)
+            if (inputBindings.SlowSpeed.WasPressed)
             {
-                if (Input.GetKeyDown(slow))
-                {
-                    ChangeSpeed(Speed.Slow);
-                }
-                else if (Input.GetKeyDown(normal))
-                {
-                    ChangeSpeed(Speed.Normal);
-                }
-                else if (Input.GetKeyDown(fast))
-                {
-                    ChangeSpeed(Speed.Fast);
-                }
+                ChangeSpeed(Speed.Slow);
+            }
+            else if (inputBindings.NormalSpeed.WasPressed)
+            {
+                ChangeSpeed(Speed.Normal);
+            }
+            else if (inputBindings.FastSpeed.WasPressed)
+            {
+                ChangeSpeed(Speed.Fast);
             }
 
         }
@@ -184,125 +209,44 @@
         void DoCheckForOverrides()
         {
 
-            if (controls == ControlType.Keyboard)
+            if (inputBindings.SpeedUp.WasPressed)
             {
-                if (Input.GetKey(speed_up))
-                {
-                    fast_override = true;
-                }
-                else if (Input.GetKeyUp(speed_up))
-                {
-                    Debug.Log("Speed back to " + currentSpeed.ToString());
-                    ChangeSpeed(Speed.Normal);
-                    fast_override = false;
-                }
-
-                if (Input.GetKey(slow_down))
-                {
-                    slow_override = true;
-                }
-                else if (Input.GetKeyUp(slow_down))
-                {
-                    Debug.Log("Speed back to " + currentSpeed.ToString());
-                    ChangeSpeed(Speed.Normal);
-                    slow_override = false;
-                }
+                fast_override = true;
+                Debug.Log("Speed overriden to Fast");
             }
-            else if (controls == ControlType.Joystick)
+            else if (inputBindings.SpeedUp.WasReleased)
             {
-                if (Input.GetAxis("Speed_Up") > 0)
-                {
-                    fast_override = true;
-                }
-                else if (Input.GetAxis("Speed_Up") <= 0)
-                {
-                    Debug.Log("Speed back to " + currentSpeed.ToString());
-                    ChangeSpeed(Speed.Normal);
-                    fast_override = false;
-                }
-
-                if (Input.GetAxis("Slow_Down") > 0)
-                {
-                    slow_override = true;
-
-                }
-                else if (Input.GetAxis("Slow_Down") <= 0)
-                {
-                    Debug.Log("Speed back to " + currentSpeed.ToString());
-                    ChangeSpeed(Speed.Normal);
-                    slow_override = false;
-                }
+                ChangeSpeed(Speed.Normal);
+                fast_override = false;
             }
 
-        }
-
-        void DoJoyStickInput()
-        {
-            try
+            if (inputBindings.SlowDown.WasPressed)
             {
-                // float leftStickX = XCI.GetAxis(XboxAxis.LeftStickX);
-                //float rightStickX = XCI.GetAxis(XboxAxis.RightStickX);
-                float leftStickX = 0;
-                float rightStickX = 0;
-
-                if (leftStickX != 0)
-                {
-                    if (leftStickX < 0)
-                    {
-                        leftTurntable = -1f;
-                    }
-                    else if (leftStickX > 0)
-                    {
-                        leftTurntable = 1f;
-                    }
-                    else
-                    {
-                        leftTurntable = 0;
-                    }
-
-                    accel_mod += leftTurntable;
-                    previousLeft = leftTurntable;
-                }
-
-                if (rightStickX != 0)
-                {
-
-                    if (rightStickX < 0)
-                    {
-                        rightTurntable = 1f;
-                    }
-                    else if (rightStickX > 0)
-                    {
-                        rightTurntable = -1f;
-                    }
-                    else
-                    {
-                        rightTurntable = 0;
-                    }
-                    rigidbody.AddTorque(rightTurntable * getTorque());
-                    previousRight = rightTurntable;
-                }
+                slow_override = true;
+                Debug.Log("Speed overriden to Slow");
             }
-            catch (System.ArgumentException e)
+            else if (inputBindings.SlowDown.WasReleased)
             {
-                Debug.LogError(e.Message);
-                return;
+                ChangeSpeed(Speed.Normal);
+                slow_override = false;
             }
 
         }
 
         void DoAltInput()
         {
-            if (Input.GetAxis("Acceleration") != 0)
+            if (inputBindings.Left.IsPressed)
             {
-                accel_mod += Input.GetAxis(accelerationKey);
-                previousLeft = leftTurntable;
-            }
-
-            if (Input.GetAxis("Torque") != 0)
-            {
-                rigidbody.AddTorque(Input.GetAxis(torqueKey) * getTorque());
+                rigidbody.AddTorque(1 * getTorque());
                 previousRight = rightTurntable;
+            }
+            else if (inputBindings.Right.IsPressed)
+            {
+                rigidbody.AddTorque(-1 * getTorque());
+                previousRight = rightTurntable;
+            }else if (inputBindings.Pause.WasPressed)
+            {
+                TogglePause();
             }
         }
 
@@ -383,6 +327,17 @@
             else
             {
                 return 0;
+            }
+        }
+
+        void TogglePause()
+        {
+            if(Time.timeScale >= 1)
+            {
+                Time.timeScale = 0;
+            }else if(Time.timeScale <= 0)
+            {
+                Time.timeScale = 1;
             }
         }
     }
