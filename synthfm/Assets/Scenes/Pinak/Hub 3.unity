@@ -278,7 +278,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 347054877}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &51304516
 GameObject:
@@ -1090,9 +1090,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1725733388}
 --- !u!1 &202226314
 GameObject:
@@ -6961,9 +6963,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1868041028}
 --- !u!1 &481288095
 GameObject:
@@ -7398,9 +7402,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1730784396}
 --- !u!1 &563181325
 GameObject:
@@ -9267,6 +9273,7 @@ MonoBehaviour:
   lockTime: 11
   player: {fileID: 347054873}
   navPoint: {fileID: 912886220}
+  rbPlayer: {fileID: 0}
 --- !u!1 &993883296
 GameObject:
   m_ObjectHideFlags: 3
@@ -14648,10 +14655,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: m_UsedByEffector
-      value: 0
+    - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447587, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -14663,9 +14669,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
+    - target: {fileID: 1855229569708447588, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
@@ -14686,11 +14693,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5034590726182194203, guid: 9fccaa88b8bd8cf41a69f10cb560cb82,
-        type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 381497989}
     - target: {fileID: 5034590726182194202, guid: 9fccaa88b8bd8cf41a69f10cb560cb82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14746,6 +14748,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5034590726182194203, guid: 9fccaa88b8bd8cf41a69f10cb560cb82,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 381497989}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fccaa88b8bd8cf41a69f10cb560cb82, type: 3}
 --- !u!1001 &8203722433262424974
