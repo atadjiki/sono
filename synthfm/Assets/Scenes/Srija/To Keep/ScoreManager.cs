@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] scoreTracks;
 
-    private int NoOfAudioTracks = 3;
+    private int NoOfAudioTracks = 4;
 
     AudioSource[] sources;
     public int BPM; //todo: actually implement time signature-based counting
