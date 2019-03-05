@@ -12,7 +12,7 @@ using UnityEditor;
 public class SetPiece : MonoBehaviour
 {
     public Cinemachine.CinemachineVirtualCamera mainCamera;
-    public PlayerInput.TurntableController player;
+    public TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
     public GameObject center;
 
@@ -38,7 +38,7 @@ public class SetPiece : MonoBehaviour
         }
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
+        player = GameObject.Find("Player").GetComponent<TurntableController>();
 
         GameObject VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
         VCam.name = "CM_" + this.name;

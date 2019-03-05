@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boost : MonoBehaviour
 {
     private Rigidbody2D playerRigidBody;
-    private PlayerInput.TurntableController controller;
+    private TurntableController controller;
     private Transform playerTransform;
     private float oldAccel;
     [SerializeField]
@@ -14,14 +14,14 @@ public class Boost : MonoBehaviour
     [SerializeField]
     private float BoostHoldTime = 1.0f;
     private float boostHoldTimer;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         playerRigidBody = player.GetComponent<Rigidbody2D>();
         playerTransform = player.transform;
-        controller = player.GetComponent<PlayerInput.TurntableController>();
+        controller = player.GetComponent<TurntableController>();
     }
 
     // Update is called once per frame

@@ -7,7 +7,7 @@ public class LockTitle : MonoBehaviour
     // Start is called before the first frame update
 
     public float lockTime = 10.0f;
-    public PlayerInput.TurntableController player;
+    public TurntableController player;
     public Navpoint navPoint;
 
     [SerializeField] private GameObject rbPlayer;
