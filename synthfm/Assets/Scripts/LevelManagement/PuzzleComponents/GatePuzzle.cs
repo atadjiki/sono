@@ -16,7 +16,7 @@ public class GatePuzzle : Puzzle
     private bool timer = false;
     public List<GateTrigger> gates;
     public GameObject m_Main;
-    public TurntableController turnController;
+    public PlayerInput.TurntableController turnController;
     private List<GateTrigger> currentList;
     private int currentIndex;
     private bool inProgress;
@@ -32,7 +32,7 @@ public class GatePuzzle : Puzzle
 
     private void Start()
     {
-        turnController = GameObject.Find("Player").GetComponent<TurntableController>();
+        turnController = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
 
         player = turnController;
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>(); 
