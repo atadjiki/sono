@@ -52,7 +52,7 @@ public class Mixer
     }
 }
 
-//[RequireComponent(typeof(AudioSource))]
+// TODO: need to add parameters to mixer groups to control them
 public class ScoreManager : MonoBehaviour
 {
     [Header("Score Patterns")]
@@ -65,6 +65,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int NoOfAudioTracksPerDock = 3;
 
+    [Header("Metronome")]
     [Header("BPM")]
     public double bpm; //todo: actually implement time signature-based counting
     [Header("Time Signature")]
@@ -99,29 +100,15 @@ public class ScoreManager : MonoBehaviour
             docks[i].NumberOfAudioTracks = NoOfAudioTracksPerDock;
             docks[i].CreateSources(gameObject);
         }
+    }
 
+    private void Start()
+    {
+        // Setting up our initial state
         LoadPattern(0, 0);
         LoadPattern(1);
         Play(0);
     }
-
-    float[] AddAudioData(float[] track1, float[] track2)
-    {
-        float[] result = new float[ Mathf.Min(track1.Length, track2.Length) ];
-
-        for (int i = 0; i < result.Length; i++)
-            result[i] = ClampToValidRange( (track1[i] + track2[i])/2 );
-
-        return result;
-    }
-
-    private float ClampToValidRange(float value)
-    {
-        float min = -1.0f;
-        float max = 1.0f;
-        return (value < min) ? min : (value > max) ? max : value;
-    }
-
 
     // this is coroutine hell
     public void Crossfade()
@@ -171,22 +158,6 @@ public class ScoreManager : MonoBehaviour
         docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
     }
 
-    public void LoadPattern(int Index)
-    {
-        int DockIndex = (CurrentActiveDock + 1) % docks.Length;
-        LoadPattern(Index, DockIndex);
-    }
-
-    public void LoadPattern(int Index, int DockIndex)
-    {
-        docks[DockIndex].Load(scorePatterns[Index]);
-    }
-
-    public void Play(int DockIndex)
-    {
-        docks[DockIndex].Play();
-    }
-
     public void FadeOut(int DockIndex)
     {
 
@@ -195,6 +166,37 @@ public class ScoreManager : MonoBehaviour
         docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
     }
 
+    public void Play(int DockIndex)
+    {
+        docks[DockIndex].Play();
+    }
+
+
+    //These are all different ways you can load the next pattern into the other dock
+    public void LoadPattern(int Index)
+    {
+        int DockIndex = (CurrentActiveDock + 1) % docks.Length;
+        LoadPattern(Index, DockIndex);
+    }
+
+    public void LoadPattern(ScorePattern pattern)
+    {
+        int DockIndex = (CurrentActiveDock + 1) % docks.Length;
+        LoadPattern(pattern, DockIndex);
+    }
+
+    public void LoadPattern(ScorePattern pattern, int DockIndex)
+    {
+        docks[DockIndex].Load(pattern);
+    }
+
+    public void LoadPattern(int Index, int DockIndex)
+    {
+        docks[DockIndex].Load(scorePatterns[Index]);
+    }
+
+
+    // The Update functions mostly just handle updating the metronome
     void FixedUpdate()
     {
         double timePerTick = 60.0f / bpm;
@@ -209,13 +211,33 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    //yup. Still just the metronome.
     void LateUpdate()
     {
         if (!ticked && nextTick >= AudioSettings.dspTime)
         {
             ticked = true;
             //BroadcastMessage("OnTick");
-            Debug.Log("Tick");
+            //Debug.Log("Tick");
         }
     }
+
+    /* This code might come in handy for manual mixing
+    float[] AddAudioData(float[] track1, float[] track2)
+    {
+        float[] result = new float[Mathf.Min(track1.Length, track2.Length)];
+
+        for (int i = 0; i < result.Length; i++)
+            result[i] = ClampToValidRange((track1[i] + track2[i]) / 2);
+
+        return result;
+    }
+
+    private float ClampToValidRange(float value)
+    {
+        float min = -1.0f;
+        float max = 1.0f;
+        return (value < min) ? min : (value > max) ? max : value;
+    }
+    */
 }
