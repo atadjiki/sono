@@ -1,19 +1,83 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
+[System.Serializable]
+public class Mixer
+{
+    public AudioMixer mixer;
+    [HideInInspector]
+    public int NumberOfAudioTracks;
+    [HideInInspector]
+    public AudioSource[] sources;
+
+    public void CreateSources(GameObject gameObject)
+    {
+        sources = new AudioSource[NumberOfAudioTracks];
+        for (int i = 0; i < NumberOfAudioTracks; i++)
+        {
+            sources[i] = gameObject.AddComponent<AudioSource>();
+            sources[i].loop = true;
+            sources[i].playOnAwake = false;
+            sources[i].outputAudioMixerGroup = mixer.FindMatchingGroups("Master")[0]; //todo: assign to different mixer groups
+        }
+
+        Debug.Assert(sources.Length == NumberOfAudioTracks);
+    }
+
+    public void Load(ScorePattern scorePattern)
+    {
+        Debug.Assert(scorePattern.clips.Length == sources.Length);
+        for (int i = 0; i < sources.Length; i++)
+            sources[i].clip = scorePattern.clips[i];
+    }
+
+    public void Unload()
+    {
+        for (int i = 0; i < sources.Length; i++)
+            sources[i].clip = null;
+    }
+
+    public void Play()
+    {
+        for (int i = 0; i < sources.Length; i++)
+            sources[i].Play();
+    }
+
+    public void Pause()
+    {
+        for (int i = 0; i < sources.Length; i++)
+            sources[i].Pause();
+    }
+}
 
 //[RequireComponent(typeof(AudioSource))]
 public class ScoreManager : MonoBehaviour
 {
+    [Header("Score Patterns")]
+    public ScorePattern[] scorePatterns;
+
+    [Header("Docks")]
+    public Mixer[] docks;
+    private int CurrentActiveDock;
+
     [SerializeField]
-    private AudioClip[] scoreTracks;
+    private int NoOfAudioTracksPerDock = 3;
 
-    private int NoOfAudioTracks = 4;
+    [Header("BPM")]
+    public double bpm; //todo: actually implement time signature-based counting
+    [Header("Time Signature")]
+    public int Numerator;
+    public int Denominator;
 
-    AudioSource[] sources;
-    public int BPM; //todo: actually implement time signature-based counting
 
-    private AudioClip scoreToPlay;
+    double nextTick = 0.0F; // The next tick in dspTime
+    double sampleRate = 0.0F;
+    bool ticked = false;
+
+    private double DefaultCrossfadeTime = 0.5f;
+
     public static ScoreManager _instance;
 
     private void Awake()
@@ -23,33 +87,22 @@ public class ScoreManager : MonoBehaviour
         else if (_instance != this)
             Destroy(gameObject);
 
-        sources = new AudioSource[NoOfAudioTracks];
-        for(int i = 0; i < NoOfAudioTracks; i++)
+        double startTick = AudioSettings.dspTime;
+        sampleRate = AudioSettings.outputSampleRate;
+
+
+        Debug.Assert(bpm != 0);
+        nextTick = startTick + (60.0 / bpm);
+
+        for (int i = 0; i < docks.Length; i++)
         {
-            sources[i] = gameObject.AddComponent<AudioSource>();
+            docks[i].NumberOfAudioTracks = NoOfAudioTracksPerDock;
+            docks[i].CreateSources(gameObject);
         }
 
-        /*
-        float[] audioData1, audioData2;
-
-        float[] theactualdata = new float[44100];
-        scoreToPlay = AudioClip.Create("Score", 44100, scoreTracks[0].channels, 44100, false);
-
-        //gameObject.AddComponent<AudioSource>();
-
-        audioData1 = new float[scoreTracks[0].samples * scoreTracks[0].channels];
-        scoreTracks[0].GetData(audioData1, 0);
-
-        audioData2 = new float[scoreTracks[1].samples * scoreTracks[1].channels];
-        scoreTracks[1].GetData(audioData2, 0);
-        //Debug.Log(audioData.Length);
-        theactualdata = AddAudioData(audioData1, audioData2);
-
-        //AudioClip newclip = new AudioClip();
-        scoreToPlay.SetData(theactualdata, 0);
-
-        GetComponent<AudioSource>().PlayOneShot(scoreToPlay);
-        */
+        LoadPattern(0, 0);
+        LoadPattern(1);
+        Play(0);
     }
 
     float[] AddAudioData(float[] track1, float[] track2)
@@ -69,45 +122,100 @@ public class ScoreManager : MonoBehaviour
         return (value < min) ? min : (value > max) ? max : value;
     }
 
-    AudioSource FindFreeAudioSource()
+
+    // this is coroutine hell
+    public void Crossfade()
     {
-        foreach (var source in sources)
-            if (!source.isPlaying)
-                return source;
-        return null;
+        int OtherDock = (CurrentActiveDock + 1) % docks.Length;
+        Play(OtherDock);
+        FadeOut(CurrentActiveDock);
+        FadeIn(OtherDock);
+        StartCoroutine(UnloadDockAfterSeconds(CurrentActiveDock, OtherDock));
     }
 
-    public void StartPlayingClip(int index)
+    public void CrossfadeOnNextTick()
     {
-        //todo
-        AudioSource yays = FindFreeAudioSource();
-        if (yays == null)
+        StartCoroutine(CrossFadeOnNextTick());
+    }
+
+    IEnumerator UnloadDockAfterSeconds(int DockToUnload, int newCurrentDock)
+    {
+        float timer = 0;
+        while(timer <= DefaultCrossfadeTime)
         {
-            //oops
+            timer += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
         }
-        else
+        docks[DockToUnload].Pause();
+        //docks[DockToUnload].Unload();
+        CurrentActiveDock = newCurrentDock;
+    }
+
+    IEnumerator CrossFadeOnNextTick()
+    {
+        while (!ticked)
+            yield return new WaitForSeconds(Time.deltaTime);
+        Debug.Log("Crossfading now");
+        int OtherDock = (CurrentActiveDock + 1) % docks.Length;
+        Play(OtherDock);
+        FadeOut(CurrentActiveDock);
+        FadeIn(OtherDock);
+        StartCoroutine(UnloadDockAfterSeconds(CurrentActiveDock, OtherDock));
+    }
+
+    public void FadeIn(int DockIndex)
+    {
+
+        AudioMixerSnapshot[] mixerSnapshots = { docks[DockIndex].mixer.FindSnapshot("On") };
+        float[] mixerWeights = { 1 };
+        docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
+    }
+
+    public void LoadPattern(int Index)
+    {
+        int DockIndex = (CurrentActiveDock + 1) % docks.Length;
+        LoadPattern(Index, DockIndex);
+    }
+
+    public void LoadPattern(int Index, int DockIndex)
+    {
+        docks[DockIndex].Load(scorePatterns[Index]);
+    }
+
+    public void Play(int DockIndex)
+    {
+        docks[DockIndex].Play();
+    }
+
+    public void FadeOut(int DockIndex)
+    {
+
+        AudioMixerSnapshot[] mixerSnapshots = { docks[DockIndex].mixer.FindSnapshot("Off") };
+        float[] mixerWeights = { 1 };
+        docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
+    }
+
+    void FixedUpdate()
+    {
+        double timePerTick = 60.0f / bpm;
+        DefaultCrossfadeTime = timePerTick;
+        double dspTime = AudioSettings.dspTime;
+
+        while (dspTime >= nextTick)
         {
-            yays.loop = true;
-            yays.clip = scoreTracks[index];
-            yays.Play();
+            ticked = false;
+            nextTick += timePerTick;
         }
 
-        //also maybe have an overload with a clip name?
     }
 
-    // we probably need coroutines for these, don't we
-    public void Crossfade(AudioSource oldSource, AudioSource newSource)
+    void LateUpdate()
     {
-
-    }
-
-    public void FadeIn(AudioSource source)
-    {
-
-    }
-
-    public void FadeOut(AudioSource source)
-    {
-
+        if (!ticked && nextTick >= AudioSettings.dspTime)
+        {
+            ticked = true;
+            //BroadcastMessage("OnTick");
+            Debug.Log("Tick");
+        }
     }
 }
