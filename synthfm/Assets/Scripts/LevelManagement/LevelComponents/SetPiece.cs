@@ -49,9 +49,10 @@ public class SetPiece : MonoBehaviour
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0.2f;
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0.2f;
 
-
-        setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_NoiseProfile =
-        AssetDatabase.LoadAssetAtPath<Cinemachine.NoiseSettings>("Packages/com.Unity.Cinemachine/Presets/Noise/Handheld_tele_mild.asset");
+        #if UNITY_EDITOR
+            setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_NoiseProfile =
+            AssetDatabase.LoadAssetAtPath<Cinemachine.NoiseSettings>("Packages/com.Unity.Cinemachine/Presets/Noise/Handheld_tele_mild.asset");
+        #endif
 
         foreach(Transform child in transform)
         {

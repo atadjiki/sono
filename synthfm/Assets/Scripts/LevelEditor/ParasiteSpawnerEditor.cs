@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
-[CustomEditor(typeof(ParasiteSpawner))]
-public class ParasiteSpawnerEditor : Editor
-{
-    public override void OnInspectorGUI()
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(ParasiteSpawner))]
+    public class ParasiteSpawnerEditor : Editor
     {
-        DrawDefaultInspector();
-
-        ParasiteSpawner myScript = (ParasiteSpawner)target;
-        if (GUILayout.Button("Kill Parasites"))
+        public override void OnInspectorGUI()
         {
-            myScript.KillParasites();
+            DrawDefaultInspector();
+
+            ParasiteSpawner myScript = (ParasiteSpawner)target;
+            if (GUILayout.Button("Kill Parasites"))
+            {
+                myScript.KillParasites();
+            }
         }
     }
-}
+#endif

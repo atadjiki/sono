@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
-[CustomEditor(typeof(Puzzle), true)]
-public class PuzzleEditor : Editor
-{
-    public override void OnInspectorGUI()
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
+
+#if UNITY_EDITOR
+
+    [CustomEditor(typeof(Puzzle), true)]
+    public class PuzzleEditor : Editor
     {
-        DrawDefaultInspector();
-
-        Puzzle myScript = (Puzzle)target;
-        if (GUILayout.Button("Build Puzzle"))
+        public override void OnInspectorGUI()
         {
-            myScript.DoSetup();
+            DrawDefaultInspector();
+
+            Puzzle myScript = (Puzzle)target;
+            if (GUILayout.Button("Build Puzzle"))
+            {
+                myScript.DoSetup();
+            }
         }
     }
-}
+#endif

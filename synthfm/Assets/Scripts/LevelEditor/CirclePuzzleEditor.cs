@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
-[CustomEditor(typeof(CirclePuzzle), true)]
-public class CirclePuzzleEditor : Editor
-{
-    public override void OnInspectorGUI()
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(CirclePuzzle), true)]
+    public class CirclePuzzleEditor : Editor
     {
-        DrawDefaultInspector();
-
-        CirclePuzzle myScript = (CirclePuzzle)target;
-        if (GUILayout.Button("Build Puzzle"))
+        public override void OnInspectorGUI()
         {
-            myScript.DoSetup();
+            DrawDefaultInspector();
+
+            CirclePuzzle myScript = (CirclePuzzle)target;
+            if (GUILayout.Button("Build Puzzle"))
+            {
+                myScript.DoSetup();
+            }
         }
     }
-}
+#endif
