@@ -17,11 +17,13 @@
         private float leftTurntable;
         private float rightTurntable;
         private float crossFade;
+        private float slider;
         private float rotation;
 
         private float previousLeft;
         private float previousRight;
         private float previousFade;
+        private float previousSlider;
         private int currentFrames = 0;
         private int maxFrames = 60;
         private float torqueCount = 1;
@@ -135,6 +137,7 @@
             leftTurntable = turntableManager.getLeft();
             rightTurntable = turntableManager.getRight();
             crossFade = turntableManager.getFade();
+            slider = turntableManager.getSlider();
             //Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
         }
 
@@ -295,18 +298,22 @@
                 torqueCount = 1;
             }
 
-            if (previousFade != crossFade)
+            if (previousSlider != slider)
             {
-                if (crossFade > 0.5f)
+                if (slider > 0.9f)
                 {
-
+                    ChangeSpeed(Speed.Slow);
                 }
-                else if (crossFade < 0.5f)
+                else if (slider > 0.75f)
                 {
-
+                    ChangeSpeed(Speed.Normal);
+                }
+                else
+                {
+                    ChangeSpeed(Speed.Fast);
                 }
 
-                previousFade = crossFade;
+                previousSlider = slider;
             }
         }
 
