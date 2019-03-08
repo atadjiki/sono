@@ -7,7 +7,7 @@ public class VignetteSP : SetPiece
 {
     public float min = 0.41f;
     public float max = 0.5f;
-    public Transform center;
+    public Transform centerTransform;
     public Transform target;
     private float defaultAmount;
     private float currentAmount;
@@ -22,9 +22,9 @@ public class VignetteSP : SetPiece
         {
             target = GameObject.Find("Player").GetComponent<Transform>();
         }
-        if (center == null)
+        if (centerTransform == null)
         {
-            center = this.transform;
+            centerTransform = this.transform;
         }
         postProcess = GameObject.Find("PostProcessLayer").GetComponent<PostProcessVolume>();
 

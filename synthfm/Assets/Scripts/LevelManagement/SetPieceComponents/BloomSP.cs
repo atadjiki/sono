@@ -8,7 +8,7 @@ public class BloomSP : SetPiece
     public float multiplier = 2;
     public float min = 6;
     public float max = 12;
-    public Transform center;
+    public Transform centerTransform;
     public Transform target;
     private float defaultAmount;
     private float currentAmount;
@@ -23,9 +23,9 @@ public class BloomSP : SetPiece
         {
             target = GameObject.Find("Player").GetComponent<Transform>();
         }
-        if (center == null)
+        if (centerTransform == null)
         {
-            center = this.transform;
+            centerTransform = this.transform;
         }
         postProcess = GameObject.Find("PostProcessLayer").GetComponent<PostProcessVolume>();
 
