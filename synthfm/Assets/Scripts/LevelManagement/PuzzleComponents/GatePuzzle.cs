@@ -15,7 +15,6 @@ public class GatePuzzle : Puzzle
     private float timeLeft = 0;
     private bool timer = false;
     public List<GateTrigger> gates;
-    public GameObject m_Main;
     public PlayerInput.TurntableController turnController;
     private List<GateTrigger> currentList;
     private int currentIndex;

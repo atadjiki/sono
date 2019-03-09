@@ -161,14 +161,14 @@ public class LevelManager : MonoBehaviour
             puzzlesComplete = true;
             if(navPoint != null)
             {
-                navPoint.target = finalZone;
+              //  navPoint.target = finalZone;
             }
 
         }
         else if(currentPuzzle != null && !puzzlesComplete)
         {
             Debug.Log("New Target - " + currentPuzzle);
-            navPoint.target = currentPuzzle.gameObject;
+          //  navPoint.target = currentPuzzle.gameObject;
            // navPoint.active = true;
         }
         if (levelComplete)
