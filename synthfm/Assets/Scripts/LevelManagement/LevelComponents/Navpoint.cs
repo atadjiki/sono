@@ -23,6 +23,7 @@ public class Navpoint : MonoBehaviour
         if (currentFrames >= maxFrames)
         {
             CheckForNewTarget();
+            currentFrames = 0;
         }
         else
         {
@@ -33,12 +34,13 @@ public class Navpoint : MonoBehaviour
         MoveEyeball();
     }
 
-    void SetTarget(GameObject newTarget)
+    public void SetTarget(GameObject newTarget)
     {
         target = newTarget;
+        currentFrames = 0;
     }
 
-    void CheckForNewTarget()
+    public void CheckForNewTarget()
     {
         Puzzle[] puzzles = FindObjectsOfType<Puzzle>();
 
@@ -52,7 +54,7 @@ public class Navpoint : MonoBehaviour
 
         foreach (Puzzle puzzle in puzzles)
         {
-            if (puzzle.complete)
+            if (!puzzle.complete)
             {
                 float distance = Vector3.Distance(transform.position, puzzle.transform.position);
                 if (distance <= minimumDistance || minimumDistance <= 0)
