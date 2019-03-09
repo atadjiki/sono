@@ -108,6 +108,7 @@
         void Start()
         {
 
+            turntableManager = GameObject.Find("TurntableInputManager").GetComponent<TurntableManager>(); ;
             rotation = turntableManager.rotation;
 
             rigidbody = GetComponent<Rigidbody2D>();

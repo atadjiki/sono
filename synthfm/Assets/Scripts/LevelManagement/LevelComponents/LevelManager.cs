@@ -153,7 +153,7 @@ public class LevelManager : MonoBehaviour
     {
         if (currentPuzzle == null && !puzzlesComplete)
         {
-           navPoint.active = false;
+          // navPoint.active = false;
         }
         else if(currentPuzzle == null && puzzlesComplete)
         {
@@ -169,11 +169,11 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("New Target - " + currentPuzzle);
             navPoint.target = currentPuzzle.gameObject;
-            navPoint.active = true;
+           // navPoint.active = true;
         }
         if (levelComplete)
         {
-            navPoint.active = false;
+           // navPoint.active = false;
         }
     }
     public void Completed()

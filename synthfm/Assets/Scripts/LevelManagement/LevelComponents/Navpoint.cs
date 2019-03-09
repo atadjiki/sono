@@ -5,44 +5,22 @@ using UnityEngine;
 public class Navpoint : MonoBehaviour
 {
 
-    public GameObject sphere;
     public GameObject target;
-    public GameObject pointer;
-    public float minDistance = 200;
-    public float radius = 50;
-    public bool active = true;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        sphere.GetComponent<SphereCollider>().radius = radius;
-        
-    }
+    public GameObject eyeball;
+    public SphereCollider sphereCollider;
 
     // Update is called once per frame
     void Update()
     {
+        //find vector on sphere to draw the pointer
+        Vector3 position = sphereCollider.ClosestPoint(target.transform.position);
+        Debug.Log("Position " + position);
+        position.z = -1;
 
-        if(active && Vector3.Distance(sphere.transform.position, target.transform.position) > minDistance)
-        {
-            pointer.gameObject.SetActive(true);
+        float angle = Vector3.Angle(sphereCollider.transform.position, target.transform.position);
 
-            //find vector on sphere to draw the pointer
-            Vector3 position = sphere.GetComponent<SphereCollider>().ClosestPointOnBounds(target.transform.position);
-
-            float angle = Vector3.Angle(sphere.transform.position, target.transform.position);
-          //  Debug.Log("Angle between " + angle);
-            Vector3 rotation = new Vector3(0, 0, angle);
-
-            pointer.transform.position = position;
-
-            pointer.transform.eulerAngles = rotation;
-        }
-        else
-        {
-            pointer.gameObject.SetActive(false);
-        }
+        
+        eyeball.transform.position = position;
+        Debug.DrawRay(transform.position, target.transform.position);
     }
 }

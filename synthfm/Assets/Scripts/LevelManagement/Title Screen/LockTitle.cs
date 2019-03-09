@@ -23,11 +23,11 @@ public class LockTitle : MonoBehaviour
     IEnumerator Lock()
     {
         Debug.Log(Time.time);
-        navPoint.active = false;
+      //  navPoint.active = false;
         yield return new WaitForSecondsRealtime(lockTime);
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
-        navPoint.active = true;
+       // navPoint.active = true;
         Debug.Log(Time.time);
     }
 }
