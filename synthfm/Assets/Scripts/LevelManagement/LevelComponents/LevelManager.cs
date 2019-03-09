@@ -13,7 +13,6 @@ public class LevelManager : MonoBehaviour
     public GameObject fragmentPrefab;
     public AudioClip[] audioFragments;
     public GameObject visualizerRing;
-    public Navpoint navPoint;
 
     public Hub[] hubList;
     private Queue<Hub> hubs;
@@ -43,12 +42,6 @@ public class LevelManager : MonoBehaviour
         playerAudioSource = player.GetComponent<AudioSource>();
         playerAudioSource.clip = audioFragments[0];
         playerAudioSource.Play();
-
-        //initialize vars
-        if(navPoint != null)
-        {
-            Debug.Log("Found nav point " + navPoint.name);
-        }
        
         hubs = new Queue<Hub>(hubList);
         if(hubs.Count > 0)
@@ -62,11 +55,6 @@ public class LevelManager : MonoBehaviour
             Debug.Log("First hub has " + currentHub.puzzleList.Length + " puzzles");
             currentPuzzle = currentHub.nextPuzzle();
             Debug.Log("Current puzzle: " + currentPuzzle.name);
-        }
-        
-        if(navPoint != null)
-        {
-            updateNavPoint();
         }
 
 
@@ -103,10 +91,6 @@ public class LevelManager : MonoBehaviour
                         }
                     }
 
-                    if (navPoint != null)
-                    {
-                        updateNavPoint();
-                    }
 
                 }
             }
@@ -116,10 +100,6 @@ public class LevelManager : MonoBehaviour
                 if (currentHub == null)
                 {
                     puzzlesComplete = true;
-                    if (navPoint != null)
-                    {
-                        updateNavPoint();
-                    }
                 }
                 else
                 {
@@ -159,10 +139,6 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("No target");
             puzzlesComplete = true;
-            if(navPoint != null)
-            {
-              //  navPoint.target = finalZone;
-            }
 
         }
         else if(currentPuzzle != null && !puzzlesComplete)

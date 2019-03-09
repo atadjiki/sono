@@ -10,7 +10,11 @@ public class FragmentCase : MonoBehaviour
     private void Start()
     {
        // fragment = Instantiate(LevelManager.instance.fragmentPrefab, transform).GetComponent<FragmentController>();
-        fragment.SetClip(LevelManager.instance.audioFragments[fragmentNumber]);
+       if(fragmentNumber < LevelManager.instance.audioFragments.Length && fragmentNumber > 0)
+        {
+            fragment.SetClip(LevelManager.instance.audioFragments[fragmentNumber]);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -45,7 +45,7 @@ public class Navpoint : MonoBehaviour
         if (puzzles.Length <= 0) { return; }
 
 
-        Debug.Log("Found " + puzzles.Length + " incomplete puzzles");
+       // Debug.Log("Found " + puzzles.Length + " incomplete puzzles");
 
         float minimumDistance = 0;
         Puzzle closestPuzzle = puzzles[0];
@@ -80,6 +80,6 @@ public class Navpoint : MonoBehaviour
 
 
         eyeball.transform.position = position;
-        Debug.DrawRay(transform.position, target.transform.position);
+    //    Debug.DrawRay(transform.position, target.transform.position);
     }
 }
