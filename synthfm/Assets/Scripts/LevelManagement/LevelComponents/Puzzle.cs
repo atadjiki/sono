@@ -69,8 +69,8 @@ public class Puzzle : SetPiece
             print("Complete: "+complete);
                 if (complete && disableCameraOnComplete)
                 {
-                    Debug.Log("********************************HERE*******************************************");
                     Debug.Log("Puzzle Complete" + gameObject.name);
+                    player.gameObject.GetComponent<Navpoint>().CheckForNewTarget();
                     StartCoroutine("DeletePuzzle");
 
                 }

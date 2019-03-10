@@ -12,7 +12,7 @@ using UnityEditor;
 public class SetPiece : MonoBehaviour
 {
     public Cinemachine.CinemachineVirtualCamera mainCamera;
-    public TurntableController player;
+    public PlayerInput.TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
     public GameObject center;
 
@@ -38,7 +38,7 @@ public class SetPiece : MonoBehaviour
         }
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        player = GameObject.Find("Player").GetComponent<TurntableController>();
+        player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
 
         GameObject VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
         VCam.name = "CM_" + this.name;
@@ -49,9 +49,10 @@ public class SetPiece : MonoBehaviour
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0.2f;
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0.2f;
 
-
-        setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_NoiseProfile =
-        AssetDatabase.LoadAssetAtPath<Cinemachine.NoiseSettings>("Packages/com.Unity.Cinemachine/Presets/Noise/Handheld_tele_mild.asset");
+        #if UNITY_EDITOR
+            setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_NoiseProfile =
+            AssetDatabase.LoadAssetAtPath<Cinemachine.NoiseSettings>("Packages/com.Unity.Cinemachine/Presets/Noise/Handheld_tele_mild.asset");
+        #endif
 
         foreach(Transform child in transform)
         {

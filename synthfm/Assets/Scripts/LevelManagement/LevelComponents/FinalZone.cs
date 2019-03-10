@@ -9,15 +9,13 @@ public class FinalZone : MonoBehaviour
     public LevelManager levelManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
 
-        levelManager.Completed();
-
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject == GameObject.Find("Player"))
         {
             Instantiate(portal, this.transform);
 
-            FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+            List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
             foreach(FragmentController fragment in fragments)
             {
 

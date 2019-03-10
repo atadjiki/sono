@@ -9,7 +9,7 @@ public class ChromaticAbberationSP : SetPiece
     public float multiplier = 2;
     public float min = 0.25f;
     public float max = 10;
-    public Transform center;
+    public Transform centerTransform;
     public Transform target;
     private float defaultAmount;
     private float currentAmount;
@@ -24,9 +24,9 @@ public class ChromaticAbberationSP : SetPiece
         {
             target = GameObject.Find("Player").GetComponent<Transform>();
         }
-        if(center == null)
+        if(centerTransform == null)
         {
-            center = this.transform;
+            centerTransform = this.transform;
         }
         postProcess = GameObject.Find("PostProcessLayer").GetComponent<PostProcessVolume>();
 

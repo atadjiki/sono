@@ -6,17 +6,16 @@ using UnityEngine;
  * An example gate puzzle inheriting from Puzzle.cs
  * The player can enter the gate system at any point, but must complete
  * the puzzle in sequential order from then on.
- * On completion, the puzzle will lower its force field 
+ * On completion, the puzzle will lower its force field
  * and allow the player to collect a fragment
- */ 
+ */
 public class GatePuzzle : Puzzle
 {
     public float timeUntilReset = 10;
     private float timeLeft = 0;
     private bool timer = false;
     public List<GateTrigger> gates;
-    public GameObject m_Main;
-    public TurntableController turnController;
+    public PlayerInput.TurntableController turnController;
     private List<GateTrigger> currentList;
     private int currentIndex;
     private bool inProgress;
@@ -32,10 +31,10 @@ public class GatePuzzle : Puzzle
 
     private void Start()
     {
-        turnController = GameObject.Find("Player").GetComponent<TurntableController>();
+        turnController = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
 
         player = turnController;
-        mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>(); 
+        mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         currentList = gates;
         currentIndex = 0;
         inProgress = false;
@@ -87,7 +86,7 @@ public class GatePuzzle : Puzzle
                 }
                 else
                 {
-                    //if the player is touching the gates in order, increment 
+                    //if the player is touching the gates in order, increment
                     Debug.Log("Gate " + index + " hit");
                     currentIndex++;
 
@@ -139,7 +138,7 @@ public class GatePuzzle : Puzzle
                 }
                 else
                 {
-                    //if the player touched another gate, update accordingly 
+                    //if the player touched another gate, update accordingly
                     Debug.Log("Gate " + index + " hit");
                     gatesHit++;
                     Debug.Log(gates.Count - gatesHit + " gates left!");
@@ -184,8 +183,8 @@ public class GatePuzzle : Puzzle
     }
 
     /*
-     * Split the current list of gates based on what index 
-     * the player happened to enter. 
+     * Split the current list of gates based on what index
+     * the player happened to enter.
      */
     void UpdateList(int index)
     {

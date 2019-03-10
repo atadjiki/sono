@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
-[CustomEditor(typeof(GatePuzzle), true)]
-public class GatePuzzleEditor : Editor
-{
-    public override void OnInspectorGUI()
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(GatePuzzle), true)]
+    public class GatePuzzleEditor : Editor
     {
-        DrawDefaultInspector();
-
-        GatePuzzle myScript = (GatePuzzle)target;
-        if (GUILayout.Button("Build Puzzle"))
+        public override void OnInspectorGUI()
         {
-            myScript.DoSetup();
+            DrawDefaultInspector();
+
+            GatePuzzle myScript = (GatePuzzle)target;
+            if (GUILayout.Button("Build Puzzle"))
+            {
+                myScript.DoSetup();
+            }
         }
     }
-}
+#endif
