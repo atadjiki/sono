@@ -4780,7 +4780,7 @@ ParticleSystem:
 --- !u!199 &888040041
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4851,8 +4851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb7072aabe14f649a633a8be143318d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waves: {fileID: 0}
-  Player: {fileID: 0}
+  Waves: {fileID: 1809757826}
+  Player: {fileID: 1855229569708447584}
   PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1809757823
 GameObject:
@@ -5077,7 +5077,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1855229568422686534
 GameObject:
@@ -10286,7 +10286,7 @@ ParticleSystem:
 --- !u!199 &6429124202260839493
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -10439,7 +10439,7 @@ Transform:
   m_GameObject: {fileID: 8548629179991078066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.4, z: -1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1855229569708447589}
   m_RootOrder: 7
