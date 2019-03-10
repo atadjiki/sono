@@ -5345,6 +5345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5404,11 +5409,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 1981209547}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
 --- !u!4 &912150287 stripped
@@ -5836,15 +5836,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6490336592850906790, guid: c39c2d0c80e4e4a48913e06138ce593e,
+    - target: {fileID: 6968031060391356059, guid: c39c2d0c80e4e4a48913e06138ce593e,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 912150287}
-    - target: {fileID: 6490336592850906790, guid: c39c2d0c80e4e4a48913e06138ce593e,
+    - target: {fileID: 6968031060391356059, guid: c39c2d0c80e4e4a48913e06138ce593e,
         type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 504042470}
+    - target: {fileID: 6968031060391356059, guid: c39c2d0c80e4e4a48913e06138ce593e,
+        type: 3}
+      propertyPath: secsUntilNextSpawn
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c39c2d0c80e4e4a48913e06138ce593e, type: 3}

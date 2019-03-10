@@ -14,7 +14,7 @@ public class Boost : MonoBehaviour
     [SerializeField]
     private float BoostHoldTime = 1.0f;
     private float boostHoldTimer;
-
+    
     // Start is called before the first frame update
     void Start()
     {
