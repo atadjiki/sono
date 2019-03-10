@@ -7,10 +7,15 @@ public class Navpoint : MonoBehaviour
 
     private GameObject target;
     public GameObject eyeball;
+    public GameObject centerOfEye;
     public SphereCollider sphereCollider;
 
     private float maxFrames = 120f;
     private float currentFrames = 0;
+    private const int maxFragments = 3;
+
+    private DepositFragments[] depositZones;
+    private Puzzle[] puzzles;
 
     private void Start()
     {
@@ -42,15 +47,57 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        Puzzle[] puzzles = FindObjectsOfType<Puzzle>();
+        if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
+        {
+            CheckForNewDepositZone();
+        }
+        else
+        {
+            CheckForNewPuzzle();
+        }
+    }
+
+    void CheckForNewDepositZone()
+    {
+        depositZones = FindObjectsOfType<DepositFragments>();
+
+        if (depositZones.Length <= 0) { CheckForNewPuzzle(); }
+
+        float minimumDistance = 0;
+        DepositFragments closestDepositZone = null;
+
+        foreach (DepositFragments depositZone in depositZones)
+        {
+            float distance = Vector3.Distance(transform.position, depositZone.transform.position);
+            if (distance <= minimumDistance || minimumDistance <= 0)
+            {
+                minimumDistance = distance;
+                closestDepositZone = depositZone;
+            }
+        }
+
+        if(closestDepositZone == null)
+        {
+            target = centerOfEye;
+            Debug.Log("No target for navpoint at the moment!");
+        }
+        else
+        {
+            target = closestDepositZone.gameObject;
+        }
+
+        Debug.Log("Found deposit zone at " + target.transform.position);
+
+    }
+
+    void CheckForNewPuzzle()
+    {
+        puzzles = FindObjectsOfType<Puzzle>();
 
         if (puzzles.Length <= 0) { return; }
 
-
-       // Debug.Log("Found " + puzzles.Length + " incomplete puzzles");
-
         float minimumDistance = 0;
-        Puzzle closestPuzzle = puzzles[0];
+        Puzzle closestPuzzle = null;
 
         foreach (Puzzle puzzle in puzzles)
         {
@@ -65,8 +112,15 @@ public class Navpoint : MonoBehaviour
             }
 
         }
+        if(closestPuzzle == null)
+        {
+            target = centerOfEye;
+        }
+        else
+        {
+            target = closestPuzzle.gameObject;
+        }
 
-        target = closestPuzzle.gameObject;
     }
 
     void MoveEyeball()
@@ -82,6 +136,6 @@ public class Navpoint : MonoBehaviour
 
 
         eyeball.transform.position = position;
-    //    Debug.DrawRay(transform.position, target.transform.position);
+        //    Debug.DrawRay(transform.position, target.transform.position);
     }
 }
