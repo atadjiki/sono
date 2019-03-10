@@ -38,9 +38,7 @@ public class LevelManager : MonoBehaviour
         playerAudioSource = player.GetComponent<AudioSource>();
         playerAudioSource.clip = audioFragments[0];
         playerAudioSource.Play();
-      
-
-
+     
     }
 
     private void Update()

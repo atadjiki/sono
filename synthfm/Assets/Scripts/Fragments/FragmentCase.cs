@@ -19,7 +19,7 @@ public class FragmentCase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
+        Debug.Log("Fragment case collided with " + collision.gameObject.name);
         //TO DO: Make this not grabbable after it is deposited
         if(collision.gameObject == LevelManager.instance.getPlayer())
         {
