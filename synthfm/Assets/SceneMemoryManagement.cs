@@ -15,7 +15,7 @@ public class SceneMemoryManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("ParasiteVoid"))
+        if (GameObject.Find("Parasite"))
         {
             if (BRsceneDistance > unloadDistance)
             {

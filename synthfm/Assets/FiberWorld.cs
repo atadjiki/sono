@@ -10,11 +10,18 @@ public class FiberWorld : MonoBehaviour
     void Start()
     {
         Psystem.SetActive(true);
+
+        killParasites();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void killParasites()
+    {
+        GameObject.FindGameObjectWithTag("PSpawner").GetComponent<ParasiteSpawner>().KillParasites();
     }
 }
