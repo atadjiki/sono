@@ -65,5 +65,10 @@ public class TransferRealms : MonoBehaviour
     {
         findDistance = true;
         collPosition = (collision.transform.position).magnitude;
+
+        if (gameObject.tag == "Realm2")
+        {
+            gameObject.GetComponent<FiberWorld>().enabled = false;
+        }
     }
 }

@@ -13,7 +13,7 @@ public class Navpoint : MonoBehaviour
 
     private float maxFrames = 120f;
     private float currentFrames = 0;
-    private const int maxFragments = 3;
+    private int maxFragments = 3;
 
     private DepositFragments[] depositZones;
     private Puzzle[] puzzles;
@@ -103,6 +103,8 @@ public class Navpoint : MonoBehaviour
     void CheckForNewPuzzle()
     {
         puzzles = FindObjectsOfType<Puzzle>();
+
+        maxFragments = puzzles.Length;
 
         if (puzzles.Length <= 0) { return; }
 

@@ -10,6 +10,10 @@ public class FiberWorld : MonoBehaviour
     void Start()
     {
         Psystem.SetActive(true);
+        foreach(ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Play();
+        }
 
         killParasites();
     }
@@ -22,6 +26,27 @@ public class FiberWorld : MonoBehaviour
 
     private void killParasites()
     {
-        GameObject.FindGameObjectWithTag("PSpawner").GetComponent<ParasiteSpawner>().KillParasites();
+        if(GameObject.FindGameObjectWithTag("PSpawner") != null)
+            GameObject.FindGameObjectWithTag("PSpawner").GetComponent<ParasiteSpawner>().KillParasites();
+    }
+
+    private void OnEnable()
+    {
+        Psystem.SetActive(true);
+        foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Play();
+        }
+
+        killParasites();
+    }
+
+    private void OnDisable()
+    {
+        foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Stop();
+        }
+
     }
 }
