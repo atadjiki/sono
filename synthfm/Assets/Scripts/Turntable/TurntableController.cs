@@ -40,8 +40,8 @@
         public float accel_normal = 0.75f;
         public float accel_fast = 1.5f;
 
-        public float torque_slow = 25f;
-        public float torque_normal = 25f;
+        public float torque_slow = 45f;
+        public float torque_normal = 35f;
         public float torque_fast = 25f;
 
         private bool fast_override = false;
@@ -225,7 +225,6 @@
             if (inputBindings.SpeedUp.WasPressed)
             {
                 fast_override = true;
-                Debug.Log("Speed overriden to Fast");
             }
             else if (inputBindings.SpeedUp.WasReleased)
             {
@@ -236,7 +235,6 @@
             if (inputBindings.SlowDown.WasPressed)
             {
                 slow_override = true;
-                Debug.Log("Speed overriden to Slow");
             }
             else if (inputBindings.SlowDown.WasReleased)
             {
@@ -262,7 +260,7 @@
                 {
                     i_Menu.scroll(true);
                 }
-                else if (inputBindings.Menu_Select.IsPressed)
+                else if (inputBindings.Menu_Select.WasPressed)
                 {
                     i_Menu.Do_Select(this);
                 }
@@ -288,10 +286,6 @@
             {
                 rigidbody.AddTorque(-1 * getTorque());
                 previousRight = rightTurntable;
-                //}else if (inputBindings.Pause.WasPressed)
-                //{
-                //    TogglePause();
-                //}
             }
         }
         void DoMIDIInput()

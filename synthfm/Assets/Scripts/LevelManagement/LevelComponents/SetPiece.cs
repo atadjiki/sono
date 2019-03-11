@@ -81,8 +81,6 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
-        Debug.Log(player.gameObject.name);
         if (collision != null && player != null)
         {
             if (collision.gameObject == player.gameObject)

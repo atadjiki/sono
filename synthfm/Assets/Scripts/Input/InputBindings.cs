@@ -20,6 +20,9 @@
         public PlayerAction Menu_Up;
         public PlayerAction Menu_Select;
 
+        //Debug
+        public PlayerAction Debug_Puzzle_Complete;
+
         public InputBindings()
         {
             Left = CreatePlayerAction("Turn Left");
@@ -35,6 +38,8 @@
             Menu_Down = CreatePlayerAction("Scroll Down");
             Menu_Up = CreatePlayerAction("Scroll Up");
             Menu_Select = CreatePlayerAction("Select");
+
+            Debug_Puzzle_Complete = CreatePlayerAction("Debug Puzzle Complete");
         }
 
 
@@ -71,8 +76,17 @@
             playerActions.FastSpeed.AddDefaultBinding(Key.Key3);
 
             playerActions.Menu_Up.AddDefaultBinding(InputControlType.LeftStickUp);
+            playerActions.Menu_Up.AddDefaultBinding(Key.W);
+            playerActions.Menu_Up.AddDefaultBinding(Key.UpArrow);
             playerActions.Menu_Down.AddDefaultBinding(InputControlType.LeftStickDown);
+            playerActions.Menu_Down.AddDefaultBinding(Key.S);
+            playerActions.Menu_Down.AddDefaultBinding(Key.DownArrow);
             playerActions.Menu_Select.AddDefaultBinding(InputControlType.Action1);
+            playerActions.Menu_Select.AddDefaultBinding(Key.Return);
+            playerActions.Menu_Select.AddDefaultBinding(Key.Space);
+
+            playerActions.Debug_Puzzle_Complete.AddDefaultBinding(Key.Space);
+            playerActions.Debug_Puzzle_Complete.AddDefaultBinding(InputControlType.Action2);
 
 
             playerActions.ListenOptions.IncludeUnknownControllers = true;

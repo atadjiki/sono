@@ -4,6 +4,9 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
 
+using InControl;
+using PlayerInput;
+
 /*
  * Extends the set piece class, with some additional logic
  * Puzzles contain flags that mark if they have been completed, as well
@@ -14,10 +17,60 @@ using UnityEngine.Experimental.VFX;
 public class Puzzle : SetPiece
 {
     public bool complete = false;
+    private bool released = false;
     public bool disableCameraOnComplete = true;
     public FragmentCase fragmentCase;
     public FragmentController fragment;
     public GameObject forceField;
+    public bool allowDebugComplete;
+
+    InputBindings inputBindings;
+    string saveData;
+
+    void OnEnable()
+    {
+        inputBindings = InputBindings.CreateWithDefaultBindings();
+        LoadBindings();
+    }
+
+    void OnDisable()
+    {
+        inputBindings.Destroy();
+    }
+
+    void SaveBindings()
+    {
+        saveData = inputBindings.Save();
+        PlayerPrefs.SetString("Bindings", saveData);
+    }
+
+
+    void LoadBindings()
+    {
+        if (PlayerPrefs.HasKey("Bindings"))
+        {
+            saveData = PlayerPrefs.GetString("Bindings");
+            inputBindings.Load(saveData);
+        }
+    }
+
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        allowDebugComplete = true;
+        base.TriggerEnter(collision);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        allowDebugComplete = false;
+        base.TriggerExit(collision);
+    }
 
     public void ReleaseCage()
     {
@@ -43,7 +96,7 @@ public class Puzzle : SetPiece
 
     IEnumerator KillVFX(VisualEffect vfx)
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(30f);
         vfx.enabled = false;
     }
 
@@ -76,18 +129,23 @@ public class Puzzle : SetPiece
         return complete;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Application.isPlaying && fragment != null)
         {
-            print("Complete: " + complete);
-            if (complete && disableCameraOnComplete)
+            if (complete && disableCameraOnComplete && !released)
             {
-                Debug.Log("Puzzle Complete" + gameObject.name);
+                ReleaseCage();
                 player.gameObject.GetComponent<Navpoint>().CheckForNewTarget();
                 StartCoroutine("DeletePuzzle");
-
+                released = true;
             }
+        }
+
+        if (allowDebugComplete && inputBindings.Debug_Puzzle_Complete.WasPressed)
+        {
+            Debug.Log("Debug Puzzle Complete");
+            complete = true;
         }
     }
 
@@ -95,7 +153,7 @@ public class Puzzle : SetPiece
 
     IEnumerator DeletePuzzle()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(30);
         Destroy(this.gameObject);
 
     }
