@@ -164,9 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8429fa394d5d9614cb21405f4cf0b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilKill: 10
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 2.5
+  followTarget: {fileID: 0}
   trail: {fileID: 1576749362}
 --- !u!1 &1576749360
 GameObject:
@@ -193,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576749360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1249128880}
@@ -320,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 1587459760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.18629403, y: 0.18629403, z: 0.18629403}
   m_Children: []
   m_Father: {fileID: 1249128880}
   m_RootOrder: 1
@@ -363,7 +365,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e384e0ab0eb66ae498e1e1d75e0626ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.34901962, g: 0.15686275, b: 0.7921569, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
