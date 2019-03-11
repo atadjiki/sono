@@ -27,11 +27,14 @@ public class LockTitle : MonoBehaviour
         //navPoint.active = false;
         yield return new WaitForSecondsRealtime(lockTime);
 
-        Destroy(GameObject.Find("CM_TitleSequence"));
-
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
         navPoint.Unlock();
         Debug.Log("Title screen finished " + Time.time + " secs");
+
+       // yield return new WaitForSecondsRealtime(2f);
+
+      //  GameObject.Find("TitleSequence").GetComponent<SetPiece>().enabled = false;
+       // Destroy(GameObject.Find("CM_TitleSequence"));
     }
 }

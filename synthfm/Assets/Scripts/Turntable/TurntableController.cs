@@ -128,8 +128,10 @@
             UpdateVariables();
             ApplyForce();
 
-            DoAltInput();
-
+            if (!MenuMode)
+            {
+                DoAltInput();
+            }
             DoMIDIInput();
 
             DoSpeedInput();
