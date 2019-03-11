@@ -15,6 +15,11 @@
         public PlayerAction FastSpeed;
         public PlayerAction Pause;
 
+        // Menu Actions
+        public PlayerAction Menu_Down;
+        public PlayerAction Menu_Up;
+        public PlayerAction Menu_Select;
+
         public InputBindings()
         {
             Left = CreatePlayerAction("Turn Left");
@@ -25,6 +30,11 @@
             NormalSpeed = CreatePlayerAction("Normal Speed");
             FastSpeed = CreatePlayerAction("Fast Speed");
             Pause = CreatePlayerAction("Pause");
+
+            // Menu actions
+            Menu_Down = CreatePlayerAction("Scroll Down");
+            Menu_Up = CreatePlayerAction("Scroll Up");
+            Menu_Select = CreatePlayerAction("Select");
         }
 
 
@@ -60,6 +70,9 @@
             playerActions.NormalSpeed.AddDefaultBinding(Key.Key2);
             playerActions.FastSpeed.AddDefaultBinding(Key.Key3);
 
+            playerActions.Menu_Up.AddDefaultBinding(InputControlType.LeftStickUp);
+            playerActions.Menu_Down.AddDefaultBinding(InputControlType.LeftStickDown);
+            playerActions.Menu_Select.AddDefaultBinding(InputControlType.Action1);
 
             playerActions.ListenOptions.IncludeUnknownControllers = true;
             playerActions.ListenOptions.MaxAllowedBindings = 4;

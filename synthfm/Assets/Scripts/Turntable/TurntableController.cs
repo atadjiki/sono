@@ -55,6 +55,7 @@
 
         private new Rigidbody2D rigidbody;
 
+       
 
         [Header("References")]
         public TurntableManager turntableManager;
@@ -64,6 +65,9 @@
         InputBindings inputBindings;
         string saveData;
 
+        [Header("In Game Menu Items")]
+        public InGameMenu i_Menu;
+        private bool MenuMode = false;
 
         void OnEnable()
         {
@@ -129,6 +133,9 @@
 
             DoSpeedInput();
             DoCheckForOverrides();
+
+            if(i_Menu != null)              // Only if menu is there
+                DoMenuActions();
 
         }
 
@@ -237,6 +244,37 @@
 
         }
 
+        void DoMenuActions()            // In Game Menu Actions
+        {
+            if(inputBindings.Pause.WasPressed)
+            {
+                toggleMenu();
+            }
+            if(MenuMode)
+            {
+                if(inputBindings.Menu_Down.WasPressed)
+                {
+                    i_Menu.scroll(false);
+                }
+                else if(inputBindings.Menu_Up.WasPressed)
+                {
+                    i_Menu.scroll(true);
+                }
+                else if(inputBindings.Menu_Select.IsPressed)
+                {
+                    i_Menu.Do_Select(this);
+                }
+            }
+        }
+
+        public void toggleMenu()
+        {
+            // pull up the menu
+            MenuMode = !MenuMode;
+            i_Menu.ActivatePannel(MenuMode); // Actiavate / Deactivate Menu Panel
+            TogglePause(MenuMode);
+        }
+
         void DoAltInput()
         {
             if (inputBindings.Left.IsPressed)
@@ -248,10 +286,11 @@
             {
                 rigidbody.AddTorque(-1 * getTorque());
                 previousRight = rightTurntable;
-            }else if (inputBindings.Pause.WasPressed)
-            {
-                TogglePause();
             }
+            //else if (inputBindings.Pause.WasPressed)
+            //{
+            //    TogglePause();
+            //}
         }
 
         void DoMIDIInput()
@@ -338,12 +377,13 @@
             }
         }
 
-        void TogglePause()
+        void TogglePause(bool i_state)
         {
-            if(Time.timeScale >= 1)
+            if(i_state)
             {
                 Time.timeScale = 0;
-            }else if(Time.timeScale <= 0)
+            }
+            else
             {
                 Time.timeScale = 1;
             }
