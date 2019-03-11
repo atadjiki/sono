@@ -20,6 +20,10 @@ public class FragmentController : MonoBehaviour
 
     public AudioSource audioSource;
 
+    [Header("Score Manager")]
+    ScoreManager scoreManager;
+    public int TrackIndex;
+
     public Transform followTarget;
     public Transform newTarget;
     [HideInInspector]
@@ -31,8 +35,14 @@ public class FragmentController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         audioSource = GetComponent<AudioSource>();
+        
         audioSource.volume = 0f;
 
+    }
+
+    private void Start()
+    {
+        scoreManager = ScoreManager.GetInstance();
     }
 
     private void Update()
@@ -84,12 +94,12 @@ public class FragmentController : MonoBehaviour
         currentState = states.DEPOSIT;
         isAttached = false;
 
-       // GameObject hub = GameObject.FindGameObjectWithTag("Hub");
-       // transform.LookAt(newTarget.transform);
-       // transform.Translate(transform.forward * Time.deltaTime * acceleration);
-       // transform.position = newTarget.transform.position;
+        // GameObject hub = GameObject.FindGameObjectWithTag("Hub");
+        // transform.LookAt(newTarget.transform);
+        // transform.Translate(transform.forward * Time.deltaTime * acceleration);
+        // transform.position = newTarget.transform.position;
 
-
+        scoreManager.FadeOutMixerGroup(TrackIndex);
         print("Deposit fragment");
     }
 
@@ -115,9 +125,12 @@ public class FragmentController : MonoBehaviour
         followTarget = newFollowTarget;
         isAttached = true;
         currentState = states.FOLLOW;
-        audioSource.time = LevelManager.instance.playerAudioSource.time;
-        audioSource.Play();
-        StartCoroutine(FadeInAudio());
+
+        //audioSource.time = LevelManager.instance.playerAudioSource.time;
+        //audioSource.Play();
+        //StartCoroutine(FadeInAudio());
+
+        scoreManager.FadeInMixerGroup(TrackIndex);
         transform.SetParent(LevelManager.instance.transform);
         Destroy(fragmentCase);
     }
