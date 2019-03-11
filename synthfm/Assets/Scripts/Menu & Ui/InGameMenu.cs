@@ -16,7 +16,7 @@ public class InGameMenu : MonoBehaviour
 {
     public GameObject obj_MenuPanel;
 
-    public Image[] img_Buttons = new Image[3];
+    public Text[] txt_Buttons = new Text[3];
 
     public Color color_Highlight;
 
@@ -100,11 +100,11 @@ public class InGameMenu : MonoBehaviour
 
     void highlightButton(int i)
     {
-        foreach (Image img in img_Buttons)
-        {
-            img.color = Color.white;
+        foreach (Text txt in txt_Buttons)
+        {         
+            txt.color = Color.white;
         }
-        img_Buttons[i].color = color_Highlight;
+        txt_Buttons[i].color = color_Highlight;
     }
 
     public void ActivatePannel(bool i_state)
