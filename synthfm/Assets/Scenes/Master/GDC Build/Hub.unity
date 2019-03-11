@@ -7147,6 +7147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePatterns:
   - {fileID: 11400000, guid: e713b3ca8445b48408d5e92593c0dd74, type: 2}
+  - {fileID: 0}
   docks:
   - mixer: {fileID: 24100000, guid: 91d5a376e84597b4585177d5068f8257, type: 2}
     NumberOfAudioTracks: 0
@@ -9391,6 +9392,11 @@ PrefabInstance:
     - target: {fileID: 7465891350319716812, guid: 120bae0c3f9096a4ab3a4d941be215f6,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465891350319716812, guid: 120bae0c3f9096a4ab3a4d941be215f6,
+        type: 3}
+      propertyPath: ListenForMidiInput
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

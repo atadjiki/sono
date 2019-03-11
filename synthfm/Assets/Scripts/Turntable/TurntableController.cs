@@ -68,6 +68,8 @@
         public InGameMenu i_Menu;
         private bool MenuMode = false;
 
+        private bool midiInput = false;
+
         void OnEnable()
         {
             // See PlayerActions.cs for this setup.
@@ -290,101 +292,112 @@
                 //}
             }
         }
-            void DoMIDIInput()
+        void DoMIDIInput()
+        {
+
+            midiInput = false;
+
+            if (previousLeft != leftTurntable)
             {
-
-                if (previousLeft != leftTurntable)
+                if (leftTurntable > 0.5f)
                 {
-                    if (leftTurntable > 0.5f)
-                    {
-                        accel_mod -= accel_incr;
-                    }
-                    else if (leftTurntable < 0.5f)
-                    {
-                        accel_mod += accel_incr;
-                    }
-                    previousLeft = leftTurntable;
+                    accel_mod -= accel_incr;
                 }
-
-                if (previousRight != rightTurntable)
+                else if (leftTurntable < 0.5f)
                 {
-                    float torque = torqueCount + getTorque();
-
-                    if (rightTurntable < 0.5f)
-                    {
-                        rigidbody.AddTorque(-torque);
-                    }
-                    else
-                    {
-                        rigidbody.AddTorque(torque);
-                    }
-                    previousRight = rightTurntable;
-
-                    if (multiplyTorque)
-                        torqueCount *= torqueIncrement;
-                    else
-                    {
-                        torqueCount += torqueIncrement;
-                    }
+                    accel_mod += accel_incr;
                 }
-
-                currentFrames++;
-                if (currentFrames > maxFrames)
-                {
-                    currentFrames = 0;
-                    torqueCount = 1;
-                }
-
-                if (previousSlider != slider)
-                {
-                    if (slider > 0.9f)
-                    {
-                        ChangeSpeed(Speed.Slow);
-                    }
-                    else if (slider > 0.35f)
-                    {
-                        ChangeSpeed(Speed.Normal);
-                    }
-                    else
-                    {
-                        ChangeSpeed(Speed.Fast);
-                    }
-
-                    previousSlider = slider;
-                }
+                previousLeft = leftTurntable;
+                midiInput = true;
             }
 
-            float getTorque()
+            if (previousRight != rightTurntable)
             {
-                if (currentSpeed == Speed.Slow)
+                float torque = torqueCount + getTorque();
+
+                if (rightTurntable < 0.5f)
                 {
-                    return torque_slow;
-                }
-                else if (currentSpeed == Speed.Normal)
-                {
-                    return torque_normal;
-                }
-                else if (currentSpeed == Speed.Fast)
-                {
-                    return torque_fast;
+                    rigidbody.AddTorque(-torque);
                 }
                 else
                 {
-                    return 0;
+                    rigidbody.AddTorque(torque);
                 }
+                previousRight = rightTurntable;
+
+                if (multiplyTorque)
+                    torqueCount *= torqueIncrement;
+                else
+                {
+                    torqueCount += torqueIncrement;
+                }
+
+                midiInput = true;
             }
 
-            void TogglePause(bool i_state)
+            currentFrames++;
+            if (currentFrames > maxFrames)
             {
-                if (i_state)
+                currentFrames = 0;
+                torqueCount = 1;
+            }
+
+            if (previousSlider != slider)
+            {
+                midiInput = true;
+                if (slider > 0.9f)
                 {
-                    Time.timeScale = 0;
+                    ChangeSpeed(Speed.Slow);
+                }
+                else if (slider > 0.35f)
+                {
+                    ChangeSpeed(Speed.Normal);
                 }
                 else
                 {
-                    Time.timeScale = 1;
+                    ChangeSpeed(Speed.Fast);
                 }
+
+                previousSlider = slider;
             }
-        
+        }
+
+        public bool IsMidiInput()
+        {
+            return midiInput;
+        }
+
+        float getTorque()
+        {
+            if (currentSpeed == Speed.Slow)
+            {
+                return torque_slow;
+            }
+            else if (currentSpeed == Speed.Normal)
+            {
+                return torque_normal;
+            }
+            else if (currentSpeed == Speed.Fast)
+            {
+                return torque_fast;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        void TogglePause(bool i_state)
+        {
+            if (i_state)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
+
     }
 }
