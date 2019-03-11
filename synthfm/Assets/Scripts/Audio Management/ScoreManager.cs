@@ -147,6 +147,7 @@ public class ScoreManager : MonoBehaviour
     [Header("Metronome")]
     [Header("BPM")]
     public double bpm; //todo: actually implement time signature-based counting
+    public int numberOfBeatsToUseInCrossfade = 6;
     [Header("Time Signature")]
     public int Numerator;
     public int Denominator;
@@ -312,7 +313,7 @@ public class ScoreManager : MonoBehaviour
     void FixedUpdate()
     {
         double timePerTick = 60.0f / bpm;
-        DefaultCrossfadeTime = 2*timePerTick;
+        DefaultCrossfadeTime = numberOfBeatsToUseInCrossfade*timePerTick;
         double dspTime = AudioSettings.dspTime;
 
         while (dspTime >= nextTick)
