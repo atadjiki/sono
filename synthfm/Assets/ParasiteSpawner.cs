@@ -68,7 +68,7 @@ public class ParasiteSpawner : MonoBehaviour
         {
             if (parasites.Count < maxParasites)
             {
-                Debug.Log("Spawning Parasite");
+              //  Debug.Log("Spawning Parasite");
                 SpawnNextParasite();
                 yield return new WaitForSeconds(secsUntilNextSpawn);
             }

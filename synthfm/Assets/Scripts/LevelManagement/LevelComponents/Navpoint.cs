@@ -18,6 +18,11 @@ public class Navpoint : MonoBehaviour
     private DepositFragments[] depositZones;
     private Puzzle[] puzzles;
 
+    public bool canTargetFiberWorld = true;
+    public bool enteredFiberWorld = false;
+
+    public GameObject fiberWorld;
+
     private void Start()
     {
         Lock();
@@ -108,6 +113,12 @@ public class Navpoint : MonoBehaviour
         {
             if (!puzzle.complete)
             {
+                if(enteredFiberWorld && canTargetFiberWorld)
+                {
+                    canTargetFiberWorld = false;
+                }
+
+
                 float distance = Vector3.Distance(transform.position, puzzle.transform.position);
                 if (distance <= minimumDistance || minimumDistance <= 0)
                 {
@@ -118,8 +129,18 @@ public class Navpoint : MonoBehaviour
 
         }
         if(closestPuzzle == null)
-        {
-            target = centerOfEye;
+        { 
+
+            if(fiberWorld != null && canTargetFiberWorld)
+            {
+                Debug.Log("Switching target to fiber world");
+                target = fiberWorld;
+            }
+            else
+            {
+                Debug.Log("No Target");
+                target = centerOfEye;
+            }
         }
         else
         {
