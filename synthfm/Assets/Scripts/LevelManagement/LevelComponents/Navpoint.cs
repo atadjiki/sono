@@ -9,6 +9,7 @@ public class Navpoint : MonoBehaviour
     public GameObject eyeball;
     public GameObject centerOfEye;
     public SphereCollider sphereCollider;
+    private bool locked = true;
 
     private float maxFrames = 120f;
     private float currentFrames = 0;
@@ -19,24 +20,28 @@ public class Navpoint : MonoBehaviour
 
     private void Start()
     {
-        CheckForNewTarget();
+        Lock();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentFrames >= maxFrames)
+        if (!locked)
         {
-            CheckForNewTarget();
-            currentFrames = 0;
-        }
-        else
-        {
-            currentFrames++;
-        }
+            if (currentFrames >= maxFrames)
+            {
+                CheckForNewTarget();
+                currentFrames = 0;
+            }
+            else
+            {
+                currentFrames++;
+            }
 
 
-        MoveEyeball();
+            MoveEyeball();
+        }
+       
     }
 
     public void SetTarget(GameObject newTarget)
@@ -137,5 +142,17 @@ public class Navpoint : MonoBehaviour
 
         eyeball.transform.position = position;
         //    Debug.DrawRay(transform.position, target.transform.position);
+    }
+
+    public void Unlock()
+    {
+        locked = false;
+        CheckForNewTarget();
+    }
+
+    public void Lock()
+    {
+        locked = true;
+        target = centerOfEye;
     }
 }

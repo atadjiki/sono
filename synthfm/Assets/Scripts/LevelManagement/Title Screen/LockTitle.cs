@@ -8,7 +8,7 @@ public class LockTitle : MonoBehaviour
 
     public float lockTime = 10.0f;
     public PlayerInput.TurntableController player;
-    //public Navpoint navPoint;
+    public Navpoint navPoint;
 
     [SerializeField] private GameObject rbPlayer;
 
@@ -27,7 +27,7 @@ public class LockTitle : MonoBehaviour
         yield return new WaitForSecondsRealtime(lockTime);
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
-       // navPoint.active = true;
+        navPoint.Unlock();
         Debug.Log("Title screen finished " + Time.time + " secs");
     }
 }

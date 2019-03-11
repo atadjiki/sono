@@ -64,6 +64,9 @@
         InputBindings inputBindings;
         string saveData;
 
+        [Header("In Game Menu Items")]
+        public InGameMenu i_Menu;
+        private bool MenuMode = false;
 
         void OnEnable()
         {
@@ -130,6 +133,8 @@
             DoSpeedInput();
             DoCheckForOverrides();
 
+            if (i_Menu != null)              // Only if menu is there
+                DoMenuActions();
         }
 
         void UpdateVariables()
@@ -163,7 +168,7 @@
             {
                 currentSpeed = Speed.Fast;
             }
-            Debug.Log("Speed changed to " + currentSpeed.ToString());
+            //    Debug.Log("Speed changed to " + currentSpeed.ToString());
             return currentSpeed;
         }
 
@@ -237,6 +242,37 @@
 
         }
 
+        void DoMenuActions()            // In Game Menu Actions
+        {
+            if (inputBindings.Pause.WasPressed)
+            {
+                toggleMenu();
+            }
+            if (MenuMode)
+            {
+                if (inputBindings.Menu_Down.WasPressed)
+                {
+                    i_Menu.scroll(false);
+                }
+                else if (inputBindings.Menu_Up.WasPressed)
+                {
+                    i_Menu.scroll(true);
+                }
+                else if (inputBindings.Menu_Select.IsPressed)
+                {
+                    i_Menu.Do_Select(this);
+                }
+            }
+        }
+
+        public void toggleMenu()
+        {
+            // pull up the menu
+            MenuMode = !MenuMode;
+            i_Menu.ActivatePannel(MenuMode); // Actiavate / Deactivate Menu Panel
+            TogglePause(MenuMode);
+        }
+
         void DoAltInput()
         {
             if (inputBindings.Left.IsPressed)
@@ -248,105 +284,107 @@
             {
                 rigidbody.AddTorque(-1 * getTorque());
                 previousRight = rightTurntable;
-            }else if (inputBindings.Pause.WasPressed)
-            {
-                TogglePause();
+                //}else if (inputBindings.Pause.WasPressed)
+                //{
+                //    TogglePause();
+                //}
             }
         }
-
-        void DoMIDIInput()
-        {
-
-            if (previousLeft != leftTurntable)
+            void DoMIDIInput()
             {
-                if (leftTurntable > 0.5f)
+
+                if (previousLeft != leftTurntable)
                 {
-                    accel_mod -= accel_incr;
+                    if (leftTurntable > 0.5f)
+                    {
+                        accel_mod -= accel_incr;
+                    }
+                    else if (leftTurntable < 0.5f)
+                    {
+                        accel_mod += accel_incr;
+                    }
+                    previousLeft = leftTurntable;
                 }
-                else if (leftTurntable < 0.5f)
+
+                if (previousRight != rightTurntable)
                 {
-                    accel_mod += accel_incr;
+                    float torque = torqueCount + getTorque();
+
+                    if (rightTurntable < 0.5f)
+                    {
+                        rigidbody.AddTorque(-torque);
+                    }
+                    else
+                    {
+                        rigidbody.AddTorque(torque);
+                    }
+                    previousRight = rightTurntable;
+
+                    if (multiplyTorque)
+                        torqueCount *= torqueIncrement;
+                    else
+                    {
+                        torqueCount += torqueIncrement;
+                    }
                 }
-                previousLeft = leftTurntable;
+
+                currentFrames++;
+                if (currentFrames > maxFrames)
+                {
+                    currentFrames = 0;
+                    torqueCount = 1;
+                }
+
+                if (previousSlider != slider)
+                {
+                    if (slider > 0.9f)
+                    {
+                        ChangeSpeed(Speed.Slow);
+                    }
+                    else if (slider > 0.35f)
+                    {
+                        ChangeSpeed(Speed.Normal);
+                    }
+                    else
+                    {
+                        ChangeSpeed(Speed.Fast);
+                    }
+
+                    previousSlider = slider;
+                }
             }
 
-            if (previousRight != rightTurntable)
+            float getTorque()
             {
-                float torque = torqueCount + getTorque();
-
-                if (rightTurntable < 0.5f)
+                if (currentSpeed == Speed.Slow)
                 {
-                    rigidbody.AddTorque(-torque);
+                    return torque_slow;
+                }
+                else if (currentSpeed == Speed.Normal)
+                {
+                    return torque_normal;
+                }
+                else if (currentSpeed == Speed.Fast)
+                {
+                    return torque_fast;
                 }
                 else
                 {
-                    rigidbody.AddTorque(torque);
-                }
-                previousRight = rightTurntable;
-
-                if (multiplyTorque)
-                    torqueCount *= torqueIncrement;
-                else
-                {
-                    torqueCount += torqueIncrement;
+                    return 0;
                 }
             }
 
-            currentFrames++;
-            if (currentFrames > maxFrames)
+            void TogglePause(bool i_state)
             {
-                currentFrames = 0;
-                torqueCount = 1;
-            }
-
-            if (previousSlider != slider)
-            {
-                if (slider > 0.9f)
+                if (i_state)
                 {
-                    ChangeSpeed(Speed.Slow);
-                }
-                else if (slider > 0.35f)
-                {
-                    ChangeSpeed(Speed.Normal);
+                    Time.timeScale = 0;
                 }
                 else
                 {
-                    ChangeSpeed(Speed.Fast);
+                    Time.timeScale = 1;
                 }
-
-                previousSlider = slider;
             }
-        }
-
-        float getTorque()
-        {
-            if (currentSpeed == Speed.Slow)
-            {
-                return torque_slow;
-            }
-            else if (currentSpeed == Speed.Normal)
-            {
-                return torque_normal;
-            }
-            else if (currentSpeed == Speed.Fast)
-            {
-                return torque_fast;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        void TogglePause()
-        {
-            if(Time.timeScale >= 1)
-            {
-                Time.timeScale = 0;
-            }else if(Time.timeScale <= 0)
-            {
-                Time.timeScale = 1;
-            }
-        }
+        
     }
 }

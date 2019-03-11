@@ -108,7 +108,11 @@ public class FragmentController : MonoBehaviour
         if (followTarget != null)
         {
             //get direction to add torque
-            Vector3 evadeDirection = (followTarget.position - transform.position).normalized;
+            Vector3 followRandomPosition = followTarget.position;
+            followRandomPosition.x += Random.Range(-5, 5);
+            followRandomPosition.y += Random.Range(-5, 5);
+
+            Vector3 evadeDirection = (followRandomPosition - transform.position).normalized;
             float angle = Mathf.Atan2(evadeDirection.y, evadeDirection.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
