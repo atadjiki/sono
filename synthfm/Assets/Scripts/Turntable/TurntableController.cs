@@ -163,7 +163,7 @@
             {
                 currentSpeed = Speed.Fast;
             }
-            Debug.Log("Speed changed to " + currentSpeed.ToString());
+        //    Debug.Log("Speed changed to " + currentSpeed.ToString());
             return currentSpeed;
         }
 
