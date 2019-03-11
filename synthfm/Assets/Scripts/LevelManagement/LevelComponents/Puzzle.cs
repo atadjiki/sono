@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Experimental.VFX;
 
 /*
  * Extends the set piece class, with some additional logic
@@ -16,7 +17,7 @@ public class Puzzle : SetPiece
     public bool disableCameraOnComplete = true;
     public FragmentCase fragmentCase;
     public FragmentController fragment;
-    public  GameObject forceField;
+    public GameObject forceField;
 
     public void ReleaseCage()
     {
@@ -31,6 +32,19 @@ public class Puzzle : SetPiece
         {
             particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
         }
+
+        VisualEffect vfx = forceField.GetComponentInChildren<VisualEffect>();
+
+        Debug.Log("Calling stop on vfx");
+        vfx.Stop();
+        StartCoroutine("KillVFX", vfx);
+
+    }
+
+    IEnumerator KillVFX(VisualEffect vfx)
+    {
+        yield return new WaitForSeconds(10f);
+        vfx.enabled = false;
     }
 
     public void DoPuzzleSetup()
@@ -66,24 +80,24 @@ public class Puzzle : SetPiece
     {
         if (Application.isPlaying && fragment != null)
         {
-            print("Complete: "+complete);
-                if (complete && disableCameraOnComplete)
-                {
-                    Debug.Log("Puzzle Complete" + gameObject.name);
-                    player.gameObject.GetComponent<Navpoint>().CheckForNewTarget();
-                    StartCoroutine("DeletePuzzle");
+            print("Complete: " + complete);
+            if (complete && disableCameraOnComplete)
+            {
+                Debug.Log("Puzzle Complete" + gameObject.name);
+                player.gameObject.GetComponent<Navpoint>().CheckForNewTarget();
+                StartCoroutine("DeletePuzzle");
 
-                }
             }
         }
+    }
 
-    
+
 
     IEnumerator DeletePuzzle()
     {
         yield return new WaitForSecondsRealtime(3);
         Destroy(this.gameObject);
-       
+
     }
 
     public virtual void GateTriggered(GateTrigger trigger)
