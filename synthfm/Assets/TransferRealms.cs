@@ -46,6 +46,7 @@ public class TransferRealms : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Procedural1", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<FiberWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
+                GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 4;
             }
 
             //TO DO: Re-enable Realms
@@ -69,6 +70,7 @@ public class TransferRealms : MonoBehaviour
         if (gameObject.tag == "Realm2")
         {
             gameObject.GetComponent<FiberWorld>().enabled = false;
+            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
         }
     }
 }

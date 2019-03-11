@@ -13,7 +13,7 @@ public class Navpoint : MonoBehaviour
 
     private float maxFrames = 120f;
     private float currentFrames = 0;
-    private int maxFragments = 3;
+    public int maxFragments = 3;
 
     private DepositFragments[] depositZones;
     private Puzzle[] puzzles;
@@ -93,18 +93,17 @@ public class Navpoint : MonoBehaviour
         }
         else
         {
+            Debug.Log("Found deposit zone at " + target.transform.position);
             target = closestDepositZone.gameObject;
         }
 
-        Debug.Log("Found deposit zone at " + target.transform.position);
+        
 
     }
 
     void CheckForNewPuzzle()
     {
         puzzles = FindObjectsOfType<Puzzle>();
-
-        maxFragments = puzzles.Length;
 
         if (puzzles.Length <= 0) { return; }
 
