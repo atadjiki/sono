@@ -75,18 +75,48 @@ public class Mixer
         yield return null;
     }
 
+    public IEnumerator FadeOutMasterMixer()
+    {
+        float timer = 0; //-80dB to 0dB
+        while (timer <= fadeTime)
+        {
+            float newVol = Mathf.Lerp(0f, -80f, (timer / fadeTime));
+            //Debug.Log((timer / fadeTime));
+            mixer.SetFloat("Vol Master", newVol);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        mixer.SetFloat("Vol Master", -80);
+        yield return null;
+    }
+
     public IEnumerator FadeInMixerGroup(int mixerGroupIndex)
     {
         float timer = 0; //-80dB to 0dB
         while (timer <= fadeTime)
         {
             float newVol = Mathf.Lerp(-80f, 0f, (timer / fadeTime));
-            Debug.Log((timer / fadeTime));
+            //Debug.Log((timer / fadeTime));
             mixer.SetFloat("Vol Fragment " + mixerGroupIndex, newVol);
             timer += Time.deltaTime;
             yield return null;
         }
         mixer.SetFloat("Vol Fragment " + mixerGroupIndex, 0);
+        yield return null;
+    }
+
+    public IEnumerator FadeInMasterMixer()
+    {
+        float timer = 0; //-80dB to 0dB
+        while (timer <= fadeTime)
+        {
+            float newVol = Mathf.Lerp(-80f, 0f, (timer / fadeTime));
+            //Debug.Log((timer / fadeTime));
+            mixer.SetFloat("Vol Master", newVol);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        mixer.SetFloat("Vol Master", 0);
         yield return null;
     }
 
@@ -101,7 +131,7 @@ public class Mixer
     
 }
 
-// TODO: need to add parameters to mixer groups to control them
+
 public class ScoreManager : MonoBehaviour
 {
     [Header("Score Patterns")]
@@ -220,18 +250,15 @@ public class ScoreManager : MonoBehaviour
 
     public void FadeIn(int DockIndex)
     {
-
-        AudioMixerSnapshot[] mixerSnapshots = { docks[DockIndex].mixer.FindSnapshot("On") };
-        float[] mixerWeights = { 1 };
-        docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
+        docks[DockIndex].fadeTime = (float)DefaultCrossfadeTime;
+        StartCoroutine(docks[DockIndex].FadeInMasterMixer());
     }
 
     public void FadeOut(int DockIndex)
     {
 
-        AudioMixerSnapshot[] mixerSnapshots = { docks[DockIndex].mixer.FindSnapshot("Off") };
-        float[] mixerWeights = { 1 };
-        docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
+        docks[DockIndex].fadeTime = (float)DefaultCrossfadeTime;
+        StartCoroutine(docks[DockIndex].FadeOutMasterMixer());
     }
 
     public void FadeOutMixerGroup(int mixerIndex)
@@ -285,7 +312,7 @@ public class ScoreManager : MonoBehaviour
     void FixedUpdate()
     {
         double timePerTick = 60.0f / bpm;
-        DefaultCrossfadeTime = timePerTick;
+        DefaultCrossfadeTime = 2*timePerTick;
         double dspTime = AudioSettings.dspTime;
 
         while (dspTime >= nextTick)
