@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 7238824860898326250}
   - component: {fileID: 7238824860898326251}
   - component: {fileID: 7238824860898326248}
+  - component: {fileID: 4998095334163135397}
   m_Layer: 0
   m_Name: Fragment
   m_TagString: Fragment
@@ -369,9 +370,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79379b3d8fb71b4fa4c3fea488a0e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  portal: {fileID: 0}
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 3
+  isAttached: 0
   audioSource: {fileID: 7238824860898326251}
+  TrackIndex: 0
   followTarget: {fileID: 0}
+  newTarget: {fileID: 0}
   fragmentCase: {fileID: 0}
+--- !u!58 &4998095334163135397
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238824860898326249}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
