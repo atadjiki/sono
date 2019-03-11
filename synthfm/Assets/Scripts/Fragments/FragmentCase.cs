@@ -12,7 +12,7 @@ public class FragmentCase : MonoBehaviour
        // fragment = Instantiate(LevelManager.instance.fragmentPrefab, transform).GetComponent<FragmentController>();
        if(fragmentNumber < LevelManager.instance.audioFragments.Length && fragmentNumber > 0)
         {
-            fragment.SetClip(LevelManager.instance.audioFragments[fragmentNumber]);
+         //   fragment.SetClip(LevelManager.instance.audioFragments[fragmentNumber]);
         }
         
     }
