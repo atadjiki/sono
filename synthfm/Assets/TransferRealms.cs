@@ -42,6 +42,7 @@ public class TransferRealms : MonoBehaviour
             }
             else if(gameObject.tag == "Realm2")
             {
+
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Procedural1", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<FiberWorld>().enabled = true;
             }
