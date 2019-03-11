@@ -10,6 +10,7 @@ public class LockTitle : MonoBehaviour
     public PlayerInput.TurntableController player;
     public Navpoint navPoint;
 
+
     [SerializeField] private GameObject rbPlayer;
 
     void Awake()
@@ -25,6 +26,9 @@ public class LockTitle : MonoBehaviour
         Debug.Log("Title screen " + Time.time + " secs");
         //navPoint.active = false;
         yield return new WaitForSecondsRealtime(lockTime);
+
+        Destroy(GameObject.Find("CM_TitleSequence"));
+
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
         navPoint.Unlock();

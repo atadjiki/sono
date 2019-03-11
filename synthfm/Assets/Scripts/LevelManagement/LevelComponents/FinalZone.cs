@@ -35,7 +35,7 @@ public class FinalZone : MonoBehaviour
 
         if (collision.gameObject == GameObject.Find("Player"))
         {
-            Instantiate(portal, this.transform);
+            
 
             List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
             foreach(FragmentController fragment in fragments)

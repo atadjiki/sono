@@ -68,7 +68,7 @@ public class FragmentController : MonoBehaviour
         {
             // TO DO: DO A MOTHERFUCKING SPIRAL
             //transform.LookAt(portal.transform);
-                transform.RotateAround(GameObject.Find("FinalZone").transform.position, new Vector3(0, 0, 1), 60 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("MoveTowards").transform.position, 20 * Time.deltaTime);
           
 
         }
