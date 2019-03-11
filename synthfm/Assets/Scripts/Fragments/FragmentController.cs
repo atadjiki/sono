@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FragmentController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class FragmentController : MonoBehaviour
     public enum states { IDLE, FLEE, FOLLOW, DEPOSIT };
     public states currentState;
 
-    
+    public GameObject portal;
 
     private Rigidbody2D rb;
     public float acceleration;
@@ -24,10 +25,19 @@ public class FragmentController : MonoBehaviour
     ScoreManager scoreManager;
     public int TrackIndex;
 
+    CircleCollider2D tempCollider;
+
     public Transform followTarget;
     public Transform newTarget;
     [HideInInspector]
     public GameObject fragmentCase;
+
+    float angle, radius = 10;
+    float angleSpeed = 2;
+    float radialSpeed = 0.5f;
+
+
+
 
     private void Awake()
     {
@@ -43,6 +53,8 @@ public class FragmentController : MonoBehaviour
     private void Start()
     {
         scoreManager = ScoreManager.GetInstance();
+
+
     }
 
     private void Update()
@@ -52,16 +64,24 @@ public class FragmentController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(currentState == states.DEPOSIT)
+        if (currentState == states.DEPOSIT)
         {
-            //StartCoroutine(RotateFragments());
-            transform.RotateAround(GameObject.FindGameObjectWithTag("Hub").transform.position, new Vector3(0, 0, 1), 60 * Time.deltaTime);
+            // TO DO: DO A MOTHERFUCKING SPIRAL
+            //transform.LookAt(portal.transform);
+                transform.RotateAround(GameObject.Find("FinalZone").transform.position, new Vector3(0, 0, 1), 60 * Time.deltaTime);
+          
+
         }
     }
 
     public IEnumerator RotateFragments()
     {
         yield return null;
+    }
+
+    public void getColliderDeposit(CircleCollider2D coll)
+    {
+        tempCollider = coll ;
     }
 
     public void RunState(states state)
