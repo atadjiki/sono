@@ -7,20 +7,21 @@ using UnityEngine.Audio;
 public class Mixer
 {
     public AudioMixer mixer;
-    [HideInInspector]
-    public int NumberOfAudioTracks;
-    [HideInInspector]
-    public AudioSource[] sources;
+    [HideInInspector] public int NumberOfAudioTracks;
+    [HideInInspector] public AudioSource[] sources;
+    AudioMixerGroup[] fragmentMixerGroups;
+    [HideInInspector] public float fadeTime;
 
     public void CreateSources(GameObject gameObject)
     {
+        fragmentMixerGroups = mixer.FindMatchingGroups("Fragment ");
         sources = new AudioSource[NumberOfAudioTracks];
         for (int i = 0; i < NumberOfAudioTracks; i++)
         {
             sources[i] = gameObject.AddComponent<AudioSource>();
             sources[i].loop = true;
             sources[i].playOnAwake = false;
-            sources[i].outputAudioMixerGroup = mixer.FindMatchingGroups("Master")[0]; //todo: assign to different mixer groups
+            sources[i].outputAudioMixerGroup = fragmentMixerGroups[i];
         }
 
         Debug.Assert(sources.Length == NumberOfAudioTracks);
@@ -49,6 +50,30 @@ public class Mixer
     {
         for (int i = 0; i < sources.Length; i++)
             sources[i].Pause();
+    }
+
+    public IEnumerator FadeOutMixerGroup(int mixerGroupIndex)
+    {
+        float timer = 0; //-80dB to 0dB
+        while(timer <= fadeTime)
+        {
+            mixer.SetFloat("Vol Fragment " + mixerGroupIndex, Mathf.Lerp(0, -80.0f, timer / fadeTime));
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        yield return null;
+    }
+
+    public IEnumerator FadeInMixerGroup(int mixerGroupIndex)
+    {
+        float timer = 0; //-80dB to 0dB
+        while (timer <= fadeTime)
+        {
+            mixer.SetFloat("Vol Fragment " + mixerGroupIndex, Mathf.Lerp(-80.0f, 0f, timer / fadeTime));
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        yield return null;
     }
 }
 
@@ -92,8 +117,8 @@ public class ScoreManager : MonoBehaviour
         sampleRate = AudioSettings.outputSampleRate;
 
 
-        Debug.Assert(bpm != 0);
-        nextTick = startTick + (60.0 / bpm);
+        if(bpm != 0);
+            nextTick = startTick + (60.0 / bpm);
 
         for (int i = 0; i < docks.Length; i++)
         {
@@ -106,8 +131,9 @@ public class ScoreManager : MonoBehaviour
     {
         // Setting up our initial state
         LoadPattern(0, 0);
-        LoadPattern(1);
+        //LoadPattern(1);
         Play(0);
+        CurrentActiveDock = 0;
     }
 
     // this is coroutine hell
@@ -142,7 +168,7 @@ public class ScoreManager : MonoBehaviour
     {
         while (!ticked)
             yield return new WaitForSeconds(Time.deltaTime);
-        Debug.Log("Crossfading now");
+        //Debug.Log("Crossfading now");
         int OtherDock = (CurrentActiveDock + 1) % docks.Length;
         Play(OtherDock);
         FadeOut(CurrentActiveDock);
@@ -164,6 +190,16 @@ public class ScoreManager : MonoBehaviour
         AudioMixerSnapshot[] mixerSnapshots = { docks[DockIndex].mixer.FindSnapshot("Off") };
         float[] mixerWeights = { 1 };
         docks[DockIndex].mixer.TransitionToSnapshots(mixerSnapshots, mixerWeights, (float)DefaultCrossfadeTime);
+    }
+
+    public void FadeOutMixerGroup(int mixerIndex)
+    {
+        StartCoroutine(docks[CurrentActiveDock].FadeOutMixerGroup(mixerIndex));
+    }
+
+    public void FadeInMixerGroup(int mixerIndex)
+    {
+        StartCoroutine(docks[CurrentActiveDock].FadeInMixerGroup(mixerIndex));
     }
 
     public void Play(int DockIndex)

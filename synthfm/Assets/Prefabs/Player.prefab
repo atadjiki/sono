@@ -4780,7 +4780,7 @@ ParticleSystem:
 --- !u!199 &888040041
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4851,8 +4851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb7072aabe14f649a633a8be143318d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waves: {fileID: 0}
-  Player: {fileID: 0}
+  Waves: {fileID: 1809757826}
+  Player: {fileID: 1855229569708447584}
   PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1809757823
 GameObject:
@@ -5077,7 +5077,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1855229568422686534
 GameObject:
@@ -5454,6 +5454,8 @@ Transform:
   - {fileID: 6564835413128680302}
   - {fileID: 6652784775826281512}
   - {fileID: 8050033404391541393}
+  - {fileID: 7130479793518373877}
+  - {fileID: 5358875453783997179}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5609,12 +5611,12 @@ MonoBehaviour:
   accel_slow: 0.25
   accel_normal: 0.75
   accel_fast: 1.5
-  torque_slow: 25
-  torque_normal: 25
+  torque_slow: 45
+  torque_normal: 35
   torque_fast: 25
   torqueIncrement: 1
   currentSpeed: 1
-  turntableManager: {fileID: 0}
+  turntableManager: {fileID: 5465249031842407012}
   fragmentSlots: []
   slotsFilled: 
 --- !u!114 &1209789633
@@ -10286,7 +10288,7 @@ ParticleSystem:
 --- !u!199 &6429124202260839493
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -10379,6 +10381,54 @@ Transform:
   m_Father: {fileID: 1855229569708447589}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4152884103074860170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7130479793518373877}
+  - component: {fileID: 5465249031842407012}
+  m_Layer: 0
+  m_Name: TurntableInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7130479793518373877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152884103074860170}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.9391792, z: 0}
+  m_LocalScale: {x: 0.78783584, y: 0.78783584, z: 0.78783584}
+  m_Children: []
+  m_Father: {fileID: 1855229569708447589}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5465249031842407012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152884103074860170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4a6b55a3ad84a9c9d7849e401695cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minOrthSize: 5
+  maxOrthSize: 50
+  rotation: 9
+  sliderChannel: 0
+  sliderKnob: 0
 --- !u!1 &6840359925433668879
 GameObject:
   m_ObjectHideFlags: 0
@@ -10412,6 +10462,66 @@ Transform:
   m_Father: {fileID: 447253425432154925}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8473324666146741680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5358875453783997179}
+  - component: {fileID: 7304104125446845382}
+  m_Layer: 0
+  m_Name: InControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5358875453783997179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473324666146741680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.78783584, y: 0.78783584, z: 0.78783584}
+  m_Children: []
+  m_Father: {fileID: 1855229569708447589}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7304104125446845382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473324666146741680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b5e8de77c5b4597ae7fbfb49a95e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logDebugInfo: 1
+  invertYAxis: 0
+  useFixedUpdate: 0
+  dontDestroyOnLoad: 1
+  suspendInBackground: 0
+  enableICade: 0
+  enableXInput: 0
+  xInputOverrideUpdateRate: 0
+  xInputUpdateRate: 0
+  xInputOverrideBufferSize: 0
+  xInputBufferSize: 0
+  enableNativeInput: 1
+  nativeInputEnableXInput: 1
+  nativeInputPreventSleep: 0
+  nativeInputOverrideUpdateRate: 0
+  nativeInputUpdateRate: 0
+  customProfiles: []
 --- !u!1 &8548629179991078066
 GameObject:
   m_ObjectHideFlags: 0
@@ -10439,7 +10549,7 @@ Transform:
   m_GameObject: {fileID: 8548629179991078066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.4, z: -1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1855229569708447589}
   m_RootOrder: 7
