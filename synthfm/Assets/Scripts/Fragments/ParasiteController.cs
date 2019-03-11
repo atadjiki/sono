@@ -67,13 +67,17 @@ public class ParasiteController : MonoBehaviour
         if (followTarget != null)
         {
             //get direction to add torque
-            Vector3 evadeDirection = (followTarget.position - transform.position).normalized;
+            Vector3 followRandomPosition = followTarget.position;
+            followRandomPosition.x += Random.Range(-15, 15);
+            followRandomPosition.y += Random.Range(-30, 30);
+
+            Vector3 evadeDirection = (followRandomPosition - transform.position).normalized;
             float angle = Mathf.Atan2(evadeDirection.y, evadeDirection.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
 
             //accelerate
-            float restrictedAccel = Vector2.Distance(transform.position, player.position) / 25f * acceleration;
+            float restrictedAccel = Vector2.Distance(transform.position, player.position) / Random.Range(5, 25) * acceleration;
 
             rb.AddForce(transform.up * restrictedAccel * Time.deltaTime);
         }
