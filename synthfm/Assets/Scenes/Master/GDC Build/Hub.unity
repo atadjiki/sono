@@ -5899,7 +5899,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8178.688, y: 3238.4214}
+  m_Size: {x: 20000, y: 3250}
   m_EdgeRadius: 0
 --- !u!114 &411033795
 MonoBehaviour:
@@ -8593,7 +8593,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8178.688, y: 3238.4214}
+  m_Size: {x: 20000, y: 3250}
   m_EdgeRadius: 0
 --- !u!4 &1656461130
 Transform:
@@ -9657,11 +9657,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: i_Menu
-      value: 
-      objectReference: {fileID: 766420373}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9717,11 +9712,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
-      propertyPath: fiberWorld
+      propertyPath: i_Menu
       value: 
-      objectReference: {fileID: 411033791}
+      objectReference: {fileID: 766420373}
     - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9731,6 +9726,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: fiberWorld
+      value: 
+      objectReference: {fileID: 411033791}
     - target: {fileID: 2052041055220811353, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_IsActive
