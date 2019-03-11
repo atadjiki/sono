@@ -170,6 +170,7 @@ MonoBehaviour:
   fragmentCase: {fileID: 2111188218344192184}
   fragment: {fileID: 2111188219053414502}
   forceField: {fileID: 2111188218319868832}
+  allowDebugComplete: 0
   timeUntilReset: 10
   gates:
   - {fileID: 7026331955276395281}
@@ -823,6 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  portal: {fileID: 0}
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 3
@@ -899,6 +901,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5863697302354160304, guid: 07c8bbfc4a0029445a06480b4efb7706,
         type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
@@ -938,21 +955,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Name
       value: Set2OnKill
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c8bbfc4a0029445a06480b4efb7706, type: 3}
@@ -1032,6 +1034,11 @@ PrefabInstance:
     - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1126,6 +1133,11 @@ PrefabInstance:
       propertyPath: partOfPuzzle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &5975098930585577468 stripped
@@ -1161,12 +1173,12 @@ PrefabInstance:
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.9
+      value: 57.7
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50.1
+      value: 47.8
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
@@ -1218,6 +1230,11 @@ PrefabInstance:
       propertyPath: partOfPuzzle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!114 &7026331954678132311 stripped
@@ -1253,12 +1270,12 @@ PrefabInstance:
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -24.8
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7076.2
+      value: 69.4
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
@@ -1310,6 +1327,11 @@ PrefabInstance:
       propertyPath: partOfPuzzle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &5975098929417234594 stripped
@@ -1333,12 +1355,12 @@ PrefabInstance:
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -73
+      value: -78.9
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.2
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
@@ -1388,6 +1410,11 @@ PrefabInstance:
     - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
