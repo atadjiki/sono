@@ -305,7 +305,7 @@
                 {
                     ChangeSpeed(Speed.Slow);
                 }
-                else if (slider > 0.75f)
+                else if (slider > 0.35f)
                 {
                     ChangeSpeed(Speed.Normal);
                 }
