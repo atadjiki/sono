@@ -260,7 +260,7 @@
                 {
                     i_Menu.scroll(true);
                 }
-                else if (inputBindings.Menu_Select.WasPressed)
+                else if (inputBindings.Menu_Select.IsPressed)
                 {
                     i_Menu.Do_Select(this);
                 }
