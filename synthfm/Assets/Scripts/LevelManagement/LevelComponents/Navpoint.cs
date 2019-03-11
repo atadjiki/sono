@@ -138,7 +138,6 @@ public class Navpoint : MonoBehaviour
             }
             else
             {
-                Debug.Log("No Target");
                 target = centerOfEye;
             }
         }
