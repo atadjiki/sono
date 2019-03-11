@@ -137,13 +137,13 @@ MonoBehaviour:
   fragmentCase: {fileID: 4556877392726437357}
   fragment: {fileID: 4556877392445221854}
   forceField: {fileID: 4556877393012609851}
+  allowDebugComplete: 0
   timeUntilReset: 10
   gates:
   - {fileID: 4896466161980260359}
   - {fileID: 4896466162356077487}
   - {fileID: 4896466161943455228}
   - {fileID: 4896466163408664344}
-  turnController: {fileID: 0}
   useTimer: 0
   inOrder: 0
 --- !u!70 &4556877391439992888
@@ -562,11 +562,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  portal: {fileID: 0}
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 3
   isAttached: 0
   audioSource: {fileID: 4556877392445221855}
+  TrackIndex: 0
   followTarget: {fileID: 0}
   newTarget: {fileID: 0}
   fragmentCase: {fileID: 0}
@@ -867,6 +869,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 315
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &8114049975288439518 stripped
@@ -953,6 +960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
@@ -1041,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 225
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &8114049973818552378 stripped
@@ -1127,6 +1144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}

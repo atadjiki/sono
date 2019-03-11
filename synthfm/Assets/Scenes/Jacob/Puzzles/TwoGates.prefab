@@ -293,11 +293,11 @@ MonoBehaviour:
   fragmentCase: {fileID: 6573480298447790367}
   fragment: {fileID: 6573480297403768315}
   forceField: {fileID: 6573480297730571902}
+  allowDebugComplete: 0
   timeUntilReset: 10
   gates:
   - {fileID: 2879849997454312678}
   - {fileID: 2879849998741089006}
-  turnController: {fileID: 0}
   useTimer: 0
   inOrder: 0
 --- !u!70 &6573480297260699639
@@ -481,11 +481,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  portal: {fileID: 0}
   acceleration: 2500
   maxSpeed: 25
   turnSpeed: 3
   isAttached: 0
   audioSource: {fileID: 6573480297403768312}
+  TrackIndex: 0
   followTarget: {fileID: 0}
   newTarget: {fileID: 0}
   fragmentCase: {fileID: 0}
@@ -863,6 +865,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &1485646018643754792 stripped
@@ -949,6 +956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: ignoreAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
