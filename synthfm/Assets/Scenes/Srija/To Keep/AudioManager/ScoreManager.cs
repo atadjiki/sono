@@ -87,6 +87,16 @@ public class Mixer
         mixer.SetFloat("Vol Fragment " + mixerGroupIndex, 0);
         yield return null;
     }
+
+    public void SetHighPassDuck(bool isActive)
+    {
+        if(isActive)
+            mixer.SetFloat("HighPass Cutoff", 960.00f);
+        else
+            mixer.SetFloat("HighPass Cutoff", 10.00f);
+    }
+
+    
 }
 
 // TODO: need to add parameters to mixer groups to control them
@@ -255,6 +265,10 @@ public class ScoreManager : MonoBehaviour
         docks[DockIndex].Load(scorePatterns[Index]);
     }
 
+    public void SetHighPassDuck(bool isActive)
+    {
+        docks[CurrentActiveDock].SetHighPassDuck(isActive);
+    }
 
     // The Update functions mostly just handle updating the metronome
     void FixedUpdate()
