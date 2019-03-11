@@ -45,6 +45,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Procedural1", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<FiberWorld>().enabled = true;
+                ScoreManager._instance.Crossfade();
             }
 
             //TO DO: Re-enable Realms
