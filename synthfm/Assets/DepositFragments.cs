@@ -48,7 +48,8 @@ public class DepositFragments : MonoBehaviour
 
     private IEnumerator DeleteFragments(FragmentController fragment)
     {
-        yield return new WaitForSeconds(1.5f);
+        //TO DO: Tweak this 
+        yield return new WaitForSeconds(5f);
 
         Destroy(fragment.gameObject);
 
