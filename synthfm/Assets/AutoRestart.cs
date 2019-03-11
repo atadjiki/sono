@@ -9,6 +9,7 @@ public class AutoRestart : MonoBehaviour
 
     PlayerInput.InputBindings inputBindings;
 
+
     private float timer;
 
     // Start is called before the first frame update
@@ -20,7 +21,6 @@ public class AutoRestart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(timer);
         if(!Input.anyKeyDown)
         {
             timer += Time.deltaTime;
