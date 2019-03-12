@@ -70,20 +70,20 @@
 
         private bool midiInput = false;
 
+        private bool movingTowardsMouse = false;
+        private Vector3 lastMousePosition;
+        private float timeSinceLastClick = 0;
+
+        private float angle_threshold = 5f;
+
         void OnEnable()
         {
-            // See PlayerActions.cs for this setup.
-
-            //playerActions.Move.OnLastInputTypeChanged += ( lastInputType ) => Debug.Log( lastInputType );
-
             inputBindings = InputBindings.CreateWithDefaultBindings();
             LoadBindings();
         }
 
         void OnDisable()
         {
-            // This properly disposes of the action set and unsubscribes it from
-            // update events so that it doesn't do additional processing unnecessarily.
             inputBindings.Destroy();
         }
 
@@ -131,6 +131,7 @@
             if (!MenuMode)
             {
                 DoAltInput();
+                DoMouseInput();
             }
             DoMIDIInput();
 
@@ -273,6 +274,111 @@
             MenuMode = !MenuMode;
             i_Menu.ActivatePannel(MenuMode); // Actiavate / Deactivate Menu Panel
             TogglePause(MenuMode);
+        }
+
+        bool VectorRight(Vector3 a, Vector3 b)
+        {
+            if (a.x > b.x)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool VectorUp(Vector3 a, Vector3 b)
+        {
+            if (a.y > b.y)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        void TorqueTowardsMouse(Vector3 mousePosition, Vector3 playerPosition, float angleBetween)
+        {
+
+
+            //Mouse below and to the right of player
+            if (VectorRight(mousePosition, playerPosition) && !VectorUp(mousePosition, playerPosition))
+            {
+                rigidbody.AddTorque(-1 * getTorque());
+            }
+
+            //Mouse below and to the left of player
+            else if (!VectorRight(mousePosition, playerPosition) && !VectorUp(mousePosition, playerPosition))
+            {
+                rigidbody.AddTorque(1 * getTorque());
+            }
+            //Mouse above and to the right of player
+            else if (VectorRight(mousePosition, playerPosition) && VectorUp(mousePosition, playerPosition))
+            {
+                rigidbody.AddTorque(-1 * getTorque());
+            }
+            //Mouse above and to the left of player
+            else if (!VectorRight(mousePosition, playerPosition) && VectorUp(mousePosition, playerPosition))
+            {
+                rigidbody.AddTorque(1 * getTorque());
+            }
+
+
+            previousRight = rightTurntable;
+        }
+
+        //https://answers.unity.com/questions/855976/make-a-player-model-rotate-towards-mouse-location.html
+        void DoMouseInput()
+        {
+
+            Vector3 mousePosition = Input.mousePosition;
+            Vector3 playerPosition = Camera.main.WorldToScreenPoint(this.transform.position);
+            Vector3 forward = this.transform.up;
+            playerPosition.z = 0;
+
+            Vector3 targetDir = mousePosition - playerPosition;
+            float angleBetween = Vector3.Angle(targetDir, forward);
+
+            if (inputBindings.Screen_Touch.IsPressed)
+            {
+                ChangeSpeed(Speed.Slow);
+            }
+
+            if (inputBindings.Screen_Touch.WasReleased)
+            {
+                lastMousePosition = mousePosition;
+                movingTowardsMouse = true;
+                Debug.Log("Moving towards mouse");
+
+                //detect double click
+                if ((Time.time - timeSinceLastClick) < 2f)
+                {
+                    ChangeSpeed(Speed.Fast);
+                    timeSinceLastClick = Time.time;
+                }
+                else
+                {
+                    ChangeSpeed(Speed.Normal);
+                    timeSinceLastClick = Time.time;
+                }
+            }
+            else if (movingTowardsMouse && lastMousePosition != null)
+            {
+
+                if (angleBetween < angle_threshold)
+                {
+                    movingTowardsMouse = false;
+                }
+                else
+                {
+                    targetDir = lastMousePosition - playerPosition;
+                    TorqueTowardsMouse(targetDir, playerPosition, angleBetween);
+                }
+            }
+
         }
 
         void DoAltInput()

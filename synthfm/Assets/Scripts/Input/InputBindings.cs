@@ -20,6 +20,8 @@
         public PlayerAction Menu_Up;
         public PlayerAction Menu_Select;
 
+        public PlayerAction Screen_Touch;
+
         //Debug
         public PlayerAction Debug_Puzzle_Complete;
 
@@ -40,6 +42,8 @@
             Menu_Select = CreatePlayerAction("Select");
 
             Debug_Puzzle_Complete = CreatePlayerAction("Debug Puzzle Complete");
+
+            Screen_Touch = CreatePlayerAction("Screen Touch");
         }
 
 
@@ -88,6 +92,7 @@
             playerActions.Debug_Puzzle_Complete.AddDefaultBinding(Key.Space);
             playerActions.Debug_Puzzle_Complete.AddDefaultBinding(InputControlType.Action2);
 
+            playerActions.Screen_Touch.AddDefaultBinding(Mouse.LeftButton);
 
             playerActions.ListenOptions.IncludeUnknownControllers = true;
             playerActions.ListenOptions.MaxAllowedBindings = 4;
