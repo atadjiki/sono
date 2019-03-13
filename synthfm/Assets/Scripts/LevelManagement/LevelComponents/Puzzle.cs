@@ -16,6 +16,7 @@ using PlayerInput;
 [ExecuteInEditMode]
 public class Puzzle : SetPiece
 {
+
     public bool complete = false;
     private bool released = false;
     public bool disableCameraOnComplete = true;
@@ -89,13 +90,21 @@ public class Puzzle : SetPiece
         VisualEffect vfx = forceField.GetComponentInChildren<VisualEffect>();
 
         Debug.Log("Calling stop on vfx");
-        vfx.Stop();
+        vfx.SetFloat("Setto-100Onkill", 30);
+        vfx.SetFloat("Set2OnKill", 1);
+       
+        vfx.SetFloat("EmissionRate", 0);
+        vfx.SetFloat("EmissionRate2", 0);
+        Debug.Log("travisTest");
+        //vfx.Stop();
         StartCoroutine("KillVFX", vfx);
 
     }
 
     IEnumerator KillVFX(VisualEffect vfx)
     {
+        yield return new WaitForSeconds(1.5f);
+        vfx.SetFloat("Setto-100Onkill", -70);
         yield return new WaitForSeconds(30f);
         vfx.enabled = false;
     }

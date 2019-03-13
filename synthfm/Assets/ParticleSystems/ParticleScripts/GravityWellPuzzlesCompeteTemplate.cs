@@ -24,6 +24,7 @@ public class GravityWellPuzzlesCompeteTemplate : MonoBehaviour
             GravityWell.SetGradient("GradientOnstart", GradientOnKill);
             GravityWell.SetFloat("EmissionRate", 0);
             GravityWell.SetFloat("EmissionRate2", 0);
+            
         }
     }
 }
