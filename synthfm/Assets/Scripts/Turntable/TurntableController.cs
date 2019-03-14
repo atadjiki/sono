@@ -136,7 +136,7 @@
             {
               //  DoAltInput();
                 //DoMouseInput();
-               // DoTouchInput();
+               DoTouchInput();
             }
          //   DoMIDIInput();
 
@@ -341,10 +341,10 @@
             if(TouchManager.TouchCount <= 0){ return;}
 
             //get most recent touch
-            InControl.Touch mostRecentTouch = TouchManager.GetTouch(TouchManager.TouchCount - 1);
+            InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
 
-            Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
-            Vector3 playerPosition = Camera.main.WorldToScreenPoint(this.transform.position); playerPosition.z = 0;
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(mostRecentTouch.position); touchPosition.z = 0;
+            Vector3 playerPosition = this.transform.position; playerPosition.z = 0;
             Vector3 forward = this.transform.up;
            
             //I love Rose!
@@ -352,23 +352,28 @@
             Vector3 targetDir = touchPosition - playerPosition;
             float angleBetween = Vector3.Angle(targetDir, forward);
 
+            if(mostRecentTouch.phase == TouchPhase.Began)
+            {
+                //detect double click
+                if ((Time.time - timeSinceLastTouch) < 2f)
+                {
+                    ChangeSpeed(Speed.Fast);
+                    timeSinceLastTouch = Time.time;
+                }
+                else
+                {
+                    ChangeSpeed(Speed.Normal);
+                    timeSinceLastTouch = Time.time;
+                }
+            }
+
             if (mostRecentTouch.phase == TouchPhase.Ended)
             {
                 lastTouchPosition = touchPosition;
                 movingTowardsTouch = true;
                 Debug.Log("Moving towards touch");
 
-                //detect double click
-                //if ((Time.time - timeSinceLastTouch) < 2f)
-                //{
-                //    ChangeSpeed(Speed.Fast);
-                //    timeSinceLastTouch = Time.time;
-                //}
-                //else
-                //{
-                //    ChangeSpeed(Speed.Normal);
-                //    timeSinceLastTouch = Time.time;
-                //}
+               
             }
             else if (movingTowardsTouch && lastTouchPosition != null)
             {
