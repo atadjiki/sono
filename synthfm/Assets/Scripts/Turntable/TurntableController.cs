@@ -74,6 +74,10 @@
         private Vector3 lastMousePosition;
         private float timeSinceLastClick = 0;
 
+        private bool movingTowardsTouch = false;
+        private Vector3 lastTouchPosition;
+        private float timeSinceLastTouch = 0;
+
         private float angle_threshold = 5f;
 
         void OnEnable()
@@ -125,15 +129,16 @@
         void Update()
         {
 
-            UpdateVariables();
+           // UpdateVariables();
             ApplyForce();
 
             if (!MenuMode)
             {
-                DoAltInput();
-                DoMouseInput();
+              //  DoAltInput();
+                //DoMouseInput();
+               // DoTouchInput();
             }
-            DoMIDIInput();
+         //   DoMIDIInput();
 
             DoSpeedInput();
             DoCheckForOverrides();
@@ -145,7 +150,7 @@
         void UpdateVariables()
         {
 
-           // leftTurntable = turntableManager.getLeft();
+            //leftTurntable = turntableManager.getLeft();
             //rightTurntable = turntableManager.getRight();
             //crossFade = turntableManager.getFade();
             //slider = turntableManager.getSlider();
@@ -300,7 +305,7 @@
             }
         }
 
-        void TorqueTowardsMouse(Vector3 mousePosition, Vector3 playerPosition, float angleBetween)
+        void TorqueTowardsPoint(Vector3 mousePosition, Vector3 playerPosition, float angleBetween)
         {
 
 
@@ -330,7 +335,56 @@
             previousRight = rightTurntable;
         }
 
-        //https://answers.unity.com/questions/855976/make-a-player-model-rotate-towards-mouse-location.html
+        void DoTouchInput()
+        {
+
+            if(TouchManager.TouchCount <= 0){ return;}
+
+            //get most recent touch
+            InControl.Touch mostRecentTouch = TouchManager.GetTouch(TouchManager.TouchCount - 1);
+
+            Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
+            Vector3 playerPosition = Camera.main.WorldToScreenPoint(this.transform.position); playerPosition.z = 0;
+            Vector3 forward = this.transform.up;
+           
+            //I love Rose!
+
+            Vector3 targetDir = touchPosition - playerPosition;
+            float angleBetween = Vector3.Angle(targetDir, forward);
+
+            if (mostRecentTouch.phase == TouchPhase.Ended)
+            {
+                lastTouchPosition = touchPosition;
+                movingTowardsTouch = true;
+                Debug.Log("Moving towards touch");
+
+                //detect double click
+                //if ((Time.time - timeSinceLastTouch) < 2f)
+                //{
+                //    ChangeSpeed(Speed.Fast);
+                //    timeSinceLastTouch = Time.time;
+                //}
+                //else
+                //{
+                //    ChangeSpeed(Speed.Normal);
+                //    timeSinceLastTouch = Time.time;
+                //}
+            }
+            else if (movingTowardsTouch && lastTouchPosition != null)
+            {
+
+                if (angleBetween < angle_threshold)
+                {
+                    movingTowardsTouch = false;
+                }
+                else
+                {
+                    targetDir = lastTouchPosition - playerPosition;
+                    TorqueTowardsPoint(targetDir, playerPosition, angleBetween);
+                }
+            }
+        }
+
         void DoMouseInput()
         {
 
@@ -375,7 +429,7 @@
                 else
                 {
                     targetDir = lastMousePosition - playerPosition;
-                    TorqueTowardsMouse(targetDir, playerPosition, angleBetween);
+                    TorqueTowardsPoint(targetDir, playerPosition, angleBetween);
                 }
             }
 

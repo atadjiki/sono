@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6228,7 +6228,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1847
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6879,24 +6879,24 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5332951722880558304, guid: abd49df7cb79d334daa051d2e29a8f80,
+    - target: {fileID: 1433689415286621464, guid: abd49df7cb79d334daa051d2e29a8f80,
         type: 3}
-      propertyPath: m_IsTrigger
+      propertyPath: TrackIndex
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5332951723901274601, guid: abd49df7cb79d334daa051d2e29a8f80,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1433689415286621467, guid: abd49df7cb79d334daa051d2e29a8f80,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1433689415286621464, guid: abd49df7cb79d334daa051d2e29a8f80,
+    - target: {fileID: 5332951723901274601, guid: abd49df7cb79d334daa051d2e29a8f80,
         type: 3}
-      propertyPath: TrackIndex
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332951722880558304, guid: abd49df7cb79d334daa051d2e29a8f80,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9652,6 +9652,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 912886219}
     m_Modifications:
+    - target: {fileID: 1438176366374295096, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: touchCamera
+      value: 
+      objectReference: {fileID: 504042470}
     - target: {fileID: 1855229569708447584, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_Name
@@ -9721,6 +9726,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6840359925433668879, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447586, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_Enabled
@@ -9736,15 +9746,45 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6840359925433668879, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 680143427956118305, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: ShapeModule.m_Texture
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149758896233740973, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072520800975312551, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eecfa8a6a1311d14093d1c8b2afd24b3, type: 2}
+    - target: {fileID: 3072520800975312551, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072520800975312551, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072520800975312551, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072520800975312551, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579640930448580465, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
