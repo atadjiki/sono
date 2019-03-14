@@ -113,8 +113,8 @@
         void Start()
         {
 
-            turntableManager = GameObject.Find("TurntableInputManager").GetComponent<TurntableManager>(); ;
-            rotation = turntableManager.rotation;
+            //turntableManager = GameObject.Find("TurntableInputManager").GetComponent<TurntableManager>(); ;
+            //rotation = turntableManager.rotation;
 
             rigidbody = GetComponent<Rigidbody2D>();
             ChangeSpeed(Speed.Normal);
@@ -145,10 +145,10 @@
         void UpdateVariables()
         {
 
-            leftTurntable = turntableManager.getLeft();
-            rightTurntable = turntableManager.getRight();
-            crossFade = turntableManager.getFade();
-            slider = turntableManager.getSlider();
+           // leftTurntable = turntableManager.getLeft();
+            //rightTurntable = turntableManager.getRight();
+            //crossFade = turntableManager.getFade();
+            //slider = turntableManager.getSlider();
             //Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
         }
 
@@ -502,4 +502,4 @@
         }
 
     }
-}
+    }
