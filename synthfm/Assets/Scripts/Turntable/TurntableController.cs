@@ -338,54 +338,62 @@
         void DoTouchInput()
         {
 
-            if(TouchManager.TouchCount <= 0){ return;}
-
-            //get most recent touch
-            InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
-
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(mostRecentTouch.position); touchPosition.z = 0;
-            Vector3 playerPosition = this.transform.position; playerPosition.z = 0;
-            Vector3 forward = this.transform.up;
-           
-            //I love Rose!
-
-            Vector3 targetDir = touchPosition - playerPosition;
-            float angleBetween = Vector3.Angle(targetDir, forward);
-
-            if(mostRecentTouch.phase == TouchPhase.Began)
+            if (TouchManager.TouchCount > 0)
             {
-                //detect double click
-                if ((Time.time - timeSinceLastTouch) < 2f)
+
+                //get most recent touch
+                InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
+
+                Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
+                Vector3 playerPosition = Camera.main.WorldToScreenPoint(this.transform.position); playerPosition.z = 0;
+                Vector3 forward = this.transform.up;
+
+                //I love Rose!
+
+                Vector3 targetDir = touchPosition - playerPosition;
+                float angleBetween = Vector3.Angle(targetDir, forward);
+                
+                if (mostRecentTouch.phase == TouchPhase.Began)
                 {
-                    ChangeSpeed(Speed.Fast);
+
+                    lastTouchPosition = touchPosition;
+                    movingTowardsTouch = true;
+                    Debug.Log("Moving towards touch");
+
+                }
+                if (mostRecentTouch.phase == TouchPhase.Ended)
+                {
+                    //detect double click
+                    if ((Time.time - timeSinceLastTouch) < 2f)
+                    {
+                        ChangeSpeed(Speed.Fast);
+                        timeSinceLastTouch = Time.time;
+                    }
+                    else
+                    {
+                        ChangeSpeed(Speed.Normal);
+                        timeSinceLastTouch = Time.time;
+                    }
+
+
+                }
+                if (mostRecentTouch.phase == TouchPhase.Stationary)
+                {
+                    ChangeSpeed(Speed.Slow);
                     timeSinceLastTouch = Time.time;
                 }
-                else
+                else if (movingTowardsTouch && lastTouchPosition != null)
                 {
-                    ChangeSpeed(Speed.Normal);
-                    timeSinceLastTouch = Time.time;
-                }
-            }
 
-            if (mostRecentTouch.phase == TouchPhase.Ended)
-            {
-                lastTouchPosition = touchPosition;
-                movingTowardsTouch = true;
-                Debug.Log("Moving towards touch");
-
-               
-            }
-            else if (movingTowardsTouch && lastTouchPosition != null)
-            {
-
-                if (angleBetween < angle_threshold)
-                {
-                    movingTowardsTouch = false;
-                }
-                else
-                {
-                    targetDir = lastTouchPosition - playerPosition;
-                    TorqueTowardsPoint(targetDir, playerPosition, angleBetween);
+                    if (angleBetween < angle_threshold)
+                    {
+                        movingTowardsTouch = false;
+                    }
+                    else
+                    {
+                        targetDir = lastTouchPosition - playerPosition;
+                        TorqueTowardsPoint(targetDir, playerPosition, angleBetween);
+                    }
                 }
             }
         }
