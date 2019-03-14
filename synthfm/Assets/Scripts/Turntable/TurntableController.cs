@@ -338,6 +338,25 @@
         void DoTouchInput()
         {
 
+
+
+            // Use last device which provided input.
+            var inputDevice = InputManager.ActiveDevice;
+
+            // Disable and hide touch controls if we use a controller.
+            // If "Enable Controls On Touch" is ticked in Touch Manager inspector,
+            // controls will be enabled and shown again when the screen is touched.
+            if (inputDevice != InputDevice.Null && inputDevice != TouchManager.Device)
+            {
+                TouchManager.ControlsEnabled = false;
+            }
+
+            if (inputDevice.Action1)
+            {
+                toggleMenu();
+                return;
+            }
+
             if (TouchManager.TouchCount > 0)
             {
 
@@ -345,15 +364,13 @@
                 InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
 
                 Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
-                Vector3 playerPosition = Camera.main.WorldToScreenPoint(this.transform.position); playerPosition.z = 0;
+                Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
                 Vector3 forward = this.transform.up;
 
-                //I love Rose!
-
-                Vector3 targetDir = touchPosition - playerPosition;
+                Vector3 targetDir = touchPosition - centerPosition;
                 float angleBetween = Vector3.Angle(targetDir, forward);
                 
-                if (mostRecentTouch.phase == TouchPhase.Began)
+                if (mostRecentTouch.phase == TouchPhase.Began || mostRecentTouch.phase == TouchPhase.Moved)
                 {
 
                     lastTouchPosition = touchPosition;
@@ -391,8 +408,8 @@
                     }
                     else
                     {
-                        targetDir = lastTouchPosition - playerPosition;
-                        TorqueTowardsPoint(targetDir, playerPosition, angleBetween);
+                       // targetDir = lastTouchPosition - centerPosition;
+                        TorqueTowardsPoint(lastTouchPosition, centerPosition, angleBetween);
                     }
                 }
             }
