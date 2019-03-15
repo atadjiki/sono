@@ -399,15 +399,28 @@
                 Vector3 forward = this.transform.up;
                 Vector3 targetDir = lastTouchPosition - centerPosition;
 
-                float angleBetween = Vector3.Angle(targetDir, forward);
+                float angleTo = Vector3.Angle(targetDir, forward);
+                float angleFrom = Vector3.Angle(forward, targetDir);
 
-                if (angleBetween < angle_threshold)
+                if (angleTo < angle_threshold)
+                {
+                    movingTowardsTouch = false;
+                }
+                else if (angleFrom < angle_threshold)
                 {
                     movingTowardsTouch = false;
                 }
                 else
                 {
-                    TorqueTowardsPoint(lastTouchPosition, centerPosition, angleBetween);
+                    if(angleTo > angleFrom)
+                    {
+                        TorqueTowardsPoint(centerPosition, targetDir, angleFrom);
+                    }
+                    else
+                    {
+                        TorqueTowardsPoint(targetDir, centerPosition, angleTo);
+                    }
+
                 }
             }
         }
