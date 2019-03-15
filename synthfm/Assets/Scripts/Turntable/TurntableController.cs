@@ -338,18 +338,6 @@
         void DoTouchInput()
         {
 
-            var inputDevice = InputManager.ActiveDevice;
-            if (inputDevice != InputDevice.Null && inputDevice != TouchManager.Device)
-            {
-                TouchManager.ControlsEnabled = false;
-            }
-
-            if (inputDevice.Action1)
-            {
-                toggleMenu();
-                return;
-            }
-
             if (TouchManager.TouchCount > 0)
             {
 
@@ -412,13 +400,16 @@
                 }
                 else
                 {
-                    if(angleTo > angleFrom)
+
+                    if(lastTouchPosition == null) { return; }
+
+                    if (angleTo > angleFrom)
                     {
-                        TorqueTowardsPoint(centerPosition, targetDir, angleFrom);
+                        TorqueTowardsPoint(centerPosition, lastTouchPosition, angleFrom);
                     }
                     else
                     {
-                        TorqueTowardsPoint(targetDir, centerPosition, angleTo);
+                        TorqueTowardsPoint(lastTouchPosition, centerPosition, angleTo);
                     }
 
                 }
