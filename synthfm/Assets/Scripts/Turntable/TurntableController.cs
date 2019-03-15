@@ -338,14 +338,7 @@
         void DoTouchInput()
         {
 
-
-
-            // Use last device which provided input.
             var inputDevice = InputManager.ActiveDevice;
-
-            // Disable and hide touch controls if we use a controller.
-            // If "Enable Controls On Touch" is ticked in Touch Manager inspector,
-            // controls will be enabled and shown again when the screen is touched.
             if (inputDevice != InputDevice.Null && inputDevice != TouchManager.Device)
             {
                 TouchManager.ControlsEnabled = false;
@@ -362,14 +355,13 @@
 
                 //get most recent touch
                 InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
-
                 Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
                 Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
                 Vector3 forward = this.transform.up;
 
                 Vector3 targetDir = touchPosition - centerPosition;
                 float angleBetween = Vector3.Angle(targetDir, forward);
-                
+
                 if (mostRecentTouch.phase == TouchPhase.Began || mostRecentTouch.phase == TouchPhase.Moved)
                 {
 
@@ -392,25 +384,30 @@
                         timeSinceLastTouch = Time.time;
                     }
 
-
                 }
                 if (mostRecentTouch.phase == TouchPhase.Stationary)
                 {
                     ChangeSpeed(Speed.Slow);
                     timeSinceLastTouch = Time.time;
                 }
-                else if (movingTowardsTouch && lastTouchPosition != null)
-                {
+            }
 
-                    if (angleBetween < angle_threshold)
-                    {
-                        movingTowardsTouch = false;
-                    }
-                    else
-                    {
-                       // targetDir = lastTouchPosition - centerPosition;
-                        TorqueTowardsPoint(lastTouchPosition, centerPosition, angleBetween);
-                    }
+            if (movingTowardsTouch && lastTouchPosition != null)
+            {
+
+                Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+                Vector3 forward = this.transform.up;
+                Vector3 targetDir = lastTouchPosition - centerPosition;
+
+                float angleBetween = Vector3.Angle(targetDir, forward);
+
+                if (angleBetween < angle_threshold)
+                {
+                    movingTowardsTouch = false;
+                }
+                else
+                {
+                    TorqueTowardsPoint(lastTouchPosition, centerPosition, angleBetween);
                 }
             }
         }

@@ -45,21 +45,37 @@ public class InGameMenu : MonoBehaviour
         switch (_currentState)
         {
             case MenuStates.Resume:
-                i_controller.toggleMenu();
+                Resume(i_controller);
                 break;
 
             case MenuStates.Restart:
-                Time.timeScale = 1;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Restart();
                 //  SceneManager.LoadScene("Hub");
                 break;
 
             case MenuStates.Exit:
-                Debug.Log("Exit Requested");
-                Application.Quit();
+                ExitGame();
                 break;
         }
     }
+
+    public void Resume(PlayerInput.TurntableController i_controller)
+    {
+        i_controller.toggleMenu();
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exit Requested");
+        Application.Quit();
+    }
+
 
     public void scroll(bool up) // true = up , false = down
     {
