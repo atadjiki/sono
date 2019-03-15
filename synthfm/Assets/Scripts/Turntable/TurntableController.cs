@@ -78,7 +78,7 @@
         private Vector3 lastTouchPosition;
         private float timeSinceLastTouch = 0;
 
-        private float angle_threshold = 15f;
+        private float angle_threshold = 5f;
 
         void OnEnable()
         {
@@ -362,9 +362,8 @@
                 if(mostRecentTouch.phase == TouchPhase.Moved)
                 {
                     lastTouchPosition = touchPosition;
-                    movingTowardsTouch = true;
                 }
-                else if (mostRecentTouch.phase == TouchPhase.Ended || mostRecentTouch.phase == TouchPhase.Canceled)
+                if (mostRecentTouch.phase == TouchPhase.Ended || mostRecentTouch.phase == TouchPhase.Canceled)
                 {
                     //detect double click
                     if ((Time.time - timeSinceLastTouch) < 1f)
@@ -380,7 +379,7 @@
                     }
 
                 }
-                else if (mostRecentTouch.phase == TouchPhase.Stationary)
+                if (mostRecentTouch.phase == TouchPhase.Stationary)
                 {
 
                     if(currentSpeed != Speed.Fast)
