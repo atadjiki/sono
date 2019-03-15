@@ -350,9 +350,8 @@
                 Vector3 targetDir = touchPosition - centerPosition;
                 float angleBetween = Vector3.Angle(targetDir, forward);
 
-                if (mostRecentTouch.phase == TouchPhase.Began || mostRecentTouch.phase == TouchPhase.Moved)
+                if (mostRecentTouch.phase == TouchPhase.Began)
                 {
-
                     lastTouchPosition = touchPosition;
                     movingTowardsTouch = true;
                     Debug.Log("Moving towards touch");
@@ -368,14 +367,14 @@
                     }
                     else
                     {
-                        ChangeSpeed(Speed.Normal);
+                        ChangeSpeed(Speed.Slow);
                         timeSinceLastTouch = Time.time;
                     }
 
                 }
-                if (mostRecentTouch.phase == TouchPhase.Stationary)
+                if (mostRecentTouch.phase == TouchPhase.Stationary || mostRecentTouch.phase == TouchPhase.Moved)
                 {
-                    ChangeSpeed(Speed.Slow);
+                    ChangeSpeed(Speed.Normal);
                     timeSinceLastTouch = Time.time;
                 }
             }
