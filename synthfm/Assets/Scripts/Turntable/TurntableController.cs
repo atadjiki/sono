@@ -129,16 +129,16 @@
         void Update()
         {
 
-            // UpdateVariables();
+           // UpdateVariables();
             ApplyForce();
 
             if (!MenuMode)
             {
-                //  DoAltInput();
+              //  DoAltInput();
                 //DoMouseInput();
-                DoTouchInput();
+               DoTouchInput();
             }
-            //   DoMIDIInput();
+         //   DoMIDIInput();
 
             DoSpeedInput();
             DoCheckForOverrides();
@@ -338,9 +338,6 @@
         void DoTouchInput()
         {
 
-            Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-            Vector3 forward = this.transform.up;
-
             var inputDevice = InputManager.ActiveDevice;
             if (inputDevice != InputDevice.Null && inputDevice != TouchManager.Device)
             {
@@ -359,23 +356,19 @@
                 //get most recent touch
                 InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
                 Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
-
+                Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+                Vector3 forward = this.transform.up;
 
                 Vector3 targetDir = touchPosition - centerPosition;
                 float angleBetween = Vector3.Angle(targetDir, forward);
 
-                if (mostRecentTouch.phase == TouchPhase.Began)
+                if (mostRecentTouch.phase == TouchPhase.Began || mostRecentTouch.phase == TouchPhase.Moved)
                 {
 
                     lastTouchPosition = touchPosition;
                     movingTowardsTouch = true;
                     Debug.Log("Moving towards touch");
 
-                }
-                if (mostRecentTouch.phase == TouchPhase.Stationary || mostRecentTouch.phase == TouchPhase.Moved)
-                {
-                    ChangeSpeed(Speed.Normal);
-                    timeSinceLastTouch = Time.time;
                 }
                 if (mostRecentTouch.phase == TouchPhase.Ended)
                 {
@@ -387,39 +380,45 @@
                     }
                     else
                     {
-                        ChangeSpeed(Speed.Slow);
+                        ChangeSpeed(Speed.Normal);
                         timeSinceLastTouch = Time.time;
                     }
 
                 }
-
+                if (mostRecentTouch.phase == TouchPhase.Stationary)
+                {
+                    ChangeSpeed(Speed.Slow);
+                    timeSinceLastTouch = Time.time;
+                }
             }
 
             if (movingTowardsTouch && lastTouchPosition != null)
             {
 
+                Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+                Vector3 forward = this.transform.up;
                 Vector3 targetDir = lastTouchPosition - centerPosition;
 
                 float angleTo = Vector3.Angle(targetDir, forward);
                 float angleFrom = Vector3.Angle(forward, targetDir);
 
-                if (angleTo <= angle_threshold)
+                if (angleTo < angle_threshold)
                 {
                     movingTowardsTouch = false;
                 }
-                else if (angleFrom <= angle_threshold)
+                else if (angleFrom < angle_threshold)
                 {
                     movingTowardsTouch = false;
                 }
                 else
                 {
-                    if (angleFrom > angleTo)
+                    if(angleTo > angleFrom)
                     {
-                        TorqueTowardsPoint(centerPosition, lastTouchPosition, angleFrom);
+                        TorqueTowardsPoint(centerPosition, targetDir, angleFrom);
                     }
                     else
                     {
-                        TorqueTowardsPoint(lastTouchPosition, centerPosition, angleFrom);
+                        TorqueTowardsPoint(targetDir, centerPosition, angleTo);
                     }
 
                 }
@@ -597,4 +596,4 @@
         }
 
     }
-}
+    }
