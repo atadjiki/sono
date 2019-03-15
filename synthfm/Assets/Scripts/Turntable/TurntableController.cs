@@ -358,24 +358,6 @@
                     movingTowardsTouch = true;
                     timeSinceLastTouch = Time.time;
                 }
-                else if(mostRecentTouch.phase == TouchPhase.Ended)
-                {
-                    if (Time.time - timeSinceLastTouch < 1f)
-                    {
-
-                        if (currentSpeed == Speed.Normal)
-                        {
-                            currentSpeed = Speed.Fast;
-                        }
-                        else
-                        {
-                            currentSpeed = Speed.Normal;
-                        }
-                    }
-                    timeSinceLastTouch = Time.time;
-                }
-
-               
 
                 //  if (movingTowardsTouch && lastTouchPosition != null)
                 //  if(lastTouchPosition != null)
