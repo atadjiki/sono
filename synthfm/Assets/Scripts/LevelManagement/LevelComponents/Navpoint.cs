@@ -11,12 +11,13 @@ public class Navpoint : MonoBehaviour
     public SphereCollider sphereCollider;
     private bool locked = true;
 
-    private float maxFrames = 120f;
-    private float currentFrames = 0;
+    public float maxFrames = 120f;
+    public float currentFrames = 0;
     public int maxFragments = 3;
 
     private DepositFragments[] depositZones;
     private Puzzle[] puzzles;
+    private FragmentController[] fragments;
 
     public bool canTargetFiberWorld = true;
     public bool enteredFiberWorld = false;
@@ -63,14 +64,50 @@ public class Navpoint : MonoBehaviour
         }
         else
         {
-            CheckForNewPuzzle();
+            //`CheckForNewPuzzle();
             CheckForNewFragment();
         }
     }
 
     void CheckForNewFragment()
     {
+        fragments = FindObjectsOfType<FragmentController>();
+        print("Number of Fragments: " +fragments.Length);
+        if (fragments.Length <= 0) { return; }
 
+        float minimumDistance = 0;
+        FragmentController closestFragment = null;
+
+        foreach (FragmentController fragment in fragments)
+        {
+            if (fragment.currentState != FragmentController.states.FOLLOW)
+            {
+                float distance = Vector3.Distance(transform.position, fragment.transform.position);
+                if (distance <= minimumDistance || minimumDistance <= 0)
+                {
+                    minimumDistance = distance;
+                    closestFragment = fragment;
+                }
+            }
+
+        }
+        if (closestFragment == null)
+        {
+
+            if (fiberWorld != null && canTargetFiberWorld)
+            {
+                Debug.Log("Switching target to fiber world");
+                target = fiberWorld;
+            }
+            else
+            {
+                target = centerOfEye;
+            }
+        }
+        else
+        {
+            target = closestFragment.gameObject;
+        }
     }
 
     void CheckForNewDepositZone()

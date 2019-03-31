@@ -11,6 +11,8 @@ public class FragmentController : MonoBehaviour
 
     public GameObject portal;
 
+    public Navpoint playerEyeball;
+
     private Rigidbody2D rb;
     public float acceleration;
     public float maxSpeed;
@@ -52,7 +54,7 @@ public class FragmentController : MonoBehaviour
     private void Start()
     {
         scoreManager = ScoreManager.GetInstance();
-
+        playerEyeball = GameObject.Find("Player").GetComponent<Navpoint>();
 
     }
 
@@ -140,6 +142,8 @@ public class FragmentController : MonoBehaviour
             float restrictedAccel = Vector2.Distance(transform.position, player.position) / 25f * acceleration;
 
             rb.AddForce(transform.up * restrictedAccel * Time.deltaTime);
+
+            playerEyeball.currentFrames = playerEyeball.maxFrames;
         }
     }
 

@@ -316,6 +316,16 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4641221766128565875, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: Ping
+      value: 
+      objectReference: {fileID: 1194783006}
+    - target: {fileID: 4641221766128565875, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: Pickup
+      value: 
+      objectReference: {fileID: 1025575911}
     - target: {fileID: 4641221767159434824, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -546,6 +556,16 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4556877392726437357, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: Ping
+      value: 
+      objectReference: {fileID: 1194783006}
+    - target: {fileID: 4556877392726437357, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: Pickup
+      value: 
+      objectReference: {fileID: 1025575911}
     - target: {fileID: 2546578704995295035, guid: 26c9503309ec75c4e8323d04a8339731,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -5681,6 +5701,16 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6573480298447790367, guid: 48a1d006ef60dc54aad1cbf5f3af26ce,
+        type: 3}
+      propertyPath: Ping
+      value: 
+      objectReference: {fileID: 1194783006}
+    - target: {fileID: 6573480298447790367, guid: 48a1d006ef60dc54aad1cbf5f3af26ce,
+        type: 3}
+      propertyPath: Pickup
+      value: 
+      objectReference: {fileID: 1025575911}
     - target: {fileID: 5139651222366148722, guid: 48a1d006ef60dc54aad1cbf5f3af26ce,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -7195,6 +7225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1025575911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3790571460833928287, guid: abd49df7cb79d334daa051d2e29a8f80,
+    type: 3}
+  m_PrefabInstance: {fileID: 855701783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1049933508
 GameObject:
   m_ObjectHideFlags: 0
@@ -7673,6 +7709,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16000, y: 1500}
   m_EdgeRadius: 0
+--- !u!1 &1194783006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1637513723854705046, guid: abd49df7cb79d334daa051d2e29a8f80,
+    type: 3}
+  m_PrefabInstance: {fileID: 855701783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1209789632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1855229569708447584, guid: b8a011f487dba2644adbd6046cdde4d9,
