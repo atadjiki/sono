@@ -131,7 +131,7 @@
             if (!MenuMode)
             {
                 DoAltInput();
-                DoMouseInput();
+                //DoMouseInput();
             }
             DoMIDIInput();
 
