@@ -64,7 +64,13 @@ public class Navpoint : MonoBehaviour
         else
         {
             CheckForNewPuzzle();
+            CheckForNewFragment();
         }
+    }
+
+    void CheckForNewFragment()
+    {
+
     }
 
     void CheckForNewDepositZone()
