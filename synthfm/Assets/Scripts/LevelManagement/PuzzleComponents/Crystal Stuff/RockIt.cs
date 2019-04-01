@@ -14,7 +14,6 @@ public class RockIt : MonoBehaviour
 
     [Header("Speed of Disappearing Rock")]
     public float speed = 0.2f;
-    public PuzzleManager _Manager;
 
     private SpriteRenderer _thisRender;
     private Color _color;

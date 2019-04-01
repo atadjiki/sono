@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ClusterManager : MonoBehaviour
 {
+    public enum State { OFF, ON, Error };
+
+    public enum Mode { Rock, Sequencial };
 
     [Header("Rock mode OR Sequencial Mode")]
-    public PuzzleManager.Mode _Mode;        // Editor
-
+    public Mode _Mode;        // Editor
 
     [Header("Engineers ONLY !")]
     [Header("DO NOT TOUCH FOllowings")]
@@ -31,7 +33,7 @@ public class ClusterManager : MonoBehaviour
         size = this.transform.childCount;
 
         // get Rock
-        if(_Mode == PuzzleManager.Mode.Rock)
+        if(_Mode == ClusterManager.Mode.Rock)
         {
             Crystalls = new Crystal[size - _NumOfRocks];
             Rocks = new RockIt[_NumOfRocks];
@@ -65,7 +67,7 @@ public class ClusterManager : MonoBehaviour
     // called from colorIt .. do based on modes
     public void _Notify(Crystal i_crystal)
     {
-        if(_Mode == PuzzleManager.Mode.Rock) // if Rock mode
+        if(_Mode == ClusterManager.Mode.Rock) // if Rock mode
         {
             // change state to active and Increment the number of active crystalls          
                 i_crystal.changeToActive();
@@ -80,7 +82,7 @@ public class ClusterManager : MonoBehaviour
             }
             
         }
-        else if(_Mode == PuzzleManager.Mode.Sequencial) // if squence mode
+        else if(_Mode == ClusterManager.Mode.Sequencial) // if squence mode
         {
             if (i_crystal.sequenceNo == _curSeq)
             {

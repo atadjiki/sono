@@ -9,13 +9,13 @@ public class Crystal: MonoBehaviour
     [Header(" The Sequence number for Seq mode")]
     public int sequenceNo;
 
-    [Header("Colors for the brick")]
+    [Header("Colors for the Crystalls")]
     public Color baseColor;
     public Color errorColor;
     public Color activeColor;
 
     [Header("The State Of this Crystal ON = Active")]
-    public PuzzleManager.State _state = PuzzleManager.State.OFF;
+    public ClusterManager.State _state = ClusterManager.State.OFF;
 
     [Header("Rotation Speed")]
     public float speed = 0f;
@@ -65,7 +65,7 @@ public class Crystal: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if ((_state == PuzzleManager.State.OFF)) // notify if this OFF
+       if ((_state == ClusterManager.State.OFF)) // notify if this OFF
        {
             _cMamnager._Notify(this);             
        } 
@@ -73,6 +73,7 @@ public class Crystal: MonoBehaviour
 
     void Update()
     {
+        // ROtation
             if (ForwardZ == true)
             {
                 transform.Rotate(0, 0, Time.deltaTime * speed, Space.Self);
@@ -102,7 +103,7 @@ public class Crystal: MonoBehaviour
         // shaky shaky
         shakeDuration = 0.5f;
 
-        _state = PuzzleManager.State.ON;
+        _state = ClusterManager.State.ON;
         // currentColor = activeColor;
         _renderer.color = activeColor;
 
@@ -121,7 +122,7 @@ public class Crystal: MonoBehaviour
 
     public void changeToFail()
     {
-        _state = PuzzleManager.State.Error;
+        _state = ClusterManager.State.Error;
         _renderer.color = errorColor;
 
         StartCoroutine(setBaseColor());
@@ -137,7 +138,7 @@ public class Crystal: MonoBehaviour
         yield return new WaitForSeconds(_errorTime);
         _renderer.color = baseColor;
 
-        _state = PuzzleManager.State.OFF;
+        _state = ClusterManager.State.OFF;
     }
 
 }
