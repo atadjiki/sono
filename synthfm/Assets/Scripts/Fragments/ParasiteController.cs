@@ -15,6 +15,7 @@ public class ParasiteController : MonoBehaviour
     public float maxSpeed;
     public float turnSpeed;
     private float timeUntilKill = 5;
+    public int radius_factor = 0;
 
     public bool isAttached;
 
@@ -67,9 +68,8 @@ public class ParasiteController : MonoBehaviour
         if (followTarget != null)
         {
             //get direction to add torque
-            Vector3 followRandomPosition = followTarget.position;
-            followRandomPosition.x += Random.Range(-15, 15);
-            followRandomPosition.y += Random.Range(-30, 30);
+            Vector3 followRandomPosition = followTarget.position + calculateRange();
+            
 
             Vector3 evadeDirection = (followRandomPosition - transform.position).normalized;
             float angle = Mathf.Atan2(evadeDirection.y, evadeDirection.x) * Mathf.Rad2Deg;
@@ -81,6 +81,48 @@ public class ParasiteController : MonoBehaviour
 
             rb.AddForce(transform.up * restrictedAccel * Time.deltaTime);
         }
+    }
+
+    private Vector3 calculateRange()
+    {
+
+        Vector3 range = new Vector3();
+
+        FragmentManager.instance.RefreshFragmentList();
+        radius_factor = FragmentManager.instance.AttachedFragments().Count;
+        float x_range = 15;
+        float y_range = 30;
+
+        if(radius_factor > 0)
+        {
+            if(Random.Range(0.0f,1.0f) > 0.5f)
+            {
+                range.x = x_range * Mathf.Pow(radius_factor, 2);
+            }
+            else
+            {
+                range.x = -x_range * Mathf.Pow(radius_factor, 2);
+            }
+            if (Random.Range(0.0f, 1.0f) > 0.5f)
+            {
+                range.y = y_range * Mathf.Pow(radius_factor, 2);
+            }
+            else
+            {
+                range.y = -y_range * Mathf.Pow(radius_factor, 2);
+            }
+           
+        }
+        else
+        {
+            range.x = Random.Range(-x_range, x_range);
+            range.y = Random.Range(-y_range, y_range);
+            
+        }
+
+        range.z = 0;
+
+        return range;
     }
 
     private void Flee()

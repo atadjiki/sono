@@ -128,6 +128,11 @@ public class FragmentController : MonoBehaviour
     {
         if (followTarget != null)
         {
+            if(followTarget.gameObject == player.gameObject)
+            {
+                isAttached = true;
+            }
+            
             //get direction to add torque
             Vector3 followRandomPosition = followTarget.position;
             followRandomPosition.x += Random.Range(-5, 5);
