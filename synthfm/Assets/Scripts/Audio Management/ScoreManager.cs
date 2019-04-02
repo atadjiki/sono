@@ -314,6 +314,7 @@ public class ScoreManager : MonoBehaviour
     {
         double timePerTick = 60.0f / bpm;
         DefaultCrossfadeTime = numberOfBeatsToUseInCrossfade*timePerTick;
+        docks[CurrentActiveDock].fadeTime = (float)DefaultCrossfadeTime;
         double dspTime = AudioSettings.dspTime;
 
         while (dspTime >= nextTick)
