@@ -76,6 +76,10 @@
 
         private float angle_threshold = 5f;
 
+
+        [Header("Animations")]
+        public Animator animator;
+
         void OnEnable()
         {
             inputBindings = InputBindings.CreateWithDefaultBindings();
@@ -174,6 +178,7 @@
                 currentSpeed = Speed.Fast;
             }
             //    Debug.Log("Speed changed to " + currentSpeed.ToString());
+            UpdateAnimation();
             return currentSpeed;
         }
 
@@ -499,6 +504,49 @@
             {
                 Time.timeScale = 1;
             }
+        }
+
+        void UpdateAnimation()
+        {
+            // Get the id of all state for this object
+            int slowId = Animator.StringToHash("Slow");
+            int normalId = Animator.StringToHash("Normal");
+            int fastId = Animator.StringToHash("Fast");
+
+            if (currentSpeed == Speed.Slow)
+            {
+                Debug.Log("Playing slow animation: " + slowId);
+                animator.Play(slowId);
+             
+            }else if(currentSpeed == Speed.Normal)
+            {
+                Debug.Log("Playing normal animation: " + normalId);
+                animator.Play(normalId);
+            }
+            else if(currentSpeed == Speed.Fast)
+            {
+                Debug.Log("Playing fast animation: " + fastId);
+                animator.Play(fastId);
+            }
+
+            
+
+            AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+            if(slowId == animStateInfo.nameHash)
+            {
+                Debug.Log("Current state is Slow");
+            }
+            else if(normalId == animStateInfo.nameHash)
+            {
+                Debug.Log("Current state is Normal");
+            }
+            else if (fastId == animStateInfo.nameHash)
+            {
+                Debug.Log("Current state is Fast");
+
+            }
+
         }
 
     }

@@ -6097,6 +6097,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1855229569383691384}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1270876002 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1014524498, guid: b8a011f487dba2644adbd6046cdde4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1855229569383691384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1332197635
 GameObject:
   m_ObjectHideFlags: 0
@@ -11317,6 +11323,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1270876002}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
+    - target: {fileID: 1014524498, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 14381c5a0ad03634083fa2096821a173, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
 --- !u!1001 &1901117234593880244
