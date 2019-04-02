@@ -178,7 +178,7 @@
                 currentSpeed = Speed.Fast;
             }
             //    Debug.Log("Speed changed to " + currentSpeed.ToString());
-            UpdateAnimation();
+            UpdateAnimation(currentSpeed);
             return currentSpeed;
         }
 
@@ -231,6 +231,7 @@
             if (inputBindings.SpeedUp.WasPressed)
             {
                 fast_override = true;
+                UpdateAnimation(Speed.Fast);
             }
             else if (inputBindings.SpeedUp.WasReleased)
             {
@@ -241,6 +242,7 @@
             if (inputBindings.SlowDown.WasPressed)
             {
                 slow_override = true;
+                UpdateAnimation(Speed.Slow);
             }
             else if (inputBindings.SlowDown.WasReleased)
             {
@@ -506,30 +508,28 @@
             }
         }
 
-        void UpdateAnimation()
+        void UpdateAnimation(Speed speed)
         {
             // Get the id of all state for this object
             int slowId = Animator.StringToHash("Slow");
             int normalId = Animator.StringToHash("Normal");
             int fastId = Animator.StringToHash("Fast");
 
-            if (currentSpeed == Speed.Slow)
+            if (speed == Speed.Slow)
             {
                 Debug.Log("Playing slow animation: " + slowId);
                 animator.Play(slowId);
              
-            }else if(currentSpeed == Speed.Normal)
+            }else if(speed == Speed.Normal)
             {
                 Debug.Log("Playing normal animation: " + normalId);
                 animator.Play(normalId);
             }
-            else if(currentSpeed == Speed.Fast)
+            else if(speed == Speed.Fast)
             {
                 Debug.Log("Playing fast animation: " + fastId);
                 animator.Play(fastId);
             }
-
-            
 
             AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
