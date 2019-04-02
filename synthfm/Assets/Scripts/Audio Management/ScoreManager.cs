@@ -179,7 +179,7 @@ public class ScoreManager : MonoBehaviour
         sampleRate = AudioSettings.outputSampleRate;
 
 
-        if(bpm != 0);
+        if(bpm != 0)
             nextTick = startTick + (60.0 / bpm);
 
         for (int i = 0; i < docks.Length; i++)
