@@ -97,13 +97,13 @@ public class Puzzle : SetPiece
 
         if(vfx != null)
         {
-            Debug.Log("Calling stop on vfx " + vfx.name);
+           // Debug.Log("Calling stop on vfx " + vfx.name);
             vfx.SetFloat("Setto-100Onkill", 30);
             vfx.SetFloat("Set2OnKill", 1);
 
             vfx.SetFloat("EmissionRate", 0);
             vfx.SetFloat("EmissionRate2", 0);
-            Debug.Log("travisTest");
+           // Debug.Log("travisTest");
             vfx.Stop();
             StartCoroutine("KillVFX", vfx);
             StartCoroutine("LeaveArtifact");

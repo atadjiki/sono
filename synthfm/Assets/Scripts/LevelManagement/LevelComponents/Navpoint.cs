@@ -72,7 +72,7 @@ public class Navpoint : MonoBehaviour
     void CheckForNewFragment()
     {
         fragments = FindObjectsOfType<FragmentController>();
-        print("Number of Fragments: " +fragments.Length);
+       
         if (fragments.Length <= 0) { return; }
 
         float minimumDistance = 0;
@@ -132,11 +132,11 @@ public class Navpoint : MonoBehaviour
         if(closestDepositZone == null)
         {
             target = centerOfEye;
-            Debug.Log("No target for navpoint at the moment!");
+            //Debug.Log("No target for navpoint at the moment!");
         }
         else
         {
-            Debug.Log("Found deposit zone at " + target.transform.position);
+            //Debug.Log("Found deposit zone at " + target.transform.position);
             target = closestDepositZone.gameObject;
         }
 
