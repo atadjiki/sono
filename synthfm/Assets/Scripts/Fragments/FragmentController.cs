@@ -156,8 +156,7 @@ public class FragmentController : MonoBehaviour
         //audioSource.time = LevelManager.instance.playerAudioSource.time;
         //audioSource.Play();
         //StartCoroutine(FadeInAudio());
-
-        scoreManager.FadeInMixerGroup(TrackIndex);
+        if(scoreManager != null) scoreManager.FadeInMixerGroup(TrackIndex);
         transform.SetParent(LevelManager.instance.transform);
         Destroy(fragmentCase);
     }

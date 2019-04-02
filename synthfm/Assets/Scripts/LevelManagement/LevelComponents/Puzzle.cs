@@ -24,15 +24,21 @@ public class Puzzle : SetPiece
     public FragmentController fragment;
     public GameObject forceField;
     public bool allowDebugComplete;
+    private bool artifactLeft = false;
 
     InputBindings inputBindings;
     string saveData;
 
+    //vfx stuff
+    public GameObject forcefieldVFX;
+    public GameObject artifactVFX;
+
     void OnEnable()
     {
+        
         inputBindings = InputBindings.CreateWithDefaultBindings();
         LoadBindings();
-    }
+    } 
 
     void OnDisable()
     {
@@ -87,18 +93,36 @@ public class Puzzle : SetPiece
             particle.Stop(); //Stop the animations instead of destroying them for the dissipation effect 
         }
 
-        VisualEffect vfx = forceField.GetComponentInChildren<VisualEffect>();
+        VisualEffect vfx = forcefieldVFX.GetComponent<VisualEffect>();
 
-        Debug.Log("Calling stop on vfx");
-        vfx.SetFloat("Setto-100Onkill", 30);
-        vfx.SetFloat("Set2OnKill", 1);
-       
-        vfx.SetFloat("EmissionRate", 0);
-        vfx.SetFloat("EmissionRate2", 0);
-        Debug.Log("travisTest");
-        //vfx.Stop();
-        StartCoroutine("KillVFX", vfx);
+        if(vfx != null)
+        {
+            Debug.Log("Calling stop on vfx " + vfx.name);
+            vfx.SetFloat("Setto-100Onkill", 30);
+            vfx.SetFloat("Set2OnKill", 1);
 
+            vfx.SetFloat("EmissionRate", 0);
+            vfx.SetFloat("EmissionRate2", 0);
+            Debug.Log("travisTest");
+            vfx.Stop();
+            StartCoroutine("KillVFX", vfx);
+            StartCoroutine("LeaveArtifact");
+
+        }
+
+    }
+
+    IEnumerator LeaveArtifact()
+    {
+        if (artifactLeft == false)
+        {
+            GameObject artifact = Instantiate<GameObject>(artifactVFX);
+            artifact.transform.position = center.transform.position;
+            artifactLeft = true;
+        }
+        
+        yield return new WaitForSeconds(1.0f);
+        
     }
 
     IEnumerator KillVFX(VisualEffect vfx)
@@ -107,6 +131,13 @@ public class Puzzle : SetPiece
         vfx.SetFloat("Setto-100Onkill", -70);
         yield return new WaitForSeconds(30f);
         vfx.enabled = false;
+    }
+
+    IEnumerator DoFadeOut()
+    {
+
+        yield return new WaitForSeconds(0.1f);
+
     }
 
     public void DoPuzzleSetup()
@@ -146,7 +177,6 @@ public class Puzzle : SetPiece
             {
                 ReleaseCage();
                 player.gameObject.GetComponent<Navpoint>().CheckForNewTarget();
-                StartCoroutine("DeletePuzzle");
                 released = true;
             }
         }
@@ -156,15 +186,6 @@ public class Puzzle : SetPiece
             Debug.Log("Debug Puzzle Complete");
             complete = true;
         }
-    }
-
-
-
-    IEnumerator DeletePuzzle()
-    {
-        yield return new WaitForSecondsRealtime(30);
-        Destroy(this.gameObject);
-
     }
 
     public virtual void GateTriggered(GateTrigger trigger)

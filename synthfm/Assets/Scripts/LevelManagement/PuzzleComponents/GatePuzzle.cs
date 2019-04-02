@@ -30,6 +30,7 @@ public class GatePuzzle : Puzzle
 
     private void Start()
     {
+        
         player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>(); 
         currentList = gates;

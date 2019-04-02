@@ -9,7 +9,7 @@ public class Navpoint : MonoBehaviour
     public GameObject eyeball;
     public GameObject centerOfEye;
     public SphereCollider sphereCollider;
-    private bool locked = true;
+    public bool locked = true;
 
     public float maxFrames = 120f;
     public float currentFrames = 0;
