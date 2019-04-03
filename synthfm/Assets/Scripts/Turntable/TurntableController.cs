@@ -208,30 +208,36 @@
             }
         }
 
-        void DoSpeedInput()
+        bool DoSpeedInput()
         {
             if (inputBindings.SlowSpeed.WasPressed)
             {
                 ChangeSpeed(Speed.Slow);
+                return true;
             }
             else if (inputBindings.NormalSpeed.WasPressed)
             {
                 ChangeSpeed(Speed.Normal);
+                return true;
             }
             else if (inputBindings.FastSpeed.WasPressed)
             {
                 ChangeSpeed(Speed.Fast);
+                return true;
             }
+
+            return false;
 
         }
 
-        void DoCheckForOverrides()
+        bool DoCheckForOverrides()
         {
 
             if (inputBindings.SpeedUp.WasPressed)
             {
                 fast_override = true;
                 UpdateAnimation(Speed.Fast);
+                return true;
             }
             else if (inputBindings.SpeedUp.WasReleased)
             {
@@ -243,12 +249,15 @@
             {
                 slow_override = true;
                 UpdateAnimation(Speed.Slow);
+                return true;
             }
             else if (inputBindings.SlowDown.WasReleased)
             {
                 ChangeSpeed(Speed.Normal);
                 slow_override = false;
             }
+
+            return false;
 
         }
 
@@ -388,18 +397,22 @@
 
         }
 
-        void DoAltInput()
+        bool DoAltInput()
         {
             if (inputBindings.Left.IsPressed)
             {
                 rigidbody.AddTorque(1 * getTorque());
                 previousRight = rightTurntable;
+                return true;
             }
             else if (inputBindings.Right.IsPressed)
             {
                 rigidbody.AddTorque(-1 * getTorque());
                 previousRight = rightTurntable;
+                return true;
             }
+
+            return false;
         }
         void DoMIDIInput()
         {

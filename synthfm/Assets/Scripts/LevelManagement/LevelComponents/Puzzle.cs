@@ -118,6 +118,8 @@ public class Puzzle : SetPiece
         {
             GameObject artifact = Instantiate<GameObject>(artifactVFX);
             artifact.transform.position = center.transform.position;
+            Vector3 newpos = new Vector3(0, 0, 30);
+            artifact.transform.position += newpos;
             artifactLeft = true;
         }
         
