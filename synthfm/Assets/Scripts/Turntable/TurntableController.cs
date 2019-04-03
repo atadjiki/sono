@@ -530,17 +530,17 @@
 
             if (speed == Speed.Slow)
             {
-                Debug.Log("Playing slow animation: " + slowId);
+             //   Debug.Log("Playing slow animation: " + slowId);
                 animator.Play(slowId);
              
             }else if(speed == Speed.Normal)
             {
-                Debug.Log("Playing normal animation: " + normalId);
+              //  Debug.Log("Playing normal animation: " + normalId);
                 animator.Play(normalId);
             }
             else if(speed == Speed.Fast)
             {
-                Debug.Log("Playing fast animation: " + fastId);
+              //  Debug.Log("Playing fast animation: " + fastId);
                 animator.Play(fastId);
             }
 
@@ -548,15 +548,15 @@
 
             if(slowId == animStateInfo.nameHash)
             {
-                Debug.Log("Current state is Slow");
+              //  Debug.Log("Current state is Slow");
             }
             else if(normalId == animStateInfo.nameHash)
             {
-                Debug.Log("Current state is Normal");
+              //  Debug.Log("Current state is Normal");
             }
             else if (fastId == animStateInfo.nameHash)
             {
-                Debug.Log("Current state is Fast");
+              //  Debug.Log("Current state is Fast");
 
             }
 

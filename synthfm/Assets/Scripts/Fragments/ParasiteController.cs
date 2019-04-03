@@ -20,6 +20,16 @@ public class ParasiteController : MonoBehaviour
     public bool isAttached;
 
     public Transform followTarget;
+    private Vector3 followRandomPosition;
+
+    private float maxFrames = 15f;
+    private float currentFrames = 0f;
+
+    private bool followRight = false;
+    private bool followUp = false;
+
+    public static float x_range = 5;
+    public static float y_range = 5;
 
     //public AudioSource audioSource;
 
@@ -33,6 +43,14 @@ public class ParasiteController : MonoBehaviour
             followTarget = player;
         }
 
+        if(Random.Range(0.0f, 1.0f) >= 0.5f)
+        {
+            followRight = true;
+        }
+        if (Random.Range(0.0f, 1.0f) >= 0.5f)
+        {
+            followUp = true;
+        }
     }
 
     private void Update()
@@ -67,9 +85,16 @@ public class ParasiteController : MonoBehaviour
     {
         if (followTarget != null)
         {
-            //get direction to add torque
-            Vector3 followRandomPosition = followTarget.position + calculateRange();
-            
+            followRandomPosition = followTarget.position + calculateRange();
+
+
+            if (Vector3.Distance(this.transform.position, followTarget.transform.position) >= 500)
+            {
+
+                //Debug.Log("Killing parasite");
+                ParasiteSpawner.instance.KillParasite(this, true);
+            }
+
 
             Vector3 evadeDirection = (followRandomPosition - transform.position).normalized;
             float angle = Mathf.Atan2(evadeDirection.y, evadeDirection.x) * Mathf.Rad2Deg;
@@ -90,28 +115,23 @@ public class ParasiteController : MonoBehaviour
 
         FragmentManager.instance.RefreshFragmentList();
         radius_factor = FragmentManager.instance.AttachedFragments().Count;
-        float x_range = 15;
-        float y_range = 30;
+
 
         if(radius_factor > 0)
         {
-            if(Random.Range(0.0f,1.0f) > 0.5f)
+            
+            float factor = Mathf.Pow(radius_factor,2);
+            range += new Vector3(x_range + factor, y_range + factor, 0f);
+
+            if (!followUp)
             {
-                range.x = x_range * Mathf.Pow(radius_factor, 2);
+                range.y *= -1;
             }
-            else
+            if (!followRight)
             {
-                range.x = -x_range * Mathf.Pow(radius_factor, 2);
+                range.x *= -1;
             }
-            if (Random.Range(0.0f, 1.0f) > 0.5f)
-            {
-                range.y = y_range * Mathf.Pow(radius_factor, 2);
-            }
-            else
-            {
-                range.y = -y_range * Mathf.Pow(radius_factor, 2);
-            }
-           
+
         }
         else
         {

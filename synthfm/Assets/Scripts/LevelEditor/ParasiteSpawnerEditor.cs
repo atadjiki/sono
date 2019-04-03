@@ -18,6 +18,10 @@ using System.Collections;
             {
                 myScript.KillParasites();
             }
-        }
+            if(GUILayout.Button("Spawn Parasite"))
+            {
+                myScript.SpawnNextParasite();
+            }
+    }
     }
 #endif

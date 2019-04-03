@@ -29,6 +29,12 @@ public class FragmentSpawner : MonoBehaviour
 
     public Vector3 SpawnFragment()
     {
+
+        if(FragmentManager.instance.AttachedFragments().Count >= 3)
+        {
+            return Vector3.zero;
+        }
+
         GameObject fragment = Instantiate<GameObject>(fragmentPrefab);
         fragment.transform.parent = this.transform;
 

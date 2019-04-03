@@ -13,14 +13,24 @@ public class ParasiteSpawner : MonoBehaviour
     private List<GameObject> parasites;
     public bool active = true;
 
+    public static ParasiteSpawner instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
         player = GameObject.Find("Player").transform;
 
-    }
-    private void Awake()
-    {
         player = GameObject.Find("Player").transform;
 
         if (player == null)
@@ -33,9 +43,17 @@ public class ParasiteSpawner : MonoBehaviour
         StartCoroutine("DoSpawn");
 
     }
+   
 
-    Vector3 SpawnNextParasite()
+    public Vector3 SpawnNextParasite()
     {
+
+        if(parasites.Count >= maxParasites)
+        {
+            Debug.Log("Already at max parasites");
+            return Vector3.zero;
+        }
+
         GameObject parasite = Instantiate<GameObject>(parasitePrefab);
         parasite.transform.parent = this.transform;
 
@@ -50,7 +68,13 @@ public class ParasiteSpawner : MonoBehaviour
         {
             yMod *= -1;
         }
-        spawnLocation += new Vector3(xMod *= Screen.width, yMod * Screen.height, 0);
+
+        float height = Camera.main.orthographicSize * 2.0f;
+        float width = height * Camera.main.aspect;
+
+        spawnLocation += new Vector3(xMod * width, yMod * height, 0);
+
+        //Debug.Log("Spawning parasite " + Vector3.Distance(player.transform.position, spawnLocation) + " away from player");
         parasite.transform.position = spawnLocation;
 
         parasite.GetComponent<ParasiteController>().followTarget = player;
@@ -73,6 +97,13 @@ public class ParasiteSpawner : MonoBehaviour
                 yield return new WaitForSeconds(secsUntilNextSpawn);
             }
         }
+    }
+
+    public void KillParasite(ParasiteController parasite, bool respawn)
+    {
+        parasites.Remove(parasite.gameObject);
+        parasite.Kill();
+        if(respawn) SpawnNextParasite();
     }
     
     public void KillParasites()
