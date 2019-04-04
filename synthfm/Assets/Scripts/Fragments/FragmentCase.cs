@@ -31,6 +31,13 @@ public class FragmentCase : MonoBehaviour
     {
         Debug.Log("Fragment case collided with " + collision.gameObject.name);
 
+        /*string p = PlayerPrefs.GetString("SavedData");
+        SavedData s = JsonUtility.FromJson<SavedData>(p);
+        foreach(Puzzle f in s.hubLevels)
+        {
+            print(f.complete);
+        }*/
+
 
 
         //TO DO: Make this not grabbable after it is deposited

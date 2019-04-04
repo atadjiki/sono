@@ -52,7 +52,6 @@ public class GatePuzzle : Puzzle
         if (gates.Count == 0)
         {
             Debug.Log("Gate puzzle complete!");
-            print(gameObject.name);
 
             DeleteGates();
             SetStatus(complete);
@@ -159,6 +158,18 @@ public class GatePuzzle : Puzzle
         Debug.Log("Gate puzzle complete!");
         print(gameObject.name);
         complete = true;
+        /*string p = PlayerPrefs.GetString("HubData");
+        SavedData s = JsonUtility.FromJson<SavedData>(p);
+
+        foreach (FragmentController f in s.hubFragments)
+        {
+            if (f != null)
+            {
+                print(f.currentState);
+
+            }
+        }*/
+
         DeleteGates();
         SetStatus(complete);
         timer = false;

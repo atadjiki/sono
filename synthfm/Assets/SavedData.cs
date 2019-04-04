@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using System.Collections.Generic;
 [System.Serializable]
-public class SavedData : MonoBehaviour
+public class SavedData 
 {
     public List<FragmentController> hubFragments;
-    public bool isPuzzle1Done;
-    public bool isPuzzle2Done;
-    public bool isPuzzle3Done;
+    public List<FragmentController> fiberFragments;
+    public List<FragmentController> latteFragments;
+    public List<Puzzle> hubLevels;
+    public List<Puzzle> fiberLevels;
+    public List<Puzzle> latteLevels;
+
+    public static SavedData instance;
 }

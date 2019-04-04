@@ -9,11 +9,18 @@ public class FragmentManager : MonoBehaviour
 
     public List<FragmentController> fragments;
 
+    private SavedData fragmentList;
     private float maxFrames = 1000;
     private float currentFrames = 0;
 
     private void Awake()
     {
+        //fragmentList = new SavedData();
+        if (SavedData.instance == null)
+        {
+            SavedData.instance = new SavedData();
+        }
+
         if (instance == null)
         {
             instance = this;
@@ -27,6 +34,8 @@ public class FragmentManager : MonoBehaviour
     private void Start()
     {
         RefreshFragmentList();
+        SetupFragments();
+
     }
 
     // Update is called once per frame
@@ -42,13 +51,40 @@ public class FragmentManager : MonoBehaviour
             currentFrames++;
         }
     }
+    
+    public void SetupFragments()
+    {
+        if(fragments != null)
+        {
+            SavedData.instance.hubFragments = fragments;
+            print(fragments.Capacity);
+            string json = JsonUtility.ToJson(SavedData.instance);
+            PlayerPrefs.SetString("SavedData", json);
+        }
+        else
+        {
+            print("no fragments to get, cant populate json!");
 
+        }
+    }
+    
     public void RefreshFragmentList()
     {
-        fragments.Clear();
-        fragments.AddRange(FindObjectsOfType<FragmentController>());
-    }
+        string p = PlayerPrefs.GetString("SavedData");
+        SavedData s = JsonUtility.FromJson<SavedData>(p);
 
+        if (s.hubFragments.Capacity == 0)
+        {
+            fragments.Clear();
+            fragments.AddRange(FindObjectsOfType<FragmentController>());
+        }
+        else
+        {
+            //TO DO: Get the state of fragments and do spawn them. s.HubFragments will get you all the fragments and everything associated with them
+            fragments = s.hubFragments;  
+        }
+
+    }
     public List<FragmentController> AttachedFragments()
     {
         List<FragmentController> attachedFragments = new List<FragmentController>();
