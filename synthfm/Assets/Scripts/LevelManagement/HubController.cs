@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HubController : MonoBehaviour
 {
+
+    private float z_rot = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +16,14 @@ public class HubController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DoRotate();
+    }
+    
+    public void DoRotate()
+    {
+
+        this.transform.Rotate(0, 0, z_rot);
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Fragment")
-        {
-            Debug.Log("Fragment collided with hub");
-        }
-    }
 }

@@ -38,26 +38,32 @@ public class TransferRealms : MonoBehaviour
         {
             if (gameObject.tag == "Realm1")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                gameObject.GetComponent<AmberWorld>().enabled = true;
+                ScoreManager._instance.Crossfade();
+                GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
             }
             else if(gameObject.tag == "Realm2")
             {
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Procedural1", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<FiberWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
-                GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 4;
+                GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
             }
-
-            //TO DO: Re-enable Realms
-           /* else if(gameObject.tag == "Realm3")
+            else if(gameObject.tag == "Realm3")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                GameObject.Find("Player").GetComponent<Navpoint>().enteredLatteWorld = true;
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LatteWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                gameObject.GetComponent<LatteWorld>().enabled = true;
+                ScoreManager._instance.Crossfade();
+                GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
             }
             else if(gameObject.tag == "Realm4")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-            }*/
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
         }
 
     }
@@ -67,9 +73,21 @@ public class TransferRealms : MonoBehaviour
         findDistance = true;
         collPosition = (collision.transform.position).magnitude;
 
+        if (gameObject.tag == "Realm1")
+        {
+            gameObject.GetComponent<AmberWorld>().enabled = false;
+            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+        }
+
         if (gameObject.tag == "Realm2")
         {
             gameObject.GetComponent<FiberWorld>().enabled = false;
+            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+        }
+
+        if (gameObject.tag == "Realm3")
+        {
+            gameObject.GetComponent<LatteWorld>().enabled = false;
             GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
         }
     }

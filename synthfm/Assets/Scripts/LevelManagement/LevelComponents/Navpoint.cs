@@ -19,10 +19,18 @@ public class Navpoint : MonoBehaviour
     private Puzzle[] puzzles;
     private FragmentController[] fragments;
 
+    public bool canTargetAmberWorld = true;
+    public bool enteredAmberWorld = false;
+
     public bool canTargetFiberWorld = true;
     public bool enteredFiberWorld = false;
 
+    public bool canTargetLatteWorld = true;
+    public bool enteredLatteWorld = false;
+
+    public GameObject amberWorld;
     public GameObject fiberWorld;
+    public GameObject latteWorld;
 
     private void Start()
     {

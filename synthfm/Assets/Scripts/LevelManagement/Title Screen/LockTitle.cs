@@ -11,14 +11,22 @@ public class LockTitle : MonoBehaviour
     public Navpoint navPoint;
 
 
-    [SerializeField] private GameObject rbPlayer;
+    public GameObject rbPlayer;
 
     void Awake()
     {
+        if (player == null)
+            player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
+        if (navPoint == null)
+            navPoint = GameObject.Find("Player").GetComponent<Navpoint>();
+        if (rbPlayer == null)
+            rbPlayer = GameObject.Find("Player");
+
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
        StartCoroutine(Lock());
 
+        
     }
 
     IEnumerator Lock()
@@ -29,7 +37,7 @@ public class LockTitle : MonoBehaviour
 
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
-        navPoint.Unlock();
+       // navPoint.Unlock();
         Debug.Log("Title screen finished " + Time.time + " secs");
 
        // yield return new WaitForSecondsRealtime(2f);
