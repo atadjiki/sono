@@ -34,7 +34,8 @@ public class Navpoint : MonoBehaviour
 
     private void Start()
     {
-        Lock();
+        //Lock();
+        locked = false;
     }
 
     // Update is called once per frame
