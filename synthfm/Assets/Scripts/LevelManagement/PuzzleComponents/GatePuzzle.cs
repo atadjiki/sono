@@ -52,6 +52,8 @@ public class GatePuzzle : Puzzle
         if (gates.Count == 0)
         {
             Debug.Log("Gate puzzle complete!");
+            print(gameObject.name);
+
             DeleteGates();
             SetStatus(complete);
         }
@@ -155,6 +157,7 @@ public class GatePuzzle : Puzzle
     public void CompletePuzzle()
     {
         Debug.Log("Gate puzzle complete!");
+        print(gameObject.name);
         complete = true;
         DeleteGates();
         SetStatus(complete);
