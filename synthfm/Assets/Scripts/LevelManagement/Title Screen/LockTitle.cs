@@ -9,6 +9,7 @@ public class LockTitle : MonoBehaviour
     public float lockTime = 10.0f;
     public PlayerInput.TurntableController player;
     public Navpoint navPoint;
+    public GameObject bubbles;
 
 
     public GameObject rbPlayer;
@@ -39,6 +40,7 @@ public class LockTitle : MonoBehaviour
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
        // navPoint.Unlock();
         Debug.Log("Title screen finished " + Time.time + " secs");
+        bubbles.SetActive(true);
 
        // yield return new WaitForSecondsRealtime(2f);
 
