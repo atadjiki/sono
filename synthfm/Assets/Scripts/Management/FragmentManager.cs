@@ -57,7 +57,6 @@ public class FragmentManager : MonoBehaviour
         if(fragments != null)
         {
             SavedData.instance.hubFragments = fragments;
-            print(fragments.Capacity);
             string json = JsonUtility.ToJson(SavedData.instance);
             PlayerPrefs.SetString("SavedData", json);
         }
