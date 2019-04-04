@@ -29,7 +29,7 @@ public class LockTitle : MonoBehaviour
 
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
-        navPoint.Unlock();
+       // navPoint.Unlock();
         Debug.Log("Title screen finished " + Time.time + " secs");
 
        // yield return new WaitForSecondsRealtime(2f);

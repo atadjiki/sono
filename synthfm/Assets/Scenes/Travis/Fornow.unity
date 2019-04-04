@@ -11264,6 +11264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1014524498, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 14381c5a0ad03634083fa2096821a173, type: 2}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11333,10 +11337,18 @@ PrefabInstance:
       propertyPath: turntableManager
       value: 
       objectReference: {fileID: 1981209547}
-    - target: {fileID: 1014524498, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 14381c5a0ad03634083fa2096821a173, type: 2}
+    - target: {fileID: 828374275, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 41.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 828374275, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 41.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 828374275, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 41.223
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
 --- !u!1001 &1901117234593880244
@@ -11346,11 +11358,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
-        type: 3}
-      propertyPath: m_Name
-      value: Fragment
-      objectReference: {fileID: 0}
     - target: {fileID: 7238824860898326245, guid: e6dd88324781df7488f6758c5af68ce4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11405,6 +11412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
+        type: 3}
+      propertyPath: m_Name
+      value: Fragment
       objectReference: {fileID: 0}
     - target: {fileID: 2609764102521210836, guid: e6dd88324781df7488f6758c5af68ce4,
         type: 3}
