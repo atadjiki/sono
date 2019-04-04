@@ -22,11 +22,25 @@ public class SceneMemoryManagement : MonoBehaviour
                 SceneManager.UnloadSceneAsync("ParasiteVoid");
             }
         }
-        else if (GameObject.Find("Procedural1"))
+        else if (GameObject.Find("AmberWorld"))
         {
             if (BRsceneDistance > unloadDistance)
             {
-                SceneManager.UnloadSceneAsync("Procedural1");
+                SceneManager.UnloadSceneAsync("AmberWorld");
+            }
+        }
+        else if (GameObject.Find("FiberWorld"))
+        {
+            if (BRsceneDistance > unloadDistance)
+            {
+                SceneManager.UnloadSceneAsync("FiberWorld");
+            }
+        }
+        else if (GameObject.Find("LatteWorld"))
+        {
+            if (BRsceneDistance > unloadDistance)
+            {
+                SceneManager.UnloadSceneAsync("LatteWorld");
             }
         }
     }
