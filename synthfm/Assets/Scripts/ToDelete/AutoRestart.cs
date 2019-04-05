@@ -24,7 +24,7 @@ public class AutoRestart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ListenForMidiInput && !player.IsMidiInput())
+        if (ListenForMidiInput)
         {
             timer += Time.deltaTime;
         }

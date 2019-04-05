@@ -17,14 +17,15 @@ namespace PlayerInput
         private float currentRight;
         private float currentSlider;
 
-        public MidiJack.MidiChannel sliderChannel;
-        private MidiJack.MidiChannel leftTurnChannel;
-        private MidiJack.MidiChannel rightTurnChannel;
-        private MidiJack.MidiChannel crossFadeChannel;
-        private int leftTurnKnob;
-        private int rightTurnKnob;
-        private int crossFadeKnob;
-        public int sliderKnob;
+        private float messageCount = 0;
+        public bool messageReceived = false;
+
+        public enum Turntable { Numark, DJTech };
+        public Turntable model = Turntable.DJTech;
+        private TurntableProfile profile;
+
+        public enum DJTechControl { Wheel, Cue, Play, Slider, Knob, None };
+        public DJTechControl lastInteracted;
 
         public float getLeft()
         {
@@ -51,16 +52,14 @@ namespace PlayerInput
         void Start()
         {
 
-            // LoadPlayerPrefs();
-            crossFadeKnob = 7;
-            crossFadeChannel = MidiChannel.Ch1;
-            leftTurnKnob = 17;
-            leftTurnChannel = MidiChannel.Ch2;
-            rightTurnKnob = 17;
-            rightTurnChannel = MidiChannel.Ch3;
-
-            sliderChannel = MidiChannel.Ch2;
-            sliderKnob = 24;
+            if(model == Turntable.DJTech)
+            {
+                profile = TurntableProfile.DJTech();
+            }
+            else if(model == Turntable.Numark)
+            {
+                profile = TurntableProfile.NumarkTurntable();
+            }
 
             currentLeft = fetchLeftTurntable();
             currentRight = fetchRightTurntable();
@@ -76,28 +75,61 @@ namespace PlayerInput
         void Update()
         {
 
-            //query the left turntable
+            if (MidiJack.MidiDriver.Instance.TotalMessageCount > messageCount)
+            { 
+                messageReceived = true;
+            }
+            else
+            {
+                messageReceived = false;
+            }
+
             processLeftTurntable();
-
-            //right turntable
             processRightTurntable();
-
-            //crossfade 
             processFade();
-
             processSlider();
 
+            messageCount = MidiJack.MidiDriver.Instance.TotalMessageCount;
+
+        }
+
+        public void UpdateLastInteracted()
+        {
+            if (MidiJack.MidiDriver.Instance.TotalMessageCount <= 0)
+            {
+                return;
+            }
+
+            string lastMessage = MidiJack.MidiDriver.Instance.History.Peek().ToString();
+
+           // Debug.Log(lastMessage);
+            if (lastMessage.Contains("d("+profile.leftTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
+            {
+                lastInteracted = DJTechControl.Wheel;
+            }else if (lastMessage.Contains("d("+profile.rightTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
+            {
+                lastInteracted = DJTechControl.Wheel;
+            }
+            else if (lastMessage.Contains("s(E0)"))
+            {
+                lastInteracted = DJTechControl.Slider;
+            }
+            else
+            {
+                lastInteracted = DJTechControl.None;
+            }
         }
 
         public void processFade()
         {
-
+            
             float crossFade = fetchCrossFade();
 
         }
 
         public void processLeftTurntable()
         {
+           
             float leftTurntable = fetchLeftTurntable();
             if (leftTurntable != currentLeft)
             {
@@ -127,78 +159,48 @@ namespace PlayerInput
 
         public float fetchLeftTurntable()
         {
-            return MidiJack.MidiMaster.GetKnob(leftTurnChannel, leftTurnKnob, 0f); //Left is channel two, knob 17
+
+            return MidiJack.MidiMaster.GetKnob(profile.leftTurnChannel, profile.leftTurnKnob, 0f); //Left is channel two, knob 17
         }
 
         public float fetchRightTurntable()
         {
-            return MidiJack.MidiMaster.GetKnob(rightTurnChannel, rightTurnKnob, 0f); //Left is channel two, knob 17
+            return MidiJack.MidiMaster.GetKnob(profile.rightTurnChannel, profile.rightTurnKnob, 0f); //Left is channel two, knob 17
         }
 
         public float fetchCrossFade()
         {
-            return MidiJack.MidiMaster.GetKnob(crossFadeChannel, crossFadeKnob, 0f); 
+            return MidiJack.MidiMaster.GetKnob(profile.crossFadeChannel, profile.crossFadeKnob, 0f); 
         }
 
         public float fetchSlider()
         {
-            return MidiJack.MidiMaster.GetKnob(sliderChannel, sliderKnob, 0f); //Slider is channel one, knob 24?
-        }
+            // return MidiJack.MidiMaster.GetKnob(profile.sliderChannel, profile.sliderKnob, 0f); //Slider is channel one, knob 24?
 
-        void LoadPlayerPrefs()
-        {
-            if (PlayerPrefs.HasKey(GameResources.crossFadeKnob))
+            float result = 0;
+
+            if (MidiJack.MidiDriver.Instance.TotalMessageCount <= 0)
             {
-                crossFadeKnob = PlayerPrefs.GetInt(GameResources.crossFadeKnob);
-            }
-            else
-            {
-                crossFadeKnob = GameResources.defaultCrossFade;
-            }
-            if (PlayerPrefs.HasKey(GameResources.leftTurnKnob))
-            {
-                leftTurnKnob = PlayerPrefs.GetInt(GameResources.leftTurnKnob);
-            }
-            else
-            {
-                leftTurnKnob = GameResources.defaultLeftTurn;
-            }
-            if (PlayerPrefs.HasKey(GameResources.rightTurnKnob))
-            {
-                rightTurnKnob = PlayerPrefs.GetInt(GameResources.rightTurnKnob);
-            }
-            else
-            {
-                rightTurnKnob = GameResources.defaultRightTurn;
-            }
-            if (PlayerPrefs.HasKey(GameResources.crossFadeChnl))
-            {
-                //crossFadeChannel = GetChannelByString(PlayerPrefs.GetString(GameResources.crossFadeChnl));
-                crossFadeChannel = GameResources.defaultFadeChnl;
-            }
-            else
-            {
-                crossFadeChannel = GameResources.defaultFadeChnl;
-            }
-            if (PlayerPrefs.HasKey(GameResources.leftTurnChnl))
-            {
-                //leftTurnChannel = GetChannelByString(PlayerPrefs.GetString(GameResources.leftTurnChnl));
-                leftTurnChannel = GameResources.defaultLeftChnl;
-            }
-            else
-            {
-                leftTurnChannel = GameResources.defaultLeftChnl;
-            }
-            if (PlayerPrefs.HasKey(GameResources.rightTurnChnl))
-            {
-                //rightTurnChannel = GetChannelByString(PlayerPrefs.GetString(GameResources.rightTurnChnl));
-                rightTurnChannel = GameResources.defaultRightChnl;
-            }
-            else
-            {
-                rightTurnChannel = GameResources.defaultRightChnl;
+                return -1;
             }
 
+            string lastMessage = MidiJack.MidiDriver.Instance.History.Peek().ToString();
+
+            if (lastMessage.Contains("s(E0)"))
+            {
+                int index = lastMessage.IndexOf(',');
+                index++;
+               
+                lastMessage = lastMessage.Substring(index, 2);
+                
+                if(float.TryParse(lastMessage, out result))
+                {
+                    result = (result - 0) / (77 - 0);
+                }
+
+            }
+           
+            return result; 
         }
     }
 }

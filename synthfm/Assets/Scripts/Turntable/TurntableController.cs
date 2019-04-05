@@ -68,7 +68,7 @@
         public InGameMenu i_Menu;
         private bool MenuMode = false;
 
-        private bool midiInput = false;
+        //    private bool midiInput = false;
 
         private bool movingTowardsMouse = false;
         private Vector3 lastMousePosition;
@@ -134,7 +134,7 @@
 
             if (!MenuMode)
             {
-                DoAltInput();
+                //      DoAltInput();
                 //DoMouseInput();
             }
             DoMIDIInput();
@@ -153,7 +153,7 @@
             rightTurntable = turntableManager.getRight();
             crossFade = turntableManager.getFade();
             slider = turntableManager.getSlider();
-            //Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
+            // Debug.Log("Update Variables: Left" + leftTurntable + ", Right: " + +rightTurntable + ", Fade: " + crossFade);
         }
 
         void ApplyForce()
@@ -417,76 +417,87 @@
         void DoMIDIInput()
         {
 
-            midiInput = false;
+            turntableManager.UpdateLastInteracted();
 
-            if (previousLeft != leftTurntable)
+            if (turntableManager.lastInteracted == TurntableManager.DJTechControl.Wheel)
             {
-                if (leftTurntable > 0.5f)
+                //if (previousLeft != leftTurntable)
+                //{
+                //      if (leftTurntable > 0.5f)
+                //      {
+                //          accel_mod -= accel_incr;
+                //      }
+                //      else if (leftTurntable < 0.5f)
+                //      {
+                //          accel_mod += accel_incr;
+                //      }
+                //      previousLeft = leftTurntable;
+                //  }
+
+                //if (previousRight != rightTurntable)
+                if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Wheel)
                 {
-                    accel_mod -= accel_incr;
+                    float torque = torqueCount + getTorque();
+
+                    //if (rightTurntable <= 0.5f)
+                    if (rightTurntable < 0.5f)
+                    {
+                        //rigidbody.AddTorque(-torque);
+                        rigidbody.AddTorque(torque);
+                    }
+                    //else
+                    else if (leftTurntable > 0.5f)
+                    {
+                        // rigidbody.AddTorque(torque);
+                        rigidbody.AddTorque(-torque);
+                    }
+                    previousLeft = leftTurntable;
+                    previousRight = rightTurntable;
+
+                    if (multiplyTorque)
+                        torqueCount *= torqueIncrement;
+                    else
+                    {
+                        torqueCount += torqueIncrement;
+                    }
+
                 }
-                else if (leftTurntable < 0.5f)
+
+                currentFrames++;
+                if (currentFrames > maxFrames)
                 {
-                    accel_mod += accel_incr;
+                    currentFrames = 0;
+                    torqueCount = 1;
                 }
-                previousLeft = leftTurntable;
-                midiInput = true;
             }
 
-            if (previousRight != rightTurntable)
+            else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Slider)
             {
-                float torque = torqueCount + getTorque();
 
-                if (rightTurntable < 0.5f)
+                //if (previousSlider != slider)
+                //{
+
+                if (slider == 0)
+                    return;
+
+                if (slider > 0.6f)
                 {
-                    rigidbody.AddTorque(-torque);
+                    ChangeSpeed(Speed.Fast);
                 }
-                else
-                {
-                    rigidbody.AddTorque(torque);
-                }
-                previousRight = rightTurntable;
-
-                if (multiplyTorque)
-                    torqueCount *= torqueIncrement;
-                else
-                {
-                    torqueCount += torqueIncrement;
-                }
-
-                midiInput = true;
-            }
-
-            currentFrames++;
-            if (currentFrames > maxFrames)
-            {
-                currentFrames = 0;
-                torqueCount = 1;
-            }
-
-            if (previousSlider != slider)
-            {
-                midiInput = true;
-                if (slider > 0.9f)
-                {
-                    ChangeSpeed(Speed.Slow);
-                }
-                else if (slider > 0.35f)
+                else if (slider > 0.385f)
                 {
                     ChangeSpeed(Speed.Normal);
                 }
                 else
                 {
-                    ChangeSpeed(Speed.Fast);
+                    ChangeSpeed(Speed.Slow);
                 }
 
                 previousSlider = slider;
+                //     }
             }
-        }
 
-        public bool IsMidiInput()
-        {
-            return midiInput;
+
         }
 
         float getTorque()
@@ -530,33 +541,34 @@
 
             if (speed == Speed.Slow)
             {
-             //   Debug.Log("Playing slow animation: " + slowId);
+                //   Debug.Log("Playing slow animation: " + slowId);
                 animator.Play(slowId);
-             
-            }else if(speed == Speed.Normal)
+
+            }
+            else if (speed == Speed.Normal)
             {
-              //  Debug.Log("Playing normal animation: " + normalId);
+                //  Debug.Log("Playing normal animation: " + normalId);
                 animator.Play(normalId);
             }
-            else if(speed == Speed.Fast)
+            else if (speed == Speed.Fast)
             {
-              //  Debug.Log("Playing fast animation: " + fastId);
+                //  Debug.Log("Playing fast animation: " + fastId);
                 animator.Play(fastId);
             }
 
             AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-            if(slowId == animStateInfo.nameHash)
+            if (slowId == animStateInfo.nameHash)
             {
-              //  Debug.Log("Current state is Slow");
+                //  Debug.Log("Current state is Slow");
             }
-            else if(normalId == animStateInfo.nameHash)
+            else if (normalId == animStateInfo.nameHash)
             {
-              //  Debug.Log("Current state is Normal");
+                //  Debug.Log("Current state is Normal");
             }
             else if (fastId == animStateInfo.nameHash)
             {
-              //  Debug.Log("Current state is Fast");
+                //  Debug.Log("Current state is Fast");
 
             }
 
