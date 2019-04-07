@@ -41,6 +41,7 @@ public class AmberWorld : MonoBehaviour
         killParasites();
     }
 
+
     private void OnDisable()
     {
         //foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())

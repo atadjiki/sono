@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class TransferRealms : MonoBehaviour
 {
+    [Header("The maximum amount of fragments to exit this world")]
+    public int maxToExit;
+
     [SerializeField] private bool IsPlayerInside;
 
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject memoryManager;
+
 
     [Tooltip("Boolean that is true when we exit a realm and want to know how far away we are from it.")]
     private bool findDistance;
@@ -47,7 +51,7 @@ public class TransferRealms : MonoBehaviour
                 Debug.Log("Entering 1");
 
                 IsPlayerInside = true;
-                // If Follow change to Flee
+                // If Flee -> change to FOLLOW
                 FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
                 foreach (FragmentController fragment in fragments)
                 {
@@ -98,19 +102,31 @@ public class TransferRealms : MonoBehaviour
 
             Debug.Log("Exiting 1");
             IsPlayerInside = false;
-           
-            // If Follow change to Flee
+
+            // If Follow -> change to Flee (is less than three)
+            int n = 0;
+            List<FragmentController> ToHandle = new List<FragmentController>();
             FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
             foreach (FragmentController fragment in fragments)
             {
                 if (fragment.currentState == FragmentController.states.FOLLOW)
                 {
-                    fragment.currentState = FragmentController.states.FLEE;
-                    fragment.setDetatchingTransform(collision.gameObject.transform);
-                    Debug.Log("Leavoing Fragments behind");
-
+                    n++;
+                    ToHandle.Add(fragment);
+                //    Debug.Log("Leavoing Fragments behind");
                 }
+            }
 
+            if (n < maxToExit)
+            {
+                foreach (FragmentController fc in ToHandle)
+                {
+                    fc.currentState = FragmentController.states.FLEE;
+                }
+            }
+            else
+            {
+                Debug.Log("Successfully exiting the world !");
             }
 
         }
