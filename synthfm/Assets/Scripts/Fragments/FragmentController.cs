@@ -37,7 +37,9 @@ public class FragmentController : MonoBehaviour
     float angleSpeed = 2;
     float radialSpeed = 0.5f;
 
-
+    private Transform DetatchedPosition; /* the transform info where the fragment is detatched from the player
+                                         * While leaving the Zone without all three fragments
+                                           */
 
 
     private void Awake()
@@ -150,6 +152,23 @@ public class FragmentController : MonoBehaviour
 
             playerEyeball.currentFrames = playerEyeball.maxFrames;
         }
+    }
+
+    public void Flee()
+    {
+        rb.velocity = Vector2.zero;
+
+        // probably roam around in a sphere at the border
+        if (rb.velocity.x > 0 || rb.velocity.y > 0)
+        {
+
+        }
+
+    }
+
+    public void setDetatchingTransform(Transform i_tf)
+    {
+        DetatchedPosition = i_tf;
     }
 
     public void Collect(Transform newFollowTarget)

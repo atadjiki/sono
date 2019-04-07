@@ -25,11 +25,12 @@ public class FragmentCase : MonoBehaviour
         setPing = true;
         setPickup = false;
         
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Fragment case collided with " + collision.gameObject.name);
+       // Debug.Log("Fragment case collided with " + collision.gameObject.name);
 
         /*string p = PlayerPrefs.GetString("SavedData");
         SavedData s = JsonUtility.FromJson<SavedData>(p);

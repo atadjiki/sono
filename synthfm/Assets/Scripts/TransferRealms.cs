@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TransferRealms : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private bool IsPlayerInside;
 
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject memoryManager;
@@ -43,6 +43,23 @@ public class TransferRealms : MonoBehaviour
                 gameObject.GetComponent<AmberWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+                Debug.Log("Entering 1");
+
+                IsPlayerInside = true;
+                // If Follow change to Flee
+                FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+                foreach (FragmentController fragment in fragments)
+                {
+                    if (fragment.currentState == FragmentController.states.FLEE)
+                    {
+                        fragment.currentState = FragmentController.states.FOLLOW;
+
+                        Debug.Log("Rejoining with fragments");
+
+                    }
+
+                }
             }
             else if(gameObject.tag == "Realm2")
             {
@@ -63,6 +80,7 @@ public class TransferRealms : MonoBehaviour
             else if(gameObject.tag == "Realm4")
             {
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                Debug.Log("Entering 4");
             }
         }
 
@@ -77,6 +95,24 @@ public class TransferRealms : MonoBehaviour
         {
             gameObject.GetComponent<AmberWorld>().enabled = false;
             GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+            Debug.Log("Exiting 1");
+            IsPlayerInside = false;
+           
+            // If Follow change to Flee
+            FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+            foreach (FragmentController fragment in fragments)
+            {
+                if (fragment.currentState == FragmentController.states.FOLLOW)
+                {
+                    fragment.currentState = FragmentController.states.FLEE;
+                    fragment.setDetatchingTransform(collision.gameObject.transform);
+                    Debug.Log("Leavoing Fragments behind");
+
+                }
+
+            }
+
         }
 
         if (gameObject.tag == "Realm2")

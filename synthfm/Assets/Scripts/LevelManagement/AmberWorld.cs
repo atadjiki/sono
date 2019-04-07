@@ -43,10 +43,10 @@ public class AmberWorld : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
-        {
-            particleSystem.Stop();
-        }
+        //foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    particleSystem.Stop();
+        //}
 
     }
 }
