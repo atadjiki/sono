@@ -9,7 +9,6 @@ public class ProceduralTest : MonoBehaviour
     [SerializeField] private List<GameObject> puzzles;
     [SerializeField] private GameObject cinCamera;
     [SerializeField] private GameObject player;
-    [SerializeField] private ColliderTest hitCollider;
 
     private GameObject left;
     private GameObject leftPuzzle;
@@ -26,8 +25,6 @@ public class ProceduralTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hitCollider = player.GetComponent<ColliderTest>();
-        hitCollider.onObjectCollidedEvent += gameObjectCollided;
     }
 
     // Update is called once per frame

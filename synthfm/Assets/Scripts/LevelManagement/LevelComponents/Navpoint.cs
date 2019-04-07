@@ -15,7 +15,6 @@ public class Navpoint : MonoBehaviour
     public float currentFrames = 0;
     public int maxFragments = 3;
 
-    private DepositFragments[] depositZones;
     private Puzzle[] puzzles;
     private FragmentController[] fragments;
 
@@ -69,7 +68,7 @@ public class Navpoint : MonoBehaviour
     {
         if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
         {
-            CheckForNewDepositZone();
+            //TO DO: Navpoint pointing to hub
         }
         else
         {
@@ -117,40 +116,6 @@ public class Navpoint : MonoBehaviour
         {
             target = closestFragment.gameObject;
         }
-    }
-
-    void CheckForNewDepositZone()
-    {
-        depositZones = FindObjectsOfType<DepositFragments>();
-
-        if (depositZones.Length <= 0) { CheckForNewPuzzle(); }
-
-        float minimumDistance = 0;
-        DepositFragments closestDepositZone = null;
-
-        foreach (DepositFragments depositZone in depositZones)
-        {
-            float distance = Vector3.Distance(transform.position, depositZone.transform.position);
-            if (distance <= minimumDistance || minimumDistance <= 0)
-            {
-                minimumDistance = distance;
-                closestDepositZone = depositZone;
-            }
-        }
-
-        if(closestDepositZone == null)
-        {
-            target = centerOfEye;
-            //Debug.Log("No target for navpoint at the moment!");
-        }
-        else
-        {
-            //Debug.Log("Found deposit zone at " + target.transform.position);
-            target = closestDepositZone.gameObject;
-        }
-
-        
-
     }
 
     void CheckForNewPuzzle()

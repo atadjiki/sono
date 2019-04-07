@@ -20,6 +20,7 @@ public class ChangeColor : MonoBehaviour
         mainCamera = gameObject.GetComponent<Camera>();
         mainCamera.clearFlags = CameraClearFlags.SolidColor;
         currentColor = mainCamera.backgroundColor;
+        
 
     }
 
