@@ -27,17 +27,17 @@ public class HubController : MonoBehaviour
     public void CheckBounds()
     {
 
-        Debug.Log(insideBounds);
+//        Debug.Log(insideBounds);
         if (!inEntryPoint && insideBounds)
         {
-            Debug.Log("Not in entry point and inside bounds");
+           // Debug.Log("Not in entry point and inside bounds");
 
         }
         else if (!inEntryPoint && insideBounds == false)
         {
-            Debug.Log("Not in entry point and outside bounds");
+        //    Debug.Log("Not in entry point and outside bounds");
             transform.Rotate(0, 0, z_rot);
-            Debug.Log("Rotating");
+          //  Debug.Log("Rotating");
         }
 
 

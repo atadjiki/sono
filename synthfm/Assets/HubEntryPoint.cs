@@ -14,7 +14,7 @@ public class HubEntryPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Player entered entry point");
+        Debug.Log("Player entered hub");
         hub.inEntryPoint = true;
     }
 
