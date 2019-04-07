@@ -133,8 +133,7 @@
             ApplyForce();
 
             if (!MenuMode)
-            {
-                //      DoAltInput();
+            {   DoAltInput();
                 //DoMouseInput();
             }
             DoMIDIInput();

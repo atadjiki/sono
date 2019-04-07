@@ -5171,7 +5171,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: ce28dfa9ce5e34c54b0df247ea978360, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6240,14 +6240,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1532273146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feeaaf46deb7bc1419c12e54147b62d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c2dc3e99a89f4def8a3b8477f8a695e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parasitePrefab: {fileID: 2696762420574589463, guid: 2fe26748d580ffd46a74625a9b0fff09,
     type: 3}
   player: {fileID: 1476634332}
   mainCamera: {fileID: 504042470}
-  maxParasites: 10
+  maxParasites: 11
   secsUntilNextSpawn: 5
   active: 0
 --- !u!114 &1532273148
@@ -6264,9 +6264,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fragmentPrefab: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
     type: 3}
+  fragmentCasePrefab: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4,
+    type: 3}
   player: {fileID: 1476634332}
   mainCamera: {fileID: 504042470}
   active: 1
+  SpawnState: 0
 --- !u!4 &1532273149
 Transform:
   m_ObjectHideFlags: 0
