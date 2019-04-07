@@ -4960,6 +4960,7 @@ GameObject:
   - component: {fileID: 504042468}
   - component: {fileID: 504042467}
   - component: {fileID: 504042466}
+  - component: {fileID: 504042469}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5121,7 +5122,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: ce28dfa9ce5e34c54b0df247ea978360, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5132,6 +5133,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &504042469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504042465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ff74f44d9f94c69b910e393178959f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpDuration: {r: 0, g: 0, b: 0, a: 0}
+  mainCam: {fileID: 504042466}
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
