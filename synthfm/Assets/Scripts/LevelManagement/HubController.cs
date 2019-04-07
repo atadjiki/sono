@@ -9,7 +9,7 @@ public class HubController : MonoBehaviour
     private GameObject player;
     public float entryDistance = 100f;
     private bool stopRotating = false;
-    public CircleCollider2D wallcollider;
+    public PolygonCollider2D wallcollider;
     public Rigidbody2D wallRigidBody;
     public float angle_offset = 90;
 
@@ -41,7 +41,6 @@ public class HubController : MonoBehaviour
 
         if (wallcollider.bounds.Contains(player.transform.position))
         {
-            wallcollider.isTrigger = true;
             Debug.Log("Player inside bounds");
         }
         else
@@ -49,14 +48,12 @@ public class HubController : MonoBehaviour
 
             if (Vector3.Distance(EntryPoint.transform.position, player.transform.position) <= entryDistance)
             {
-
-                wallcollider.isTrigger = true;
+            
                 stopRotating = true;
                 Debug.Log("Player near entry point");
             }
             else
             {
-                wallcollider.isTrigger = false;
                 Debug.Log("Player outside and away from entry point " + Vector3.Distance(player.transform.position, EntryPoint.transform.position).ToString());
             }
 
