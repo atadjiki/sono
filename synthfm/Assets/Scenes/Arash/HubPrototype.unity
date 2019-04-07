@@ -122,6 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 222426591}
   - component: {fileID: 222426592}
+  - component: {fileID: 222426593}
+  - component: {fileID: 222426594}
   m_Layer: 0
   m_Name: Hub_Ring_Top
   m_TagString: Untagged
@@ -191,6 +193,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &222426593
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222426590}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10
+--- !u!114 &222426594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222426590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8ec4b305b7341239f0ce51e51effa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &245882008
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,6 +5470,7 @@ GameObject:
   - component: {fileID: 675911132}
   - component: {fileID: 675911135}
   - component: {fileID: 675911134}
+  - component: {fileID: 675911136}
   - component: {fileID: 675911133}
   m_Layer: 0
   m_Name: EntryPoint
@@ -5462,19 +5493,22 @@ Transform:
   m_Father: {fileID: 1097472234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -6}
---- !u!135 &675911133
-SphereCollider:
+--- !u!58 &675911133
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675911131}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &675911134
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5520,6 +5554,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675911131}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &675911136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675911131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f6f48428a8f4035a0b427b7254a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705638742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6456,9 +6502,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntryPoint: {fileID: 675911131}
-  z_rot: 1
-  entryDistance: 100
-  wallcollider: {fileID: 934685653}
+  z_rot: 0.75
+  inEntryPoint: 0
+  insideBounds: 0
+  wallcollider: {fileID: 222426593}
 --- !u!1 &1140372728
 GameObject:
   m_ObjectHideFlags: 0
