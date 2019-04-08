@@ -5181,12 +5181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ff74f44d9f94c69b910e393178959f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpDuration: 15
+  lerpDuration: 5
   mainCam: {fileID: 504042466}
   playerBody: {fileID: 1884090754}
+  playerTrail: {fileID: 1863788116}
   dark: {r: 0.039215688, g: 0.05882353, b: 0.08627451, a: 0}
   saturated: {r: 0.039215688, g: 0.078431375, b: 0.105882354, a: 0}
-  voidbgColor: {r: 0, g: 0, b: 0, a: 0}
+  voidbgColor: {r: 0.015686275, g: 0.039215688, b: 0.05882353, a: 0}
   firstFiberPuzzleColor:
   - {r: 0.32156864, g: 0.44313726, b: 0.85490197, a: 0}
   - {r: 0.7294118, g: 0.49411765, b: 0.14509805, a: 0}
@@ -5194,7 +5195,6 @@ MonoBehaviour:
   - {r: 0.7294118, g: 0.49411765, b: 0.14509805, a: 0}
   - {r: 0.85882354, g: 0.70980394, b: 0.20784314, a: 0}
   - {r: 0.8784314, g: 0.21568628, b: 0.63529414, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   secondFiberPuzzleColor: []
   thirdFiberPuzzleColor: []
@@ -5204,7 +5204,14 @@ MonoBehaviour:
   firstlattePuzzleColor: []
   secondlattePuzzleColor: []
   thirdlattePuzzleColor: []
-  voidColor: []
+  voidColor:
+  - {r: 0.8, g: 0.8, b: 0.8, a: 0}
+  - {r: 0.19607843, g: 0.19215687, b: 0.26666668, a: 0}
+  - {r: 0.38431373, g: 0.32941177, b: 0.4392157, a: 0}
+  - {r: 0.38431373, g: 0.32941177, b: 0.4392157, a: 0}
+  - {r: 0.20392157, g: 0.1882353, b: 0.58431375, a: 0}
+  - {r: 0.19607843, g: 0.32941177, b: 0.79607844, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
@@ -5783,8 +5790,8 @@ GameObject:
   m_Component:
   - component: {fileID: 856997990}
   - component: {fileID: 856997993}
-  - component: {fileID: 856997992}
   - component: {fileID: 856997991}
+  - component: {fileID: 856997992}
   m_Layer: 0
   m_Name: 'Fiber Realm Entry Point '
   m_TagString: Realm2
@@ -5828,9 +5835,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 856997989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
 --- !u!61 &856997993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6324,7 +6335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395415116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1400, y: -1700, z: 0}
+  m_LocalPosition: {x: 1400, y: -2143, z: 0}
   m_LocalScale: {x: 1, y: 0.31171194, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
@@ -6339,9 +6350,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1395415116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
 --- !u!61 &1395415119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6575,8 +6590,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1720605055}
   - component: {fileID: 1720605058}
-  - component: {fileID: 1720605057}
   - component: {fileID: 1720605056}
+  - component: {fileID: 1720605057}
   m_Layer: 0
   m_Name: Latte Realm Entry Point
   m_TagString: Realm3
@@ -6620,9 +6635,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1720605054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
 --- !u!61 &1720605058
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6659,6 +6678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1775423725}
   - component: {fileID: 1775423726}
+  - component: {fileID: 1775423727}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -6692,6 +6712,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750dc5919f2f54645bbb9375a4d7360f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1775423727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775423724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11b2e8036cd342299383eb4892e018a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 369758904}
+  unloadDistance: 350
+  BRsceneDistance: 0
 --- !u!1 &1778408852
 GameObject:
   m_ObjectHideFlags: 0
@@ -6851,6 +6886,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1852472963}
   m_PrefabAsset: {fileID: 0}
+--- !u!96 &1863788116 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 1855229568422686520, guid: b8a011f487dba2644adbd6046cdde4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 588710856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1867114663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6861,15 +6902,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1867114664}
   - component: {fileID: 1867114667}
-  - component: {fileID: 1867114666}
   - component: {fileID: 1867114665}
+  - component: {fileID: 1867114666}
   m_Layer: 0
   m_Name: Amber Realm Entry Point
   m_TagString: Realm1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1867114664
 Transform:
   m_ObjectHideFlags: 0
@@ -6906,9 +6947,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867114663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
 --- !u!61 &1867114667
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class ChangeColor : MonoBehaviour
     [SerializeField] private float lerpDuration;
     [SerializeField] private HDAdditionalCameraData mainCam;
     [SerializeField] private MeshRenderer playerBody;
+    [SerializeField] private TrailRenderer playerTrail;
 
     [SerializeField] public Color dark;
     [SerializeField] public Color saturated;
@@ -25,7 +26,11 @@ public class ChangeColor : MonoBehaviour
 
 
     private Color currentColor;
-    private Color colorToChangeTo;
+    private Color currentPlayercolor;
+    private Color currentTrailColor;
+    private Color bgcolorToChangeTo;
+    private Color playercolorToChangeTo;
+    private Color trailColortoChangeTo;
     private bool shouldchangeColor;
 
 
@@ -34,13 +39,12 @@ public class ChangeColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print(playerBody.material.GetColor("Color_D2FAE4B8"));
+        currentPlayercolor = (playerBody.material.GetColor("Color_D2FAE4B8"));
         shouldchangeColor = false;
         t = 0f;
+        currentTrailColor = playerTrail.startColor;
         currentColor = mainCam.backgroundColorHDR;
-        colorToChangeTo = saturated;
-        playerBody.material.SetColor("Color_D2FAE4B8", firstFiberPuzzleColor[0]);
-        //StartCoroutine(changeColor(saturated));
+
 
     }
 
@@ -50,17 +54,27 @@ public class ChangeColor : MonoBehaviour
 
         if (t < 1f && shouldchangeColor == true)
         {
-            mainCam.backgroundColorHDR = Color.Lerp(currentColor, colorToChangeTo, t);
+            Color playerCol = playerBody.material.GetColor("Color_D2FAE4B8");
+            playerCol = Color.Lerp(currentPlayercolor, playercolorToChangeTo, t);
+            playerBody.material.SetColor("Color_D2FAE4B8", playerCol);
+            playerTrail.startColor = Color.Lerp(currentTrailColor, trailColortoChangeTo, t);
+            mainCam.backgroundColorHDR = Color.Lerp(currentColor, bgcolorToChangeTo, t);
             t += Time.deltaTime / lerpDuration;
         }
     }
 
-    IEnumerator changeColor(Color color)
+    public IEnumerator changeColor(Color bgColor, Color playerColor,Color trailColor)
     {
         shouldchangeColor = true;
-        colorToChangeTo = color;
+        bgcolorToChangeTo = bgColor;
+        trailColortoChangeTo = trailColor;
+        playerColor = playercolorToChangeTo;
         yield return new WaitForSeconds(lerpDuration);
+        currentPlayercolor = (playerBody.material.GetColor("Color_D2FAE4B8"));
         shouldchangeColor = false;
-        t = 0;
+        t = 0f;
+        currentTrailColor = playerTrail.startColor;
+        currentColor = mainCam.backgroundColorHDR;
+
     }
 }

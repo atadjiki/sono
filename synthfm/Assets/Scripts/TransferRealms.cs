@@ -84,10 +84,20 @@ public class TransferRealms : MonoBehaviour
             else if(gameObject.tag == "Realm4")
             {
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                changeAppearance("Void");
                 Debug.Log("Entering 4");
             }
         }
 
+    }
+
+    private void changeAppearance(string destination)
+    {
+        ChangeColor cc = GameObject.Find("Main Camera").GetComponent<ChangeColor>();
+        if(destination == "Void")
+        {
+           StartCoroutine(cc.changeColor(cc.voidbgColor,cc.voidColor[2],cc.voidColor[3]));
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
