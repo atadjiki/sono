@@ -20,8 +20,8 @@ public class ColorManager : MonoBehaviour
     void Start()
     {
         _renderer = this.GetComponent<SpriteRenderer>();
-        _renderer.color = baseColor;
-        currentColor = baseColor;
+        //_renderer.color = baseColor;
+        //currentColor = baseColor;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +45,7 @@ public class ColorManager : MonoBehaviour
     IEnumerator setBaseColor()
     {
         yield return new WaitForSeconds(1);
-        _renderer.color = baseColor;
+        //_renderer.color = baseColor;
     }
 
     // Set
@@ -57,6 +57,6 @@ public class ColorManager : MonoBehaviour
     // Set
     public void setBaseColor(Color i_color)
     {
-        baseColor = i_color;
+       // baseColor = i_color;
     }
 }

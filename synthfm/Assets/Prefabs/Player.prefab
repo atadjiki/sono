@@ -5627,9 +5627,15 @@ MonoBehaviour:
   maxFrames: 120
   currentFrames: 0
   maxFragments: 3
+  canTargetAmberWorld: 1
+  enteredAmberWorld: 0
   canTargetFiberWorld: 1
   enteredFiberWorld: 0
+  canTargetLatteWorld: 1
+  enteredLatteWorld: 0
+  amberWorld: {fileID: 0}
   fiberWorld: {fileID: 0}
+  latteWorld: {fileID: 0}
 --- !u!1 &2052041055220811353
 GameObject:
   m_ObjectHideFlags: 0
@@ -10428,8 +10434,9 @@ MonoBehaviour:
   minOrthSize: 5
   maxOrthSize: 50
   rotation: 9
-  sliderChannel: 0
-  sliderKnob: 0
+  messageReceived: 0
+  model: 1
+  lastInteracted: 0
 --- !u!1 &6840359925433668879
 GameObject:
   m_ObjectHideFlags: 0
@@ -10806,6 +10813,11 @@ PrefabInstance:
       propertyPath: NoiseModule.enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8383647625165013211, guid: f0a630a5057766342ad62bce04db15f3,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8383647625165013208, guid: f0a630a5057766342ad62bce04db15f3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10930,6 +10942,11 @@ PrefabInstance:
         type: 3}
       propertyPath: NoiseModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383647625165013211, guid: f0a630a5057766342ad62bce04db15f3,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8383647625165013208, guid: f0a630a5057766342ad62bce04db15f3,
         type: 3}
@@ -11130,6 +11147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: NoiseModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383647625165013211, guid: f0a630a5057766342ad62bce04db15f3,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a630a5057766342ad62bce04db15f3, type: 3}

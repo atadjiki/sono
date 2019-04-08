@@ -5145,8 +5145,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ff74f44d9f94c69b910e393178959f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpDuration: {r: 0, g: 0, b: 0, a: 0}
+  lerpDuration: 15
   mainCam: {fileID: 504042466}
+  playerBody: {fileID: 1884090754}
+  dark: {r: 0.039215688, g: 0.05882353, b: 0.08627451, a: 0}
+  saturated: {r: 0.039215688, g: 0.078431375, b: 0.105882354, a: 0}
+  voidbgColor: {r: 0, g: 0, b: 0, a: 0}
+  firstFiberPuzzleColor:
+  - {r: 0.32156864, g: 0.44313726, b: 0.85490197, a: 0}
+  - {r: 0.7294118, g: 0.49411765, b: 0.14509805, a: 0}
+  - {r: 0.85882354, g: 0.70980394, b: 0.20784314, a: 0}
+  - {r: 0.7294118, g: 0.49411765, b: 0.14509805, a: 0}
+  - {r: 0.85882354, g: 0.70980394, b: 0.20784314, a: 0}
+  - {r: 0.8784314, g: 0.21568628, b: 0.63529414, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  secondFiberPuzzleColor: []
+  thirdFiberPuzzleColor: []
+  firstamberPuzzleColor: []
+  secondamberPuzzleColor: []
+  thirdamberPuzzleColor: []
+  firstlattePuzzleColor: []
+  secondlattePuzzleColor: []
+  thirdlattePuzzleColor: []
+  voidColor: []
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
@@ -5317,6 +5339,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 828374273, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
 --- !u!1 &667764380
@@ -5394,8 +5420,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 20
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1476634332}
-  m_Follow: {fileID: 1476634332}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -5697,14 +5723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c328ca31853574686d480499fb1f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 504042470}
-  playerPos: {fileID: 0}
-  puzzles:
-  - {fileID: 0}
-  cinCamera: {fileID: 5034590726182194200, guid: 9fccaa88b8bd8cf41a69f10cb560cb82,
-    type: 3}
-  player: {fileID: 0}
-  hitCollider: {fileID: 0}
 --- !u!4 &856258018
 Transform:
   m_ObjectHideFlags: 0
@@ -5777,8 +5795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  memoryManager: {fileID: 0}
 --- !u!61 &856997993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5886,7 +5902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b7de98b896db64d99e4d483236ba99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1476634331}
+  player: {fileID: 0}
   playerAudioSource: {fileID: 0}
   fragmentPrefab: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
     type: 3}
@@ -5930,10 +5946,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockTime: 15
-  player: {fileID: 1476634335}
-  navPoint: {fileID: 1476634333}
-  bubbles: {fileID: 1652626665}
-  rbPlayer: {fileID: 1476634331}
+  player: {fileID: 0}
+  navPoint: {fileID: 0}
+  bubbles: {fileID: 0}
+  rbPlayer: {fileID: 0}
 --- !u!1 &1049933508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6290,8 +6306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  memoryManager: {fileID: 0}
 --- !u!61 &1395415119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6401,42 +6415,12 @@ MonoBehaviour:
   m_AmplitudeGain: 0.25
   m_FrequencyGain: 0.05
   mNoiseOffsets: {x: 0, y: 0, z: 0}
---- !u!1 &1476634331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1855229569708447584, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 588710856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1476634332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
     type: 3}
   m_PrefabInstance: {fileID: 588710856}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1476634333 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 588710856}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476634331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd2bce2a13cc4bc89af34113e829bd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1476634335 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 588710856}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476634331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dc62040a77c7c43b2ac861ac2e238b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1511307803
 GameObject:
   m_ObjectHideFlags: 3
@@ -6520,12 +6504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1652626665 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1809757823, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 588710856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1665375283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7440548671984367836, guid: b8a011f487dba2644adbd6046cdde4d9,
@@ -6609,8 +6587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  memoryManager: {fileID: 0}
 --- !u!61 &1720605058
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6680,9 +6656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750dc5919f2f54645bbb9375a4d7360f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1476634331}
-  unloadDistance: 250
-  BRsceneDistance: 0
 --- !u!1 &1778408852
 GameObject:
   m_ObjectHideFlags: 0
@@ -6730,7 +6703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 705638743}
-  player: {fileID: 1476634335}
+  player: {fileID: 0}
   setPieceCamera: {fileID: 1062275692}
   center: {fileID: 525115340}
 --- !u!61 &1778408855
@@ -6821,7 +6794,7 @@ PrefabInstance:
     - target: {fileID: 1373684002, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1476634335}
+      objectReference: {fileID: 0}
     - target: {fileID: 1373684002, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: setPieceCamera
       value: 
@@ -6900,8 +6873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4160401961c9d14459b1a375fceba01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  memoryManager: {fileID: 0}
 --- !u!61 &1867114667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6953,6 +6924,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!23 &1884090754 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 828374273, guid: b8a011f487dba2644adbd6046cdde4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 588710856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1906437834
 GameObject:
   m_ObjectHideFlags: 0

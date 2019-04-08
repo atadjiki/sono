@@ -4,32 +4,62 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.HDPipeline;
 
 public class ChangeColor : MonoBehaviour
-{
-    private HDRenderPipelineAsset mainCamera;
-    
-    [SerializeField] private Color lerpDuration;
-    private Color currentColor;
-    [SerializeField]private HDAdditionalCameraData mainCam;
-    [ColorUsage(true, true)] private Color skyBlue;
- 
+{    
+    [SerializeField] private float lerpDuration;
+    [SerializeField] private HDAdditionalCameraData mainCam;
+    [SerializeField] private MeshRenderer playerBody;
 
-    private float duration = 3.0f;
+    [SerializeField] public Color dark;
+    [SerializeField] public Color saturated;
+    [SerializeField] public Color voidbgColor;
+    [SerializeField] public List<Color> firstFiberPuzzleColor;
+    [SerializeField] public List<Color> secondFiberPuzzleColor;
+    [SerializeField] public List<Color> thirdFiberPuzzleColor;
+    [SerializeField] public List<Color> firstamberPuzzleColor;
+    [SerializeField] public List<Color> secondamberPuzzleColor;
+    [SerializeField] public List<Color> thirdamberPuzzleColor;
+    [SerializeField] public List<Color> firstlattePuzzleColor;
+    [SerializeField] public List<Color> secondlattePuzzleColor;
+    [SerializeField] public List<Color> thirdlattePuzzleColor;
+    [SerializeField] public List<Color> voidColor;
+
+
+    private Color currentColor;
+    private Color colorToChangeTo;
+    private bool shouldchangeColor;
+
+
+
+    private float t = 0;
     // Start is called before the first frame update
     void Start()
     {
-        //mainCam.backgroundColorHDR = Color.red;
-        skyBlue = Color.red;
-        //mainCamera = gameObject.GetComponent<Camera>();
-       // mainCamera.c = CameraClearFlags.SolidColor;
-        //currentColor = mainCamera.backgroundColor;
-        
+        print(playerBody.material.GetColor("Color_D2FAE4B8"));
+        shouldchangeColor = false;
+        t = 0f;
+        currentColor = mainCam.backgroundColorHDR;
+        colorToChangeTo = saturated;
+        //StartCoroutine(changeColor(saturated));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float t = Mathf.PingPong(Time.time, duration) / duration;
-       // mainCamera.backgroundColor = Color.Lerp(currentColor, skyBlue, duration);
+
+        if (t < 1f && shouldchangeColor == true)
+        {
+            mainCam.backgroundColorHDR = Color.Lerp(currentColor, colorToChangeTo, t);
+            t += Time.deltaTime / lerpDuration;
+        }
+    }
+
+    IEnumerator changeColor(Color color)
+    {
+        shouldchangeColor = true;
+        colorToChangeTo = color;
+        yield return new WaitForSeconds(lerpDuration);
+        shouldchangeColor = false;
+        t = 0;
     }
 }
