@@ -39,6 +39,7 @@ public class ChangeColor : MonoBehaviour
         t = 0f;
         currentColor = mainCam.backgroundColorHDR;
         colorToChangeTo = saturated;
+        playerBody.material.SetColor("Color_D2FAE4B8", firstFiberPuzzleColor[0]);
         //StartCoroutine(changeColor(saturated));
 
     }

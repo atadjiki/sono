@@ -100,7 +100,7 @@ public class FragmentManager : MonoBehaviour
 
     public int CountAttachedFragments()
     {
-        int count = 0;
+        /*int count = 0;
 
         foreach (FragmentController fragment in fragments)
         {
@@ -109,7 +109,8 @@ public class FragmentManager : MonoBehaviour
                 count++;
             }
         }
-        return count;
+        return count;*/
+        return 0;
     }
 
     public List<FragmentController> UnattachedFragments()
