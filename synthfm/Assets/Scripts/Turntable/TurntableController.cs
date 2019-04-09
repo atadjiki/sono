@@ -497,19 +497,20 @@
             {
                 Debug.Log("Knob turned");
             }
+            if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Cue)
+            {
+                Debug.Log("Cue Pressed");
+
+            }
+            else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.KnobPress)
+            {
+                Debug.Log("Knob Pressed");
+            }
             if (currentButtonFrames >= maxButtonFrames)
             {
 
-                if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Cue)
-                {
-                    Debug.Log("Cue Pressed");
-
-                }
-                else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.KnobPress)
-                {
-                    Debug.Log("Knob Pressed");
-                }
-                else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Play)
+               
+                if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Play)
                 {
 
                     if (!MenuMode)
@@ -520,10 +521,9 @@
                     {
                         i_Menu.Do_Select(this);
                     }
-                    currentButtonFrames = 0;
-
-
                 }
+
+                currentButtonFrames = 0;
             }
             else
             {

@@ -27,6 +27,11 @@ namespace PlayerInput
         public enum DJTechControl { Wheel, Cue, Play, Slider, Knob, KnobPress, None };
         public DJTechControl lastInteracted;
 
+        private int ignoreNextNMessages = 4;
+        private int currentIgnored = 0;
+
+        private string lastMessage = "";
+
         public float getLeft()
         {
             return currentLeft;
@@ -100,8 +105,19 @@ namespace PlayerInput
                 return;
             }
 
-            string lastMessage = MidiJack.MidiDriver.Instance.History.Peek().ToString();
-           // Debug.Log(lastMessage);
+            string tmp = MidiJack.MidiDriver.Instance.History.Peek().ToString();
+
+            if (tmp == lastMessage)
+            {
+             //   Debug.Log("Disregarding message");
+                return;
+            }
+            
+
+            lastMessage = tmp;
+
+
+            Debug.Log(lastMessage);
             if (lastMessage.Contains("d(" + profile.leftTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
             {
                 lastInteracted = DJTechControl.Wheel;
@@ -113,21 +129,47 @@ namespace PlayerInput
             {
                 lastInteracted = DJTechControl.Slider;
             }
-            else if (lastMessage.Contains("s(90) d(2A") && lastMessage.Contains("7F"))
-            {
-                lastInteracted = DJTechControl.Play;
-            }
-            else if (lastMessage.Contains("s(90) d(2B,7F)"))
-            {
-                lastInteracted = DJTechControl.Cue;
-            }
-            else if(lastMessage.Contains("s(90) d(1F,7F)"))
-            {
-                lastInteracted = DJTechControl.KnobPress;
-            }
             else if (lastMessage.Contains("s(B0) d(38"))
             {
                 lastInteracted = DJTechControl.Knob;
+            }
+            else if (lastMessage.Contains("s(90) d(2A,7F)"))
+            {
+                if(currentIgnored >= ignoreNextNMessages)
+                {
+                    lastInteracted = DJTechControl.Play;
+                    currentIgnored = 0;
+                }
+                else
+                {
+                    currentIgnored++;
+                }
+                
+            }
+            else if (lastMessage.Contains("s(90) d(2B,7F)"))
+            {
+                if (currentIgnored >= ignoreNextNMessages)
+                {
+                    lastInteracted = DJTechControl.Cue;
+                    currentIgnored = 0;
+                }
+                else
+                {
+                    currentIgnored++;
+                }
+            }
+            else if(lastMessage.Contains("s(90) d(1F,7F)"))
+            {
+                
+                if (currentIgnored >= ignoreNextNMessages)
+                {
+                    lastInteracted = DJTechControl.KnobPress;
+                    currentIgnored = 0;
+                }
+                else
+                {
+                    currentIgnored++;
+                }
             }
             else
             {
