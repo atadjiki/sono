@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.VFX;
 
 public class GateTrigger : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GateTrigger : MonoBehaviour
     [SerializeField]
     private bool partOfPuzzle = false;
     public bool ignoreAngle = false;
+    public VisualEffect GateReact;
 
 
 
@@ -19,7 +21,7 @@ public class GateTrigger : MonoBehaviour
 
         if (GetComponentInParent<GatePuzzle>() != null)
         {
-         //   Debug.Log(this.name + " - found parent");
+            //   Debug.Log(this.name + " - found parent");
             partOfPuzzle = true;
         }
 
@@ -28,16 +30,24 @@ public class GateTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Vector3 normalizedVelocity = collision.GetComponent<Rigidbody2D>().velocity.normalized;
             float angle = Vector3.Dot(transform.up, normalizedVelocity);
-            if(angle > 0.5f || ignoreAngle)
+            if (angle > 0.5f || ignoreAngle)
             {
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 //audioSource.Play();
                 Debug.Log("Hit gate");
+                GateReact.SetFloat("React", 40);
+
+                GateReact.SetFloat("Emission", 0);
+                print(GateReact.GetFloat("React"));
                 NotifyPuzzle();
+                GateReact.SetVector3("Position", new Vector3 (0, 5, 0));
+                StartCoroutine(GateReaction());
+
+
             }
             else
             {
@@ -57,7 +67,15 @@ public class GateTrigger : MonoBehaviour
                 GetComponentInParent<Puzzle>().GateTriggered(this);
             }
         }
+
+    }
+    IEnumerator GateReaction()
+    {
         
+        yield return new WaitForSeconds(.5f);
+        GateReact.SetFloat("React", -100);
+        print("Succ");
+
     }
 
     public void PlayAudioClip(AudioClip clip)

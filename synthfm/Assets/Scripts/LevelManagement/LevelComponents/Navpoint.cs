@@ -66,15 +66,15 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
-        {
+        //if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
+        //{
             //TO DO: Navpoint pointing to hub
-        }
-        else
-        {
+        //}
+        //else
+        //{
             //`CheckForNewPuzzle();
             CheckForNewFragment();
-        }
+        //}
     }
 
     void CheckForNewFragment()
