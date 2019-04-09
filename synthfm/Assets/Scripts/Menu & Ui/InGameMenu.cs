@@ -110,5 +110,6 @@ public class InGameMenu : MonoBehaviour
     public void ActivatePannel(bool i_state)
     {
         obj_MenuPanel.SetActive(i_state);
+        ScoreManager._instance.SetHighPassDuck(i_state);
     }
 }
