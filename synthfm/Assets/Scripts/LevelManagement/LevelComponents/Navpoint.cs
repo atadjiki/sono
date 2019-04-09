@@ -5,7 +5,7 @@ using UnityEngine;
 public class Navpoint : MonoBehaviour
 {
 
-    private GameObject target;
+    public GameObject target;
     public GameObject eyeball;
     public GameObject centerOfEye;
     public SphereCollider sphereCollider;
@@ -30,6 +30,7 @@ public class Navpoint : MonoBehaviour
     public GameObject amberWorld;
     public GameObject fiberWorld;
     public GameObject latteWorld;
+    public GameObject hubWorld;
 
     private void Start()
     {
@@ -66,15 +67,17 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        //if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
-        //{
-            //TO DO: Navpoint pointing to hub
-        //}
-        //else
-        //{
-            //`CheckForNewPuzzle();
+        Debug.Log(FragmentManager.instance.CountAttachedFragments());
+        if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
+        {
+           
+            target = hubWorld;
+        }
+        else
+        {
+            //CheckForNewPuzzle();
             CheckForNewFragment();
-        //}
+        }
     }
 
     void CheckForNewFragment()

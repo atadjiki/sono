@@ -116,8 +116,6 @@ namespace PlayerInput
 
             lastMessage = tmp;
 
-
-            Debug.Log(lastMessage);
             if (lastMessage.Contains("d(" + profile.leftTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
             {
                 lastInteracted = DJTechControl.Wheel;
