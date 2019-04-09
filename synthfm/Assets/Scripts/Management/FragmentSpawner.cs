@@ -64,6 +64,8 @@ public class FragmentSpawner : MonoBehaviour
         fragment.GetComponent<FragmentController>().followTarget = player;
         fragment.GetComponent<FragmentController>().currentState = SpawnState;
 
+        FragmentManager.instance.AddFragment(fragment.GetComponent<FragmentController>());
+
         return spawnLocation;
     }
 
@@ -94,6 +96,8 @@ public class FragmentSpawner : MonoBehaviour
 
         fragmentCase.GetComponentInChildren<FragmentController>().followTarget = player;
         fragmentCase.GetComponentInChildren<FragmentController>().currentState = SpawnState;
+
+        FragmentManager.instance.AddFragment(fragmentCase.GetComponentInChildren<FragmentController>());
 
         return spawnLocation;
     }

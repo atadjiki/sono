@@ -15,7 +15,7 @@ public class ClusterManager : MonoBehaviour
     [Header("DO NOT TOUCH FOllowings")]
     public bool IsComplete = false;
 
-    [Header("The number of rocks only for sequencial mode")]
+    [Header("The number of rocks only for Rock mode")]
     public int _NumOfRocks;
 
     public int Num_Of_Actives;     // ROCk Mode
