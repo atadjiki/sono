@@ -25,7 +25,7 @@
         private float previousFade;
         private float previousSlider;
         private int currentFrames = 0;
-        private int maxFrames = 60;
+        private int maxFrames = 0;
         private float torqueCount = 1;
 
         [Header("Player Physics")]
@@ -47,8 +47,8 @@
         private bool fast_override = false;
         private bool slow_override = false;
 
-        public float torqueIncrement = 1;
-        private bool multiplyTorque = false;
+        public float torqueIncrement = 1.5f;
+        public bool multiplyTorque = true;
 
         public enum Speed { Slow, Normal, Fast };
         public Speed currentSpeed;
@@ -67,6 +67,12 @@
         [Header("In Game Menu Items")]
         public InGameMenu i_Menu;
         private bool MenuMode = false;
+
+        private float maxMidiMenuFrames = 12f;
+        private float currentMidiMenuFrames = 0f;
+
+        private float maxButtonFrames = 0f;
+        private float currentButtonFrames = 0;
 
         //    private bool midiInput = false;
 
@@ -133,7 +139,8 @@
             ApplyForce();
 
             if (!MenuMode)
-            {   DoAltInput();
+            {
+                DoAltInput();
                 //DoMouseInput();
             }
             DoMIDIInput();
@@ -418,85 +425,110 @@
 
             turntableManager.UpdateLastInteracted();
 
-            if (turntableManager.lastInteracted == TurntableManager.DJTechControl.Wheel)
+            if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Wheel)
             {
-                //if (previousLeft != leftTurntable)
-                //{
-                //      if (leftTurntable > 0.5f)
-                //      {
-                //          accel_mod -= accel_incr;
-                //      }
-                //      else if (leftTurntable < 0.5f)
-                //      {
-                //          accel_mod += accel_incr;
-                //      }
-                //      previousLeft = leftTurntable;
-                //  }
+                if (MenuMode)
+                {
+                    if (currentMidiMenuFrames >= maxMidiMenuFrames)
+                    {
+                        if (rightTurntable < 0.5f)
+                        {
+                            i_Menu.scroll(true);
+                        }
+                        else if (leftTurntable > 0.5f)
+                        {
+                            i_Menu.scroll(false);
+                        }
+                        previousLeft = leftTurntable;
+                        previousRight = rightTurntable;
+                        currentMidiMenuFrames = 0f;
+                    }
+                    else
+                    {
+                        currentMidiMenuFrames++;
+                    }
 
-                //if (previousRight != rightTurntable)
-                if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Wheel)
+
+                }
+                else
                 {
                     float torque = torqueCount + getTorque();
 
-                    //if (rightTurntable <= 0.5f)
                     if (rightTurntable < 0.5f)
                     {
-                        //rigidbody.AddTorque(-torque);
                         rigidbody.AddTorque(torque);
                     }
-                    //else
                     else if (leftTurntable > 0.5f)
                     {
-                        // rigidbody.AddTorque(torque);
                         rigidbody.AddTorque(-torque);
                     }
                     previousLeft = leftTurntable;
                     previousRight = rightTurntable;
-
-                    if (multiplyTorque)
-                        torqueCount *= torqueIncrement;
-                    else
-                    {
-                        torqueCount += torqueIncrement;
-                    }
-
                 }
 
-                currentFrames++;
-                if (currentFrames > maxFrames)
-                {
-                    currentFrames = 0;
-                    torqueCount = 1;
-                }
+
             }
 
             else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Slider)
             {
-
-                //if (previousSlider != slider)
-                //{
-
-                if (slider == 0)
-                    return;
-
-                if (slider > 0.6f)
+                if (!MenuMode)
                 {
-                    ChangeSpeed(Speed.Fast);
-                }
-                else if (slider > 0.385f)
-                {
-                    ChangeSpeed(Speed.Normal);
-                }
-                else
-                {
-                    ChangeSpeed(Speed.Slow);
+                    if (slider == 0)
+                        return;
+
+                    if (slider > 0.6f)
+                    {
+                        ChangeSpeed(Speed.Fast);
+                    }
+                    else if (slider > 0.385f)
+                    {
+                        ChangeSpeed(Speed.Normal);
+                    }
+                    else
+                    {
+                        ChangeSpeed(Speed.Slow);
+                    }
+
+                    previousSlider = slider;
                 }
 
-                previousSlider = slider;
-                //     }
             }
+            else if(turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Knob)
+            {
+                Debug.Log("Knob turned");
+            }
+            if (currentButtonFrames >= maxButtonFrames)
+            {
+
+                if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Cue)
+                {
+                    Debug.Log("Cue Pressed");
+
+                }
+                else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.KnobPress)
+                {
+                    Debug.Log("Knob Pressed");
+                }
+                else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Play)
+                {
+
+                    if (!MenuMode)
+                    {
+                        toggleMenu();
+                    }
+                    else if (MenuMode)
+                    {
+                        i_Menu.Do_Select(this);
+                    }
+                    currentButtonFrames = 0;
 
 
+                }
+            }
+            else
+            {
+                currentButtonFrames++;
+            }
         }
 
         float getTorque()

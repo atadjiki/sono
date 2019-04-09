@@ -16,6 +16,12 @@ public struct TurntableProfile
     public int sliderKnob;
     public MidiChannel sliderChannel;
 
+    public int playButton;
+    public MidiChannel playChannel;
+
+    public int cueButton;
+    public MidiChannel cueChannel;
+
     public static TurntableProfile NumarkTurntable()
     {
         TurntableProfile result = new TurntableProfile();

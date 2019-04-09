@@ -24,7 +24,7 @@ namespace PlayerInput
         public Turntable model = Turntable.DJTech;
         private TurntableProfile profile;
 
-        public enum DJTechControl { Wheel, Cue, Play, Slider, Knob, None };
+        public enum DJTechControl { Wheel, Cue, Play, Slider, Knob, KnobPress, None };
         public DJTechControl lastInteracted;
 
         public float getLeft()
@@ -101,18 +101,33 @@ namespace PlayerInput
             }
 
             string lastMessage = MidiJack.MidiDriver.Instance.History.Peek().ToString();
-
            // Debug.Log(lastMessage);
-            if (lastMessage.Contains("d("+profile.leftTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
+            if (lastMessage.Contains("d(" + profile.leftTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
             {
                 lastInteracted = DJTechControl.Wheel;
-            }else if (lastMessage.Contains("d("+profile.rightTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
+            } else if (lastMessage.Contains("d(" + profile.rightTurnKnob.ToString("X")) && lastMessage.Contains("s(B0)"))
             {
                 lastInteracted = DJTechControl.Wheel;
             }
             else if (lastMessage.Contains("s(E0)"))
             {
                 lastInteracted = DJTechControl.Slider;
+            }
+            else if (lastMessage.Contains("s(90) d(2A") && lastMessage.Contains("7F"))
+            {
+                lastInteracted = DJTechControl.Play;
+            }
+            else if (lastMessage.Contains("s(90) d(2B,7F)"))
+            {
+                lastInteracted = DJTechControl.Cue;
+            }
+            else if(lastMessage.Contains("s(90) d(1F,7F)"))
+            {
+                lastInteracted = DJTechControl.KnobPress;
+            }
+            else if (lastMessage.Contains("s(B0) d(38"))
+            {
+                lastInteracted = DJTechControl.Knob;
             }
             else
             {
