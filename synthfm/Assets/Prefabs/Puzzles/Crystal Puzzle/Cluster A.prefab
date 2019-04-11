@@ -1015,11 +1015,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Mode: 0
   IsComplete: 0
+  _NumOfRocks: 1
   Num_Of_Actives: 0
   _curSeq: 0
-  Rock: {fileID: 0}
+  Rocks: []
   Crystalls: []
   numOfCrystalls: 0
+  size: 0
 --- !u!1 &246312822110801225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1034,8 @@ GameObject:
   - component: {fileID: 246312822110801229}
   - component: {fileID: 246312822110801226}
   - component: {fileID: 246312822110801228}
+  - component: {fileID: 585492270}
+  - component: {fileID: 585492269}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -1047,8 +1051,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246312822110801225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.2, y: 30.4, z: 0}
-  m_LocalScale: {x: 1.6322072, y: 1.6322072, z: 1.6322072}
+  m_LocalPosition: {x: 5.2, y: 28.3, z: 0}
+  m_LocalScale: {x: 1.6322072, y: 1.6322072, z: 1.26}
   m_Children: []
   m_Father: {fileID: 246312822065857597}
   m_RootOrder: 0
@@ -1112,7 +1116,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5.44, y: 6.27}
@@ -1131,9 +1135,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToDeactivate: 0
   speed: 0.2
-  _Manager: {fileID: 0}
   shakeMagnitude: 0.8
   dampingSpeed: 1
+--- !u!50 &585492270
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246312822110801225}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2.98
+  m_LinearDrag: 0.63
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!250 &585492269
+PointEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246312822110801225}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceMagnitude: 1300
+  m_ForceVariation: 16.56
+  m_DistanceScale: 20
+  m_ForceSource: 1
+  m_ForceTarget: 0
+  m_ForceMode: 0
+  m_Drag: 100
+  m_AngularDrag: 50
 --- !u!1 &246312822482811271
 GameObject:
   m_ObjectHideFlags: 0
