@@ -65,10 +65,13 @@ public class Crystal: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if ((_state == ClusterManager.State.OFF)) // notify if this OFF
-       {
-            _cMamnager._Notify(this);             
-       } 
+        if (collision.gameObject.tag == "Player")
+        {
+            if ((_state == ClusterManager.State.OFF)) // notify if this OFF
+            {
+                _cMamnager._Notify(this);
+            }
+        }
     }
 
     void Update()
