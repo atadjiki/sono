@@ -54,9 +54,13 @@ public class RockIt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!ToDeactivate) // notify if not deactivated
+        if (collision.gameObject.tag == "Player")
         {
-            _cMamnager._NotifyFromROck(this);
+            if (!ToDeactivate) // notify if not deactivated
+            {
+                // Rocks do not harm crystalls anymore
+               // _cMamnager._NotifyFromROck(this);
+            }
         }
     }
 

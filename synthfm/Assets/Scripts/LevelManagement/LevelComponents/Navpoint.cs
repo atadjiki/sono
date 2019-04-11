@@ -67,7 +67,7 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        Debug.Log(FragmentManager.instance.CountAttachedFragments());
+        //Debug.Log(FragmentManager.instance.CountAttachedFragments());
         if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
         {
            
