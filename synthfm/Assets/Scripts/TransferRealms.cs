@@ -45,6 +45,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<AmberWorld>().enabled = true;
+                changeAppearance("Amber");
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
@@ -68,6 +69,7 @@ public class TransferRealms : MonoBehaviour
             else if(gameObject.tag == "Realm2")
             {
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
+                changeAppearance("Fiber");
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<FiberWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
@@ -98,6 +100,15 @@ public class TransferRealms : MonoBehaviour
         {
            StartCoroutine(cc.changeColor(cc.voidbgColor,cc.voidColor[2],cc.voidColor[3]));
         }
+        else if(destination == "Amber")
+        {
+            StartCoroutine(cc.changeColor(cc.dark, cc.firstamberPuzzleColor[2], cc.firstamberPuzzleColor[3]));
+        }
+        else if(destination == "Fiber")
+        {
+            StartCoroutine(cc.changeColor(cc.dark, cc.currentPlayercolor, cc.currentTrailColor));
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
