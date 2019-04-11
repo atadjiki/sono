@@ -5,7 +5,10 @@ public class SavedData
     public List<FragmentController> hubFragments;
     public List<FragmentController> fiberFragments;
     public List<FragmentController> latteFragments;
+    public List<FragmentController> amberFragments;
+
     public List<Puzzle> hubLevels;
+    public List<Puzzle> amberLevels;
     public List<Puzzle> fiberLevels;
     public List<Puzzle> latteLevels;
 

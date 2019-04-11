@@ -32,10 +32,18 @@ public class Navpoint : MonoBehaviour
     public GameObject latteWorld;
     public GameObject hubWorld;
 
+    public GameObject amberWorldTrigger;
+    public GameObject fiberWorldTrigger;
+    public GameObject latteWorldTrigger;
+    public GameObject hubWorldTrigger;
+
     private void Start()
     {
         //Lock();
         locked = false;
+        fiberWorldTrigger = GameObject.FindGameObjectWithTag("Realm2");
+        latteWorldTrigger = GameObject.FindGameObjectWithTag("Realm3");
+
     }
 
     // Update is called once per frame
@@ -70,8 +78,8 @@ public class Navpoint : MonoBehaviour
         //Debug.Log(FragmentManager.instance.CountAttachedFragments());
         if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
         {
-           
-            target = hubWorld;
+            CheckForNewWorld();
+            //target = hubWorld;
         }
         else
         {
@@ -79,6 +87,26 @@ public class Navpoint : MonoBehaviour
             CheckForNewFragment();
         }
     }
+    public void CheckForNewWorld()
+    {
+        Vector3 playerPos = GameObject.Find("Player").transform.position;
+
+        if (!(GameObject.Find("LatteWorld") && !(GameObject.Find("FiberWorld"))))
+        {
+            float FDistance = Vector3.Distance(transform.position, fiberWorldTrigger.transform.position);
+            float LDistance = Vector3.Distance(transform.position, latteWorldTrigger.transform.position);
+
+            if(FDistance < LDistance && (FDistance > 0 && LDistance > 0))
+            {
+                target = fiberWorldTrigger.gameObject;
+            }
+            else
+            {
+                target = latteWorldTrigger.gameObject;
+            }
+        }
+    }
+
 
     void CheckForNewFragment()
     {

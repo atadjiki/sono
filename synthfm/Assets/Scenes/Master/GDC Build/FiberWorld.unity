@@ -5741,7 +5741,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: ce28dfa9ce5e34c54b0df247ea978360, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5894,6 +5894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573176695}
   - component: {fileID: 573176696}
+  - component: {fileID: 573176697}
   m_Layer: 0
   m_Name: FiberPersistence
   m_TagString: Untagged
@@ -5925,6 +5926,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff87f4f67d1748b47882a511aa051a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &573176697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573176694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd18f7e59d26b4ed491a9f63a251469d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &599015898

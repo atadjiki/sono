@@ -10,8 +10,13 @@ public class Persist : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-        SetupFiberPuzzles();
-        SetupFiberFragments();
+        if(GameObject.Find("FiberWorld"))
+        {
+            SetupFiberPuzzles();
+            SetupFiberFragments();
+        }
+
+
     }
 
     private void SetupFiberFragments()
