@@ -57,7 +57,6 @@ public class Navpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(target);
         //print(FragmentManager.instance.CountAttachedFragments());
         if (!locked)
         {
@@ -114,7 +113,10 @@ public class Navpoint : MonoBehaviour
     {
         if(amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
         {
-            CheckForNewWorld();
+            if(!CheckForNewWorld())
+            {
+                CheckForNewFragment();
+            }
         }
         else
         {
@@ -131,7 +133,11 @@ public class Navpoint : MonoBehaviour
             float FDistance = Vector3.Distance(transform.position, fiberWorldTrigger.transform.position);
             float LDistance = Vector3.Distance(transform.position, latteWorldTrigger.transform.position);
 
-            if(FDistance < LDistance && (FDistance > 0 && LDistance > 0))
+            print("FDistance: " +FDistance);
+            print("LDistance: " + LDistance);
+
+
+            if ((FDistance < LDistance) && (FDistance > 0f && LDistance > 0f))
             {
                 print("Target is fiber world ");
                 target = fiberWorldTrigger.gameObject;
@@ -145,12 +151,12 @@ public class Navpoint : MonoBehaviour
 
             return true;
         }
-        else if((GameObject.Find("LatteWorld")) == null)
+        if ((GameObject.Find("LatteWorld")) == null && fiberFragments >= maxFragments)
         {
             target = latteWorldTrigger.gameObject;
             return true;
         }
-        else if((GameObject.Find("FiberWorld")) == null)
+        else if ((GameObject.Find("FiberWorld")) == null && latteFragments >=maxFragments)
         {
             target = fiberWorldTrigger.gameObject;
             return true;
