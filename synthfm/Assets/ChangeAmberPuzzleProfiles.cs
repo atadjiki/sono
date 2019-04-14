@@ -11,12 +11,6 @@ public class ChangeAmberPuzzleProfiles : MonoBehaviour
         cc = GameObject.Find("Main Camera").GetComponent<ChangeColor>();
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(gameObject.tag == "Amber1" && collision.gameObject.tag == "Player")

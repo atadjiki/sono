@@ -4831,6 +4831,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoublePuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 4025103955336185850, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fiber3
+      objectReference: {fileID: 0}
     - target: {fileID: 4025103955336185851, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7177,6 +7182,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheGauntlet
       objectReference: {fileID: 0}
+    - target: {fileID: 6718803102820231759, guid: d02e6dc5a446d3f45936014a5c455822,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fiber2
+      objectReference: {fileID: 0}
     - target: {fileID: 6718803102820231756, guid: d02e6dc5a446d3f45936014a5c455822,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7604,6 +7614,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheSpiral
       objectReference: {fileID: 0}
+    - target: {fileID: 2111188218341836916, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2111188218341836917, guid: 98f5b5442380ecc40a196fc39603e1cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7705,6 +7720,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8926484042661614526, guid: 68635786cf25cd9429b8e15063160119,
         type: 3}
+    - target: {fileID: 2111188218242075273, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fiber1
+      objectReference: {fileID: 0}
     - target: {fileID: 2111188218242075383, guid: 98f5b5442380ecc40a196fc39603e1cf,
         type: 3}
       propertyPath: m_Enabled
@@ -7724,6 +7744,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2027041773}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2027041776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2111188218242075273, guid: 98f5b5442380ecc40a196fc39603e1cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027041773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &2027041777
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027041776}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 228.19
+--- !u!114 &2027041778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027041776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7f1793f568cd248b76dab4c174d2f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078650135
 GameObject:
   m_ObjectHideFlags: 0
