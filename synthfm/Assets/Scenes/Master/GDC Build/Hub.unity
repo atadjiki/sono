@@ -5404,6 +5404,21 @@ PrefabInstance:
       propertyPath: canTargetLatteWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: fiberWorldTrigger
+      value: 
+      objectReference: {fileID: 856997989}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: amberWorldTrigger
+      value: 
+      objectReference: {fileID: 1867114663}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: latteWorldTrigger
+      value: 
+      objectReference: {fileID: 1720605054}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: i_Menu
@@ -5831,6 +5846,10 @@ PrefabInstance:
       propertyPath: playerEyeball
       value: 
       objectReference: {fileID: 369758905}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: currentWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5950,6 +5969,7 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!61 &856997993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6470,7 +6490,7 @@ MonoBehaviour:
   fragmentCasePrefab: {fileID: 1876234530}
   player: {fileID: 1476634332}
   mainCamera: {fileID: 504042470}
-  active: 1
+  maxFragments: 9
   SpawnState: 0
 --- !u!4 &1294251454
 Transform:
@@ -6534,6 +6554,7 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!61 &1395415119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6819,6 +6840,7 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!61 &1720605058
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7137,6 +7159,7 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!61 &1867114667
 BoxCollider2D:
   m_ObjectHideFlags: 0

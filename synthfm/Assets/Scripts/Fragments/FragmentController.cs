@@ -7,7 +7,12 @@ public class FragmentController : MonoBehaviour
     private Transform player;
 
     public enum states { IDLE, FLEE, FOLLOW, DEPOSIT };
+
+    public enum world { AMBER, LATTE, FIBER,HUB};
+
     public states currentState;
+
+    public world currentWorld;
 
     public GameObject portal;
 

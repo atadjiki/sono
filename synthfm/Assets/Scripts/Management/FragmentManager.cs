@@ -56,7 +56,7 @@ public class FragmentManager : MonoBehaviour
     {
         if(fragments != null)
         {
-            SavedData.instance.hubFragments = fragments;
+            SavedData.instance.fragments = fragments;
             string json = JsonUtility.ToJson(SavedData.instance);
             PlayerPrefs.SetString("SavedData", json);
         }
@@ -71,25 +71,10 @@ public class FragmentManager : MonoBehaviour
     {
         string p = PlayerPrefs.GetString("SavedData");
         SavedData s = JsonUtility.FromJson<SavedData>(p);
+        fragments.Clear();
+        fragments.AddRange(FindObjectsOfType<FragmentController>());
 
-        if (s.hubFragments.Capacity == 0)
-        {
-            fragments.Clear();
-            fragments.AddRange(FindObjectsOfType<FragmentController>());
-        }
-        if(s.amberFragments.Capacity == 0)
-        {
-            if (GameObject.Find("AmberWorld"))
-            {
-
-            }
-        }
-        else
-        {
-            //TO DO: Get the state of fragments and do spawn them. s.HubFragments will get you all the fragments and everything associated with them
-            fragments = s.hubFragments;  
-        }
-
+        SavedData.instance.fragments = fragments;
     }
     public List<FragmentController> AttachedFragments()
     {

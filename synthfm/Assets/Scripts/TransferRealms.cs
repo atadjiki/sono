@@ -124,7 +124,7 @@ public class TransferRealms : MonoBehaviour
         if (gameObject.tag == "Realm1")
         {
             gameObject.GetComponent<AmberWorld>().enabled = false;
-            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+           // GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
             Debug.Log("Exiting 1");
             IsPlayerInside = false;

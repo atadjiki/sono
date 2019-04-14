@@ -37,6 +37,10 @@ public class Navpoint : MonoBehaviour
     public GameObject latteWorldTrigger;
     public GameObject hubWorldTrigger;
 
+    private int amberFragments;
+    private int latteFragments;
+    private int fiberFragments;
+
     private void Start()
     {
         //Lock();
@@ -44,16 +48,23 @@ public class Navpoint : MonoBehaviour
         fiberWorldTrigger = GameObject.FindGameObjectWithTag("Realm2");
         latteWorldTrigger = GameObject.FindGameObjectWithTag("Realm3");
 
+        amberFragments = 0;
+        latteFragments = 0;
+        fiberFragments = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        print(target);
+        //print(FragmentManager.instance.CountAttachedFragments());
         if (!locked)
         {
             if (currentFrames >= maxFrames)
             {
                 CheckForNewTarget();
+                SortFragments();
                 currentFrames = 0;
             }
             else
@@ -73,41 +84,75 @@ public class Navpoint : MonoBehaviour
         currentFrames = 0;
     }
 
+    private void SortFragments()
+    {
+        List<FragmentController> temp = FragmentManager.instance.fragments;
+
+        amberFragments = 0;
+        latteFragments = 0;
+        fiberFragments = 0;
+
+        foreach (FragmentController fragment in temp)
+        {
+            if(fragment.currentWorld == FragmentController.world.AMBER && fragment.currentState == FragmentController.states.FOLLOW)
+            {
+                amberFragments += 1;
+            }
+            else if(fragment.currentWorld == FragmentController.world.FIBER && fragment.currentState == FragmentController.states.FOLLOW)
+            {
+                fiberFragments += 1;
+            }
+            else if (fragment.currentWorld == FragmentController.world.LATTE && fragment.currentState == FragmentController.states.FOLLOW)
+            {
+                latteFragments += 1;
+            }
+
+        }
+    }
+
     public void CheckForNewTarget()
     {
-        //Debug.Log(FragmentManager.instance.CountAttachedFragments());
-        if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
+        if(amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
         {
-            if (!CheckForNewWorld())
-            {
-                CheckForNewFragment();
-            }
-            //target = hubWorld;
+            CheckForNewWorld();
         }
         else
         {
-            //CheckForNewPuzzle();
             CheckForNewFragment();
+            print("Checking for new fragment");
         }
     }
     public bool CheckForNewWorld()
     {
         Vector3 playerPos = GameObject.Find("Player").transform.position;
 
-        if ((GameObject.Find("LatteWorld") != null && (GameObject.Find("FiberWorld") != null)))
+        if ((GameObject.Find("LatteWorld")) == null && (GameObject.Find("FiberWorld")) == null)
         {
             float FDistance = Vector3.Distance(transform.position, fiberWorldTrigger.transform.position);
             float LDistance = Vector3.Distance(transform.position, latteWorldTrigger.transform.position);
 
             if(FDistance < LDistance && (FDistance > 0 && LDistance > 0))
             {
+                print("Target is fiber world ");
                 target = fiberWorldTrigger.gameObject;
             }
             else
             {
+                print("Target is latte world ");
+
                 target = latteWorldTrigger.gameObject;
             }
 
+            return true;
+        }
+        else if((GameObject.Find("LatteWorld")) == null)
+        {
+            target = latteWorldTrigger.gameObject;
+            return true;
+        }
+        else if((GameObject.Find("FiberWorld")) == null)
+        {
+            target = fiberWorldTrigger.gameObject;
             return true;
         }
         else
