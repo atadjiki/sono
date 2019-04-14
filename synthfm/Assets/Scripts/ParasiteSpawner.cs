@@ -50,7 +50,7 @@ public class ParasiteSpawner : MonoBehaviour
 
         if(parasites.Count >= maxParasites)
         {
-            Debug.Log("Already at max parasites");
+            //Debug.Log("Already at max parasites");
             return Vector3.zero;
         }
 
