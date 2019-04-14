@@ -17,9 +17,14 @@ public class TransferRealms : MonoBehaviour
     [Tooltip("Boolean that is true when we exit a realm and want to know how far away we are from it.")]
     private bool findDistance;
 
+
+
     private SceneMemoryManagement smm;
     private float BRsceneDistance;
     private float collPosition;
+
+    public string CurrentWorld;
+
     void Start()
     {
         findDistance = false;

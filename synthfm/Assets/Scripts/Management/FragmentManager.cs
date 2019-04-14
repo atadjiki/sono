@@ -78,6 +78,13 @@ public class FragmentManager : MonoBehaviour
             fragments.Clear();
             fragments.AddRange(FindObjectsOfType<FragmentController>());
         }
+        if(s.amberFragments.Capacity == 0)
+        {
+            if (GameObject.Find("AmberWorld"))
+            {
+
+            }
+        }
         else
         {
             //TO DO: Get the state of fragments and do spawn them. s.HubFragments will get you all the fragments and everything associated with them
