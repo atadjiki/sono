@@ -5916,9 +5916,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856997990}
-  - component: {fileID: 856997993}
   - component: {fileID: 856997991}
   - component: {fileID: 856997992}
+  - component: {fileID: 856997994}
   m_Layer: 0
   m_Name: 'Fiber Realm Entry Point '
   m_TagString: Realm2
@@ -5934,11 +5934,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856997989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -370, y: -4640, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 0.3117147, z: 0.9999999}
+  m_LocalPosition: {x: 2325, y: 1475, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &856997991
 MonoBehaviour:
@@ -5970,8 +5970,8 @@ MonoBehaviour:
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
   CurrentWorld: 
---- !u!61 &856997993
-BoxCollider2D:
+--- !u!70 &856997994
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5984,18 +5984,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 11551.934, y: 20000}
-  m_EdgeRadius: 0
+  m_Size: {x: 3000, y: 800}
+  m_Direction: 1
 --- !u!1 &862394185
 GameObject:
   m_ObjectHideFlags: 0
@@ -6347,9 +6337,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.51353997, y: 1.02729, z: 0.51353997}
   m_Children:
+  - {fileID: 1867114664}
   - {fileID: 1395415117}
   - {fileID: 856997990}
-  - {fileID: 1867114664}
+  - {fileID: 1680576462}
   - {fileID: 1720605055}
   m_Father: {fileID: 667764381}
   m_RootOrder: 8
@@ -6545,8 +6536,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395415117}
-  - component: {fileID: 1395415119}
   - component: {fileID: 1395415118}
+  - component: {fileID: 1395415119}
   m_Layer: 0
   m_Name: Void Realm Entry Point 1
   m_TagString: Realm4
@@ -6561,13 +6552,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395415116}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1400, y: -2143, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3420201, w: 0.9396927}
+  m_LocalPosition: {x: 600, y: 1200, z: 0}
   m_LocalScale: {x: 1, y: 0.31171194, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
 --- !u!114 &1395415118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6585,8 +6576,8 @@ MonoBehaviour:
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
   CurrentWorld: 
---- !u!61 &1395415119
-BoxCollider2D:
+--- !u!70 &1395415119
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6599,18 +6590,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 20000, y: 4000}
-  m_EdgeRadius: 0
+  m_Size: {x: 1500, y: 1250}
+  m_Direction: 1
 --- !u!1 &1412285068
 GameObject:
   m_ObjectHideFlags: 3
@@ -6808,6 +6789,71 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1680576461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680576462}
+  - component: {fileID: 1680576464}
+  - component: {fileID: 1680576463}
+  m_Layer: 0
+  m_Name: Void Realm Entry Point 2
+  m_TagString: Realm4
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1680576462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_LocalRotation: {x: 0, y: 0, z: 0.3420201, w: 0.9396927}
+  m_LocalPosition: {x: 4100, y: 1250, z: 0}
+  m_LocalScale: {x: 1.1213067, y: 0.34952182, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1218926883}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40}
+--- !u!70 &1680576463
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1500, y: 1150}
+  m_Direction: 1
+--- !u!114 &1680576464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!1 &1720605054
 GameObject:
   m_ObjectHideFlags: 0
@@ -6817,9 +6863,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720605055}
-  - component: {fileID: 1720605058}
   - component: {fileID: 1720605056}
   - component: {fileID: 1720605057}
+  - component: {fileID: 1720605058}
   m_Layer: 0
   m_Name: Latte Realm Entry Point
   m_TagString: Realm3
@@ -6835,11 +6881,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720605054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13681, y: -2354, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 1.0000044, z: 0.9999999}
+  m_LocalPosition: {x: 5025, y: 500, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1720605056
 MonoBehaviour:
@@ -6871,8 +6917,8 @@ MonoBehaviour:
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
   CurrentWorld: 
---- !u!61 &1720605058
-BoxCollider2D:
+--- !u!70 &1720605058
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6885,18 +6931,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2925.4934, y: 3238.4214}
-  m_EdgeRadius: 0
+  m_Size: {x: 2000, y: 1400}
+  m_Direction: 0
 --- !u!1 &1775423724
 GameObject:
   m_ObjectHideFlags: 0
@@ -7051,11 +7087,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 800
+      value: 1175
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -700
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7092,6 +7128,18 @@ PrefabInstance:
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1373684002, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: mainCamera
@@ -7136,9 +7184,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867114664}
-  - component: {fileID: 1867114667}
   - component: {fileID: 1867114665}
   - component: {fileID: 1867114666}
+  - component: {fileID: 1867114667}
   m_Layer: 0
   m_Name: Amber Realm Entry Point
   m_TagString: Realm1
@@ -7154,11 +7202,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867114663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34, y: 395, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 1.0000044, z: 0.9999999}
+  m_LocalPosition: {x: -375, y: 500, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1867114665
 MonoBehaviour:
@@ -7190,8 +7238,8 @@ MonoBehaviour:
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
   CurrentWorld: 
---- !u!61 &1867114667
-BoxCollider2D:
+--- !u!70 &1867114667
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7204,18 +7252,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16000, y: 1500}
-  m_EdgeRadius: 0
+  m_Size: {x: 2000, y: 1400}
+  m_Direction: 0
 --- !u!1 &1876234530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4,
