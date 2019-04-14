@@ -41,7 +41,6 @@ public class FragmentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(fragments.Count);
         if(currentFrames >= maxFrames)
         {
             RefreshFragmentList();

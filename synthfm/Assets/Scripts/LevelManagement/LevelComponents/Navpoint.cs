@@ -78,7 +78,10 @@ public class Navpoint : MonoBehaviour
         //Debug.Log(FragmentManager.instance.CountAttachedFragments());
         if (FragmentManager.instance.CountAttachedFragments() >= maxFragments)
         {
-            CheckForNewWorld();
+            if (!CheckForNewWorld())
+            {
+                CheckForNewFragment();
+            }
             //target = hubWorld;
         }
         else
@@ -87,11 +90,11 @@ public class Navpoint : MonoBehaviour
             CheckForNewFragment();
         }
     }
-    public void CheckForNewWorld()
+    public bool CheckForNewWorld()
     {
         Vector3 playerPos = GameObject.Find("Player").transform.position;
 
-        if (!(GameObject.Find("LatteWorld") && !(GameObject.Find("FiberWorld"))))
+        if ((GameObject.Find("LatteWorld") != null && (GameObject.Find("FiberWorld") != null)))
         {
             float FDistance = Vector3.Distance(transform.position, fiberWorldTrigger.transform.position);
             float LDistance = Vector3.Distance(transform.position, latteWorldTrigger.transform.position);
@@ -104,6 +107,12 @@ public class Navpoint : MonoBehaviour
             {
                 target = latteWorldTrigger.gameObject;
             }
+
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
