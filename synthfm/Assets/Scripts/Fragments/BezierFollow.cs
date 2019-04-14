@@ -40,10 +40,10 @@ public class BezierFollow : MonoBehaviour
             StartCoroutine(followCurve(currentRoute));
         }
       
-        for (int i = 0; i < 4; i++)
-        {
-            p[i] = tf[i].position;
-        }
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    p[i] = tf[i].position;
+        //}
        
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -69,10 +69,10 @@ public class BezierFollow : MonoBehaviour
         {
             t_Param += Time.deltaTime * speed;
 
-            fragPos = Mathf.Pow(1 - t_Param, 3) * p[0] +
-                3 * Mathf.Pow(1 - t_Param, 2) * t_Param * p[1] +
-                3 * (1 - t_Param) * Mathf.Pow(t_Param, 2) * p[2] +
-                Mathf.Pow(t_Param, 3) * p[3];
+            fragPos = Mathf.Pow(1 - t_Param, 3) * tf[0].position +
+                3 * Mathf.Pow(1 - t_Param, 2) * t_Param * tf[1].position +
+                3 * (1 - t_Param) * Mathf.Pow(t_Param, 2) * tf[2].position +
+                Mathf.Pow(t_Param, 3) * tf[3].position;
 
             //   transform.position = fragPos;
             yield return new WaitForEndOfFrame();
