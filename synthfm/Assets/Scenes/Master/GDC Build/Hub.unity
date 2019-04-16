@@ -6342,6 +6342,7 @@ Transform:
   - {fileID: 856997990}
   - {fileID: 1680576462}
   - {fileID: 1720605055}
+  - {fileID: 1929161474}
   m_Father: {fileID: 667764381}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6835,7 +6836,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1500, y: 1150}
+  m_Size: {x: 1100, y: 1150}
   m_Direction: 1
 --- !u!114 &1680576464
 MonoBehaviour:
@@ -7351,6 +7352,71 @@ Transform:
   m_Father: {fileID: 667764381}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1929161473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929161474}
+  - component: {fileID: 1929161476}
+  - component: {fileID: 1929161475}
+  m_Layer: 0
+  m_Name: Void Realm Entry Point 3
+  m_TagString: Realm4
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929161474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929161473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3650, y: 500, z: 0}
+  m_LocalScale: {x: 1.25732, y: 0.39192396, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1218926883}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1929161475
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929161473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 550, y: 2500}
+  m_Direction: 0
+--- !u!114 &1929161476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929161473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!1 &1969531330
 GameObject:
   m_ObjectHideFlags: 0
