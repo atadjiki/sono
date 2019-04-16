@@ -180,6 +180,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8848782033675161084, guid: 062edb90c597b7d4f9a60db7f733b9f0,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062edb90c597b7d4f9a60db7f733b9f0, type: 3}
 --- !u!114 &71409941 stripped
@@ -349,7 +354,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 400, y: 250}
+  m_Size: {x: 150, y: 90}
   m_Direction: 1
 --- !u!114 &223628737
 MonoBehaviour:
@@ -5682,6 +5687,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 948076464}
+    - target: {fileID: 1230845343961240295, guid: 8dabdb6e33d8fd740acc70ed9d4405a6,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dabdb6e33d8fd740acc70ed9d4405a6, type: 3}
 --- !u!1001 &2118237065172624511
@@ -5745,6 +5755,16 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 215624111}
+    - target: {fileID: 2305368347228651729, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305368347228651729, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8491952183011475922, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5813,6 +5833,16 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 1086417844}
+    - target: {fileID: 1066163553651753336, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066163553651753336, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 182874683198313757, guid: 26c9503309ec75c4e8323d04a8339731,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5884,5 +5914,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1157635261}
+    - target: {fileID: 2562684561409543618, guid: df50c66d7d6bb2f44a87971c3a7878f8,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df50c66d7d6bb2f44a87971c3a7878f8, type: 3}
