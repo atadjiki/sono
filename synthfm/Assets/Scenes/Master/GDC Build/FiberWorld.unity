@@ -4896,6 +4896,12 @@ PrefabInstance:
       propertyPath: inOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4025103954987041183, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+        type: 3}
+      propertyPath: forcefieldVFX
+      value: 
+      objectReference: {fileID: 6414606861503610116, guid: fe774a12c50277d4fb617292693cdcb9,
+        type: 3}
     - target: {fileID: 4025103956542427279, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
         type: 3}
       propertyPath: setPieceCamera
@@ -4906,6 +4912,16 @@ PrefabInstance:
       propertyPath: inOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4025103956542427279, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025103956542427279, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+        type: 3}
+      propertyPath: forcefieldVFX
+      value: 
+      objectReference: {fileID: 249104473}
     - target: {fileID: 4025103954601223515, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
         type: 3}
       propertyPath: fragmentNumber
@@ -5458,6 +5474,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3910317124115179673, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e7ee9dcbcb14d4a98fc7fae98df673, type: 3}
 --- !u!4 &249104471 stripped
@@ -5469,6 +5490,12 @@ Transform:
 --- !u!4 &249104472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4025103955336185851, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+    type: 3}
+  m_PrefabInstance: {fileID: 249104470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &249104473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6222180104413193511, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
     type: 3}
   m_PrefabInstance: {fileID: 249104470}
   m_PrefabAsset: {fileID: 0}
@@ -6391,6 +6418,16 @@ PrefabInstance:
       propertyPath: inOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6718803104232203754, guid: d02e6dc5a446d3f45936014a5c455822,
+        type: 3}
+      propertyPath: forcefieldVFX
+      value: 
+      objectReference: {fileID: 1935410574}
+    - target: {fileID: 6718803104232203754, guid: d02e6dc5a446d3f45936014a5c455822,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6718803103988931502, guid: d02e6dc5a446d3f45936014a5c455822,
         type: 3}
       propertyPath: fragmentNumber
@@ -6692,6 +6729,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6044672276937664998, guid: d02e6dc5a446d3f45936014a5c455822,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02e6dc5a446d3f45936014a5c455822, type: 3}
 --- !u!4 &1935410572 stripped
@@ -6703,6 +6745,12 @@ Transform:
 --- !u!4 &1935410573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6718803102820231756, guid: d02e6dc5a446d3f45936014a5c455822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1935410571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1935410574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5216141143780985352, guid: d02e6dc5a446d3f45936014a5c455822,
     type: 3}
   m_PrefabInstance: {fileID: 1935410571}
   m_PrefabAsset: {fileID: 0}
@@ -6868,6 +6916,16 @@ PrefabInstance:
       propertyPath: inOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2111188218242075380, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111188218242075380, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: forcefieldVFX
+      value: 
+      objectReference: {fileID: 2027041777}
     - target: {fileID: 2111188218242075383, guid: 98f5b5442380ecc40a196fc39603e1cf,
         type: 3}
       propertyPath: m_Enabled
@@ -6939,6 +6997,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8926484042661614526, guid: 68635786cf25cd9429b8e15063160119,
         type: 3}
+    - target: {fileID: 5039342790412574110, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Value
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039342790412574110, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5039342790412574105, guid: 98f5b5442380ecc40a196fc39603e1cf,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6950,6 +7018,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7255780034849062629, guid: 98f5b5442380ecc40a196fc39603e1cf,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089593080167591969, guid: 98f5b5442380ecc40a196fc39603e1cf,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6971,6 +7044,12 @@ Transform:
 --- !u!1 &2027041776 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2111188218242075273, guid: 98f5b5442380ecc40a196fc39603e1cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027041773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2027041777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5039342790412574104, guid: 98f5b5442380ecc40a196fc39603e1cf,
     type: 3}
   m_PrefabInstance: {fileID: 2027041773}
   m_PrefabAsset: {fileID: 0}
