@@ -9,7 +9,7 @@ public class FragmentSpawner : MonoBehaviour
     public GameObject fragmentCasePrefab;
     public Transform player;
     public Camera mainCamera;
-    public bool active = true;
+    public int maxFragments = 9;
     public FragmentController.states SpawnState;
 
 
@@ -39,7 +39,7 @@ public class FragmentSpawner : MonoBehaviour
             
         }
 
-        if (FragmentManager.instance.AttachedFragments().Count >= 3)
+        if (FragmentManager.instance.AttachedFragments().Count >= maxFragments)
         {
             return Vector3.zero;
         }
@@ -72,7 +72,7 @@ public class FragmentSpawner : MonoBehaviour
     public Vector3 SpawnFragmentCase()
     {
 
-        if (FragmentManager.instance.AttachedFragments().Count >= 3)
+        if (FragmentManager.instance.AttachedFragments().Count >= maxFragments)
         {
             return Vector3.zero;
         }

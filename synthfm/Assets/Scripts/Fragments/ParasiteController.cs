@@ -8,7 +8,7 @@ public class ParasiteController : MonoBehaviour
     private Transform player;
 
     public enum states { IDLE, FLEE, FOLLOW };
-    public states currentState;
+    public states currentState = states.FOLLOW;
 
     private Rigidbody2D rb;
     public float acceleration;
@@ -28,8 +28,10 @@ public class ParasiteController : MonoBehaviour
     private bool followRight = false;
     private bool followUp = false;
 
-    public static float x_range = 5;
-    public static float y_range = 5;
+    public static float x_range = 70;
+    public static float y_range = 70;
+
+    public float currentRange;
 
     //public AudioSource audioSource;
 
@@ -90,8 +92,6 @@ public class ParasiteController : MonoBehaviour
 
             if (Vector3.Distance(this.transform.position, followTarget.transform.position) >= 500)
             {
-
-                //Debug.Log("Killing parasite");
                 ParasiteSpawner.instance.KillParasite(this, true);
             }
 
@@ -119,8 +119,8 @@ public class ParasiteController : MonoBehaviour
 
         if(radius_factor > 0)
         {
-            
-            float factor = Mathf.Pow(radius_factor,2);
+
+            float factor = Mathf.Pow(radius_factor, 2);
             range += new Vector3(x_range + factor, y_range + factor, 0f);
 
             if (!followUp)
@@ -142,6 +142,7 @@ public class ParasiteController : MonoBehaviour
 
         range.z = 0;
 
+        currentRange = range.magnitude;
         return range;
     }
 

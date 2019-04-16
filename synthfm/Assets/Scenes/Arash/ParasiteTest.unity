@@ -5037,7 +5037,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: ce28dfa9ce5e34c54b0df247ea978360, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5237,6 +5237,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: turntableManager
+      value: 
+      objectReference: {fileID: 1981209547}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5292,11 +5297,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 1981209547}
     - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5531,8 +5531,9 @@ MonoBehaviour:
   minOrthSize: 5
   maxOrthSize: 50
   rotation: 9
-  sliderChannel: 0
-  sliderKnob: 0
+  messageReceived: 0
+  model: 1
+  lastInteracted: 0
 --- !u!4 &1981209548
 Transform:
   m_ObjectHideFlags: 0
@@ -5753,7 +5754,7 @@ PrefabInstance:
     - target: {fileID: 6490336592850906790, guid: c39c2d0c80e4e4a48913e06138ce593e,
         type: 3}
       propertyPath: maxParasites
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6490336592850906790, guid: c39c2d0c80e4e4a48913e06138ce593e,
         type: 3}
@@ -5765,5 +5766,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 504042470}
+    - target: {fileID: 6490336592850906790, guid: c39c2d0c80e4e4a48913e06138ce593e,
+        type: 3}
+      propertyPath: active
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c39c2d0c80e4e4a48913e06138ce593e, type: 3}

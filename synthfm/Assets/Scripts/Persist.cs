@@ -5,13 +5,45 @@ using UnityEngine;
 public class Persist : MonoBehaviour
 {
     private List<Puzzle> fiberPuzzles;
+    private List<Puzzle> amberPuzzles;
     private List<FragmentController> fiberFragments;
+    private List<FragmentController> amberFragments;
 
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-        SetupFiberPuzzles();
-        SetupFiberFragments();
+        if(GameObject.Find("FiberWorld"))
+        {
+            SetupFiberPuzzles();
+            SetupFiberFragments();
+        }
+        else if(GameObject.Find("AmberWorld"))
+        {
+            SetupAmberPuzzles();
+            SetupAmberFragments();
+        }
+
+
+    }
+
+    private void SetupAmberPuzzles()
+    {
+        amberPuzzles = new List<Puzzle>();
+        amberPuzzles.Clear();
+        amberPuzzles.AddRange(FindObjectsOfType<Puzzle>());
+        SavedData.instance.amberLevels = amberPuzzles;
+        string json = JsonUtility.ToJson(SavedData.instance);
+        PlayerPrefs.SetString("SavedData", json);
+    }
+
+    private void SetupAmberFragments()
+    {
+        amberFragments = new List<FragmentController>();
+        amberFragments.Clear();
+        amberFragments.AddRange(FindObjectsOfType<FragmentController>());
+        SavedData.instance.amberFragments = amberFragments;
+        string json = JsonUtility.ToJson(SavedData.instance);
+        PlayerPrefs.SetString("SavedData", json);
     }
 
     private void SetupFiberFragments()

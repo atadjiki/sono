@@ -4954,7 +4954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 705638743}
-  player: {fileID: 0}
+  player: {fileID: 369758907}
   setPieceCamera: {fileID: 0}
   center: {fileID: 0}
 --- !u!61 &381497991
@@ -5196,14 +5196,70 @@ MonoBehaviour:
   - {r: 0.85882354, g: 0.70980394, b: 0.20784314, a: 0}
   - {r: 0.8784314, g: 0.21568628, b: 0.63529414, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
-  secondFiberPuzzleColor: []
-  thirdFiberPuzzleColor: []
-  firstamberPuzzleColor: []
-  secondamberPuzzleColor: []
-  thirdamberPuzzleColor: []
-  firstlattePuzzleColor: []
-  secondlattePuzzleColor: []
-  thirdlattePuzzleColor: []
+  secondFiberPuzzleColor:
+  - {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 0}
+  - {r: 0.22352941, g: 0.70980394, b: 0.28235295, a: 0}
+  - {r: 0.22352941, g: 0.70980394, b: 0.28235295, a: 0}
+  - {r: 0.22352941, g: 0.70980394, b: 0.28235295, a: 0}
+  - {r: 0.18431373, g: 0.48235294, b: 0.67058825, a: 0}
+  - {r: 0.11764706, g: 0.11372549, b: 0.62352943, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  thirdFiberPuzzleColor:
+  - {r: 0.2627451, g: 0.5529412, b: 0.4117647, a: 0}
+  - {r: 0.81960785, g: 0.76862746, b: 0.29803923, a: 0}
+  - {r: 0.7607843, g: 0.61960787, b: 0.18039216, a: 0}
+  - {r: 0.7607843, g: 0.61960787, b: 0.18039216, a: 0}
+  - {r: 0.24705882, g: 0.22352941, b: 0.6509804, a: 0}
+  - {r: 0.21568628, g: 0.36078432, b: 0.87058824, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  firstamberPuzzleColor:
+  - {r: 0.2784314, g: 0.39607844, b: 0.7882353, a: 0}
+  - {r: 0.8901961, g: 0.2784314, b: 0.5058824, a: 0}
+  - {r: 0.7019608, g: 0.18431373, b: 0.47843137, a: 0}
+  - {r: 0.7019608, g: 0.18431373, b: 0.47843137, a: 0}
+  - {r: 0.8235294, g: 0.65882355, b: 0.20784314, a: 0}
+  - {r: 0.23529412, g: 0.20784314, b: 0.70980394, a: 0}
+  - {r: 0.1882353, g: 0.36078432, b: 0.9490196, a: 0}
+  secondamberPuzzleColor:
+  - {r: 0.83137256, g: 0.8235294, b: 0.8627451, a: 0}
+  - {r: 0.13725491, g: 0.15686275, b: 0.36078432, a: 0}
+  - {r: 0.30980393, g: 0.22745098, b: 0.6431373, a: 0}
+  - {r: 0.30980393, g: 0.22745098, b: 0.6431373, a: 0}
+  - {r: 0.654902, g: 0.23529412, b: 0.7058824, a: 0}
+  - {r: 0.827451, g: 0.17254902, b: 0.40784314, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  thirdamberPuzzleColor:
+  - {r: 0.9764706, g: 0.9764706, b: 0.9764706, a: 0}
+  - {r: 0.8745098, g: 0.34509805, b: 0.5019608, a: 0}
+  - {r: 0.7058824, g: 0.1254902, b: 0.29803923, a: 0}
+  - {r: 0.7058824, g: 0.1254902, b: 0.29803923, a: 0}
+  - {r: 0.68235296, g: 0.78039217, b: 0.23921569, a: 0}
+  - {r: 0.39215687, g: 0.9254902, b: 0.85490197, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  firstlattePuzzleColor:
+  - {r: 0.99215686, g: 0.99215686, b: 0.99215686, a: 0}
+  - {r: 0.56078434, g: 0.87058824, b: 0.9254902, a: 0}
+  - {r: 0.33333334, g: 0.6784314, b: 0.8117647, a: 0}
+  - {r: 0.33333334, g: 0.6784314, b: 0.8117647, a: 0}
+  - {r: 0.42745098, g: 0.85882354, b: 0.6901961, a: 0}
+  - {r: 0.9019608, g: 0.90588236, b: 0.90588236, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  secondlattePuzzleColor:
+  - {r: 0.37254903, g: 0.43137255, b: 0.8784314, a: 0}
+  - {r: 0.8901961, g: 0.43529412, b: 0.50980395, a: 0}
+  - {r: 0.83137256, g: 0.24705882, b: 0.64705884, a: 0}
+  - {r: 0.83137256, g: 0.24705882, b: 0.64705884, a: 0}
+  - {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+  - {r: 0.5058824, g: 0.8862745, b: 0.8745098, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  thirdlattePuzzleColor:
+  - {r: 0.96862745, g: 0.96862745, b: 0.96862745, a: 0}
+  - {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 0}
+  - {r: 0.14117648, g: 0.14117648, b: 0.14117648, a: 0}
+  - {r: 0.14117648, g: 0.14117648, b: 0.14117648, a: 0}
+  - {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0}
+  - {r: 0.36862746, g: 0.36862746, b: 0.36862746, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
   voidColor:
   - {r: 0.8, g: 0.8, b: 0.8, a: 0}
   - {r: 0.19607843, g: 0.19215687, b: 0.26666668, a: 0}
@@ -5212,6 +5268,8 @@ MonoBehaviour:
   - {r: 0.20392157, g: 0.1882353, b: 0.58431375, a: 0}
   - {r: 0.19607843, g: 0.32941177, b: 0.79607844, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
+  currentPlayercolor: {r: 0, g: 0, b: 0, a: 0}
+  currentTrailColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
@@ -5311,6 +5369,61 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: canTargetFiberWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: hubWorld
+      value: 
+      objectReference: {fileID: 608599379}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: latteWorld
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: amberWorld
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: fiberWorld
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: canTargetAmberWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: canTargetLatteWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: fiberWorldTrigger
+      value: 
+      objectReference: {fileID: 856997989}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: amberWorldTrigger
+      value: 
+      objectReference: {fileID: 1867114663}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: latteWorldTrigger
+      value: 
+      objectReference: {fileID: 1720605054}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: i_Menu
+      value: 
+      objectReference: {fileID: 2029814391}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5372,46 +5485,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: i_Menu
-      value: 
-      objectReference: {fileID: 2029814391}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: canTargetFiberWorld
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: hubWorld
-      value: 
-      objectReference: {fileID: 608599379}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: latteWorld
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: amberWorld
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: fiberWorld
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: canTargetAmberWorld
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: canTargetLatteWorld
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 828374273, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
@@ -5773,6 +5846,10 @@ PrefabInstance:
       propertyPath: playerEyeball
       value: 
       objectReference: {fileID: 369758905}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: currentWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5839,9 +5916,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856997990}
-  - component: {fileID: 856997993}
   - component: {fileID: 856997991}
   - component: {fileID: 856997992}
+  - component: {fileID: 856997994}
   m_Layer: 0
   m_Name: 'Fiber Realm Entry Point '
   m_TagString: Realm2
@@ -5857,11 +5934,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856997989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19014, y: -4640, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 0.3117147, z: 0.9999999}
+  m_LocalPosition: {x: 2325, y: 1475, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &856997991
 MonoBehaviour:
@@ -5892,8 +5969,9 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
---- !u!61 &856997993
-BoxCollider2D:
+  CurrentWorld: 
+--- !u!70 &856997994
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5906,18 +5984,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 30000, y: 20000}
-  m_EdgeRadius: 0
+  m_Size: {x: 3000, y: 800}
+  m_Direction: 1
 --- !u!1 &862394185
 GameObject:
   m_ObjectHideFlags: 0
@@ -6269,12 +6337,43 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.51353997, y: 1.02729, z: 0.51353997}
   m_Children:
+  - {fileID: 1867114664}
   - {fileID: 1395415117}
   - {fileID: 856997990}
-  - {fileID: 1867114664}
+  - {fileID: 1680576462}
   - {fileID: 1720605055}
   m_Father: {fileID: 667764381}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1236382417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236382418}
+  m_Layer: 0
+  m_Name: Boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1236382418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236382417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4640.131, y: -1021.12524, z: -237.89731}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1284165359
 GameObject:
@@ -6412,7 +6511,7 @@ MonoBehaviour:
   fragmentCasePrefab: {fileID: 1876234530}
   player: {fileID: 1476634332}
   mainCamera: {fileID: 504042470}
-  active: 1
+  maxFragments: 9
   SpawnState: 0
 --- !u!4 &1294251454
 Transform:
@@ -6437,8 +6536,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395415117}
-  - component: {fileID: 1395415119}
   - component: {fileID: 1395415118}
+  - component: {fileID: 1395415119}
   m_Layer: 0
   m_Name: Void Realm Entry Point 1
   m_TagString: Realm4
@@ -6453,13 +6552,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395415116}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1400, y: -2143, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3420201, w: 0.9396927}
+  m_LocalPosition: {x: 600, y: 1200, z: 0}
   m_LocalScale: {x: 1, y: 0.31171194, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
 --- !u!114 &1395415118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6476,8 +6575,9 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
---- !u!61 &1395415119
-BoxCollider2D:
+  CurrentWorld: 
+--- !u!70 &1395415119
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6490,18 +6590,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 20000, y: 4000}
-  m_EdgeRadius: 0
+  m_Size: {x: 1500, y: 1250}
+  m_Direction: 1
 --- !u!1 &1412285068
 GameObject:
   m_ObjectHideFlags: 3
@@ -6653,7 +6743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -250}
+  m_FollowOffset: {x: 0, y: 0, z: -1400}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -6699,6 +6789,71 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1680576461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680576462}
+  - component: {fileID: 1680576464}
+  - component: {fileID: 1680576463}
+  m_Layer: 0
+  m_Name: Void Realm Entry Point 2
+  m_TagString: Realm4
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1680576462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_LocalRotation: {x: 0, y: 0, z: 0.3420201, w: 0.9396927}
+  m_LocalPosition: {x: 4100, y: 1250, z: 0}
+  m_LocalScale: {x: 1.1213067, y: 0.34952182, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1218926883}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40}
+--- !u!70 &1680576463
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1500, y: 1150}
+  m_Direction: 1
+--- !u!114 &1680576464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e4e9969038c4d6cad451cbdd5e3eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxToExit: 0
+  IsPlayerInside: 0
+  player: {fileID: 369758904}
+  memoryManager: {fileID: 1775423724}
+  CurrentWorld: 
 --- !u!1 &1720605054
 GameObject:
   m_ObjectHideFlags: 0
@@ -6708,9 +6863,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720605055}
-  - component: {fileID: 1720605058}
   - component: {fileID: 1720605056}
   - component: {fileID: 1720605057}
+  - component: {fileID: 1720605058}
   m_Layer: 0
   m_Name: Latte Realm Entry Point
   m_TagString: Realm3
@@ -6726,11 +6881,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720605054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8072, y: -2354, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 1.0000044, z: 0.9999999}
+  m_LocalPosition: {x: 5025, y: 500, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1720605056
 MonoBehaviour:
@@ -6761,8 +6916,9 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
---- !u!61 &1720605058
-BoxCollider2D:
+  CurrentWorld: 
+--- !u!70 &1720605058
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6775,18 +6931,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2925.4934, y: 3238.4214}
-  m_EdgeRadius: 0
+  m_Size: {x: 2000, y: 1400}
+  m_Direction: 0
 --- !u!1 &1775423724
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,11 +7087,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 800
+      value: 1175
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -700
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6982,6 +7128,18 @@ PrefabInstance:
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1373684002, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: mainCamera
@@ -7026,9 +7184,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867114664}
-  - component: {fileID: 1867114667}
   - component: {fileID: 1867114665}
   - component: {fileID: 1867114666}
+  - component: {fileID: 1867114667}
   m_Layer: 0
   m_Name: Amber Realm Entry Point
   m_TagString: Realm1
@@ -7044,11 +7202,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867114663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34, y: 395, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 1.0000044, z: 0.9999999}
+  m_LocalPosition: {x: -375, y: 500, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218926883}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1867114665
 MonoBehaviour:
@@ -7062,7 +7220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6208a3b9de4518049ba0c5744851acae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Psystem: {fileID: 0}
+  Psystem: {fileID: 209842910}
 --- !u!114 &1867114666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7079,8 +7237,9 @@ MonoBehaviour:
   IsPlayerInside: 0
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
---- !u!61 &1867114667
-BoxCollider2D:
+  CurrentWorld: 
+--- !u!70 &1867114667
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7093,18 +7252,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16000, y: 1500}
-  m_EdgeRadius: 0
+  m_Size: {x: 2000, y: 1400}
+  m_Direction: 0
 --- !u!1 &1876234530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4,

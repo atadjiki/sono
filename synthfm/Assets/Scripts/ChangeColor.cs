@@ -26,8 +26,8 @@ public class ChangeColor : MonoBehaviour
 
 
     private Color currentColor;
-    private Color currentPlayercolor;
-    private Color currentTrailColor;
+    public Color currentPlayercolor;
+    public Color currentTrailColor;
     private Color bgcolorToChangeTo;
     private Color playercolorToChangeTo;
     private Color trailColortoChangeTo;
@@ -68,13 +68,14 @@ public class ChangeColor : MonoBehaviour
         shouldchangeColor = true;
         bgcolorToChangeTo = bgColor;
         trailColortoChangeTo = trailColor;
-        playerColor = playercolorToChangeTo;
+        playercolorToChangeTo = playerColor;
         yield return new WaitForSeconds(lerpDuration);
         currentPlayercolor = (playerBody.material.GetColor("Color_D2FAE4B8"));
-        shouldchangeColor = false;
-        t = 0f;
         currentTrailColor = playerTrail.startColor;
         currentColor = mainCam.backgroundColorHDR;
+        shouldchangeColor = false;
+        t = 0f;
+
 
     }
 }

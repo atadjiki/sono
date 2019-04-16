@@ -6,8 +6,13 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT };
+    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, LEAD };
+
+    public enum world { AMBER, LATTE, FIBER,HUB};
+
     public states currentState;
+
+    public world currentWorld;
 
     public GameObject portal;
 
@@ -40,7 +45,7 @@ public class FragmentController : MonoBehaviour
     private Transform DetatchedPosition; /* the transform info where the fragment is detatched from the player
                                          * While leaving the Zone without all three fragments
                                            */
-
+    private BezierFollow bzFollow;
 
     private void Awake()
     {
@@ -51,6 +56,7 @@ public class FragmentController : MonoBehaviour
         
         audioSource.volume = 0f;
 
+        bzFollow = this.GetComponent<BezierFollow>();
     }
 
     private void Start()
@@ -98,8 +104,12 @@ public class FragmentController : MonoBehaviour
                 Follow();
                 break;
             case states.FLEE:
+                Flee();
                 break;
             case states.DEPOSIT:
+                break;
+            case states.LEAD:
+                Lead();
                 break;
             default:
                 break;
@@ -163,7 +173,11 @@ public class FragmentController : MonoBehaviour
         {
 
         }
+    }
 
+    public void Lead()
+    {
+        this.transform.position = bzFollow.fragPos;
     }
 
     public void setDetatchingTransform(Transform i_tf)
