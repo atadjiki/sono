@@ -90,9 +90,12 @@ public class TransferRealms : MonoBehaviour
             }
             else if(gameObject.tag == "Realm4")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-                changeAppearance("Void");
-                Debug.Log("Entering 4");
+                if(!GameObject.Find("Parasite"))
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                    changeAppearance("Void");
+                    Debug.Log("Entering 4");
+                }
             }
         }
 
