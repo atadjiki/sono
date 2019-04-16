@@ -25,6 +25,7 @@ public class Puzzle : SetPiece
     public GameObject forceField;
     public bool allowDebugComplete;
     private bool artifactLeft = false;
+    public bool dropsArtifact = false;
 
     InputBindings inputBindings;
     string saveData;
@@ -114,13 +115,17 @@ public class Puzzle : SetPiece
 
     IEnumerator LeaveArtifact()
     {
-        if (artifactLeft == false)
+        if (artifactLeft == false && dropsArtifact)
         {
-            GameObject artifact = Instantiate<GameObject>(artifactVFX);
-            artifact.transform.position = center.transform.position;
-            Vector3 newpos = new Vector3(0, 0, 30);
-            artifact.transform.position += newpos;
-            artifactLeft = true;
+            if(artifactVFX != null)
+            {
+                GameObject artifact = Instantiate<GameObject>(artifactVFX);
+                artifact.transform.position = center.transform.position;
+                Vector3 newpos = new Vector3(0, 0, 30);
+                artifact.transform.position += newpos;
+                artifactLeft = true;
+            }
+            
         }
         
         yield return new WaitForSeconds(1.0f);
