@@ -5374,6 +5374,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &951181772
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default-Line (Instance)
+  m_Shader: {fileID: 207, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _InvFade: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Shininess: 0.078125
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
 --- !u!1 &1105736880
 GameObject:
   m_ObjectHideFlags: 0
@@ -5776,6 +5856,11 @@ PrefabInstance:
       propertyPath: InitialModule.maxNumParticles
       value: 20000
       objectReference: {fileID: 0}
+    - target: {fileID: 1742914239436278732, guid: 86eb0139dd4e6f540a09366b17fb817a,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86eb0139dd4e6f540a09366b17fb817a, type: 3}
 --- !u!4 &1793351056 stripped
@@ -6176,11 +6261,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 452.42764, y: 261.2133}
-      - {x: 426.7527, y: 251.84654}
-      - {x: 420.76825, y: 273.75238}
-      - {x: 441.18005, y: 288.2193}
-      - {x: 459.7293, y: 272.52005}
+    - - {x: 496.4468, y: 234.64783}
+      - {x: 432.84338, y: 229.43195}
+      - {x: 412.46274, y: 300.59454}
+      - {x: 465.8197, y: 331.11145}
+      - {x: 499.59573, y: 288.84674}
 --- !u!156049354 &2091876519
 Grid:
   m_ObjectHideFlags: 0
@@ -6210,7 +6295,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 951181772}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6231,11 +6316,11 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 452.42764, y: 261.2133, z: 0}
-  - {x: 426.7527, y: 251.84654, z: 0}
-  - {x: 420.76825, y: 273.75238, z: 0}
-  - {x: 441.18005, y: 288.2193, z: 0}
-  - {x: 459.7293, y: 272.52005, z: 0}
+  - {x: 496.4468, y: 234.64783, z: 0}
+  - {x: 432.84338, y: 229.43195, z: 0}
+  - {x: 412.46274, y: 300.59454, z: 0}
+  - {x: 465.8197, y: 331.11145, z: 0}
+  - {x: 499.59573, y: 288.84674, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

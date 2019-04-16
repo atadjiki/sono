@@ -68,6 +68,7 @@ public class LightUpTrail : MonoBehaviour
     private void Awake()
     {
         Initialize();
+        renderer.enabled = false;
     }
 
     private void Reset()
@@ -75,8 +76,8 @@ public class LightUpTrail : MonoBehaviour
         GetComponent<Collider2D>().isTrigger = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-           
+        renderer.enabled = true;
     }
 }
