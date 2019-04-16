@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c6e910bfc3fa8974aa7af0c092c72382
+guid: 8196721aaf9b1a54f9ce66bcf8d4ceb1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: group1
-    100002: group2
-    100004: //RootNode
+    100000: //RootNode
+    100002: group1
+    100004: group2
     100006: pCylinder10
     100008: pCylinder10 1
     100010: pCylinder11
@@ -90,9 +90,9 @@ ModelImporter:
     100168: pCylinder9
     100170: pCylinder9 1
     100172: pSphere1
-    400000: group1
-    400002: group2
-    400004: //RootNode
+    400000: //RootNode
+    400002: group1
+    400004: group2
     400006: pCylinder10
     400008: pCylinder10 1
     400010: pCylinder11
@@ -179,8 +179,8 @@ ModelImporter:
     400172: pSphere1
     2100000: lambert3
     2100002: lambert2
-    2100004: lambert1
-    2100006: lambert4
+    2100004: lambert4
+    2100006: lambert5
     2300000: pCylinder10
     2300002: pCylinder10 1
     2300004: pCylinder11
@@ -457,214 +457,12 @@ ModelImporter:
     importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
-    animationPositionError: 11.22
+    animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: group1
-        weight: 1
-      - path: group1/pCylinder2
-        weight: 1
-      - path: group1/pCylinder3
-        weight: 1
-      - path: group1/pCylinder4
-        weight: 1
-      - path: group1/pCylinder5
-        weight: 1
-      - path: group1/pCylinder6
-        weight: 1
-      - path: group1/pCylinder7
-        weight: 1
-      - path: group1/pCylinder8
-        weight: 1
-      - path: group1/pCylinder9
-        weight: 1
-      - path: group1/pCylinder10
-        weight: 1
-      - path: group1/pCylinder11
-        weight: 1
-      - path: group1/pCylinder12
-        weight: 1
-      - path: group1/pCylinder13
-        weight: 1
-      - path: group1/pCylinder14
-        weight: 1
-      - path: group1/pCylinder15
-        weight: 1
-      - path: group1/pCylinder16
-        weight: 1
-      - path: group1/pCylinder17
-        weight: 1
-      - path: group1/pCylinder18
-        weight: 1
-      - path: group1/pCylinder19
-        weight: 1
-      - path: group1/pCylinder20
-        weight: 1
-      - path: group1/pCylinder21
-        weight: 1
-      - path: group1/pCylinder23
-        weight: 1
-      - path: group1/pCylinder24
-        weight: 1
-      - path: group1/pCylinder25
-        weight: 1
-      - path: group1/pCylinder26
-        weight: 1
-      - path: group1/pCylinder27
-        weight: 1
-      - path: group1/pCylinder28
-        weight: 1
-      - path: group1/pCylinder29
-        weight: 1
-      - path: group1/pCylinder30
-        weight: 1
-      - path: group1/pCylinder31
-        weight: 1
-      - path: group1/pCylinder32
-        weight: 1
-      - path: group1/pCylinder33
-        weight: 1
-      - path: group1/pCylinder34
-        weight: 1
-      - path: group1/pCylinder35
-        weight: 1
-      - path: group1/pCylinder36
-        weight: 1
-      - path: group1/pCylinder37
-        weight: 1
-      - path: group1/pCylinder38
-        weight: 1
-      - path: group1/pCylinder39
-        weight: 1
-      - path: group1/pCylinder40
-        weight: 1
-      - path: group1/pCylinder41
-        weight: 1
-      - path: group1/pCylinder42
-        weight: 1
-      - path: group1/pCylinder43
-        weight: 1
-      - path: group2
-        weight: 1
-      - path: group2/pCylinder2 1
-        weight: 1
-      - path: group2/pCylinder3 1
-        weight: 1
-      - path: group2/pCylinder4 1
-        weight: 1
-      - path: group2/pCylinder5 1
-        weight: 1
-      - path: group2/pCylinder6 1
-        weight: 1
-      - path: group2/pCylinder7 1
-        weight: 1
-      - path: group2/pCylinder8 1
-        weight: 1
-      - path: group2/pCylinder9 1
-        weight: 1
-      - path: group2/pCylinder10 1
-        weight: 1
-      - path: group2/pCylinder11 1
-        weight: 1
-      - path: group2/pCylinder12 1
-        weight: 1
-      - path: group2/pCylinder13 1
-        weight: 1
-      - path: group2/pCylinder14 1
-        weight: 1
-      - path: group2/pCylinder16 1
-        weight: 1
-      - path: group2/pCylinder17 1
-        weight: 1
-      - path: group2/pCylinder18 1
-        weight: 1
-      - path: group2/pCylinder19 1
-        weight: 1
-      - path: group2/pCylinder20 1
-        weight: 1
-      - path: group2/pCylinder21 1
-        weight: 1
-      - path: group2/pCylinder23 1
-        weight: 1
-      - path: group2/pCylinder24 1
-        weight: 1
-      - path: group2/pCylinder25 1
-        weight: 1
-      - path: group2/pCylinder26 1
-        weight: 1
-      - path: group2/pCylinder27 1
-        weight: 1
-      - path: group2/pCylinder28 1
-        weight: 1
-      - path: group2/pCylinder29 1
-        weight: 1
-      - path: group2/pCylinder30 1
-        weight: 1
-      - path: group2/pCylinder31 1
-        weight: 1
-      - path: group2/pCylinder32 1
-        weight: 1
-      - path: group2/pCylinder33 1
-        weight: 1
-      - path: group2/pCylinder34 1
-        weight: 1
-      - path: group2/pCylinder35 1
-        weight: 1
-      - path: group2/pCylinder36 1
-        weight: 1
-      - path: group2/pCylinder37 1
-        weight: 1
-      - path: group2/pCylinder38 1
-        weight: 1
-      - path: group2/pCylinder39 1
-        weight: 1
-      - path: group2/pCylinder40 1
-        weight: 1
-      - path: group2/pCylinder41 1
-        weight: 1
-      - path: group2/pCylinder42 1
-        weight: 1
-      - path: group2/pCylinder43 1
-        weight: 1
-      - path: group2/pCylinder44
-        weight: 1
-      - path: group2/pCylinder45
-        weight: 1
-      - path: pSphere1
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -689,10 +487,10 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 4
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
-    normalSmoothAngle: 180
+    normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
