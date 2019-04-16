@@ -121,7 +121,7 @@ public class Navpoint : MonoBehaviour
         else
         {
             CheckForNewFragment();
-            print("Checking for new fragment");
+          
         }
     }
     public bool CheckForNewWorld()
@@ -133,18 +133,18 @@ public class Navpoint : MonoBehaviour
             float FDistance = Vector3.Distance(transform.position, fiberWorldTrigger.transform.position);
             float LDistance = Vector3.Distance(transform.position, latteWorldTrigger.transform.position);
 
-            print("FDistance: " +FDistance);
-            print("LDistance: " + LDistance);
+          //  print("FDistance: " +FDistance);
+           // print("LDistance: " + LDistance);
 
 
             if ((FDistance < LDistance) && (FDistance > 0f && LDistance > 0f))
             {
-                print("Target is fiber world ");
+              //  print("Target is fiber world ");
                 target = fiberWorldTrigger.gameObject;
             }
             else
             {
-                print("Target is latte world ");
+             //   print("Target is latte world ");
 
                 target = latteWorldTrigger.gameObject;
             }

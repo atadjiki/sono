@@ -180,6 +180,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8848782033675161084, guid: 062edb90c597b7d4f9a60db7f733b9f0,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062edb90c597b7d4f9a60db7f733b9f0, type: 3}
 --- !u!114 &71409941 stripped
@@ -331,7 +336,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 400, y: 250}
+  m_Size: {x: 300, y: 200}
   m_Direction: 1
 --- !u!114 &223628737
 MonoBehaviour:
@@ -5124,6 +5129,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8848782033675161084, guid: 062edb90c597b7d4f9a60db7f733b9f0,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062edb90c597b7d4f9a60db7f733b9f0, type: 3}
 --- !u!114 &421947215 stripped
@@ -5409,6 +5419,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: TrackIndex
       value: 2
@@ -5416,10 +5430,6 @@ PrefabInstance:
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -5493,7 +5503,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 400, y: 250}
+  m_Size: {x: 300, y: 200}
   m_Direction: 1
 --- !u!1001 &836900554
 PrefabInstance:
@@ -5562,6 +5572,11 @@ PrefabInstance:
     - target: {fileID: 1086417844, guid: 062edb90c597b7d4f9a60db7f733b9f0, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848782033675161084, guid: 062edb90c597b7d4f9a60db7f733b9f0,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062edb90c597b7d4f9a60db7f733b9f0, type: 3}
@@ -5653,6 +5668,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: TrackIndex
       value: 3
@@ -5660,10 +5679,6 @@ PrefabInstance:
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -5797,7 +5812,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 400, y: 250}
+  m_Size: {x: 300, y: 200}
   m_Direction: 1
 --- !u!1 &1488395837
 GameObject:
