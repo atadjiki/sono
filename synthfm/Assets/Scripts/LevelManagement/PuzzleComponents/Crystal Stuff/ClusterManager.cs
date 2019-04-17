@@ -8,6 +8,9 @@ public class ClusterManager : MonoBehaviour
 
     public enum Mode { Rock, Sequencial };
 
+    [Header("Jacob Drop Fragment Case Here :)")]
+    public GameObject Fragement;
+
     [Header("Rock mode OR Sequencial Mode")]
     public Mode _Mode;        // Editor
 
@@ -30,6 +33,7 @@ public class ClusterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Fragement.transform.position += new Vector3(0, 0, 2);
         size = this.transform.childCount;
 
         // get Rock
@@ -73,12 +77,15 @@ public class ClusterManager : MonoBehaviour
                 i_crystal.changeToActive();
             
                  Num_Of_Actives++;
-            if(Num_Of_Actives == Crystalls.Length)
+            if (Num_Of_Actives == Crystalls.Length)
             {
                 IsComplete = true;
                 // destroy rock
                 foreach (RockIt R in Rocks)
+                {
                     R.DestroyIt();
+                    Fragement.transform.position += new Vector3(0, 0, 0);
+                }
             }
             
         }
