@@ -72,14 +72,14 @@ public class BezierFollow : MonoBehaviour
             }
         }
          
-        if (moveRight)
-        { 
-            moveright();
-        }
-        else
-        {
-            moveleft();
-        }
+        //if (moveRight)
+        //{ 
+        //    moveright();
+        //}
+        //else
+        //{
+        //    moveleft();
+        //}
     }
 
     void moveright()
