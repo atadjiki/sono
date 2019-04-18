@@ -172,16 +172,23 @@ public class FragmentController : MonoBehaviour
     public void Flee()
     {
         rb.velocity = Vector2.zero;
+        this.gameObject.transform.position = ptGenerator.getStartingPoint();
+        // move to starting points of curve
+       // StartCoroutine(MoveToCurve());
+    }
 
-        // probably roam around in a sphere at the border
-        if (rb.velocity.x > 0 || rb.velocity.y > 0)
-        {
-
-        }
+    IEnumerator MoveToCurve()
+    {
+        yield return new WaitForSeconds(2);
+        this.gameObject.transform.position = ptGenerator.getStartingPoint();
     }
 
     public void CreatePatterns()
     {
+        if (!ptGenerator.ToBegin)
+        {
+            ptGenerator.ToBegin = true;
+        }
         this.transform.position = ptGenerator.fragPos;
     }
 

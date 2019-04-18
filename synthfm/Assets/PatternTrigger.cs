@@ -40,11 +40,26 @@ public class PatternTrigger : MonoBehaviour
             mainCamera.m_Lens.FieldOfView = cmrFieldView;
             var transposer =  mainCamera.GetCinemachineComponent<CinemachineTransposer>();
             transposer.m_FollowOffset.Set(0,-35,-75);
-            StartCoroutine(restoreState());
 
             // change fragment state and start pattern
+            FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+            foreach (FragmentController fragment in fragments)
+            {
+                if (fragment.currentState == FragmentController.states.FLEE)
+                {
+                    if (fragment.TrackIndex != 1) // temporary
+                    {
+                        fragment.currentState = FragmentController.states.FINAL_PATERN;
+                    }
+                    Debug.Log("generating patterns");
+
+                }
+
+            }
+
+
             // start coroutine and set everything back to prev
-            
+            StartCoroutine(restoreState());
         }
     }
 
@@ -59,6 +74,29 @@ public class PatternTrigger : MonoBehaviour
         yield return new WaitForSeconds(timeOut);
         Debug.Log("Restoring");
         tController.acceleration = PrevAcceleration;
+        StartCoroutine(resetCamera());
+
+        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        foreach (FragmentController fragment in fragments)
+        {
+            if (fragment.currentState == FragmentController.states.FINAL_PATERN)
+            {
+                if (fragment.TrackIndex != 1) // temporary
+                {
+                    fragment.currentState = FragmentController.states.FOLLOW;
+                    TrailRenderer tr = fragment.gameObject.transform.Find("Trail").GetComponent<TrailRenderer>();
+                    tr.time = 8;
+                }
+                Debug.Log("Done generating patterns");
+
+            }
+
+        }
+    }
+
+    IEnumerator resetCamera()
+    {
+        yield return new WaitForSeconds(5);
         mainCamera.m_Lens.FieldOfView = prevFieldofView;
     }
 }
