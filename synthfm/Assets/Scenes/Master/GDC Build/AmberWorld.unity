@@ -272,13 +272,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: isAttached
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -5790,8 +5790,41 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 7.007364
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3815440807104182346, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815440807104182346, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: setPieceCamera
+      value: 
+      objectReference: {fileID: 215624111}
+    - target: {fileID: 3815440807104182346, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 2118237065172624513}
+    - target: {fileID: 3815440807104182346, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: Fragement
+      value: 
+      objectReference: {fileID: 2118237065172624512}
+    m_RemovedComponents:
+    - {fileID: 6934203818107815818, guid: 01b8fd2db930a5245ab64f92bbb8a18d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01b8fd2db930a5245ab64f92bbb8a18d, type: 3}
+--- !u!1 &2118237065172624512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1990256150654007839, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2118237065172624511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2118237065172624513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6889256040223499829, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2118237065172624511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2389839946732524827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5868,8 +5901,41 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8395229185817357606, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395229185817357606, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 2389839946732524829}
+    - target: {fileID: 8395229185817357606, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: setPieceCamera
+      value: 
+      objectReference: {fileID: 1086417844}
+    - target: {fileID: 8395229185817357606, guid: 26c9503309ec75c4e8323d04a8339731,
+        type: 3}
+      propertyPath: Fragement
+      value: 
+      objectReference: {fileID: 2389839946732524828}
+    m_RemovedComponents:
+    - {fileID: 6489151933544391306, guid: 26c9503309ec75c4e8323d04a8339731, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 26c9503309ec75c4e8323d04a8339731, type: 3}
+--- !u!1 &2389839946732524828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1026252318685415036, guid: 26c9503309ec75c4e8323d04a8339731,
+    type: 3}
+  m_PrefabInstance: {fileID: 2389839946732524827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2389839946732524829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1513717084115964622, guid: 26c9503309ec75c4e8323d04a8339731,
+    type: 3}
+  m_PrefabInstance: {fileID: 2389839946732524827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6009306139410036378
 PrefabInstance:
   m_ObjectHideFlags: 0
