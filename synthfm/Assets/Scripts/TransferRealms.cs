@@ -45,6 +45,8 @@ public class TransferRealms : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+  
             if (gameObject.tag == "Realm1")
             {
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
