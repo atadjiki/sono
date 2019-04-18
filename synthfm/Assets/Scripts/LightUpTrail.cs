@@ -31,6 +31,7 @@ public class LightUpTrail : MonoBehaviour
         }
         renderer.positionCount = linePoints.Length;
         renderer.SetPositions(linePoints);
+        renderer.enabled = true;
     }
 
     void Validate()
@@ -80,4 +81,6 @@ public class LightUpTrail : MonoBehaviour
     {
         renderer.enabled = true;
     }
+
+    
 }
