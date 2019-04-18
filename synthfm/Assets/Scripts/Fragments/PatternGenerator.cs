@@ -17,7 +17,8 @@ public class PatternGenerator : MonoBehaviour
     public float trailTime;
 
     private bool toStart; // whether to start a new curve
-    private bool ToBegin = false;
+    public bool ToBegin = false;
+    private Vector3 m_startingPoint;
     //Vector2[] p = new Vector2[4];
     //public Transform[] tf = new Transform[4];
 
@@ -28,12 +29,8 @@ public class PatternGenerator : MonoBehaviour
         t_Param = 0f;
        // speed = 0.6f;
         toStart = true;
-        fragPos = this.gameObject.transform.position;
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    tf[i] = routes[0].GetChild(i).transform;
-        //}
-
+      
+        m_startingPoint = routes[0].GetChild(0).gameObject.transform.position;
         changeTrailTimes();
     }
 
@@ -43,32 +40,19 @@ public class PatternGenerator : MonoBehaviour
         tr.time = trailTime;
     }
 
+    public Vector3 getStartingPoint()
+    {
+        return m_startingPoint;
+    }
+
     // Update is called once per frame
     void Update()
     {
        
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            ToBegin = true;
-        }
-
-        //if(Input.GetKeyDown(KeyCode.W))
+        //if (Input.GetKeyDown(KeyCode.M))
         //{
-        //    List<FragmentController> ToHandle = new List<FragmentController>();
-        //    FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
-        //    foreach (FragmentController fragment in fragments)
-        //    {
-        //        if (fragment.currentState == FragmentController.states.FINAL_PATERN)
-        //        {
-        //          //  fragPos = fragment.gameObject.transform.position;
-        //            fragment.Collect(LevelManager.instance.getPlayer().transform);
-        //            fragment.currentState = FragmentController.states.FOLLOW;
-                 
-        //            //    Debug.Log("Leavoing Fragments behind");
-        //        }
-        //    }
+        //    ToBegin = true;
         //}
-    
 
         if (ToBegin)
         {
@@ -77,6 +61,15 @@ public class PatternGenerator : MonoBehaviour
                 StartCoroutine(followCurve(currentRoute));
             }
         }
+        else
+        {
+            fragPos = transform.position;
+        }
+    }
+
+    public void startCurve()
+    {
+        ToBegin = true;
     }
 
     IEnumerator followCurve(int iRoute)
