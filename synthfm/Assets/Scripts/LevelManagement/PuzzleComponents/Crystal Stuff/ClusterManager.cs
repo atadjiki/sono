@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClusterManager : MonoBehaviour
+public class ClusterManager : Puzzle
 {
     public enum State { OFF, ON, Error };
 
@@ -35,7 +35,7 @@ public class ClusterManager : MonoBehaviour
     {
         Fragement.transform.position += new Vector3(0, 0, 2);
         size = this.transform.childCount;
-
+        IsComplete = false;
         // get Rock
         if(_Mode == ClusterManager.Mode.Rock)
         {
@@ -81,10 +81,11 @@ public class ClusterManager : MonoBehaviour
             {
                 IsComplete = true;
                 // destroy rock
-                foreach (RockIt R in Rocks)
+                foreach (RockIt R in Rocks) // puzzle complete
                 {
                     R.DestroyIt();
                     Fragement.transform.position += new Vector3(0, 0, 0);
+                    IsComplete = true;
                 }
             }
             

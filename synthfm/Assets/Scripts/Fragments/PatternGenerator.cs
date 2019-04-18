@@ -13,6 +13,9 @@ public class PatternGenerator : MonoBehaviour
     private float t_Param;
     public Vector2 fragPos;
 
+    [Header("Trail Time")]
+    public float trailTime;
+
     private bool toStart; // whether to start a new curve
     private bool ToBegin = false;
     //Vector2[] p = new Vector2[4];
@@ -31,6 +34,13 @@ public class PatternGenerator : MonoBehaviour
         //    tf[i] = routes[0].GetChild(i).transform;
         //}
 
+        changeTrailTimes();
+    }
+
+    void changeTrailTimes()
+    {
+        TrailRenderer tr = this.gameObject.transform.Find("Trail").GetComponent<TrailRenderer>();
+        tr.time = trailTime;
     }
 
     // Update is called once per frame
