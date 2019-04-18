@@ -10,6 +10,23 @@ public class curveDrawer : MonoBehaviour
     private Transform[] controlPoints;
 
     private Vector2 Pos;
+    public List<Vector2> positions;
+
+    public void SetupPositions(float smoothing)
+    {
+        positions.Clear();
+        Debug.Assert(smoothing != 0);
+        float increment = 1 / smoothing;
+        for (float i = 0; i <= 1; i += increment)
+        {
+            Pos = Mathf.Pow(1 - i, 3) * controlPoints[0].position +
+                3 * Mathf.Pow(1 - i, 2) * i * controlPoints[1].position +
+                3 * (1 - i) * Mathf.Pow(i, 2) * controlPoints[2].position +
+                Mathf.Pow(i, 3) * controlPoints[3].position;
+
+            positions.Add(Pos);
+        }
+    }
 
     private void OnDrawGizmos()
     {
@@ -19,6 +36,8 @@ public class curveDrawer : MonoBehaviour
                 3 * Mathf.Pow(1 - i, 2) * i * controlPoints[1].position +
                 3 * (1 - i) * Mathf.Pow(i, 2) * controlPoints[2].position +
                 Mathf.Pow(i, 3) * controlPoints[3].position;
+
+            //positions.Add(Pos);
 
             // Draw sphere
             Gizmos.DrawSphere(Pos, 0.20f);
