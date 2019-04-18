@@ -78,6 +78,7 @@ public class SetPiece : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         OnEnable();
+        
     }
 
     public void Awake()

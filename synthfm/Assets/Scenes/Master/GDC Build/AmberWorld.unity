@@ -272,13 +272,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: isAttached
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: isAttached
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -5635,6 +5635,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM_StartingPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 215624111, guid: 8dabdb6e33d8fd740acc70ed9d4405a6, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 948076464}
+    - target: {fileID: 215624111, guid: 8dabdb6e33d8fd740acc70ed9d4405a6, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 948076464}
     - target: {fileID: 215624112, guid: 8dabdb6e33d8fd740acc70ed9d4405a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1100
@@ -5679,14 +5687,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 215624111, guid: 8dabdb6e33d8fd740acc70ed9d4405a6, type: 3}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 948076464}
-    - target: {fileID: 215624111, guid: 8dabdb6e33d8fd740acc70ed9d4405a6, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 948076464}
     - target: {fileID: 1230845343961240295, guid: 8dabdb6e33d8fd740acc70ed9d4405a6,
         type: 3}
       propertyPath: m_FollowOffset.z
@@ -5769,6 +5769,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120692372908336711, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.061448094
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120692372908336711, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6.1036196
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120692372908336711, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0737321
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120692372908336711, guid: 01b8fd2db930a5245ab64f92bbb8a18d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 7.007364
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01b8fd2db930a5245ab64f92bbb8a18d, type: 3}
@@ -5862,6 +5882,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM_FirstTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1086417844, guid: df50c66d7d6bb2f44a87971c3a7878f8, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 1157635261}
+    - target: {fileID: 1086417844, guid: df50c66d7d6bb2f44a87971c3a7878f8, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1157635261}
     - target: {fileID: 1086417845, guid: df50c66d7d6bb2f44a87971c3a7878f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1400
@@ -5906,14 +5934,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1086417844, guid: df50c66d7d6bb2f44a87971c3a7878f8, type: 3}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 1157635261}
-    - target: {fileID: 1086417844, guid: df50c66d7d6bb2f44a87971c3a7878f8, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 1157635261}
     - target: {fileID: 2562684561409543618, guid: df50c66d7d6bb2f44a87971c3a7878f8,
         type: 3}
       propertyPath: m_FollowOffset.z

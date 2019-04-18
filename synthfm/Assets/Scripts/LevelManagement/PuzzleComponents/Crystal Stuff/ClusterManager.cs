@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClusterManager : MonoBehaviour
+public class ClusterManager : Puzzle
 {
     public enum State { OFF, ON, Error };
 
     public enum Mode { Rock, Sequencial };
+
+    [Header("Jacob Drop Fragment Case Here :)")]
+    public GameObject Fragement;
 
     [Header("Rock mode OR Sequencial Mode")]
     public Mode _Mode;        // Editor
@@ -30,8 +33,9 @@ public class ClusterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Fragement.transform.position += new Vector3(0, 0, 2);
         size = this.transform.childCount;
-
+        IsComplete = false;
         // get Rock
         if(_Mode == ClusterManager.Mode.Rock)
         {
@@ -73,12 +77,16 @@ public class ClusterManager : MonoBehaviour
                 i_crystal.changeToActive();
             
                  Num_Of_Actives++;
-            if(Num_Of_Actives == Crystalls.Length)
+            if (Num_Of_Actives == Crystalls.Length)
             {
                 IsComplete = true;
                 // destroy rock
-                foreach (RockIt R in Rocks)
+                foreach (RockIt R in Rocks) // puzzle complete
+                {
                     R.DestroyIt();
+                    Fragement.transform.position += new Vector3(0, 0, 0);
+                    IsComplete = true;
+                }
             }
             
         }

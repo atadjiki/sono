@@ -6,7 +6,7 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, LEAD };
+    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, LEAD, FINAL_PATERN };
 
     public enum world { AMBER, LATTE, FIBER,HUB};
 
@@ -46,6 +46,7 @@ public class FragmentController : MonoBehaviour
                                          * While leaving the Zone without all three fragments
                                            */
     private BezierFollow bzFollow;
+    private PatternGenerator ptGenerator;
 
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class FragmentController : MonoBehaviour
         audioSource.volume = 0f;
 
         bzFollow = this.GetComponent<BezierFollow>();
+        ptGenerator = this.GetComponent<PatternGenerator>();
     }
 
     private void Start()
@@ -110,6 +112,9 @@ public class FragmentController : MonoBehaviour
                 break;
             case states.LEAD:
                 Lead();
+                break;
+            case states.FINAL_PATERN:
+                CreatePatterns();
                 break;
             default:
                 break;
@@ -167,12 +172,24 @@ public class FragmentController : MonoBehaviour
     public void Flee()
     {
         rb.velocity = Vector2.zero;
+        this.gameObject.transform.position = ptGenerator.getStartingPoint();
+        // move to starting points of curve
+       // StartCoroutine(MoveToCurve());
+    }
 
-        // probably roam around in a sphere at the border
-        if (rb.velocity.x > 0 || rb.velocity.y > 0)
+    IEnumerator MoveToCurve()
+    {
+        yield return new WaitForSeconds(2);
+        this.gameObject.transform.position = ptGenerator.getStartingPoint();
+    }
+
+    public void CreatePatterns()
+    {
+        if (!ptGenerator.ToBegin)
         {
-
+            ptGenerator.ToBegin = true;
         }
+        this.transform.position = ptGenerator.fragPos;
     }
 
     public void Lead()

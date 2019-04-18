@@ -16,8 +16,7 @@ public class TransferRealms : MonoBehaviour
 
     [Tooltip("Boolean that is true when we exit a realm and want to know how far away we are from it.")]
     private bool findDistance;
-
-
+    
 
     private SceneMemoryManagement smm;
     private float BRsceneDistance;
@@ -45,6 +44,8 @@ public class TransferRealms : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+  
             if (gameObject.tag == "Realm1")
             {
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
@@ -90,9 +91,12 @@ public class TransferRealms : MonoBehaviour
             }
             else if(gameObject.tag == "Realm4")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-                changeAppearance("Void");
-                Debug.Log("Entering 4");
+                if(!GameObject.Find("Parasite"))
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                    changeAppearance("Void");
+                    Debug.Log("Entering 4");
+                }
             }
         }
 
