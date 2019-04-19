@@ -5000,12 +5000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &348723898 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1014524498, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 588710856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462220811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7238824860898326249, guid: e6dd88324781df7488f6758c5af68ce4,
@@ -5375,30 +5369,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1014524498, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 14381c5a0ad03634083fa2096821a173, type: 2}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 348723898}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: turntableManager
-      value: 
-      objectReference: {fileID: 588710857}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: multiplyTorque
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: torqueIncrement
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: i_Menu
@@ -5406,23 +5376,13 @@ PrefabInstance:
       objectReference: {fileID: 2054321296}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
-      propertyPath: accel_normal
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
       propertyPath: CM_Main
       value: 
       objectReference: {fileID: 705638743}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
-      propertyPath: speed_zoom_in
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: speed_zoom_out
-      value: 40
+      propertyPath: camera_lerp
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -5462,7 +5422,7 @@ PrefabInstance:
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -5483,25 +5443,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5465249031842407012, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: model
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
---- !u!114 &588710857 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5465249031842407012, guid: b8a011f487dba2644adbd6046cdde4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 588710856}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4a6b55a3ad84a9c9d7849e401695cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &667764380
 GameObject:
   m_ObjectHideFlags: 0
@@ -6078,7 +6021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0, z: -74.9739}
+  m_FollowOffset: {x: 0, y: 0, z: -96.1154}
   m_XDamping: 0.25
   m_YDamping: 0.25
   m_ZDamping: 0.25

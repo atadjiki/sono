@@ -578,9 +578,6 @@
         void SetCameraZoom(Speed overriden, Speed speed)
         {
 
-            Debug.Log("Overriden: " + overriden);
-            Debug.Log("Input Speed: " + speed);
-
             float current_z = CM_Main.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z;
             float follow_z = zoom_default;
            
