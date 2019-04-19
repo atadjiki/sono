@@ -37,9 +37,9 @@ public class PatternTrigger : MonoBehaviour
 
             // change camera
             prevFieldofView = mainCamera.m_Lens.FieldOfView;
-            mainCamera.m_Lens.FieldOfView = cmrFieldView;
-            var transposer =  mainCamera.GetCinemachineComponent<CinemachineTransposer>();
-            transposer.m_FollowOffset.Set(0,-35,-75);
+           // mainCamera.m_Lens.FieldOfView = cmrFieldView;
+           // var transposer =  mainCamera.GetCinemachineComponent<CinemachineTransposer>();
+           // transposer.m_FollowOffset.Set(0,-35,-75);
 
             // change fragment state and start pattern
             FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
@@ -97,6 +97,6 @@ public class PatternTrigger : MonoBehaviour
     IEnumerator resetCamera()
     {
         yield return new WaitForSeconds(5);
-        mainCamera.m_Lens.FieldOfView = prevFieldofView;
+       // mainCamera.m_Lens.FieldOfView = prevFieldofView;
     }
 }
