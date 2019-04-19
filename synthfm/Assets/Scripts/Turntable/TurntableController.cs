@@ -50,7 +50,7 @@
         public float torqueIncrement = 1.5f;
         public bool multiplyTorque = true;
 
-        public enum Speed { Slow, Normal, Fast };
+        public enum Speed { Slow, Normal, Fast, None};
         public Speed currentSpeed;
 
         private new Rigidbody2D rigidbody;
@@ -81,6 +81,13 @@
         private float timeSinceLastClick = 0;
 
         private float angle_threshold = 5f;
+
+        public float camera_lerp = 0.08f;
+        public float speed_zoom_out = 20f;
+        public float speed_zoom_in = 5f;
+        public float zoom_default = -75;
+
+        public Cinemachine.CinemachineVirtualCamera CM_Main;
 
 
         [Header("Animations")]
@@ -129,6 +136,8 @@
             rigidbody = GetComponent<Rigidbody2D>();
             ChangeSpeed(Speed.Normal);
 
+            CM_Main.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = zoom_default;
+
         }
 
         // Update is called once per frame
@@ -146,10 +155,12 @@
             DoMIDIInput();
 
             DoSpeedInput();
-            DoCheckForOverrides();
+            SetCameraZoom(DoCheckForOverrides(), currentSpeed);
 
             if (i_Menu != null)              // Only if menu is there
                 DoMenuActions();
+
+            
         }
 
         void UpdateVariables()
@@ -185,6 +196,7 @@
             }
             //    Debug.Log("Speed changed to " + currentSpeed.ToString());
             UpdateAnimation(currentSpeed);
+
             return currentSpeed;
         }
 
@@ -236,14 +248,14 @@
 
         }
 
-        bool DoCheckForOverrides()
+        Speed DoCheckForOverrides()
         {
 
-            if (inputBindings.SpeedUp.WasPressed)
+            if (inputBindings.SpeedUp.IsPressed)
             {
                 fast_override = true;
                 UpdateAnimation(Speed.Fast);
-                return true;
+                return Speed.Fast;
             }
             else if (inputBindings.SpeedUp.WasReleased)
             {
@@ -251,11 +263,11 @@
                 fast_override = false;
             }
 
-            if (inputBindings.SlowDown.WasPressed)
+            if (inputBindings.SlowDown.IsPressed)
             {
                 slow_override = true;
                 UpdateAnimation(Speed.Slow);
-                return true;
+                return Speed.Slow;
             }
             else if (inputBindings.SlowDown.WasReleased)
             {
@@ -263,7 +275,7 @@
                 slow_override = false;
             }
 
-            return false;
+            return Speed.None;
 
         }
 
@@ -561,6 +573,32 @@
             {
                 Time.timeScale = 1;
             }
+        }
+
+        void SetCameraZoom(Speed overriden, Speed speed)
+        {
+
+            Debug.Log("Overriden: " + overriden);
+            Debug.Log("Input Speed: " + speed);
+
+            float current_z = CM_Main.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z;
+            float follow_z = zoom_default;
+           
+
+            if (speed == Speed.Fast || overriden == Speed.Fast)
+            {
+                follow_z = Mathf.Lerp(current_z, zoom_default - speed_zoom_out, camera_lerp);
+            }
+            else if (speed == Speed.Slow || overriden == Speed.Slow)
+            {
+                follow_z = Mathf.Lerp(current_z, zoom_default + speed_zoom_in, camera_lerp);
+            }
+            else
+            {
+                follow_z = Mathf.Lerp(current_z, zoom_default, camera_lerp);
+            }
+
+            CM_Main.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = follow_z;
         }
 
         void UpdateAnimation(Speed speed)

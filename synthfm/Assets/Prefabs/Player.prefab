@@ -5627,18 +5627,23 @@ MonoBehaviour:
   accel_clamp: 1.25
   accel_floor: 0.25
   accel_slow: 0.25
-  accel_normal: 0.75
+  accel_normal: 0.6
   accel_fast: 1.5
   torque_slow: 45
   torque_normal: 35
   torque_fast: 25
-  torqueIncrement: 1
+  torqueIncrement: 1.5
   multiplyTorque: 1
   currentSpeed: 1
-  turntableManager: {fileID: 0}
+  turntableManager: {fileID: 5465249031842407012}
   fragmentSlots: []
   slotsFilled: 
   i_Menu: {fileID: 0}
+  camera_lerp: 0.08
+  speed_zoom_out: 40
+  speed_zoom_in: 15
+  zoom_default: -75
+  CM_Main: {fileID: 0}
   animator: {fileID: 1014524498}
 --- !u!114 &1209789633
 MonoBehaviour:
@@ -5685,6 +5690,10 @@ MonoBehaviour:
   fiberWorld: {fileID: 0}
   latteWorld: {fileID: 0}
   hubWorld: {fileID: 0}
+  amberWorldTrigger: {fileID: 0}
+  fiberWorldTrigger: {fileID: 0}
+  latteWorldTrigger: {fileID: 0}
+  hubWorldTrigger: {fileID: 0}
 --- !u!1 &2052041055220811353
 GameObject:
   m_ObjectHideFlags: 0
