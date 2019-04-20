@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class RockIt : MonoBehaviour
 {
+    [Header("The bright rock sprite")]
+    public Sprite Sprite_Bright;
 
     public bool ToDeactivate = false;
     
@@ -27,6 +29,9 @@ public class RockIt : MonoBehaviour
     public float dampingSpeed = 1.0f;
     Vector3 initialPosition;
 
+    bool FadeOut = false;
+    bool FadeIn = false;
+
     private void Awake()
     {
         if (transform == null)
@@ -44,14 +49,15 @@ public class RockIt : MonoBehaviour
 
         // minor
         _thisRender = this.GetComponent<SpriteRenderer>();
+      //  _color = _thisRender.color;
+        _opacity = _thisRender.color.a;
         _color = _thisRender.color;
-        _opacity = _color.a;
-
         transform = this.GetComponent<Transform>();
         initialPosition = transform.localPosition;
         shakeDuration = 0;
     }
 
+    // do nothing
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -64,19 +70,27 @@ public class RockIt : MonoBehaviour
         }
     }
 
-    public void DestroyIt()
+    public void ActivateIt()
     {
-        // lower down opacity and disable/ destroy eventually
-        ToDeactivate = true;
+        /* New Stuff
+         * 1- Fade out
+         * 2- Change sprite
+         * 3- Fade In
+        */
+        FadeOut = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        HandleActivation();
+
+        // OLD
         if (ToDeactivate)
         {
-            Debug.Log("Here");
-            shakeDuration = 2;
+            
+               shakeDuration = 2;
                 _opacity -= (speed * Time.deltaTime);
                 _thisRender.color = new Color(_color.r, _color.g, _color.b, _opacity);
 
@@ -92,5 +106,29 @@ public class RockIt : MonoBehaviour
 
         }
 
+    }
+
+    private void HandleActivation()
+    {
+        if (FadeOut)
+        {
+            _opacity -= (speed * Time.deltaTime);
+            _thisRender.color = new Color(_color.r, _color.g, _color.b, _opacity);
+            if (_opacity <= 0.1)
+            {
+                _thisRender.sprite = Sprite_Bright;
+                FadeOut = false;
+                FadeIn = true;
+            }
+        }
+        if (FadeIn)
+        {
+            _opacity += (speed * Time.deltaTime);
+            _thisRender.color = new Color(_color.r, _color.g, _color.b, _opacity);
+            if (_opacity == 1)
+            {
+                FadeIn = false;
+            }
+        }
     }
 }

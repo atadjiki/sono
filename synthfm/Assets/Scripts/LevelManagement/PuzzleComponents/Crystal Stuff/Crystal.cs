@@ -10,6 +10,9 @@ public class Crystal: MonoBehaviour
     public int sequenceNo;
 
     [Header("Colors for the Crystalls")]
+    public Sprite Sprite_Bright;
+
+    [Header("Colors for the Crystalls")]
     public Color baseColor;
     public Color errorColor;
     public Color activeColor;
@@ -55,8 +58,8 @@ public class Crystal: MonoBehaviour
         _cMamnager = transform.parent.gameObject.GetComponent<ClusterManager>();
 
         _renderer = this.GetComponent<SpriteRenderer>();
-        _renderer.color = baseColor;
-        currentColor = baseColor;
+        //_renderer.color = baseColor;
+        //currentColor = baseColor;
 
         transform = this.GetComponent<Transform>();
         initialPosition = transform.localPosition;
@@ -103,12 +106,13 @@ public class Crystal: MonoBehaviour
 
     public void changeToActive()
     {
+        _renderer.sprite = Sprite_Bright; // change sprite
         // shaky shaky
         shakeDuration = 0.5f;
 
         _state = ClusterManager.State.ON;
         // currentColor = activeColor;
-        _renderer.color = activeColor;
+        //_renderer.color = activeColor;
 
         int x = Random.Range(0, 3);
         if(x == 0)
@@ -119,8 +123,6 @@ public class Crystal: MonoBehaviour
             ForwardZ = true;
         }
         speed = Random.Range(10,15);
-
-      
     }
 
     public void changeToFail()

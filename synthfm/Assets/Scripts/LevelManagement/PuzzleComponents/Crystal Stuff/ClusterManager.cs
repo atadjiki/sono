@@ -8,32 +8,30 @@ public class ClusterManager : Puzzle
 
     public enum Mode { Rock, Sequencial };
 
-    [Header("Jacob Drop Fragment Case Here :)")]
-    public GameObject Fragement;
 
     [Header("Rock mode OR Sequencial Mode")]
     public Mode _Mode;        // Editor
+
+    [Header("The number of rocks only for Rock mode")]
+    public int _NumOfRocks;
 
     [Header("Engineers ONLY !")]
     [Header("DO NOT TOUCH FOllowings")]
     public bool IsComplete = false;
 
-    [Header("The number of rocks only for Rock mode")]
-    public int _NumOfRocks;
+    
+    private int Num_Of_Actives;     // ROCk Mode
+    private int _curSeq;        // Seq Mode
 
-    public int Num_Of_Actives;     // ROCk Mode
-    public int _curSeq;        // Seq Mode
+    private RockIt[] Rocks;
+    private Crystal[] Crystalls;
 
-    public RockIt[] Rocks;
-    public Crystal[] Crystalls;
-
-    public int numOfCrystalls;
-    public int size;
+    private int numOfCrystalls;
+    private int size;
 
     // Start is called before the first frame update
     void Start()
     {
-        Fragement.transform.position += new Vector3(0, 0, 2);
         size = this.transform.childCount;
         IsComplete = false;
         // get Rock
@@ -83,8 +81,7 @@ public class ClusterManager : Puzzle
                 // destroy rock
                 foreach (RockIt R in Rocks) // puzzle complete
                 {
-                    R.DestroyIt();
-                    Fragement.transform.position += new Vector3(0, 0, 0);
+                    R.ActivateIt();
                     IsComplete = true;
                 }
             }
