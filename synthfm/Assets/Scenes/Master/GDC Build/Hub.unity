@@ -7145,6 +7145,7 @@ GameObject:
   - component: {fileID: 1218926883}
   - component: {fileID: 1218926885}
   - component: {fileID: 1218926884}
+  - component: {fileID: 1218926886}
   m_Layer: 0
   m_Name: Realms
   m_TagString: Untagged
@@ -7206,6 +7207,18 @@ MonoBehaviour:
   AmberFX: {fileID: 588710858}
   FiberFX: {fileID: 588710859}
   LatteFX: {fileID: 519314264}
+--- !u!114 &1218926886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218926882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721ab78508e860849af527f8daed9f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1236382417
 GameObject:
   m_ObjectHideFlags: 0
