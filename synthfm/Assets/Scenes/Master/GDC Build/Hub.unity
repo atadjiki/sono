@@ -7146,6 +7146,7 @@ GameObject:
   - component: {fileID: 1218926885}
   - component: {fileID: 1218926884}
   - component: {fileID: 1218926886}
+  - component: {fileID: 1218926887}
   m_Layer: 0
   m_Name: Realms
   m_TagString: Untagged
@@ -7219,6 +7220,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721ab78508e860849af527f8daed9f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1218926887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218926882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfa729ef9e0048448161cd44eda5f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amber_artifact: {fileID: 1951240110087919080, guid: 18e31e34df8c1e5438aa588fbb9f12f4,
+    type: 3}
+  amber_drop_location: {fileID: 0}
+  fiber_artifact: {fileID: 0}
+  fiber_drop_location: {fileID: 0}
+  latte_artifact: {fileID: 0}
+  latte_drop_location: {fileID: 0}
+  latte_dropped: 0
 --- !u!1 &1236382417
 GameObject:
   m_ObjectHideFlags: 0
