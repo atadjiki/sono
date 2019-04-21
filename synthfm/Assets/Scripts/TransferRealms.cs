@@ -55,18 +55,26 @@ public class TransferRealms : MonoBehaviour
         if(sceneName == "AmberWorld")
         {
             isAmberLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
         }
         else if(sceneName == "LatteWorld")
         {
             isLatteLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LatteWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
         }
         else if(sceneName == "FiberWorld")
         {
             isFiberLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
         }
         else if(sceneName == "ParasiteVoid")
         {
             isVoidLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
         }
     }
 
@@ -81,7 +89,7 @@ public class TransferRealms : MonoBehaviour
                 if (isAmberLoaded == false)
                 {
                     LoadScene("AmberWorld");
-                    isAmberLoaded = true;
+
                 }
 
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
