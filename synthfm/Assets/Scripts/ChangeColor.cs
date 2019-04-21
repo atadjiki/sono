@@ -96,10 +96,13 @@ public class ChangeColor : MonoBehaviour
 
     public void changeFragmentColors(string currentWorld)
     {
-        List<FragmentController> fragments = FragmentManager.instance.fragments;
-        
+        List<FragmentController> fragments = new List<FragmentController>();
+        string p = PlayerPrefs.GetString("SavedData");
+        SavedData s = JsonUtility.FromJson<SavedData>(p);
+        fragments.Clear();
+        fragments.AddRange(FindObjectsOfType<FragmentController>());
 
-        if(currentWorld == "Amber")
+        if (currentWorld == "Amber")
         {
             List<FragmentController> amberFrags = new List<FragmentController>();
             foreach(FragmentController frag in fragments)
@@ -110,8 +113,14 @@ public class ChangeColor : MonoBehaviour
                 }
             }
 
-            changeFragColors(amberFrags);
-            
+            List<List<Color>> allAmberColors = new List<List<Color>>();
+            allAmberColors.Add(Amber01);
+            allAmberColors.Add(Amber02);
+            allAmberColors.Add(Amber03);
+
+            changeFragColors(amberFrags,allAmberColors);
+
+
         }
         else if(currentWorld == "Latte")
         {
@@ -137,16 +146,25 @@ public class ChangeColor : MonoBehaviour
         }
     }
 
-    private void changeFragColors(List<FragmentController> frags)
+    private void changeFragColors(List<FragmentController> frags, List<List<Color>> colors)
     {
-        for(int i = 0; i<frags.Count;i++)
+        FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
+        for (int i = 0; i<frags.Count;i++)
         {
             GameObject temp = frags[i].gameObject;
-            foreach(Transform child in temp.transform)
+            List<Color> tempColor = colors[i];
+
+            foreach (Transform child in temp.transform)
             {
                 if(child.gameObject.name == "Trail")
                 {
-                    print("Here");
+                    child.gameObject.GetComponent<TrailRenderer>().startColor = tempColor[1];
+
+                }
+                else if(child.gameObject.name == "Asset 2")
+                {
+                    child.gameObject.GetComponent<SpriteRenderer>().color = tempColor[0];
                 }
             }
         }

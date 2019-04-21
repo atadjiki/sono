@@ -57,11 +57,16 @@ public class TransferRealms : MonoBehaviour
             isAmberLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
         }
         else if(sceneName == "LatteWorld")
         {
             isLatteLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LatteWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
 
         }
         else if(sceneName == "FiberWorld")
@@ -69,11 +74,17 @@ public class TransferRealms : MonoBehaviour
             isFiberLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
+
         }
         else if(sceneName == "ParasiteVoid")
         {
             isVoidLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
 
         }
     }
