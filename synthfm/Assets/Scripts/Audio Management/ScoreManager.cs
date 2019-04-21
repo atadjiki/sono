@@ -31,12 +31,16 @@ public class Mixer
         Debug.Assert(sources.Length == NumberOfAudioTracks);
     }
 
-    public void Load(ScorePattern scorePattern)
+    public void Load(ScorePattern scorePattern, bool AllTracksActive)
     {
         Debug.Assert(scorePattern.clips.Length == sources.Length);
         currentScorepattern = scorePattern;
         for (int i = 0; i < sources.Length; i++)
+        {
             sources[i].clip = scorePattern.clips[i];
+            if(AllTracksActive)
+                SetVolume(i, 0);
+        }
     }
 
     public void Unload()
@@ -303,33 +307,33 @@ public class ScoreManager : MonoBehaviour
 
 
     //These are all different ways you can load the next pattern into the other dock
-    public void LoadPattern(int Index)
+    public void LoadPattern(int Index, bool AllTracksActive = false)
     {
         int DockIndex = (CurrentActiveDock + 1) % docks.Length;
         LoadPattern(Index, DockIndex);
     }
 
-    public void LoadPattern(ScorePattern pattern)
+    public void LoadPattern(ScorePattern pattern, bool AllTracksActive = false)
     {
         int DockIndex = (CurrentActiveDock + 1) % docks.Length;
         LoadPattern(pattern, DockIndex);
     }
 
-    public void LoadPattern(ScorePattern pattern, int DockIndex)
+    public void LoadPattern(ScorePattern pattern, int DockIndex, bool AllTracksActive = false)
     {
-        docks[DockIndex].Load(pattern);
+        docks[DockIndex].Load(pattern, AllTracksActive);
         ResetToDefault(DockIndex);
     }
 
-    public void LoadPattern(int Index, int DockIndex)
+    public void LoadPattern(int Index, int DockIndex, bool AllTracksActive=false)
     {
-        docks[DockIndex].Load(scorePatterns[Index]);
+        docks[DockIndex].Load(scorePatterns[Index], AllTracksActive);
         ResetToDefault(DockIndex);
     }
 
-    public void LoadPatternOntoDock(int DockIndex, ScorePattern pattern)
+    public void LoadPatternOntoDock(int DockIndex, ScorePattern pattern, bool AllTracksActive = false)
     {
-        docks[DockIndex].Load(pattern);
+        docks[DockIndex].Load(pattern, AllTracksActive);
         ResetToDefault(DockIndex);
     }
 
