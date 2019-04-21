@@ -4909,7 +4909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9aee6ef4fcf964184431ff305848c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfx: {fileID: 0}
 --- !u!58 &256095861
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5085,7 +5084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   clearColorMode: 1
-  backgroundColorHDR: {r: 0.03921569, g: 0.05882353, b: 0.08627451, a: 0}
+  backgroundColorHDR: {r: 0.01577705, g: 0.03929133, b: 0.05892943, a: 0}
   clearDepth: 1
   renderingPath: 0
   volumeLayerMask:
@@ -5371,8 +5370,8 @@ MonoBehaviour:
   - {r: 0.654902, g: 0.8784314, b: 0.20784314, a: 1}
   - {r: 0.21176471, g: 0.8745098, b: 0.21960784, a: 1}
   - {r: 0.10980392, g: 0.70980394, b: 0.8, a: 1}
-  currentPlayercolor: {r: 0.7014859, g: 0.1839066, b: 0.4780645, a: 0}
-  currentTrailColor: {r: 0.7019608, g: 0.1843137, b: 0.4784314, a: 0.003921569}
+  currentPlayercolor: {r: 0.384798, g: 0.3282163, b: 0.4387942, a: 0}
+  currentTrailColor: {r: 0.3843137, g: 0.3294118, b: 0.4392157, a: 0.003921569}
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
@@ -5577,12 +5576,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1809757823, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 369758906, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850657, guid: b8a011f487dba2644adbd6046cdde4d9,
@@ -5599,10 +5598,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -31.79179
-      objectReference: {fileID: 0}
-    - target: {fileID: 1809757825, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2729162715487004530, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -5627,6 +5622,10 @@ PrefabInstance:
     - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 369758906, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7250,12 +7249,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amber_artifact: {fileID: 1951240110087919080, guid: 18e31e34df8c1e5438aa588fbb9f12f4,
     type: 3}
-  amber_drop_location: {fileID: 0}
   fiber_artifact: {fileID: 0}
-  fiber_drop_location: {fileID: 0}
   latte_artifact: {fileID: 0}
+  amber_drop_location: {fileID: 0}
+  fiber_drop_location: {fileID: 0}
   latte_drop_location: {fileID: 0}
-  latte_dropped: 0
 --- !u!1 &1236382417
 GameObject:
   m_ObjectHideFlags: 0
@@ -7548,7 +7546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0, z: -73.59743}
+  m_FollowOffset: {x: 0, y: 0, z: -96.74914}
   m_XDamping: 0.25
   m_YDamping: 0.25
   m_ZDamping: 0.25
