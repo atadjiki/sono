@@ -28,6 +28,9 @@ public class TransferRealms : MonoBehaviour
     private bool isLatteLoaded;
     private bool isVoidLoaded;
 
+    // to count the number of fragments when leaving a world.
+    private List<FragmentController> fragments = new List<FragmentController>();
+
 
     void Start()
     {
@@ -162,7 +165,15 @@ public class TransferRealms : MonoBehaviour
                         LoadScene("ParasiteVoid");
                         isVoidLoaded = true;
                     }
-                    int voidlevel = FragmentManager.instance.fragments.Count / 3;
+
+                    fragments = FragmentManager.instance.fragments;
+                    int count = 0;
+                    foreach (FragmentController fragment in fragments)
+                        if (fragment.currentState == FragmentController.states.FOLLOW ||
+                            fragment.currentState == FragmentController.states.LEAD)
+                            count++;
+                    int voidlevel = count / 3;
+                    Debug.Log("Number of Fragments: " + count + "; Void Level: " + voidlevel);
                     ScoreManager._instance.LoadVoidAtLevel(voidlevel);
                     ScoreManager._instance.Crossfade();
                     changeAppearance("Void");
