@@ -37,6 +37,7 @@ public class PatternGenerator : MonoBehaviour
             routes[i] = CurvePair.transform.GetChild(i);
         }
 
+        fragPos = transform.position;
         m_startingPoint = routes[0].GetChild(0).gameObject.transform;
        // changeTrailTimes(trailTime);
     }

@@ -36,28 +36,22 @@ public class PatternTrigger : MonoBehaviour
             tController.acceleration = 2;
 
             // change camera
-            prevFieldofView = mainCamera.m_Lens.FieldOfView;
-           // mainCamera.m_Lens.FieldOfView = cmrFieldView;
-           // var transposer =  mainCamera.GetCinemachineComponent<CinemachineTransposer>();
-           // transposer.m_FollowOffset.Set(0,-35,-75);
+            // prevFieldofView = mainCamera.m_Lens.FieldOfView;
+            // mainCamera.m_Lens.FieldOfView = cmrFieldView;
+            // var transposer =  mainCamera.GetCinemachineComponent<CinemachineTransposer>();
+            // transposer.m_FollowOffset.Set(0,-35,-75);
 
             // change fragment state and start pattern
+
             FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
             foreach (FragmentController fragment in fragments)
             {
-                if (fragment.currentState == FragmentController.states.FLEE)
+                if (fragment.currentState == FragmentController.states.PRE_FINAL || fragment.currentState == FragmentController.states.FOLLOW)
                 {
-                    if (fragment.TrackIndex != 1) // temporary
-                    {
                         fragment.currentState = FragmentController.states.FINAL_PATERN;
-                    }
-                    Debug.Log("generating patterns");
-
+                         Debug.Log("generating patterns");
                 }
-
             }
-
-
             // start coroutine and set everything back to prev
             StartCoroutine(restoreState());
         }
@@ -76,19 +70,19 @@ public class PatternTrigger : MonoBehaviour
         tController.acceleration = PrevAcceleration;
         StartCoroutine(resetCamera());
 
+        Transform pos = GameObject.Find("Player").gameObject.transform;
+
+
         FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
         foreach (FragmentController fragment in fragments)
         {
-            if (fragment.currentState == FragmentController.states.FINAL_PATERN)
+            if (fragment.currentState == FragmentController.states.FINAL_PATERN || fragment.currentState == FragmentController.states.FOLLOW)
             {
-                if (fragment.TrackIndex != 1) // temporary
-                {
                     fragment.currentState = FragmentController.states.FOLLOW;
-                    TrailRenderer tr = fragment.gameObject.transform.Find("Trail").GetComponent<TrailRenderer>();
-                    tr.time = 8;
-                }
+                    fragment.changeTrailTime(8);
+                fragment.followTarget = pos;
                 Debug.Log("Done generating patterns");
-
+                
             }
 
         }
