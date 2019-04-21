@@ -4,37 +4,17 @@ using UnityEngine;
 
 public class LattePuzzle : MonoBehaviour
 {
-    public int maxRemove = 25;
-    public float radius = 50f;
-    public LineRenderer lineRenderer;
+    private int maxRemove = 25;
+    private float radius = 50f;
+    private LineRenderer lineRenderer;
 
-    public Color offColor;
-    public Color onColor;
+    private Color offColor;
+    private Color onColor;
 
     private GameObject player;
 
     private int maxFrames = 120;
     private int currentFrames = 0;
-
-    void Start()
-    {
-        player = GameObject.Find("Player");
-        //make sure line positions are at zero Z
-        NormalizePositions();
-    }
-
-    void Update()
-    {
-        if(currentFrames >= maxFrames)
-        {
-            CheckNearbyPoints();
-            currentFrames = 0;
-        }
-        else
-        {
-            currentFrames++;
-        }
-    }
 
     void NormalizePositions()
     {

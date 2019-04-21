@@ -53,13 +53,13 @@ public class GatePuzzle : Puzzle
             Debug.Log("Gate puzzle complete!");
 
             DeleteGates();
-            SetStatus(complete);
+            SetStatus(Complete);
         }
     }
 
     void DoGatesInOrder(GateTrigger trigger)
     {
-        if (!complete)
+        if (!Complete)
         {
             //check which gate was triggered
 
@@ -112,7 +112,7 @@ public class GatePuzzle : Puzzle
 
     void DoGatesOutOfOrder(GateTrigger trigger)
     {
-        if (!complete)
+        if (!Complete)
         {
             //check which gate was triggered
 
@@ -156,7 +156,7 @@ public class GatePuzzle : Puzzle
     {
         Debug.Log("Gate puzzle complete!");
         print(gameObject.name);
-        complete = true;
+        Complete = true;
         /*string p = PlayerPrefs.GetString("HubData");
         SavedData s = JsonUtility.FromJson<SavedData>(p);
 
@@ -169,8 +169,9 @@ public class GatePuzzle : Puzzle
             }
         }*/
 
-        DeleteGates();
-        SetStatus(complete);
+        //DeleteGates();
+        base.ReleaseCage();
+        SetStatus(Complete);
         timer = false;
     }
 
@@ -213,14 +214,14 @@ public class GatePuzzle : Puzzle
 
     }
 
-    void DeleteGates()
+    public void DeleteGates()
     {
         foreach(GateTrigger gate in gates)
         {
             Destroy(gate.gameObject); //TODO: Replace this with something more elegant :^)
         }
 
-        base.ReleaseCage();
+        
     }
 
     void StartTimer()

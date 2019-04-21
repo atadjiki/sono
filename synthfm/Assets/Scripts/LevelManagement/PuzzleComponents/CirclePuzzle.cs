@@ -32,7 +32,7 @@ public class CirclePuzzle : Puzzle
     // Update is called once per frame
     void FixedUpdate() //FixedUpdate so we can still call update on Puzzle
     {
-        if (!complete && playerEntered)
+        if (!Complete && playerEntered)
         {
             if (currentFrames == maxFrames)
             {
@@ -42,7 +42,7 @@ public class CirclePuzzle : Puzzle
                 {
                     if (DoesContain) //check if that enclosed shape contains all of the targets 
                     {
-                        complete = true; //notify the base class this puzzle is complete
+                        Complete = true; //notify the base class this puzzle is complete
                         ReleaseCage(); //release the forcefield 
                     }
 

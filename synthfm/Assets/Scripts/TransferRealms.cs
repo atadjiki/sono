@@ -50,6 +50,8 @@ public class TransferRealms : MonoBehaviour
         }
     }
 
+   
+
     private void LoadScene(string sceneName)
     {
         if(sceneName == "AmberWorld")
@@ -57,11 +59,16 @@ public class TransferRealms : MonoBehaviour
             isAmberLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
         }
         else if(sceneName == "LatteWorld")
         {
             isLatteLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LatteWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
 
         }
         else if(sceneName == "FiberWorld")
@@ -69,11 +76,17 @@ public class TransferRealms : MonoBehaviour
             isFiberLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
+
         }
         else if(sceneName == "ParasiteVoid")
         {
             isVoidLoaded = true;
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+            FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
+
 
         }
     }
@@ -97,8 +110,12 @@ public class TransferRealms : MonoBehaviour
                 gameObject.GetComponent<AmberWorld>().enabled = true;
                 changeAppearance("Amber");
                 ScoreManager._instance.Crossfade();
+                print("Entering Amber");
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-                
+
+                FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
+
+
                 HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
                 
             }
@@ -118,8 +135,8 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
                 HandleEnterActions(FragmentController.world.FIBER); // Fragment enter actions
-                changeStateToVoid(); // transfer fragments to next void
 
+                FXToggle.instance.ToggleFX(FragmentController.world.FIBER);
             }
             else if (gameObject.tag == "Realm3")
             {
@@ -133,6 +150,8 @@ public class TransferRealms : MonoBehaviour
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
+                FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
+
                 HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions
                 prepareForCurve();
             }
@@ -145,7 +164,15 @@ public class TransferRealms : MonoBehaviour
                         LoadScene("ParasiteVoid");
                         isVoidLoaded = true;
                     }
+                    int voidlevel = FragmentManager.instance.fragments.Count / 3;
+                    ScoreManager._instance.LoadVoidAtLevel(voidlevel);
+                    ScoreManager._instance.Crossfade();
                     changeAppearance("Void");
+
+                    ParasiteSpawner.instance.RunSpawn();
+
+                    FXToggle.instance.AllFXOff();
+
                     Debug.Log("Entering 4");
                 }
             }
@@ -190,6 +217,13 @@ public class TransferRealms : MonoBehaviour
 
                 SpawnFinalPatternZone();
             }
+        }
+
+        if(gameObject.tag == "Realm4")
+        {
+
+            ParasiteSpawner.instance.KillParasites();
+            ParasiteSpawner.instance.StopSpawn();
         }
     }
 
