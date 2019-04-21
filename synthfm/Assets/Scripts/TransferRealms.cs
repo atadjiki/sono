@@ -50,6 +50,8 @@ public class TransferRealms : MonoBehaviour
         }
     }
 
+   
+
     private void LoadScene(string sceneName)
     {
         if(sceneName == "AmberWorld")
@@ -98,6 +100,8 @@ public class TransferRealms : MonoBehaviour
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
+                FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
+
 
                 HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
             }
@@ -118,6 +122,8 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
                 HandleEnterActions(FragmentController.world.FIBER); // Fragment enter actions
+
+                FXToggle.instance.ToggleFX(FragmentController.world.FIBER);
             }
             else if (gameObject.tag == "Realm3")
             {
@@ -131,6 +137,8 @@ public class TransferRealms : MonoBehaviour
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
+                FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
+
                 HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions
             }
             else if (gameObject.tag == "Realm4")
@@ -143,6 +151,11 @@ public class TransferRealms : MonoBehaviour
                         isVoidLoaded = true;
                     }
                     changeAppearance("Void");
+
+                    ParasiteSpawner.instance.RunSpawn();
+
+                    FXToggle.instance.AllFXOff();
+
                     Debug.Log("Entering 4");
                 }
             }
@@ -196,6 +209,13 @@ public class TransferRealms : MonoBehaviour
             GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
             HandleExitActions(FragmentController.world.LATTE);
+        }
+
+        if(gameObject.tag == "Realm4")
+        {
+
+            ParasiteSpawner.instance.KillParasites();
+            ParasiteSpawner.instance.StopSpawn();
         }
     }
 
