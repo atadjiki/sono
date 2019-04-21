@@ -65,14 +65,22 @@ public class FragmentCase : MonoBehaviour
                 {
                     Debug.Log("parent doesn't have puzzle component!");
                 }
-                else if(GetComponentInParent<LattePuzzle>() != null)
-                {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte);
-                }
                 else
                 {
                     GetComponentInParent<Puzzle>().mainCamera.enabled = true;
-                    GetComponentInParent<Puzzle>().setPieceCamera.enabled = false; 
+                    GetComponentInParent<Puzzle>().setPieceCamera.enabled = false;
+                }
+
+                if (GetComponentInParent<LattePuzzle>() != null)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte);
+                }else if (GetComponentInParent<GatePuzzle>() != null)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber);
+                }
+                if (GetComponentInParent<ClusterManager>() != null)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber);
                 }
 
             }
