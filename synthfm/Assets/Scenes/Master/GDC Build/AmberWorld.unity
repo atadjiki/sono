@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6143,6 +6143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1920959811}
+  - component: {fileID: 1920959812}
   m_Layer: 0
   m_Name: AmberWorld
   m_TagString: Untagged
@@ -6178,6 +6179,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920959812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920959810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1894b88ed5c1124bb3d2a8a381bee2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1962853671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6619,6 +6632,16 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 1086417844}
+    - target: {fileID: 2859013380925729424, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108008509266104271, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8932240590796009382, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_Size.x
@@ -6628,16 +6651,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 8108008509266104271, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859013380925729424, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
@@ -6719,6 +6732,15 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 215624111}
+    - target: {fileID: 1533502655, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 232736385630498683, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8614792925418815506, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
       propertyPath: m_Size.x
@@ -6728,15 +6750,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 232736385630498683, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1533502655, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}

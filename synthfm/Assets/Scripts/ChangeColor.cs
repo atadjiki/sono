@@ -132,6 +132,13 @@ public class ChangeColor : MonoBehaviour
                     latteFrags.Add(frag);
                 }
             }
+            List<List<Color>> allLatteColors = new List<List<Color>>();
+            allLatteColors.Add(Latte01);
+            allLatteColors.Add(Latte02);
+            allLatteColors.Add(Latte03);
+
+            changeFragColors(latteFrags, allLatteColors);
+
         }
         else if(currentWorld == "Fiber")
         {
@@ -143,6 +150,13 @@ public class ChangeColor : MonoBehaviour
                     fiberFrags.Add(frag);
                 }
             }
+            List<List<Color>> allFiberColors = new List<List<Color>>();
+            allFiberColors.Add(Fiber01);
+            allFiberColors.Add(Fiber02);
+            allFiberColors.Add(Fiber03);
+
+            changeFragColors(fiberFrags, allFiberColors);
+
         }
     }
 
