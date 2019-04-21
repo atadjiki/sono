@@ -25,6 +25,7 @@ public class ParasiteSpawner : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void Start()
@@ -85,6 +86,18 @@ public class ParasiteSpawner : MonoBehaviour
         return spawnLocation;
     }
 
+    public void RunSpawn()
+    {
+        active = true;
+        StartCoroutine("DoSpawn");
+    }
+
+    public void StopSpawn()
+    {
+        active = false;
+        StopCoroutine("DoSpawn");
+    }
+
 
     IEnumerator DoSpawn()
     {
@@ -92,7 +105,7 @@ public class ParasiteSpawner : MonoBehaviour
         {
             if (parasites.Count < maxParasites)
             {
-              //  Debug.Log("Spawning Parasite");
+                Debug.Log("Spawning Parasite");
                 SpawnNextParasite();
                 yield return new WaitForSeconds(secsUntilNextSpawn);
             }

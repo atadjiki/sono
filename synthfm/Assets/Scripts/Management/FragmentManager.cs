@@ -69,7 +69,7 @@ public class FragmentManager : MonoBehaviour
     
     public void RefreshFragmentList()
     {
-        print("FRAGMENTS REFRESHING");
+       // print("FRAGMENTS REFRESHING");
         string p = PlayerPrefs.GetString("SavedData");
         SavedData s = JsonUtility.FromJson<SavedData>(p);
         fragments.Clear();

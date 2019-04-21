@@ -26,7 +26,8 @@ public class LockTitle : MonoBehaviour
 
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
-       StartCoroutine(Lock());
+        FXToggle.instance.AllFXOff();
+         StartCoroutine(Lock());
 
         
     }
@@ -43,6 +44,7 @@ public class LockTitle : MonoBehaviour
         Debug.Log("Title screen finished " + Time.time + " secs");
         bubbles.SetActive(true);
         playerTrail.SetActive(true);
+        FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
 
        // yield return new WaitForSecondsRealtime(2f);
 
