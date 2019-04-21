@@ -7,7 +7,8 @@ public class PatternGenerator : MonoBehaviour
 {
     public float speed;
 
-    [SerializeField]
+    public GameObject CurvePair;
+   
     private Transform[] routes; // the route for the fragment
     private int currentRoute;
     private float t_Param;
@@ -18,7 +19,7 @@ public class PatternGenerator : MonoBehaviour
 
     private bool toStart; // whether to start a new curve
     public bool ToBegin = false;
-    private Vector3 m_startingPoint;
+    private Transform m_startingPoint;
     //Vector2[] p = new Vector2[4];
     //public Transform[] tf = new Transform[4];
 
@@ -29,18 +30,24 @@ public class PatternGenerator : MonoBehaviour
         t_Param = 0f;
        // speed = 0.6f;
         toStart = true;
-      
-        m_startingPoint = routes[0].GetChild(0).gameObject.transform.position;
-        changeTrailTimes();
+
+        routes = new Transform[CurvePair.transform.childCount];
+        for(int i=0; i<routes.Length; i++)
+        {
+            routes[i] = CurvePair.transform.GetChild(i);
+        }
+
+        m_startingPoint = routes[0].GetChild(0).gameObject.transform;
+       // changeTrailTimes(trailTime);
     }
 
-    void changeTrailTimes()
+    void changeTrailTime(float i_time)
     {
         TrailRenderer tr = this.gameObject.transform.Find("Trail").GetComponent<TrailRenderer>();
-        tr.time = trailTime;
+        tr.time = i_time;
     }
 
-    public Vector3 getStartingPoint()
+    public Transform getStartingPoint()
     {
         return m_startingPoint;
     }

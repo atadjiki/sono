@@ -8,7 +8,6 @@ public class ClusterManager : Puzzle
 
     public enum Mode { Rock, Sequencial };
 
-
     [Header("Rock mode OR Sequencial Mode")]
     public Mode _Mode;        // Editor
 
@@ -29,9 +28,13 @@ public class ClusterManager : Puzzle
     private int numOfCrystalls;
     private int size;
 
+    Vector3 initPos;
+
     // Start is called before the first frame update
     void Start()
     {
+        initPos = fragment.transform.position;
+        fragment.transform.position = new Vector3(initPos.x,initPos.y,2);
         size = this.transform.childCount;
         IsComplete = false;
         // get Rock
@@ -83,6 +86,8 @@ public class ClusterManager : Puzzle
                 {
                     R.ActivateIt();
                     IsComplete = true;
+
+                    fragment.transform.position = new Vector3(initPos.x, initPos.y, 0);
                 }
             }
             
