@@ -128,7 +128,24 @@ public class Mixer
             mixer.SetFloat("HighPass Cutoff", 10.00f);
     }
 
-    
+    public void SetLowPassCutoffLevel(int level)
+    {
+        switch(level)
+        {
+            case 1:
+                mixer.SetFloat("LowPass Cutoff", 545.00f);
+                break;
+            case 2:
+                mixer.SetFloat("LowPass Cutoff", 1200.00f);
+                break;
+            case 3:
+                mixer.SetFloat("LowPass Cutoff", 3000.00f);
+                break;
+            default:
+                mixer.SetFloat("LowPass Cutoff", 22000.00f);
+                break;
+        }
+    }
 }
 
 
@@ -136,6 +153,7 @@ public class ScoreManager : MonoBehaviour
 {
     [Header("Score Patterns")]
     public ScorePattern[] scorePatterns;
+    public ScorePattern VoidPattern;
 
     [Header("Docks")]
     public Mixer[] docks;
@@ -143,6 +161,7 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField]
     private int NoOfAudioTracksPerDock = 3;
+    public int NoOfVoidLevels = 3;
 
     [Header("Metronome")]
     [Header("BPM")]
@@ -192,9 +211,11 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         // Setting up our initial state
-        LoadPattern(0, 0);
-        LoadPattern(1, 1);
-        //LoadPattern(1);
+        //LoadPattern(0, 0);
+        LoadPatternOntoDock(0, docks[0].currentScorepattern);
+        //LoadPattern(1, 1);
+        LoadPatternOntoDock(1, docks[1].currentScorepattern);
+        LoadPattern(1);
         CurrentActiveDock = 0;
 
         ResetToDefault(CurrentActiveDock);
@@ -206,7 +227,9 @@ public class ScoreManager : MonoBehaviour
     public void ResetToDefault(int dockIndex)
     {
         for (int i = 1; i <= 3; i++)
-            docks[dockIndex].SetVolume(i, -80);
+             docks[dockIndex].SetVolume(i, -80);
+        docks[dockIndex].SetHighPassDuck(false);
+        docks[dockIndex].SetLowPassCutoffLevel(-1);
     }
 
     // this is coroutine hell
@@ -304,6 +327,12 @@ public class ScoreManager : MonoBehaviour
         ResetToDefault(DockIndex);
     }
 
+    public void LoadPatternOntoDock(int DockIndex, ScorePattern pattern)
+    {
+        docks[DockIndex].Load(pattern);
+        ResetToDefault(DockIndex);
+    }
+
     public void SetHighPassDuck(bool isActive)
     {
         docks[CurrentActiveDock].SetHighPassDuck(isActive);
@@ -334,6 +363,12 @@ public class ScoreManager : MonoBehaviour
             //BroadcastMessage("OnTick");
             //Debug.Log("Tick");
         }
+    }
+
+    public void LoadVoidAtLevel(int VoidLevel)
+    {
+        LoadPattern(VoidPattern);
+        docks[(CurrentActiveDock + 1) % 2].SetLowPassCutoffLevel(VoidLevel);
     }
 
     /* This code might come in handy for manual mixing

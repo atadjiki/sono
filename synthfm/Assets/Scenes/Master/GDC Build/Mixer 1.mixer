@@ -27,7 +27,9 @@ AudioMixerController:
   - guid: c30dc02a9be09654bba37afeec6a0156
     name: Vol Master
   - guid: 679ad55c22a41e549815f7181d198c4f
-    name: HighPass Cuttoff
+    name: HighPass Cutoff
+  - guid: 3b2546c884bb7764abd94f1586f4222f
+    name: LowPass Cutoff
   m_AudioMixerGroupViews:
   - guids:
     - 0436fb627f0032549affdc73b44ae351
@@ -91,6 +93,7 @@ AudioMixerSnapshotController:
     60f3480563abebb49bfaa11107ad7e7b: -13.205425
     dab550d7c9ef0d34980cea33397d3e2c: -8.963343
     46a213387a8663f4b9fc7d617c304291: -80
+    3b2546c884bb7764abd94f1586f4222f: 2840
     c30dc02a9be09654bba37afeec6a0156: -3.2641225
     679ad55c22a41e549815f7181d198c4f: 10
     7ac4b45dfeb913a429dfc11f9ffb53e0: 0

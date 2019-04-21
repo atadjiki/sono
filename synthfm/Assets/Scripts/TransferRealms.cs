@@ -88,6 +88,7 @@ public class TransferRealms : MonoBehaviour
                 gameObject.GetComponent<AmberWorld>().enabled = true;
                 changeAppearance("Amber");
                 ScoreManager._instance.Crossfade();
+                print("Entering Amber");
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
 
@@ -142,6 +143,9 @@ public class TransferRealms : MonoBehaviour
                         LoadScene("ParasiteVoid");
                         isVoidLoaded = true;
                     }
+                    int voidlevel = FragmentManager.instance.fragments.Count / 3;
+                    ScoreManager._instance.LoadVoidAtLevel(voidlevel);
+                    ScoreManager._instance.Crossfade();
                     changeAppearance("Void");
                     Debug.Log("Entering 4");
                 }
