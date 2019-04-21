@@ -228,6 +228,12 @@ namespace PlayerInput
             return MidiJack.MidiMaster.GetKnob(profile.crossFadeChannel, profile.crossFadeKnob, 0f); 
         }
 
+        public float fetchSmallKnob()
+        {
+            //Debug.Log(MidiJack.MidiMaster.GetKnob(MidiChannel.Ch1, 56));
+            return MidiJack.MidiMaster.GetKnob(MidiChannel.Ch1, 56);
+        }
+
         public float fetchSlider()
         {
             // return MidiJack.MidiMaster.GetKnob(profile.sliderChannel, profile.sliderKnob, 0f); //Slider is channel one, knob 24?

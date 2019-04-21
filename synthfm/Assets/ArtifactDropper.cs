@@ -8,16 +8,19 @@ public class ArtifactDropper : MonoBehaviour
 
 
     public GameObject amber_artifact;
+    public GameObject fiber_artifact;
+    public GameObject latte_artifact;
+
     public Transform amber_drop_location;
     private bool amber_dropped = false;
 
-    public GameObject fiber_artifact;
+    
     public Transform fiber_drop_location;
     private bool fiber_dropped = false;
 
-    public GameObject latte_artifact;
+   
     public Transform latte_drop_location;
-    public bool latte_dropped = false;
+    private bool latte_dropped = false;
 
     public enum World { Latte, Amber, Fiber};
 
