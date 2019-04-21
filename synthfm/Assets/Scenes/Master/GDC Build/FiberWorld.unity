@@ -4891,6 +4891,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4025103954987041183, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+        type: 3}
+      propertyPath: forcefieldVFX
+      value: 
+      objectReference: {fileID: 249104473}
     - target: {fileID: 4025103956542427279, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
         type: 3}
       propertyPath: setPieceCamera
@@ -5032,6 +5037,12 @@ Transform:
 --- !u!4 &249104472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4025103955336185851, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
+    type: 3}
+  m_PrefabInstance: {fileID: 249104470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &249104473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2187012235033832651, guid: 49e7ee9dcbcb14d4a98fc7fae98df673,
     type: 3}
   m_PrefabInstance: {fileID: 249104470}
   m_PrefabAsset: {fileID: 0}
@@ -6614,6 +6625,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044672275806278983, guid: d02e6dc5a446d3f45936014a5c455822,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044672275806278983, guid: d02e6dc5a446d3f45936014a5c455822,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02e6dc5a446d3f45936014a5c455822, type: 3}
