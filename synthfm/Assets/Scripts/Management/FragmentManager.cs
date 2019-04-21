@@ -10,8 +10,8 @@ public class FragmentManager : MonoBehaviour
     public List<FragmentController> fragments;
 
     private SavedData fragmentList;
-    private float maxFrames = 1000;
-    private float currentFrames = 0;
+    public float maxFrames = 120;
+    public float currentFrames = 0;
 
     private void Awake()
     {
@@ -69,6 +69,7 @@ public class FragmentManager : MonoBehaviour
     
     public void RefreshFragmentList()
     {
+        print("FRAGMENTS REFRESHING");
         string p = PlayerPrefs.GetString("SavedData");
         SavedData s = JsonUtility.FromJson<SavedData>(p);
         fragments.Clear();

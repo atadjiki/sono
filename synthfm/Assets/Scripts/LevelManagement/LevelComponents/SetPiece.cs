@@ -93,10 +93,14 @@ public class SetPiece : MonoBehaviour
         {
             if (collision.gameObject == player.gameObject)
             {
-                Debug.Log("Switching camera to " + setPieceCamera.name);
-                mainCamera.enabled = false;
-                setPieceCamera.enabled = true;
-                setPieceCamera.Priority = 20;
+                if (mainCamera != null && setPieceCamera != null)
+                {
+                    Debug.Log("Switching camera to " + setPieceCamera.name);
+                    mainCamera.enabled = false;
+                    setPieceCamera.enabled = true;
+                    setPieceCamera.Priority = 20;
+                }
+                   
             }
            
         }
@@ -108,11 +112,14 @@ public class SetPiece : MonoBehaviour
         {
             if (collision.gameObject == player.gameObject)
             {
-                Debug.Log("Switching camera to " + mainCamera.Name);
-                mainCamera.enabled = true;
-                setPieceCamera.enabled = false;
-                setPieceCamera.Priority = 10;
-
+               
+                if(mainCamera != null && setPieceCamera != null)
+                {
+                    Debug.Log("Switching camera to " + mainCamera.Name);
+                    mainCamera.enabled = true;
+                    setPieceCamera.enabled = false;
+                    setPieceCamera.Priority = 10;
+                }
             }
         }
 

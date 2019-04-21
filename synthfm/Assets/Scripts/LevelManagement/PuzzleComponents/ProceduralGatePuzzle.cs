@@ -50,7 +50,7 @@ public class ProceduralGatePuzzle : Puzzle
 
     public override void GateTriggered(GateTrigger trigger)
     {
-        if (complete) { return; }
+        if (Complete) { return; }
 
         //deactivate this gate and spawn a new one
         Destroy(trigger.gameObject);
@@ -62,7 +62,7 @@ public class ProceduralGatePuzzle : Puzzle
         if (currentGate == gateCount)
         {
             Debug.Log("Puzzle complete!");
-            complete = true;
+            Complete = true;
             DeleteForcefield();
 
         }
