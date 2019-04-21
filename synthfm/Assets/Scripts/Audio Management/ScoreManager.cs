@@ -132,6 +132,7 @@ public class Mixer
     {
         switch(level)
         {
+            case 0:
             case 1:
                 mixer.SetFloat("LowPass Cutoff", 545.00f);
                 break;
