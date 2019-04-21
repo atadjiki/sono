@@ -172,7 +172,7 @@ public class FragmentController : MonoBehaviour
     public void Flee()
     {
         rb.velocity = Vector2.zero;
-        this.gameObject.transform.position = ptGenerator.getStartingPoint();
+        this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
         // move to starting points of curve
        // StartCoroutine(MoveToCurve());
     }
@@ -180,7 +180,7 @@ public class FragmentController : MonoBehaviour
     IEnumerator MoveToCurve()
     {
         yield return new WaitForSeconds(2);
-        this.gameObject.transform.position = ptGenerator.getStartingPoint();
+        this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
     }
 
     public void CreatePatterns()
@@ -190,6 +190,12 @@ public class FragmentController : MonoBehaviour
             ptGenerator.ToBegin = true;
         }
         this.transform.position = ptGenerator.fragPos;
+    }
+
+    public void changeTrailTime(float i_time)
+    {
+        TrailRenderer tr = this.gameObject.transform.Find("Trail").GetComponent<TrailRenderer>();
+        tr.time = i_time;
     }
 
     public void Lead()
