@@ -172,9 +172,10 @@ public class FragmentController : MonoBehaviour
     public void Flee()
     {
         rb.velocity = Vector2.zero;
-        this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
+       
+        // this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
         // move to starting points of curve
-       // StartCoroutine(MoveToCurve());
+        // StartCoroutine(MoveToCurve());
     }
 
     IEnumerator MoveToCurve()

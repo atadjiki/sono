@@ -17,7 +17,6 @@ public class ClusterManager : Puzzle
     [Header("Engineers ONLY !")]
     [Header("DO NOT TOUCH FOllowings")]
     public bool IsComplete = false;
-
     
     private int Num_Of_Actives;     // ROCk Mode
     private int _curSeq;        // Seq Mode
