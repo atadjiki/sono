@@ -81,7 +81,8 @@ public class ClusterManager : Puzzle
             if (Num_Of_Actives == Crystalls.Length)
             {
                 IsComplete = true;
-                // destroy rock
+                PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber);
+                //// destroy rock -- Arash - keep rocks for now until we delete puzzles and drop artifact
                 foreach (RockIt R in Rocks) // puzzle complete
                 {
                     R.ActivateIt();

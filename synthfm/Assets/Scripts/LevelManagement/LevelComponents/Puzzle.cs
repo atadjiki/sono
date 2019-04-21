@@ -17,7 +17,7 @@ using PlayerInput;
 public class Puzzle : SetPiece
 {
 
-    public bool complete = false;
+    public bool Complete = false;
     private bool released = false;
     public bool disableCameraOnComplete = true;
     public FragmentCase fragmentCase;
@@ -168,19 +168,19 @@ public class Puzzle : SetPiece
 
     public void SetStatus(bool status)
     {
-        complete = status;
+        Complete = status;
     }
 
     public bool GetStatus()
     {
-        return complete;
+        return Complete;
     }
 
     void FixedUpdate()
     {
         if (Application.isPlaying && fragment != null)
         {
-            if (complete && disableCameraOnComplete && !released)
+            if (Complete && disableCameraOnComplete && !released)
             {
                 ReleaseCage();
                 player.gameObject.GetComponent<Navpoint>().CheckForNewTarget();
@@ -191,7 +191,7 @@ public class Puzzle : SetPiece
         if (allowDebugComplete && inputBindings.Debug_Puzzle_Complete.WasPressed)
         {
             Debug.Log("Debug Puzzle Complete");
-            complete = true;
+            Complete = true;
         }
     }
 

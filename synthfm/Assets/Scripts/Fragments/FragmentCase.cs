@@ -48,7 +48,7 @@ public class FragmentCase : MonoBehaviour
             setPickup = true;
             if (setPickup == true)
             {
-                Debug.Log("PingOff");
+               // Debug.Log("PingOff");
                 Pickup.SetActive(true);
                 Ping.SetActive(false);
             }
@@ -56,7 +56,7 @@ public class FragmentCase : MonoBehaviour
             {
                 Ping.SetActive(true);
                 Pickup.SetActive(false);
-                Debug.Log("PingOn");
+                //Debug.Log("PingOn");
             }
             if (fragment.currentState != FragmentController.states.DEPOSIT)
             {
@@ -64,6 +64,10 @@ public class FragmentCase : MonoBehaviour
                 if (GetComponentInParent<Puzzle>() == null)
                 {
                     Debug.Log("parent doesn't have puzzle component!");
+                }
+                else if(GetComponentInParent<LattePuzzle>() != null)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte);
                 }
                 else
                 {
