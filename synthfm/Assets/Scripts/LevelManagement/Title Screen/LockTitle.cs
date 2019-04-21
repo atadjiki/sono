@@ -27,7 +27,7 @@ public class LockTitle : MonoBehaviour
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
         FXToggle.instance.AllFXOff();
-       StartCoroutine(Lock());
+         StartCoroutine(Lock());
 
         
     }

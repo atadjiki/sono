@@ -6,6 +6,11 @@ public class FXToggle : MonoBehaviour
 {
     public static FXToggle instance;
 
+    [Header("Particle World Effects")]
+    public GameObject AmberFX;
+    public GameObject FiberFX;
+    public GameObject LatteFX;
+
     private void Awake()
     {
         if (instance == null)
@@ -17,13 +22,7 @@ public class FXToggle : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
     }
-
-    [Header("Particle World Effects")]
-    public GameObject AmberFX;
-    public GameObject FiberFX;
-    public GameObject LatteFX;
 
     public void ToggleFX(FragmentController.world world)
     {
