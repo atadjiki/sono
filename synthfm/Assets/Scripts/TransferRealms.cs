@@ -23,8 +23,19 @@ public class TransferRealms : MonoBehaviour
 
     public string CurrentWorld;
 
+    private bool isAmberLoaded;
+    private bool isFiberLoaded;
+    private bool isLatteLoaded;
+    private bool isVoidLoaded;
+
+
     void Start()
     {
+        isAmberLoaded = false;
+        isFiberLoaded = false;
+        isLatteLoaded = false;
+        isVoidLoaded = false;
+
         findDistance = false;
         smm = memoryManager.GetComponent<SceneMemoryManagement>();
     }
@@ -39,16 +50,49 @@ public class TransferRealms : MonoBehaviour
         }
     }
 
+    private void LoadScene(string sceneName)
+    {
+        if(sceneName == "AmberWorld")
+        {
+            isAmberLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+        else if(sceneName == "LatteWorld")
+        {
+            isLatteLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LatteWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+        else if(sceneName == "FiberWorld")
+        {
+            isFiberLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+        else if(sceneName == "ParasiteVoid")
+        {
+            isVoidLoaded = true;
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            //gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
 
             if (gameObject.tag == "Realm1") // AMBER
             {
+                if (isAmberLoaded == false)
+                {
+                    LoadScene("AmberWorld");
+
+                }
+
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("AmberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<AmberWorld>().enabled = true;
                 changeAppearance("Amber");
                 ScoreManager._instance.Crossfade();
@@ -59,11 +103,16 @@ public class TransferRealms : MonoBehaviour
             }
             else if (gameObject.tag == "Realm2")
             {
+                if (isFiberLoaded == false)
+                {
+                    LoadScene("FiberWorld");
+                    isFiberLoaded = true;
+
+                }
                 handleFragment_Tarnsport(gameObject.tag.ToString());
 
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
                 changeAppearance("Fiber");
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FiberWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<FiberWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
@@ -72,8 +121,12 @@ public class TransferRealms : MonoBehaviour
             }
             else if (gameObject.tag == "Realm3")
             {
+                if (isLatteLoaded == false)
+                {
+                    LoadScene("LatteWorld");
+                    isLatteLoaded = true;
+                }
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredLatteWorld = true;
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LatteWorld", UnityEngine.SceneManagement.LoadSceneMode.Additive);
                 gameObject.GetComponent<LatteWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
@@ -84,7 +137,11 @@ public class TransferRealms : MonoBehaviour
             {
                 if (!GameObject.Find("Parasite"))
                 {
-                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                    if (isVoidLoaded == false)
+                    {
+                        LoadScene("ParasiteVoid");
+                        isVoidLoaded = true;
+                    }
                     changeAppearance("Void");
                     Debug.Log("Entering 4");
                 }
