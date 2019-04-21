@@ -4,13 +4,22 @@ using UnityEngine;
 using UnityEngine.Experimental.VFX;
 public class TravisCollisionTest : MonoBehaviour
 {
-    [SerializeField] private VisualEffect vfx;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.name == "Player")
         {
             //TO DO: For Travis - Instantiate your VFX here!
-            vfx.Play();
         }
     }
 }
