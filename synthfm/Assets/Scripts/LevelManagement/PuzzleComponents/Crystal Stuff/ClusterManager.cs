@@ -84,6 +84,7 @@ public class ClusterManager : Puzzle
                 foreach (RockIt R in Rocks) // puzzle complete
                 {
                     R.ActivateIt();
+                    R.gameObject.GetComponent<Collider2D>().enabled = false;
                     IsComplete = true;
 
                     fragment.transform.position = new Vector3(initPos.x, initPos.y, 0);
