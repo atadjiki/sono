@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795256734217747}
   m_Layer: 0
-  m_Name: Curves (3)
+  m_Name: Curve cluster 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765795256823914646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: -19.9, z: 0}
+  m_LocalPosition: {x: -2, y: -13.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 765795257570068062}
@@ -638,7 +638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795256976806249}
   m_Layer: 0
-  m_Name: Curve Group 2
+  m_Name: Pair 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257009873334}
   m_Layer: 0
-  m_Name: Curve Group 1
+  m_Name: Pair 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257178189650}
   m_Layer: 0
-  m_Name: Curves (2)
+  m_Name: Curve cluster 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,7 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257190957655}
   m_Layer: 0
-  m_Name: Curve Group 1
+  m_Name: Pair 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,7 +1150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257285248939}
   m_Layer: 0
-  m_Name: Curve Group 1
+  m_Name: Pair 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1332,7 +1332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257363288409}
   m_Layer: 0
-  m_Name: Curve Group 3
+  m_Name: Pair 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1514,7 +1514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257463316053}
   m_Layer: 0
-  m_Name: Curve Group 2
+  m_Name: Pair 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1546,7 +1546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257469170742}
   m_Layer: 0
-  m_Name: Curves (1)
+  m_Name: Curve cluster 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1756,6 +1756,7 @@ GameObject:
   - component: {fileID: 765795257570068062}
   - component: {fileID: 765795257570068060}
   - component: {fileID: 765795257570068061}
+  - component: {fileID: 972156572}
   m_Layer: 0
   m_Name: Final Pattern Zone
   m_TagString: Untagged
@@ -1815,6 +1816,29 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 75
+--- !u!114 &972156572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765795257570068063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2558feddca4fb6e44ad07168bb2e4361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Curves:
+  - {fileID: 0}
+  - {fileID: 765795257285248940}
+  - {fileID: 765795257463316054}
+  - {fileID: 765795257761472040}
+  - {fileID: 765795257009873335}
+  - {fileID: 765795256976806250}
+  - {fileID: 765795257899586576}
+  - {fileID: 765795257190957640}
+  - {fileID: 765795258504008644}
+  - {fileID: 765795257363288410}
 --- !u!1 &765795257584256235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,7 +2098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257761472055}
   m_Layer: 0
-  m_Name: Curve Group 3
+  m_Name: Pair 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2159,7 +2183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795257899586591}
   m_Layer: 0
-  m_Name: Curve Group 3
+  m_Name: Pair 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2470,7 +2494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765795258056508796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9, y: 52.1, z: 0}
+  m_LocalPosition: {x: 1.9, y: 27.9, z: 0}
   m_LocalScale: {x: 228.05707, y: 105.03423, z: 41.395493}
   m_Children: []
   m_Father: {fileID: 765795257570068062}
@@ -3142,7 +3166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765795258504008643}
   m_Layer: 0
-  m_Name: Curve Group 2
+  m_Name: Pair 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3690,8 +3714,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6354908596194477774, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+        type: 3}
+      propertyPath: controlPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 765795256898251889}
+    - target: {fileID: 6354908596194477774, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+        type: 3}
+      propertyPath: controlPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 765795257929313497}
+    - target: {fileID: 6354908596194477774, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+        type: 3}
+      propertyPath: controlPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 765795256830158571}
+    - target: {fileID: 6354908596194477774, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+        type: 3}
+      propertyPath: controlPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 765795258347559170}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfe9bf7cb5b93d42b406b37f502bfff, type: 3}
+--- !u!4 &765795258347559170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6354908596494434757, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+    type: 3}
+  m_PrefabInstance: {fileID: 5949691648406231239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &765795256830158571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6354908594920947244, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+    type: 3}
+  m_PrefabInstance: {fileID: 5949691648406231239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &765795257929313497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6354908596019573790, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+    type: 3}
+  m_PrefabInstance: {fileID: 5949691648406231239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &765795256898251889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6354908595255375030, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,
+    type: 3}
+  m_PrefabInstance: {fileID: 5949691648406231239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &765795258111041034 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6354908596194477773, guid: 0cfe9bf7cb5b93d42b406b37f502bfff,

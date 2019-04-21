@@ -507,13 +507,21 @@
             }
             else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Knob)
             {
-                Debug.Log("Knob turned");
+                print(turntableManager.fetchSmallKnob());
                 //LEFT
-                if (turntableManager.fetchSmallKnob() < 0.5f)
+                if (turntableManager.fetchSmallKnob() < 0.5f && currentFrames >= maxFrames)
                 {
+                    //TO DO: Iterate right
+                    Debug.Log("Knob turned");
 
                 }
                 //RIGHT
+                else if(turntableManager.fetchSmallKnob() > 0.5f && currentFrames >= maxFrames)
+                {
+                    //TO DO: Iterate left
+                    Debug.Log("Knob turned");
+
+                }
                 else
                 {
 

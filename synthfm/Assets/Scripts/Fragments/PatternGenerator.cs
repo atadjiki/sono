@@ -31,15 +31,35 @@ public class PatternGenerator : MonoBehaviour
        // speed = 0.6f;
         toStart = true;
 
-        routes = new Transform[CurvePair.transform.childCount];
-        for(int i=0; i<routes.Length; i++)
-        {
-            routes[i] = CurvePair.transform.GetChild(i);
-        }
-
         fragPos = transform.position;
         m_startingPoint = routes[0].GetChild(0).gameObject.transform;
        // changeTrailTimes(trailTime);
+    }
+
+    private void Awake()
+    {
+        // assign curve
+        curveManager toAssign = GameObject.Find("Final Pattern Zone").GetComponent<curveManager>();
+        FragmentController fc = gameObject.GetComponent<FragmentController>();
+        switch(fc.currentWorld)
+        {
+            case FragmentController.world.AMBER:
+                CurvePair = toAssign.Curves[fc.TrackIndex];
+                break;
+            case FragmentController.world.FIBER:
+                CurvePair = toAssign.Curves[fc.TrackIndex + 3];
+                break;
+            case FragmentController.world.LATTE:
+                CurvePair = toAssign.Curves[fc.TrackIndex + 6];
+                break;
+        }
+
+
+        routes = new Transform[CurvePair.transform.childCount];
+        for (int i = 0; i < routes.Length; i++)
+        {
+            routes[i] = CurvePair.transform.GetChild(i);
+        }
     }
 
     void changeTrailTime(float i_time)
