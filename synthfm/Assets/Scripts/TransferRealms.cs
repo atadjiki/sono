@@ -84,7 +84,7 @@ public class TransferRealms : MonoBehaviour
         {
             //gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
 
-            if (gameObject.tag == "Realm1")
+            if (gameObject.tag == "Realm1") // AMBER
             {
                 if (isAmberLoaded == false)
                 {
@@ -99,19 +99,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
 
-                // If Flee -> change to FOLLOW
-                FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
-                foreach (FragmentController fragment in fragments)
-                {
-                    if (fragment.currentState == FragmentController.states.FLEE)
-                    {
-                        fragment.currentState = FragmentController.states.FOLLOW;
-
-                        Debug.Log("Rejoining with fragments");
-
-                    }
-
-                }
+                HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
             }
             else if (gameObject.tag == "Realm2")
             {
@@ -121,13 +109,15 @@ public class TransferRealms : MonoBehaviour
                     isFiberLoaded = true;
 
                 }
+                handleFragment_Tarnsport(gameObject.tag.ToString());
+
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
                 changeAppearance("Fiber");
                 gameObject.GetComponent<FiberWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
-                handleFragment_Tarnsport(gameObject.tag.ToString());
+                HandleEnterActions(FragmentController.world.FIBER); // Fragment enter actions
             }
             else if (gameObject.tag == "Realm3")
             {
@@ -140,6 +130,8 @@ public class TransferRealms : MonoBehaviour
                 gameObject.GetComponent<LatteWorld>().enabled = true;
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+                HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions
             }
             else if (gameObject.tag == "Realm4")
             {
@@ -181,23 +173,29 @@ public class TransferRealms : MonoBehaviour
         findDistance = true;
         collPosition = (collision.transform.position).magnitude;
 
+
+
         if (gameObject.tag == "Realm1")
         {
             gameObject.GetComponent<AmberWorld>().enabled = false;
-            // GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-          
+
+            HandleExitActions(FragmentController.world.AMBER);
         }
 
         if (gameObject.tag == "Realm2")
         {
             gameObject.GetComponent<FiberWorld>().enabled = false;
             GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+            HandleExitActions(FragmentController.world.FIBER);
         }
 
         if (gameObject.tag == "Realm3")
         {
             gameObject.GetComponent<LatteWorld>().enabled = false;
             GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+            HandleExitActions(FragmentController.world.LATTE);
         }
     }
 
@@ -212,7 +210,7 @@ public class TransferRealms : MonoBehaviour
             switch (i_realm)
             {
                 case "Realm2":
-                    if (fragment.TrackIndex >= 1 || fragment.TrackIndex <= 3)
+                    if (fragment.TrackIndex >= 1 && fragment.TrackIndex <= 3)
                     {
                         if (fragment.currentState == FragmentController.states.FOLLOW)
                         {
@@ -223,7 +221,7 @@ public class TransferRealms : MonoBehaviour
                     break;
 
                 case "Realm3":
-                    if (fragment.TrackIndex >= 4 || fragment.TrackIndex <= 6)
+                    if (fragment.TrackIndex >= 4 && fragment.TrackIndex <= 6)
                     {
                         if (fragment.currentState == FragmentController.states.FOLLOW)
                         {
@@ -235,14 +233,44 @@ public class TransferRealms : MonoBehaviour
                 case "Realm4":
                     // spawn the final pattern in from of player
                     break;
-
-                if (fragment.currentState == FragmentController.states.FOLLOW)
-                {
-                    n++;
-                    ToHandle.Add(fragment);
-                    //    Debug.Log("Leavoing Fragments behind");
-                }
+                    
             }
+        }
+
+       
+    }
+
+    
+    // when player ENTER any world
+   private void HandleEnterActions(FragmentController.world iWorld)
+   {
+        // If Flee -> change to FOLLOW
+        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        foreach (FragmentController fragment in fragments)
+        {
+            if (fragment.currentState == FragmentController.states.FLEE && fragment.currentWorld == iWorld)
+            {
+                fragment.currentState = FragmentController.states.FOLLOW;
+                Debug.Log("Rejoining with fragments for : " + iWorld);
+            }
+        }
+   }
+
+
+    // when player ENTER any world
+    private void HandleExitActions(FragmentController.world iWorld)
+    {
+        int n = 0; // count the fragments
+        List<FragmentController> ToHandle = new List<FragmentController>();
+        // If FOLLOW -> change to FLEE
+        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        foreach (FragmentController fragment in fragments)
+        {
+            if (fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == iWorld)
+            {
+                n++;
+                ToHandle.Add(fragment);
+            } 
         }
 
         if (n < maxToExit)
@@ -252,9 +280,11 @@ public class TransferRealms : MonoBehaviour
                 fc.currentState = FragmentController.states.FLEE;
             }
         }
-        else
+        else // move them to the void after few seconds
         {
             Debug.Log("Successfully exiting the world !");
         }
     }
+
+
 }
