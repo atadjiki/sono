@@ -10,6 +10,7 @@ public class LockTitle : MonoBehaviour
     public PlayerInput.TurntableController player;
     public Navpoint navPoint;
     public GameObject bubbles;
+    public GameObject playerTrail;
 
 
     public GameObject rbPlayer;
@@ -41,6 +42,7 @@ public class LockTitle : MonoBehaviour
        // navPoint.Unlock();
         Debug.Log("Title screen finished " + Time.time + " secs");
         bubbles.SetActive(true);
+        playerTrail.SetActive(true);
 
        // yield return new WaitForSecondsRealtime(2f);
 

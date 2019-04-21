@@ -220,7 +220,7 @@ public class Navpoint : MonoBehaviour
 
         foreach (Puzzle puzzle in puzzles)
         {
-            if (!puzzle.complete)
+            if (!puzzle.Complete)
             {
                 if(enteredFiberWorld && canTargetFiberWorld)
                 {
