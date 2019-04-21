@@ -6,7 +6,7 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, LEAD, FINAL_PATERN };
+    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, VOID, FINAL_PATERN, PRE_FINAL };
 
     public enum world { AMBER, LATTE, FIBER,HUB};
 
@@ -110,11 +110,14 @@ public class FragmentController : MonoBehaviour
                 break;
             case states.DEPOSIT:
                 break;
-            case states.LEAD:
-                Lead();
+            case states.VOID:
+                Void();
                 break;
             case states.FINAL_PATERN:
                 CreatePatterns();
+                break;
+            case states.PRE_FINAL:
+                Void();
                 break;
             default:
                 break;
@@ -139,6 +142,11 @@ public class FragmentController : MonoBehaviour
 
         scoreManager.FadeOutMixerGroup(TrackIndex);
         print("Deposit fragment");
+    }
+
+    public void makeFollowCurveStartingPoint()
+    {
+        followTarget =  gameObject.GetComponent<PatternGenerator>().getStartingPoint();
     }
 
     private void Follow()
@@ -171,17 +179,25 @@ public class FragmentController : MonoBehaviour
 
     public void Flee()
     {
-        rb.velocity = Vector2.zero;
-       
+        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
+
         // this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
-        // move to starting points of curve
-        // StartCoroutine(MoveToCurve());
+       
     }
 
+    public void getReadyFoTrCurve()
+    {
+         // move to starting points of curve
+         StartCoroutine(MoveToCurve());
+        currentState = states.PRE_FINAL;
+    }
+
+    // change the position to curve starting point
     IEnumerator MoveToCurve()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
+        changeTrailTime(5);
     }
 
     public void CreatePatterns()
@@ -199,9 +215,9 @@ public class FragmentController : MonoBehaviour
         tr.time = i_time;
     }
 
-    public void Lead()
+    public void Void()
     {
-        this.transform.position = bzFollow.fragPos;
+        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
     }
 
     public void setDetatchingTransform(Transform i_tf)
