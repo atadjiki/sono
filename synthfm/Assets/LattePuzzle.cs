@@ -79,5 +79,15 @@ public class LattePuzzle : MonoBehaviour
 
         lineRenderer.SetPositions(positions.ToArray());
     }
-  
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        FXToggle.instance.TogglePlayerFog(this.gameObject, true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        FXToggle.instance.TogglePlayerFog(this.gameObject, false);
+    }
+
 }
