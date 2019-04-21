@@ -7,7 +7,7 @@ public class PuzzleProgressManager : MonoBehaviour
 
     public static PuzzleProgressManager instance;
 
-    private int amber_puzzles = 2;
+    private int amber_puzzles = 3;
     private int amber_count = 0;
     private bool amber_deleted = false;
 
@@ -53,6 +53,7 @@ public class PuzzleProgressManager : MonoBehaviour
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
                 {
                     Destroy(puzzle.gameObject);
+                    ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
                 }
                 mainCamera.enabled = true;
                 amber_deleted = true;
@@ -71,6 +72,7 @@ public class PuzzleProgressManager : MonoBehaviour
                 foreach(GatePuzzle puzzle in GameObject.FindObjectsOfType<GatePuzzle>())
                 {
                     Destroy(puzzle.gameObject);
+                    ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Fiber);
                 }
 
                 mainCamera.enabled = true;
@@ -89,6 +91,7 @@ public class PuzzleProgressManager : MonoBehaviour
                 foreach (LattePuzzle puzzle in GameObject.FindObjectsOfType<LattePuzzle>())
                 {
                     Destroy(puzzle.gameObject);
+                    ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Latte);
                 }
 
                 mainCamera.enabled = true;
@@ -113,8 +116,6 @@ public class PuzzleProgressManager : MonoBehaviour
             return latte_count;
         }
     }
-
-    
 
     
 }

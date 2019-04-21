@@ -50,7 +50,7 @@
         public float torqueIncrement = 1.5f;
         public bool multiplyTorque = true;
 
-        public enum Speed { Slow, Normal, Fast, None};
+        public enum Speed { Slow, Normal, Fast, None };
         public Speed currentSpeed;
 
         private new Rigidbody2D rigidbody;
@@ -160,7 +160,7 @@
             if (i_Menu != null)              // Only if menu is there
                 DoMenuActions();
 
-            
+
         }
 
         void UpdateVariables()
@@ -505,11 +505,21 @@
                 }
 
             }
-            else if(turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Knob)
+            else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Knob)
             {
                 Debug.Log("Knob turned");
+                //LEFT
+                if (turntableManager.fetchSmallKnob() < 0.5f)
+                {
+
+                }
+                //RIGHT
+                else
+                {
+
+                }
             }
-            if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Cue)
+            else if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Cue)
             {
                 Debug.Log("Cue Pressed");
 
@@ -521,7 +531,7 @@
             if (currentButtonFrames >= maxButtonFrames)
             {
 
-               
+
                 if (turntableManager.messageReceived && turntableManager.lastInteracted == TurntableManager.DJTechControl.Play)
                 {
 
@@ -580,7 +590,7 @@
 
             float current_z = CM_Main.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z;
             float follow_z = zoom_default;
-           
+
 
             if (speed == Speed.Fast || overriden == Speed.Fast)
             {
