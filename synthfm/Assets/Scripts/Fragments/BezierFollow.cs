@@ -65,7 +65,7 @@ public class BezierFollow : MonoBehaviour
                 if (fragment.currentState == FragmentController.states.FOLLOW)
                 {
                     fragPos = fragment.gameObject.transform.position;
-                    fragment.currentState = FragmentController.states.LEAD;
+                    fragment.currentState = FragmentController.states.VOID;
                   
                     //    Debug.Log("Leavoing Fragments behind");
                 }

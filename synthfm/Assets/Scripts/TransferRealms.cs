@@ -78,7 +78,8 @@ public class TransferRealms : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)  // ** ENTER **
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -97,9 +98,9 @@ public class TransferRealms : MonoBehaviour
                 changeAppearance("Amber");
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-
-
+                
                 HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
+                
             }
             else if (gameObject.tag == "Realm2")
             {
@@ -109,7 +110,6 @@ public class TransferRealms : MonoBehaviour
                     isFiberLoaded = true;
 
                 }
-                handleFragment_Tarnsport(gameObject.tag.ToString());
 
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
                 changeAppearance("Fiber");
@@ -118,6 +118,8 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
                 HandleEnterActions(FragmentController.world.FIBER); // Fragment enter actions
+                changeStateToVoid(); // transfer fragments to next void
+
             }
             else if (gameObject.tag == "Realm3")
             {
@@ -132,6 +134,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
                 HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions
+                prepareForCurve();
             }
             else if (gameObject.tag == "Realm4")
             {
@@ -150,6 +153,64 @@ public class TransferRealms : MonoBehaviour
 
     }
 
+   
+    private void OnTriggerExit2D(Collider2D collision)  // ** EXIT **
+    {
+        findDistance = true;
+        collPosition = (collision.transform.position).magnitude;
+
+        if (gameObject.tag == "Realm1")
+        {
+            gameObject.GetComponent<AmberWorld>().enabled = false;
+
+            HandleExitActions(FragmentController.world.AMBER);
+        }
+
+        if (gameObject.tag == "Realm2")
+        {
+            gameObject.GetComponent<FiberWorld>().enabled = false;
+            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+            if (collision.gameObject.tag == "Player")
+            {
+                HandleExitActions(FragmentController.world.FIBER);
+                // join with the Amber Fragments
+                JoinInVoid();
+            }
+        }
+
+        if (gameObject.tag == "Realm3")
+        {
+            gameObject.GetComponent<LatteWorld>().enabled = false;
+            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
+
+            if (collision.gameObject.tag == "Player")
+            {
+                HandleExitActions(FragmentController.world.LATTE);
+
+                SpawnFinalPatternZone();
+            }
+        }
+    }
+
+    private void SpawnFinalPatternZone()
+    {
+        // spawn the finalPattern Zone
+        GameObject finalPattern = GameObject.Find("Final Pattern Zone");
+        Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
+        finalPattern.transform.position = playerPos - new Vector3(100, 0, 0);
+
+        // make the Latte frags follow starting point
+        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        foreach (FragmentController fragment in fragments)
+        {
+            if(fragment.currentWorld == FragmentController.world.LATTE && fragment.currentState == FragmentController.states.FOLLOW)
+            {
+                fragment.makeFollowCurveStartingPoint();
+            }
+        }
+    }
+
     private void changeAppearance(string destination)
     {
         ChangeColor cc = GameObject.Find("Main Camera").GetComponent<ChangeColor>();
@@ -165,84 +226,59 @@ public class TransferRealms : MonoBehaviour
         {
             StartCoroutine(cc.changeColor(cc.dark, cc.currentPlayercolor, cc.currentTrailColor));
         }
-
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    // move fragments to the curve pos
+    private void prepareForCurve()
     {
-        findDistance = true;
-        collPosition = (collision.transform.position).magnitude;
-
-
-
-        if (gameObject.tag == "Realm1")
-        {
-            gameObject.GetComponent<AmberWorld>().enabled = false;
-
-            HandleExitActions(FragmentController.world.AMBER);
-        }
-
-        if (gameObject.tag == "Realm2")
-        {
-            gameObject.GetComponent<FiberWorld>().enabled = false;
-            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-
-            HandleExitActions(FragmentController.world.FIBER);
-        }
-
-        if (gameObject.tag == "Realm3")
-        {
-            gameObject.GetComponent<LatteWorld>().enabled = false;
-            GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-
-            HandleExitActions(FragmentController.world.LATTE);
-        }
-    }
-
-    private void handleFragment_Tarnsport(string i_realm)
-    {
-        // If Follow -> change to Flee (is less than three)
-        int n = 0;
-        List<FragmentController> ToHandle = new List<FragmentController>();
         FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
         foreach (FragmentController fragment in fragments)
         {
-            switch (i_realm)
+            if (fragment.currentState == FragmentController.states.FOLLOW)
             {
-                case "Realm2":
-                    if (fragment.TrackIndex >= 1 && fragment.TrackIndex <= 3)
-                    {
-                        if (fragment.currentState == FragmentController.states.FOLLOW)
-                        {
-                            fragment.followTarget = fragment.gameObject.GetComponent<PatternGenerator>().getStartingPoint();
-                            fragment.changeTrailTime(4);
-                        }
-                    }
-                    break;
-
-                case "Realm3":
-                    if (fragment.TrackIndex >= 4 && fragment.TrackIndex <= 6)
-                    {
-                        if (fragment.currentState == FragmentController.states.FOLLOW)
-                        {
-                            fragment.followTarget = fragment.gameObject.GetComponent<PatternGenerator>().getStartingPoint();
-                            fragment.changeTrailTime(4);
-                        }
-                    }
-                    break;
-                case "Realm4":
-                    // spawn the final pattern in from of player
-                    break;
-                    
+                fragment.changeTrailTime(0);
+                fragment.getReadyForCurve();
+              
             }
         }
-
-       
     }
 
-    
-    // when player ENTER any world
-   private void HandleEnterActions(FragmentController.world iWorld)
+    // Change state to void
+    private void changeStateToVoid()
+    {
+        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        foreach (FragmentController fragment in fragments)
+        {
+            if(fragment.currentState == FragmentController.states.FOLLOW)
+            {
+                fragment.currentState = FragmentController.states.VOID;
+            }
+        }
+    }
+
+    // to move fragment to void around player
+    private void JoinInVoid()  
+    {
+        Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
+        // change trail to zero
+        // move around player
+        // change trail time to 10
+        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        foreach (FragmentController fragment in fragments)
+        {
+            if(fragment.currentState == FragmentController.states.VOID && fragment.currentWorld == FragmentController.world.AMBER)
+            {
+                fragment.changeTrailTime(0);
+                fragment.transform.position = playerPos + new Vector3(150,0,0);
+                fragment.changeTrailTime(5);
+                fragment.currentState = FragmentController.states.FOLLOW;
+            }
+        }
+    }
+
+
+    // Fragments Behaviour when player ENTER any world
+    private void HandleEnterActions(FragmentController.world iWorld)
    {
         // If Flee -> change to FOLLOW
         FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
@@ -257,12 +293,12 @@ public class TransferRealms : MonoBehaviour
    }
 
 
-    // when player ENTER any world
+    // Fragments behaviour when player EXIT any world
     private void HandleExitActions(FragmentController.world iWorld)
     {
         int n = 0; // count the fragments
         List<FragmentController> ToHandle = new List<FragmentController>();
-        // If FOLLOW -> change to FLEE
+       
         FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
         foreach (FragmentController fragment in fragments)
         {
@@ -270,19 +306,21 @@ public class TransferRealms : MonoBehaviour
             {
                 n++;
                 ToHandle.Add(fragment);
-            } 
+            }
         }
 
-        if (n < maxToExit)
+
+        // If FOLLOW -> change to FLEE
+        foreach (FragmentController fc in ToHandle)
         {
-            foreach (FragmentController fc in ToHandle)
+            if (n < maxToExit) // 
             {
                 fc.currentState = FragmentController.states.FLEE;
             }
-        }
-        else // move them to the void after few seconds
-        {
-            Debug.Log("Successfully exiting the world !");
+            else // move them to the void after few seconds
+            {
+                Debug.Log("Successfully exiting the world !");
+            }
         }
     }
 
