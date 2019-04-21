@@ -186,7 +186,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 12.5
 --- !u!250 &2111188218319868847
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -346,16 +346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle01
       objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
+    - target: {fileID: 5863697302354160306, guid: 07c8bbfc4a0029445a06480b4efb7706,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: VE
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5039342790412574110}
     - target: {fileID: 5863697302354160304, guid: 07c8bbfc4a0029445a06480b4efb7706,
         type: 3}
       propertyPath: m_Asset
@@ -432,11 +427,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160306, guid: 07c8bbfc4a0029445a06480b4efb7706,
+    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
         type: 3}
-      propertyPath: VE
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 5039342790412574110}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160311, guid: 07c8bbfc4a0029445a06480b4efb7706,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c8bbfc4a0029445a06480b4efb7706, type: 3}
 --- !u!1 &5039342790412574104 stripped
@@ -469,20 +469,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 1999787110935298967}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -543,6 +529,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.2499998
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 1999787110935298967}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &6081840156829334108 stripped
@@ -581,20 +581,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 2111188217304587831}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -655,6 +641,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.2500002
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 2111188217304587831}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &5975098930585577468 stripped
@@ -693,24 +693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 2111188219340292698}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
@@ -762,6 +748,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 2111188219340292698}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &5975098929370643345 stripped
@@ -800,20 +800,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 2111188218413814121}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -869,6 +855,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 2111188218413814121}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &5975098929417234594 stripped
@@ -907,20 +907,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (13)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 2111188218864852764}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -976,6 +962,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 2111188218864852764}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &5975098929830520535 stripped
@@ -1014,20 +1014,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 2772372690402209416}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1083,6 +1069,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 2772372690402209416}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!2083052967 &2772372690402209416 stripped
@@ -1121,20 +1121,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: partOfPuzzle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
-        type: 3}
-      propertyPath: GateReact
-      value: 
-      objectReference: {fileID: 7255780034849062628}
     - target: {fileID: 5739735119460921860, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1194,6 +1180,20 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: partOfPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993400179032434626, guid: ae18b2cc3c373464ea5668aefe278d77,
+        type: 3}
+      propertyPath: GateReact
+      value: 
+      objectReference: {fileID: 7255780034849062628}
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
@@ -1284,10 +1284,6 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 8089593079781002202}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.959
@@ -1304,11 +1300,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6ff9c5c02c39c70468cc8bc6b115e491,
-        type: 3}
     - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: fragment
       value: 
@@ -1321,6 +1312,15 @@ PrefabInstance:
       propertyPath: Pickup
       value: 
       objectReference: {fileID: 8089593080066280166}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ff9c5c02c39c70468cc8bc6b115e491,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
 --- !u!4 &8089593079302474880 stripped

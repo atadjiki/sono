@@ -171,7 +171,6 @@ public class GatePuzzle : Puzzle
 
         //DeleteGates();
         base.ReleaseCage();
-        PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber);
         SetStatus(Complete);
         timer = false;
     }
