@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 773851867}
   - component: {fileID: 773851866}
   - component: {fileID: 773851868}
+  - component: {fileID: 1811702782}
   m_Layer: 0
   m_Name: Fragment
   m_TagString: Fragment
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  currentWorld: 3
   portal: {fileID: 0}
   playerEyeball: {fileID: 0}
   acceleration: 2500
@@ -195,6 +197,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1811702782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773851864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c76dd106cdf61e489ec9c6e3bcc1fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  CurvePair: {fileID: 0}
+  fragPos: {x: 0, y: 0}
+  trailTime: 10
+  ToBegin: 0
 --- !u!1 &1025575911
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,8 +445,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459050425}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.35, z: -0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 773851865}
   m_RootOrder: 1
@@ -491,6 +510,7 @@ GameObject:
   - component: {fileID: 178670977}
   - component: {fileID: 1557199957}
   - component: {fileID: 1557199956}
+  - component: {fileID: 1876234533}
   m_Layer: 0
   m_Name: FragmentCase
   m_TagString: FragmentCase
@@ -505,7 +525,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557199955}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -547,6 +567,25 @@ MonoBehaviour:
   setPickup: 0
   Ping: {fileID: 1194783006}
   Pickup: {fileID: 1025575911}
+--- !u!95 &1876234533
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557199955}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dad59c983651eaa4d8ee575ef6bf7b6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1679008919
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679008919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 773851865}
@@ -616,7 +655,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Time: 10
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.25
