@@ -96,17 +96,59 @@ public class ChangeColor : MonoBehaviour
 
     public void changeFragmentColors(string currentWorld)
     {
+        List<FragmentController> fragments = FragmentManager.instance.fragments;
+        
+
         if(currentWorld == "Amber")
         {
+            List<FragmentController> amberFrags = new List<FragmentController>();
+            foreach(FragmentController frag in fragments)
+            {
+                if(frag.currentWorld == FragmentController.world.AMBER)
+                {
+                    amberFrags.Add(frag);
+                }
+            }
 
+            changeFragColors(amberFrags);
+            
         }
         else if(currentWorld == "Latte")
         {
-
+            List<FragmentController> latteFrags = new List<FragmentController>();
+            foreach (FragmentController frag in fragments)
+            {
+                if (frag.currentWorld == FragmentController.world.LATTE)
+                {
+                    latteFrags.Add(frag);
+                }
+            }
         }
         else if(currentWorld == "Fiber")
         {
+            List<FragmentController> fiberFrags = new List<FragmentController>();
+            foreach (FragmentController frag in fragments)
+            {
+                if (frag.currentWorld == FragmentController.world.FIBER)
+                {
+                    fiberFrags.Add(frag);
+                }
+            }
+        }
+    }
 
+    private void changeFragColors(List<FragmentController> frags)
+    {
+        for(int i = 0; i<frags.Count;i++)
+        {
+            GameObject temp = frags[i].gameObject;
+            foreach(Transform child in temp.transform)
+            {
+                if(child.gameObject.name == "Trail")
+                {
+                    print("Here");
+                }
+            }
         }
     }
 }
