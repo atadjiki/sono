@@ -43,8 +43,8 @@ public class BezierFollow : MonoBehaviour
     void Update()
     {
 
-        A = Points[0].position;
-        B = Points[1].position;
+        //A = Points[0].position;
+        //B = Points[1].position;
         Debug.Log(A);
         //if (toStart)
         //{

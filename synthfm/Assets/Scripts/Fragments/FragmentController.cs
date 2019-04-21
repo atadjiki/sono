@@ -185,7 +185,7 @@ public class FragmentController : MonoBehaviour
        
     }
 
-    public void getReadyFoTrCurve()
+    public void getReadyForCurve()
     {
          // move to starting points of curve
          StartCoroutine(MoveToCurve());
