@@ -77,6 +77,7 @@ public class LightUpTrail : MonoBehaviour
     {
         if ((pathCollider == null) || (pathCollider is PolygonCollider2D))
             pathCollider = gameObject.AddComponent<EdgeCollider2D>();
+        pathCollider.isTrigger = true;
         Vector2[] colliderPoints = new Vector2[points.Length];
         for(int i = 0; i < points.Length; i++)
         {
