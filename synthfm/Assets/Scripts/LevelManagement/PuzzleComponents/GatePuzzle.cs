@@ -238,6 +238,11 @@ public class GatePuzzle : Puzzle
         UpdateList(currentIndex);
         inProgress = false;
         timer = false;
+
+        foreach(GateTrigger gate in gates)
+        {
+            gate.collided = false;
+        }
     }
 
     string PrintGateList()
