@@ -61,6 +61,8 @@
         public Transform[] fragmentSlots;
         public bool[] slotsFilled;
         public MeshRenderer playerBody;
+        public TrailRenderer playerTrail;
+
 
         InputBindings inputBindings;
         string saveData;
@@ -87,6 +89,8 @@
         public float speed_zoom_out = 20f;
         public float speed_zoom_in = 5f;
         public float zoom_default = -75;
+
+        private float t;
 
         public Cinemachine.CinemachineVirtualCamera CM_Main;
 
@@ -135,6 +139,7 @@
         {
 
             currentSonoIndex = 0;
+            t = 0;
 
             turntableManager = GameObject.Find("TurntableInputManager").GetComponent<TurntableManager>(); ;
             rotation = turntableManager.rotation;
@@ -542,10 +547,16 @@
                     }
 
                     Debug.Log("Knob turned left");
-                    Color playercolorToChangeTo = sonoColors[currentSonoIndex][1];
+                    Color playercolorToChangeTo = sonoColors[currentSonoIndex][2];
                     Color playerCol = playerBody.material.GetColor("Color_D2FAE4B8");
-                    playerCol = Color.Lerp(playerCol, playercolorToChangeTo, 0.5f);
+                    Color currentTrailColor = playerTrail.startColor;
+                    Color trailColortoChangeTo = sonoColors[currentSonoIndex][3];
+                    playerCol = Color.Lerp(playerCol, playercolorToChangeTo, t);
                     playerBody.material.SetColor("Color_D2FAE4B8", playerCol);
+
+                    playerTrail.startColor = Color.Lerp(currentTrailColor, trailColortoChangeTo, t);
+
+                    t += Time.deltaTime / 0.5f;
 
                 }
                 //RIGHT
@@ -560,10 +571,16 @@
                     print(currentSonoIndex);
 
                     Debug.Log("Knob turned right");
-                    Color playercolorToChangeTo = sonoColors[currentSonoIndex][1];
+                    Color playercolorToChangeTo = sonoColors[currentSonoIndex][2];
                     Color playerCol = playerBody.material.GetColor("Color_D2FAE4B8");
-                    playerCol = Color.Lerp(playerCol, playercolorToChangeTo, 0.5f);
+                    Color currentTrailColor = playerTrail.startColor;
+                    Color trailColortoChangeTo = sonoColors[currentSonoIndex][3];
+                    playerCol = Color.Lerp(playerCol, playercolorToChangeTo, t);
                     playerBody.material.SetColor("Color_D2FAE4B8", playerCol);
+
+                    playerTrail.startColor = Color.Lerp(currentTrailColor, trailColortoChangeTo, t);
+
+                    t += Time.deltaTime / 0.5f;
                 }
                 else
                 {
