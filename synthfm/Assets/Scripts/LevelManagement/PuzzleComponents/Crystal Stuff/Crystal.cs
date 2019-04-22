@@ -55,6 +55,8 @@ public class Crystal: MonoBehaviour
     [Header("Error State Timing in Seconds")]
     public float _errorTime = 1f;
 
+    public bool IsListening = true;
+
     private void Awake()
     {
         if (_transform == null)
@@ -121,7 +123,7 @@ public class Crystal: MonoBehaviour
         {
             _opacity += (fadeSpeed * Time.deltaTime);
             _thisRender.color = new Color(_color.r, _color.g, _color.b, _opacity);
-            if (_opacity == 1)
+            if (_opacity >= 1)
             {
                 ToFadeIn = false;
                 
@@ -131,8 +133,11 @@ public class Crystal: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+       
+        if (collision.gameObject.tag == "Player" && IsListening)
         {
+            Debug.Log("Entering");
+            StartCoroutine(setListener());
             if ((_state == ClusterManager.State.OFF)) // notify if this OFF
             {
                 _state = ClusterManager.State.ON;
@@ -142,7 +147,7 @@ public class Crystal: MonoBehaviour
                     _cMamnager._Notify(true);
                 }
             }
-            else if (_state == ClusterManager.State.ON)
+            else //if (_state == ClusterManager.State.ON)
             {
                 _state = ClusterManager.State.OFF;
                 DeactivateIt();
@@ -192,6 +197,12 @@ public class Crystal: MonoBehaviour
         ToFadeOut = true;
     }
 
+    IEnumerator setListener()
+    {
+        IsListening = false;
+        yield return new WaitForSeconds(3);
+        IsListening = true;
+    }
 
 // Error stuff not using anymore
     public void changeToFail()

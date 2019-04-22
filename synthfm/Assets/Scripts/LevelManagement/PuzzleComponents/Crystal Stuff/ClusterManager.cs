@@ -18,10 +18,12 @@ public class ClusterManager : Puzzle
     [Header("DO NOT TOUCH FOllowings")]
     public bool IsComplete = false;
     
+    [SerializeField]
     private int Num_Of_Actives;     // ROCk Mode
     private int _curSeq;        // Seq Mode
 
     private RockIt[] Rocks;
+    [SerializeField]
     private Crystal[] Crystalls;
 
     private int numOfCrystalls;
@@ -31,6 +33,7 @@ public class ClusterManager : Puzzle
     // Start is called before the first frame update
     void Start()
     {
+        Num_Of_Actives = 0;
         initPos = fragment.transform.position;
         fragment.transform.position = new Vector3(initPos.x,initPos.y,2);
         IsComplete = false;
