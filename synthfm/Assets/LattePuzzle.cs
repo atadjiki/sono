@@ -82,12 +82,20 @@ public class LattePuzzle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        FXToggle.instance.TogglePlayerFog(this.gameObject, true);
+        if(collision.gameObject == GameObject.Find("Player"))
+        {
+            FXToggle.instance.TogglePlayerFog(this.gameObject, true);
+        }
+       
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        FXToggle.instance.TogglePlayerFog(this.gameObject, false);
+        if(collision.gameObject == GameObject.Find("Player"))
+        {
+            FXToggle.instance.TogglePlayerFog(this.gameObject, false);
+        }
+       
     }
 
 }

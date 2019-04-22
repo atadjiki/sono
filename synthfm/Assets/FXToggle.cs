@@ -50,6 +50,8 @@ public class FXToggle : MonoBehaviour
         }
         else if (world == FragmentController.world.LATTE)
         {
+            Debug.Log("Toggle Latte World");
+
             FiberFX.SetActive(false);
             AmberFX.SetActive(false);
             LatteFX.SetActive(true);
@@ -63,6 +65,7 @@ public class FXToggle : MonoBehaviour
 
     public void TogglePlayerFog(GameObject puzzle, bool enteredPuzzle)
     {
+        Debug.Log("Toggle Player Fog");
         if (enteredPuzzle)
         {
             LatteFX.SetActive(false);
