@@ -43,10 +43,6 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
 
-        playerAudioSource = player.GetComponent<AudioSource>();
-        playerAudioSource.clip = audioFragments[0];
-        playerAudioSource.Play();
-
         setuphubPuzzles();
     }
 
