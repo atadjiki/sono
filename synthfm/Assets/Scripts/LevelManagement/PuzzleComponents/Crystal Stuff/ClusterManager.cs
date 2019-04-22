@@ -77,11 +77,11 @@ public class ClusterManager : Puzzle
                 i_crystal.changeToActive();
             
                  Num_Of_Actives++;
-            if (Num_Of_Actives == Crystalls.Length)
+            if (Num_Of_Actives == Crystalls.Length)  // puzzle complete
             {
                 IsComplete = true;
                 //// destroy rock -- Arash - keep rocks for now until we delete puzzles and drop artifact
-                foreach (RockIt R in Rocks) // puzzle complete
+                foreach (RockIt R in Rocks) 
                 {
                     R.ActivateIt();
                     R.gameObject.GetComponent<Collider2D>().enabled = false;
