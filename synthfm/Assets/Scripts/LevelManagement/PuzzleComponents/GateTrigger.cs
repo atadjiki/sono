@@ -10,6 +10,7 @@ public class GateTrigger : MonoBehaviour
     [SerializeField]
     private bool partOfPuzzle = false;
     public bool ignoreAngle = false;
+    public bool collided = false;
     public VisualEffect GateReact;
 
 
@@ -39,11 +40,17 @@ public class GateTrigger : MonoBehaviour
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 //audioSource.Play();
                 Debug.Log("Hit gate");
+                
                 GateReact.SetFloat("React", 40);
 
                 GateReact.SetFloat("Emission", 0);
                 print(GateReact.GetFloat("React"));
-                NotifyPuzzle();
+                if (!collided)
+                {
+                    NotifyPuzzle();
+                }
+                collided = true;
+                
                 GateReact.SetVector3("Position", new Vector3 (0, 5, 0));
                 StartCoroutine(GateReaction());
 
@@ -74,7 +81,6 @@ public class GateTrigger : MonoBehaviour
         
         yield return new WaitForSeconds(.5f);
         GateReact.SetFloat("React", -100);
-        print("Succ");
 
     }
 
