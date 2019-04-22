@@ -11,7 +11,10 @@ public class WaveParticleCollider: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(Player == null)
+        {
+            Player = GameObject.Find("Player");
+        }
     }
 
     // Update is called once per frame

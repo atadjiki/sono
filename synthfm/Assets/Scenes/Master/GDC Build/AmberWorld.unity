@@ -276,6 +276,22 @@ PrefabInstance:
       propertyPath: isAttached
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: currentWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459050426, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459050426, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459050426, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6572,11 +6588,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmberEnd
       objectReference: {fileID: 0}
-    - target: {fileID: 7005275810511583704, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_TagString
-      value: Amber2
-      objectReference: {fileID: 0}
     - target: {fileID: 4356335838464313623, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6637,25 +6648,10 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 1086417844}
-    - target: {fileID: 2859013380925729424, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+    - target: {fileID: 6043265197013053636, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8108008509266104271, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8932240590796009382, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8932240590796009382, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
@@ -6676,11 +6672,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AmberStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130721904489836905, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Amber1
       objectReference: {fileID: 0}
     - target: {fileID: 143732288644234109, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
@@ -6742,24 +6733,10 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 215624111}
-    - target: {fileID: 1533502655, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}
+    - target: {fileID: 7485162546142516585, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 232736385630498683, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614792925418815506, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614792925418815506, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}

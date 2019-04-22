@@ -9,13 +9,13 @@ public class AmberWorld : MonoBehaviour
     public GameObject Psystem;
     void Start()
     {
-        Psystem.SetActive(true);
-        foreach(ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
-        {
-            particleSystem.Play();
-        }
+        //Psystem.SetActive(true);
+        //foreach(ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    particleSystem.Play();
+        //}
 
-        killParasites();
+        //killParasites();
     }
 
     // Update is called once per frame
@@ -32,13 +32,13 @@ public class AmberWorld : MonoBehaviour
 
     private void OnEnable()
     {
-        Psystem.SetActive(true);
-        foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
-        {
-            particleSystem.Play();
-        }
+        //Psystem.SetActive(true);
+        //foreach (ParticleSystem particleSystem in Psystem.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    particleSystem.Play();
+        //}
 
-        killParasites();
+        //killParasites();
     }
 
 
