@@ -60,6 +60,7 @@
         public TurntableManager turntableManager;
         public Transform[] fragmentSlots;
         public bool[] slotsFilled;
+        public MeshRenderer playerBody;
 
         InputBindings inputBindings;
         string saveData;
@@ -88,6 +89,9 @@
         public float zoom_default = -75;
 
         public Cinemachine.CinemachineVirtualCamera CM_Main;
+
+        private List<List<Color>> sonoColors;
+        private int currentSonoIndex;
 
 
         [Header("Animations")]
@@ -130,8 +134,24 @@
         void Start()
         {
 
+            currentSonoIndex = 0;
+
             turntableManager = GameObject.Find("TurntableInputManager").GetComponent<TurntableManager>(); ;
             rotation = turntableManager.rotation;
+
+            ChangeColor cc = GameObject.Find("Main Camera").GetComponent<ChangeColor>();
+            sonoColors = new List<List<Color>>();
+
+            sonoColors.Add(cc.firstamberPuzzleColor);
+            sonoColors.Add(cc.secondamberPuzzleColor);
+            sonoColors.Add(cc.thirdamberPuzzleColor);
+            sonoColors.Add(cc.firstFiberPuzzleColor);
+            sonoColors.Add(cc.secondFiberPuzzleColor);
+            sonoColors.Add(cc.thirdFiberPuzzleColor);
+            sonoColors.Add(cc.firstlattePuzzleColor);
+            sonoColors.Add(cc.secondlattePuzzleColor);
+            sonoColors.Add(cc.thirdlattePuzzleColor);
+
 
             rigidbody = GetComponent<Rigidbody2D>();
             ChangeSpeed(Speed.Normal);
@@ -511,16 +531,39 @@
                 //LEFT
                 if (turntableManager.fetchSmallKnob() < 0.5f && currentFrames >= maxFrames)
                 {
-                    //TO DO: Iterate right
-                    Debug.Log("Knob turned");
+                    if (currentSonoIndex > 1)
+                    {
+                        currentSonoIndex--;
+
+                    }
+                    else
+                    {
+                        currentSonoIndex = sonoColors.Count - 1;
+                    }
+
+                    Debug.Log("Knob turned left");
+                    Color playercolorToChangeTo = sonoColors[currentSonoIndex][1];
+                    Color playerCol = playerBody.material.GetColor("Color_D2FAE4B8");
+                    playerCol = Color.Lerp(playerCol, playercolorToChangeTo, 0.5f);
+                    playerBody.material.SetColor("Color_D2FAE4B8", playerCol);
 
                 }
                 //RIGHT
                 else if(turntableManager.fetchSmallKnob() > 0.5f && currentFrames >= maxFrames)
                 {
-                    //TO DO: Iterate left
-                    Debug.Log("Knob turned");
+                    currentSonoIndex++;
 
+                    if(currentSonoIndex >= sonoColors.Count)
+                    {
+                        currentSonoIndex = 0;
+                    }
+                    print(currentSonoIndex);
+
+                    Debug.Log("Knob turned right");
+                    Color playercolorToChangeTo = sonoColors[currentSonoIndex][1];
+                    Color playerCol = playerBody.material.GetColor("Color_D2FAE4B8");
+                    playerCol = Color.Lerp(playerCol, playercolorToChangeTo, 0.5f);
+                    playerBody.material.SetColor("Color_D2FAE4B8", playerCol);
                 }
                 else
                 {
