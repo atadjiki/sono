@@ -124,7 +124,7 @@ public class Crystal: MonoBehaviour
             if (_opacity == 1)
             {
                 ToFadeIn = false;
-                ToFadeOut = true;
+                
             }
         }
     }
