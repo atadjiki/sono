@@ -7218,7 +7218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504042465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.3, z: -100}
+  m_LocalPosition: {x: 744.9, y: 731, z: -200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 245882009}
@@ -9314,6 +9314,7 @@ MonoBehaviour:
   player: {fileID: 369758907}
   navPoint: {fileID: 369758905}
   bubbles: {fileID: 209842910}
+  playerTrail: {fileID: 0}
   rbPlayer: {fileID: 369758904}
 --- !u!1001 &916768760
 PrefabInstance:
@@ -10220,6 +10221,7 @@ MonoBehaviour:
   scorePatterns:
   - {fileID: 11400000, guid: e713b3ca8445b48408d5e92593c0dd74, type: 2}
   - {fileID: 11400000, guid: c99d6801ee054a94aa696c8e914491e2, type: 2}
+  VoidPattern: {fileID: 0}
   docks:
   - mixer: {fileID: 24100000, guid: 91d5a376e84597b4585177d5068f8257, type: 2}
     currentScorepattern: {fileID: 0}
@@ -10232,6 +10234,7 @@ MonoBehaviour:
     sources: []
     fadeTime: 1
   NoOfAudioTracksPerDock: 4
+  NoOfVoidLevels: 3
   bpm: 0
   numberOfBeatsToUseInCrossfade: 6
   Numerator: 0
@@ -10557,6 +10560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fragments: []
+  maxFrames: 120
+  currentFrames: 0
 --- !u!1 &1218926882
 GameObject:
   m_ObjectHideFlags: 0
@@ -10714,46 +10719,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Final Pattern Zone
       objectReference: {fileID: 0}
-    - target: {fileID: 765795256976806250, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257285248940, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795258504008644, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257463316054, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257899586576, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257761472040, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257363288410, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257190957640, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 1
-      objectReference: {fileID: 0}
     - target: {fileID: 765795257570068062, guid: 8f8176cb54a5c7046b754166c94d010f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10809,11 +10774,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 765795257009873335, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pair 1
-      objectReference: {fileID: 0}
     - target: {fileID: 765795257570068060, guid: 8f8176cb54a5c7046b754166c94d010f,
         type: 3}
       propertyPath: mainCamera
@@ -10829,31 +10789,6 @@ PrefabInstance:
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 809415781}
-    - target: {fileID: 765795258056508795, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 27.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257469170743, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Curve cluster 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795257178189651, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Curvescluster 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795256734217748, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_Name
-      value: Curves cluster 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 765795256823914645, guid: 8f8176cb54a5c7046b754166c94d010f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -13.9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f8176cb54a5c7046b754166c94d010f, type: 3}
 --- !u!4 &1248254136 stripped

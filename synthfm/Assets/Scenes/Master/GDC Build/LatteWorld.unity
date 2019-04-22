@@ -309,6 +309,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e3202500e9f716c49b93ed853b0b50d7,
         type: 3}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
 --- !u!4 &121325930 stripped
@@ -387,12 +391,12 @@ PrefabInstance:
     - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 45
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 90
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
@@ -413,6 +417,7 @@ GameObject:
   - component: {fileID: 223628735}
   - component: {fileID: 223628736}
   - component: {fileID: 223628737}
+  - component: {fileID: 223628738}
   m_Layer: 0
   m_Name: LattePuzzle1
   m_TagString: Latte1
@@ -470,6 +475,18 @@ MonoBehaviour:
   player: {fileID: 0}
   setPieceCamera: {fileID: 71409941}
   center: {fileID: 1129820536}
+--- !u!114 &223628738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223628734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b67b3baa6b11f747b884e2a4b47f1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &245882008
 GameObject:
   m_ObjectHideFlags: 0
@@ -5563,6 +5580,10 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5572,6 +5593,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3d5cfd44721f1d940a94d1cd20d6dff2,
         type: 3}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
 --- !u!4 &609092064 stripped
@@ -5591,6 +5616,7 @@ GameObject:
   - component: {fileID: 793066230}
   - component: {fileID: 793066232}
   - component: {fileID: 793066231}
+  - component: {fileID: 793066233}
   m_Layer: 0
   m_Name: LattePuzzle3
   m_TagString: Latte3
@@ -5648,6 +5674,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 180, y: 85}
   m_Direction: 1
+--- !u!114 &793066233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793066229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b67b3baa6b11f747b884e2a4b47f1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &836900554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5843,6 +5881,10 @@ PrefabInstance:
       propertyPath: fragmentNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5852,6 +5894,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b569c9b71fd17e8458576a8451e3f7a4,
         type: 3}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
 --- !u!4 &866093864 stripped
@@ -6957,6 +7003,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[60].y
       value: 788
       objectReference: {fileID: 0}
+    - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 294f5f74f0d73dc4d9a097d315c53af2, type: 2}
     - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
       propertyPath: m_Positions.Array.data[0].z
       value: 5
@@ -8401,7 +8451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
       propertyPath: m_Positions.Array.data[0].x
@@ -8891,6 +8941,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[60].y
       value: 524.9999
       objectReference: {fileID: 0}
+    - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 294f5f74f0d73dc4d9a097d315c53af2, type: 2}
     - target: {fileID: 5088380248152249646, guid: 60d2c80f1203b5a49808c921222c1626,
         type: 3}
       propertyPath: m_Points.Array.data[1].y
@@ -9555,6 +9609,7 @@ GameObject:
   - component: {fileID: 1466865271}
   - component: {fileID: 1466865273}
   - component: {fileID: 1466865272}
+  - component: {fileID: 1466865274}
   m_Layer: 0
   m_Name: LattePuzzle2
   m_TagString: Latte2
@@ -9612,6 +9667,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 180, y: 85}
   m_Direction: 1
+--- !u!114 &1466865274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466865270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b67b3baa6b11f747b884e2a4b47f1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488395837
 GameObject:
   m_ObjectHideFlags: 0
@@ -9725,12 +9792,12 @@ PrefabInstance:
     - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 45
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 90
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
@@ -10347,7 +10414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
       propertyPath: m_Positions.Array.data[0].x
@@ -10837,6 +10904,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[60].y
       value: 229.49994
       objectReference: {fileID: 0}
+    - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 294f5f74f0d73dc4d9a097d315c53af2, type: 2}
     - target: {fileID: 1841992887, guid: 60d2c80f1203b5a49808c921222c1626, type: 3}
       propertyPath: m_Positions.Array.data[0].z
       value: 5
@@ -11894,12 +11965,12 @@ PrefabInstance:
     - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 45
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 90
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
