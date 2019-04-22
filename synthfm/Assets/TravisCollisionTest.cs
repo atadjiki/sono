@@ -25,6 +25,7 @@ public class TravisCollisionTest : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            print("HERE");
             //TO DO: For Travis - Instantiate your VFX here!
             vfx.Play();
         }
