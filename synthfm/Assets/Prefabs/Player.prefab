@@ -4752,7 +4752,7 @@ ParticleSystem:
 --- !u!199 &888040041
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5562,7 +5562,8 @@ MonoBehaviour:
   turntableManager: {fileID: 5465249031842407012}
   fragmentSlots: []
   slotsFilled: 
-  playerBody: {fileID: 0}
+  playerBody: {fileID: 828374273}
+  playerTrail: {fileID: 1855229568422686520}
   i_Menu: {fileID: 0}
   camera_lerp: 0.01
   speed_zoom_out: 30
@@ -10291,7 +10292,7 @@ ParticleSystem:
 --- !u!199 &6429124202260839493
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12325,11 +12326,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7408312553316219858}
     m_Modifications:
-    - target: {fileID: 2720778682968873053, guid: 897812750e179804da2dcfd91b1580dd,
-        type: 3}
-      propertyPath: m_Name
-      value: dots
-      objectReference: {fileID: 0}
     - target: {fileID: 2720778682968873040, guid: 897812750e179804da2dcfd91b1580dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12384,6 +12380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720778682968873053, guid: 897812750e179804da2dcfd91b1580dd,
+        type: 3}
+      propertyPath: m_Name
+      value: dots
       objectReference: {fileID: 0}
     - target: {fileID: 2720778682968873042, guid: 897812750e179804da2dcfd91b1580dd,
         type: 3}
@@ -12440,11 +12441,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352253279}
     m_Modifications:
-    - target: {fileID: 2720778682968873053, guid: 897812750e179804da2dcfd91b1580dd,
-        type: 3}
-      propertyPath: m_Name
-      value: dots (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2720778682968873040, guid: 897812750e179804da2dcfd91b1580dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12514,6 +12510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2693
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720778682968873053, guid: 897812750e179804da2dcfd91b1580dd,
+        type: 3}
+      propertyPath: m_Name
+      value: dots (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2720778682968873043, guid: 897812750e179804da2dcfd91b1580dd,
         type: 3}

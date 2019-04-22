@@ -19,7 +19,6 @@ public class RockIt : MonoBehaviour
 
     private SpriteRenderer _thisRender;
     private Color _color;
-   
     private float _opacity;
 
     //shake stuff

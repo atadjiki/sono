@@ -6,7 +6,7 @@ public class FragmentController : MonoBehaviour
 {
     private Transform player;
 
-    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, VOID, FINAL_PATERN, PRE_FINAL };
+    public enum states { IDLE, FLEE, FOLLOW, DEPOSIT, VOID, FINAL_PATERN, PRE_FINAL, LEAD };
 
     public enum world { AMBER, LATTE, FIBER,HUB};
 
@@ -119,6 +119,9 @@ public class FragmentController : MonoBehaviour
             case states.PRE_FINAL:
                 Void();
                 break;
+            case states.LEAD:
+                Lead();
+                break;
             default:
                 break;
         }
@@ -127,6 +130,11 @@ public class FragmentController : MonoBehaviour
     private void Idle()
     {
         rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
+    }
+
+    public void Lead()
+    {
+        transform.position =  bzFollow.fragPos;
     }
 
     public void Deposit(Transform newTarget)

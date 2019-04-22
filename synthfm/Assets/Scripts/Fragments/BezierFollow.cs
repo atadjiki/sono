@@ -7,23 +7,15 @@ public class BezierFollow : MonoBehaviour
     public float speed;
 
     [SerializeField]
-    private Transform[] routes; // the route for the fragment
+    private GameObject[] routes; // the route for the fragment
     private int currentRoute;
     private float t_Param;
     public Vector2 fragPos;
 
     private bool toStart; // whether to start a new curve
 
-    Vector2[] p = new Vector2[4];
     public Transform[] tf = new Transform[4];
-
-    public Transform[] Points;
-    bool moveRight = true;
-    bool ToMove = true;
-
-
-    Vector2 A;
-    Vector2 B;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +24,9 @@ public class BezierFollow : MonoBehaviour
         speed = 0.6f;
         toStart = true;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < routes[0].transform.childCount ; i++)
         {
-            tf[i] = routes[0].GetChild(i).transform;
+            tf[i] = routes[0].transform.GetChild(i).transform;
         }
 
     }
@@ -42,20 +34,7 @@ public class BezierFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //A = Points[0].position;
-        //B = Points[1].position;
-        Debug.Log(A);
-        //if (toStart)
-        //{
-        //    StartCoroutine(followCurve(currentRoute));
-        //}
-
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    p[i] = tf[i].position;
-        //}
-
+        
         if (Input.GetKeyDown(KeyCode.L))
         {
             List<FragmentController> ToHandle = new List<FragmentController>();
@@ -65,48 +44,16 @@ public class BezierFollow : MonoBehaviour
                 if (fragment.currentState == FragmentController.states.FOLLOW)
                 {
                     fragPos = fragment.gameObject.transform.position;
-                    fragment.currentState = FragmentController.states.VOID;
+                    fragment.currentState = FragmentController.states.LEAD;
                   
                     //    Debug.Log("Leavoing Fragments behind");
                 }
             }
         }
-         
-        //if (moveRight)
-        //{ 
-        //    moveright();
-        //}
-        //else
-        //{
-        //    moveleft();
-        //}
-    }
 
-    void moveright()
-    {
-        
-            Vector2 dir = Vector2.MoveTowards(fragPos, B, 0.5f * Time.deltaTime);
-             Vector2 NewDir = new Vector2(dir.x, B.y );
-            fragPos = NewDir;
-            Debug.Log("Rightttt");
-
-        if (fragPos.x >= B.x)
+        if(toStart)
         {
-            moveRight = false;
-        }
-    }
-
-    void moveleft()
-    {
-        Vector2 dir = Vector2.MoveTowards(fragPos, A, 0.5f * Time.deltaTime);
-        Vector2 NewDir = new Vector2(dir.x, B.y);
-        fragPos = NewDir;
-       
-        Debug.Log("Lefttttt");
-
-        if (fragPos.x <= A.x)
-        {
-            moveRight = true;
+            StartCoroutine(followCurve(0));
         }
     }
 

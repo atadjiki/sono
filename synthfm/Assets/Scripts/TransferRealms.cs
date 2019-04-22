@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TransferRealms : MonoBehaviour
 {
-    [Header("The maximum amount of fragments to exit this world")]
-    public int maxToExit;
+    // [Header("The maximum amount of fragments to exit this world")]
+    private int maxToExit = 3;
 
     //  [SerializeField] private bool IsPlayerInside;
 
@@ -222,7 +222,7 @@ public class TransferRealms : MonoBehaviour
             }
         }
 
-        if(gameObject.tag == "Realm4")
+        if(gameObject.tag != "Realm4")
         {
 
             ParasiteSpawner.instance.KillParasites();

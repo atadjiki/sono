@@ -8,6 +8,7 @@ public class curveManager : MonoBehaviour
     [Header("The 9 Curves")]
     public GameObject[] Curves;
 
+   
     // Start is called before the first frame update
     void Start()
     {
