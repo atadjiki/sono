@@ -93,18 +93,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b26e61fede23c944be1971d68625fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequenceNo: 0
   Sprite_Bright: {fileID: 21300000, guid: bd1c1bf172f90e74c82528002bf52ef8, type: 3}
-  baseColor: {r: 0.13207549, g: 0.12397652, b: 0.12397652, a: 1}
-  errorColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
-  activeColor: {r: 0, g: 0.9622642, b: 0.96226394, a: 1}
+  Sprite_Dull: {fileID: 0}
   _state: 0
-  speed: 0
-  _errorTime: 2
-  ForwardZ: 0
-  ReverseZ: 0
+  ToShakeRotate: 1
+  fadeSpeed: 0.4
+  RotationSpeed: 0
   shakeMagnitude: 0.2
   dampingSpeed: 1
+  IsPuzzleComplete: 0
+  sequenceNo: 0
+  _errorTime: 2
 --- !u!60 &2730774308529018984
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -844,18 +843,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b26e61fede23c944be1971d68625fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequenceNo: 0
   Sprite_Bright: {fileID: 21300000, guid: f65ea1bafdbcb6b4f9916a7649dff6c6, type: 3}
-  baseColor: {r: 0.13207549, g: 0.12397652, b: 0.12397652, a: 1}
-  errorColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
-  activeColor: {r: 0, g: 0.9622642, b: 0.96226394, a: 1}
+  Sprite_Dull: {fileID: 0}
   _state: 0
-  speed: 0
-  _errorTime: 2
-  ForwardZ: 0
-  ReverseZ: 0
+  ToShakeRotate: 1
+  fadeSpeed: 0.4
+  RotationSpeed: 0
   shakeMagnitude: 0.2
   dampingSpeed: 1
+  IsPuzzleComplete: 0
+  sequenceNo: 0
+  _errorTime: 2
 --- !u!60 &2954238541581114050
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1175,18 +1173,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b26e61fede23c944be1971d68625fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequenceNo: 0
   Sprite_Bright: {fileID: 21300000, guid: 94c194dcebaf1de4ba96e350e74a216d, type: 3}
-  baseColor: {r: 0.13207549, g: 0.12397652, b: 0.12397652, a: 1}
-  errorColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
-  activeColor: {r: 0, g: 0.9622642, b: 0.96226394, a: 1}
+  Sprite_Dull: {fileID: 0}
   _state: 0
-  speed: 0
-  _errorTime: 2
-  ForwardZ: 0
-  ReverseZ: 0
+  ToShakeRotate: 1
+  fadeSpeed: 0.4
+  RotationSpeed: 0
   shakeMagnitude: 0.2
   dampingSpeed: 1
+  IsPuzzleComplete: 0
+  sequenceNo: 0
+  _errorTime: 2
 --- !u!60 &2122659619746909780
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1702,7 +1699,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9130721904489836905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c5bb93a801ae8b4d8f6857f244ee313, type: 3}
   m_Name: 
@@ -1806,46 +1803,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851865, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.0000071525574
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851865, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.000006198883
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851865, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: isAttached
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: currentWorld
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: TrackIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 7485162544415698578}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: TrackIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -1866,6 +1835,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851865, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000071525574
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851865, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000006198883
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851865, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: fragment
       value: 
@@ -1878,10 +1863,6 @@ PrefabInstance:
       propertyPath: Pickup
       value: 
       objectReference: {fileID: 7485162544164106158}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
 --- !u!4 &7485162545011141064 stripped
