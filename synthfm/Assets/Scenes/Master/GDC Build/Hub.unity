@@ -5084,7 +5084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   clearColorMode: 1
-  backgroundColorHDR: {r: 0.03921566, g: 0.05882351, b: 0.08627448, a: 0}
+  backgroundColorHDR: {r: 0.03921569, g: 0.05882353, b: 0.08627451, a: 0}
   clearDepth: 1
   renderingPath: 0
   volumeLayerMask:
@@ -5370,8 +5370,8 @@ MonoBehaviour:
   - {r: 0.654902, g: 0.8784314, b: 0.20784314, a: 1}
   - {r: 0.21176471, g: 0.8745098, b: 0.21960784, a: 1}
   - {r: 0.10980392, g: 0.70980394, b: 0.8, a: 1}
-  currentPlayercolor: {r: 0.7058787, g: 0.1255413, b: 0.2981965, a: 0}
-  currentTrailColor: {r: 0.7058824, g: 0.1254902, b: 0.2980392, a: 0}
+  currentPlayercolor: {r: 0.7012041, g: 0.1836651, b: 0.4778469, a: 0}
+  currentTrailColor: {r: 0.7019608, g: 0.1843137, b: 0.4784314, a: 0.003921569}
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
@@ -7299,10 +7299,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parasitePrefab: {fileID: 2696762420574589463, guid: 2fe26748d580ffd46a74625a9b0fff09,
     type: 3}
-  player: {fileID: 0}
-  mainCamera: {fileID: 0}
+  player: {fileID: 1476634332}
+  mainCamera: {fileID: 504042470}
   maxParasites: 10
-  secsUntilNextSpawn: 5
+  secsUntilNextSpawn: 1
   active: 0
 --- !u!114 &1218926885
 MonoBehaviour:
@@ -7345,8 +7345,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amber_artifact: {fileID: 1951240110087919080, guid: 18e31e34df8c1e5438aa588fbb9f12f4,
     type: 3}
-  fiber_artifact: {fileID: 0}
-  latte_artifact: {fileID: 0}
+  fiber_artifact: {fileID: 1951240110087919080, guid: 18e31e34df8c1e5438aa588fbb9f12f4,
+    type: 3}
+  latte_artifact: {fileID: 1951240110087919080, guid: 18e31e34df8c1e5438aa588fbb9f12f4,
+    type: 3}
   amber_drop_location: {fileID: 0}
   fiber_drop_location: {fileID: 0}
   latte_drop_location: {fileID: 0}
@@ -7642,7 +7644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0, z: -75}
+  m_FollowOffset: {x: 0, y: 0, z: -80.85809}
   m_XDamping: 0.25
   m_YDamping: 0.25
   m_ZDamping: 0.25
