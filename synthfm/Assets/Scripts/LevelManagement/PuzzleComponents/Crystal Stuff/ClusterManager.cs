@@ -22,7 +22,7 @@ public class ClusterManager : Puzzle
     private int Num_Of_Actives;     // ROCk Mode
     private int _curSeq;        // Seq Mode
 
-    private RockIt[] Rocks;
+    public RockIt[] Rocks;
     [SerializeField]
     private Crystal[] Crystalls;
 
@@ -38,15 +38,15 @@ public class ClusterManager : Puzzle
         fragment.transform.position = new Vector3(initPos.x,initPos.y,2);
         IsComplete = false;
         // get Rock
-        if(_Mode == ClusterManager.Mode.Rock)
-        {
-            Rocks = new RockIt[_NumOfRocks];
-            for (int i = 0; i < Rocks.Length; i++)
-            {
-                Rocks[i] = this.transform.GetChild(i).gameObject.GetComponent<RockIt>();
-                if (Rocks[i] == null) { Debug.Log("Error: Unable to find Rock"); }
-            }
-        }
+        //if(_Mode == ClusterManager.Mode.Rock)
+        //{
+        //    Rocks = new RockIt[_NumOfRocks];
+        //    for (int i = 0; i < Rocks.Length; i++)
+        //    {
+        //        Rocks[i] = this.transform.GetChild(i).gameObject.GetComponent<RockIt>();
+        //        if (Rocks[i] == null) { Debug.Log("Error: Unable to find Rock"); }
+        //    }
+        //}
         Crystalls = transform.GetComponentsInChildren<Crystal>();
 
     }
@@ -65,7 +65,7 @@ public class ClusterManager : Puzzle
                 Num_Of_Actives--;
             }
 
-            if (Num_Of_Actives >= Crystalls.Length)  // puzzle complete
+            if (Num_Of_Actives == Crystalls.Length)  // puzzle complete
             {
                 IsComplete = true;
                 //// destroy rock -- Arash - keep rocks for now until we delete puzzles and drop artifact

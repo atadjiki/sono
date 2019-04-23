@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayAudioOnCollision : MonoBehaviour
 {
     AudioSource source;
-    public AudioClip SoundToPlay;
+    public AudioClip[] SoundsToPlay;
     public SoundGenerator soundGenerator;
     
     // Start is called before the first frame update
@@ -15,30 +15,19 @@ public class PlayAudioOnCollision : MonoBehaviour
         if (source == null)
             Debug.LogWarning("Did not find an Audio Source component on this GameObject. This script will probably die.");
 
-        if (SoundToPlay != null)
+        if (SoundsToPlay.Length != 0)
             return; //We're done here.
-
-        // if not, we'll need to pick up a sound from the Sound Generator. We can either define one beforehand or find the (hopefully only) one in the scene.
-        // If we don't have one already
-        if (soundGenerator == null)
-        {
-            soundGenerator = FindObjectOfType<SoundGenerator>();
-            if (soundGenerator == null) //whoops guess no sound then
-            {
-                Debug.LogWarning("Can't find a sound to play. No Sound Generator available. I hope you like the silence.");
-                return;
-            }
-        }
-        // yayy we got one
-        SoundToPlay = soundGenerator.GetRandomSound();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (source.isPlaying)
             return;
-        if(collision.gameObject.tag == "Player")
-            source.PlayOneShot(SoundToPlay, Random.Range(0.3f, 0.6f));
+        if (collision.gameObject.tag == "Player")
+        {
+            int i = Random.Range(0, SoundsToPlay.Length);
+            source.PlayOneShot(SoundsToPlay[i], 1.0f);
+        }
     }
 
 }
