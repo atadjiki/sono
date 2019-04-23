@@ -69,7 +69,7 @@ public class FragmentCase : MonoBehaviour
                 {
                     PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber, this.gameObject);
                 }
-                if (GetComponentInParent<ClusterManager>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.AMBER)
+                else if (GetComponentInParent<ClusterManager>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.AMBER)
                 {
                     PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber, this.gameObject);
                 }

@@ -13,7 +13,14 @@ public class GateTrigger : MonoBehaviour
     public bool collided = false;
     public VisualEffect GateReact;
 
-
+    private bool reacting = false;
+    private bool shrinking = false;
+    private bool expanding = false;
+    private bool resize = false;
+    private Vector3 defaultSize;
+    public Vector3 shrinkSize = new Vector3(0.5f, 0.5f, 0.5f);
+    public Vector3 expandSize = new Vector3(1.5f, 1.5f, 1.5f);
+    public float lerpTime = 0.05f;
 
     private void Start()
     {
@@ -26,6 +33,7 @@ public class GateTrigger : MonoBehaviour
             partOfPuzzle = true;
         }
 
+        defaultSize = this.gameObject.transform.localScale;
 
     }
 
@@ -44,7 +52,7 @@ public class GateTrigger : MonoBehaviour
                 GateReact.SetFloat("React", 40);
 
                 GateReact.SetFloat("Emission", 0);
-                print(GateReact.GetFloat("React"));
+
                 if (!collided)
                 {
                     NotifyPuzzle();
@@ -82,6 +90,52 @@ public class GateTrigger : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         GateReact.SetFloat("React", -100);
 
+    }
+
+    IEnumerator LerpGate()
+    {
+        reacting = true;
+        expanding = false;
+        shrinking = true;
+
+        while (reacting)
+        {
+            if (shrinking && this.gameObject.transform.localScale != shrinkSize)
+            {
+                Vector3.Lerp(this.gameObject.transform.localScale, shrinkSize, lerpTime);
+            }
+            else if (shrinking && this.gameObject.transform.localScale == shrinkSize)
+            {
+                shrinking = false;
+                resize = false;
+                expanding = true;
+            }
+
+            if (expanding && this.gameObject.transform.localScale != expandSize)
+            {
+                Vector3.Lerp(this.gameObject.transform.localScale, expandSize, lerpTime);
+            }
+            else if (expanding && this.gameObject.transform.localScale == shrinkSize)
+            {
+                shrinking = false;
+                expanding = false;
+                resize = true;
+            }
+
+            if (resize && this.gameObject.transform.localScale != defaultSize)
+            {
+                Vector3.Lerp(this.gameObject.transform.localScale, defaultSize, lerpTime);
+            }
+            else if (resize && this.gameObject.transform.localScale == defaultSize)
+            {
+                shrinking = false;
+                expanding = false;
+                resize = false;
+                reacting = false;
+            }
+        }
+
+        yield return new WaitForSeconds(0);
     }
 
     public void PlayAudioClip(AudioClip clip)
