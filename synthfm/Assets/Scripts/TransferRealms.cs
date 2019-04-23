@@ -109,7 +109,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
                 gameObject.GetComponent<AmberWorld>().enabled = true;
                 changeAppearance("Amber");
-                ScoreManager._instance.LoadPattern(1);
+                ScoreManager._instance.LoadPattern(3);
                 ScoreManager._instance.Crossfade();
                 print("Entering Amber");
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;

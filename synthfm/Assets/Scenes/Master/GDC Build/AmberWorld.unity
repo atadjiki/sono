@@ -212,10 +212,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 223628735}
     m_Modifications:
-    - target: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Name
-      value: FragmentCase
-      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: isAttached
       value: 0
@@ -279,6 +275,10 @@ PrefabInstance:
     - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Name
+      value: FragmentCase
       objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6650,6 +6650,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7060155435660702504, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
+      propertyPath: Rocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060155435660702504, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 1086417844}
@@ -6664,6 +6669,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5968660191548625784, guid: ff882bec3405485499064941f756e15f,
         type: 3}
+    - target: {fileID: 7060155435660702504, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: Rocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 6043265197252512410}
     - target: {fileID: 6043265197013053636, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6696,6 +6706,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
+--- !u!114 &6043265197252512410 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6658258383822181901, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6043265197252512409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e1d6734ee485941a6b81f8831ab5ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6701585165932226958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6701585165932226958, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
@@ -6776,6 +6798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1090992495479256720, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
+      propertyPath: Rocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090992495479256720, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 215624111}
@@ -6790,6 +6817,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5968660191548625784, guid: ff882bec3405485499064941f756e15f,
         type: 3}
+    - target: {fileID: 1090992495479256720, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: Rocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 7485162545958029745}
     - target: {fileID: 7485162546142516585, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6807,3 +6839,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}
+--- !u!114 &7485162545958029745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 747990763844827170, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7485162545958029744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e1d6734ee485941a6b81f8831ab5ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
