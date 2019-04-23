@@ -5,8 +5,8 @@ using UnityEditor;
 
 /*
  * Represents an important location on the map that the player can encounter
- * Set pieces must have a Cinemachine virtual camera to switch to upon the player encountering them, 
- * as well as a 2D Collider to mark their area. 
+ * Set pieces must have a Cinemachine virtual camera to switch to upon the player encountering them,
+ * as well as a 2D Collider to mark their area.
  */
 [ExecuteInEditMode]
 public class SetPiece : MonoBehaviour
@@ -80,7 +80,7 @@ public class SetPiece : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         OnEnable();
-        
+
     }
 
     public void Awake()
@@ -102,9 +102,9 @@ public class SetPiece : MonoBehaviour
                     setPieceCamera.enabled = true;
                     setPieceCamera.Priority = 20;
                 }
-                   
+
             }
-           
+
         }
     }
 
@@ -114,7 +114,7 @@ public class SetPiece : MonoBehaviour
         {
             if (collision.gameObject == player.gameObject)
             {
-               
+
                 if(mainCamera != null && setPieceCamera != null)
                 {
                     Debug.Log("Switching camera to " + mainCamera.Name);
