@@ -7,6 +7,7 @@ public class ColliderVFX : MonoBehaviour
 {
     public VisualEffect Fragmentget;
     public Animator anim;
+    public Animator Anim2;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class ColliderVFX : MonoBehaviour
         Fragmentget.SetInt("Switch", 1);
         Fragmentget.SetFloat("Range", -3);
         anim.SetTrigger("PickedUp");
+        Anim2.SetTrigger("Switch");
     }
 
 

@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Eggs
-  m_Shader: {fileID: 4800000, guid: a5e05b2283c6b9d499b8a218631f0e5f, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_Name: Waves
+  m_Shader: {fileID: 4800000, guid: 44255b3381d3fc647b8ec1972d9ae4e3, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -21,10 +21,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_EDBA19FC:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -85,12 +81,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_4820DF4A_Texture:
-        m_Texture: {fileID: 2800000, guid: dda4e4e249e503c48a4a76e0b9b196e9, type: 3}
+    - _SampleTexture2D_4ADA736D_Texture:
+        m_Texture: {fileID: 2800000, guid: 3f116b5a982adf946a119d2081735f4a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_D3A6A666_Texture:
-        m_Texture: {fileID: 2800000, guid: 7e1cd21aa02e4964095025d75a9b7234, type: 3}
+    - _SampleTexture2D_4F60F631_Texture:
+        m_Texture: {fileID: 2800000, guid: b996814622f8d4f4aa32319d288cc245, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_651AAB78_Texture:
+        m_Texture: {fileID: 2800000, guid: 50ce2c95b1da91f49be9d6df48b5bfd0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_BA17FDCB_Texture:
+        m_Texture: {fileID: 2800000, guid: 0c08505fad60ebc4cb40fa6ed4582af3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_E8348F0D_Texture:
+        m_Texture: {fileID: 2800000, guid: 8adc56061b983fe449e49119de1097a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -118,8 +126,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_7CC14023: 0
-    - Vector1_7E5BF138: 0.77
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -232,8 +238,6 @@ Material:
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
     m_Colors:
-    - Color_43BCBBB9: {r: 0.2801565, g: 1, b: 0, a: 0}
-    - Color_9CAD252B: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
