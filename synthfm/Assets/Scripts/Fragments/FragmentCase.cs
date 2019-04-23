@@ -61,7 +61,7 @@ public class FragmentCase : MonoBehaviour
             if (fragment.currentState != FragmentController.states.DEPOSIT)
             {
 
-                if (GetComponentInParent<LattePuzzle>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.LATTE)
+                if (GetComponentInParent<LattePuzzle>() != null)
                 {
                     PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte, this.gameObject);
                 }

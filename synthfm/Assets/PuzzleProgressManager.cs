@@ -54,12 +54,11 @@ public class PuzzleProgressManager : MonoBehaviour
 
             if (amber_count >= amber_puzzles)
             {
-                Debug.Log("Spawning Artifact");
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
-                Debug.Log("Deleting amber puzzles");
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
                 {
                     Destroy(puzzle.gameObject);
+                    //TODO: Fade out
                     
                 }
                 mainCamera.enabled = true;
@@ -73,13 +72,15 @@ public class PuzzleProgressManager : MonoBehaviour
             if (fiber_deleted) return false;
 
             fiber_count++;
+            Debug.Log("Notified - Fiber");
 
-            if(fiber_count >= fiber_puzzles)
+            if (fiber_count >= fiber_puzzles)
             {
-                foreach(GatePuzzle puzzle in GameObject.FindObjectsOfType<GatePuzzle>())
+                ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Fiber);
+                foreach (GatePuzzle puzzle in GameObject.FindObjectsOfType<GatePuzzle>())
                 {
                     Destroy(puzzle.gameObject);
-                    ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Fiber);
+                   //TODO: Fade out
                 }
 
                 mainCamera.enabled = true;
@@ -92,13 +93,15 @@ public class PuzzleProgressManager : MonoBehaviour
             if (latte_deleted) return false;
 
             latte_count++;
-
-            if(latte_count >= latte_puzzles)
+            Debug.Log("Notified - latte");
+            if (latte_count >= latte_puzzles)
             {
+                ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Latte);
                 foreach (LattePuzzle puzzle in GameObject.FindObjectsOfType<LattePuzzle>())
                 {
-                    Destroy(puzzle.gameObject);
-                    ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Latte);
+                   Destroy(puzzle.gameObject);
+                   //TODO: Fade out
+                    
                 }
 
                 mainCamera.enabled = true;
