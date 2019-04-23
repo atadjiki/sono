@@ -169,7 +169,16 @@ public class TransferRealms : MonoBehaviour
                         LoadScene("ParasiteVoid");
                         isVoidLoaded = true;
                     }
-                    int voidlevel = FragmentManager.instance.fragments.Count / 3;
+                    int voidlevel = 0;
+
+                    foreach(FragmentController fragment in FragmentManager.instance.fragments)
+                    {
+                        if (fragment.currentState != FragmentController.states.IDLE)
+                            voidlevel++;
+                    }
+                    Debug.Log("Void Level: " + voidlevel);
+                    voidlevel /= 3;
+
                     ScoreManager._instance.LoadVoidAtLevel(voidlevel);
                     ScoreManager._instance.Crossfade();
                     changeAppearance("Void");

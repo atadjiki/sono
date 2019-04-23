@@ -87,8 +87,8 @@ public class Mixer
             float newVol = Mathf.Lerp(0f, -80f, (timer / fadeTime));
             //Debug.Log((timer / fadeTime));
             mixer.SetFloat("Vol Master", newVol);
-            mixer.GetFloat("Vol Master", out newVol);
-            Debug.Log(newVol);
+           // mixer.GetFloat("Vol Master", out newVol);
+            //Debug.Log(newVol);
             timer += Time.deltaTime;
             yield return null;
         }
@@ -119,8 +119,8 @@ public class Mixer
             float newVol = Mathf.Lerp(-80f, 0f, (timer / fadeTime));
             //Debug.Log((timer / fadeTime));
             mixer.SetFloat("Vol Master", newVol);
-            mixer.GetFloat("Vol Master", out newVol);
-            Debug.Log(newVol);
+            //mixer.GetFloat("Vol Master", out newVol);
+            //Debug.Log(newVol);
             timer += Time.deltaTime;
             yield return null;
         }
