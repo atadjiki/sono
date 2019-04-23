@@ -179,7 +179,7 @@ public class Navpoint : MonoBehaviour
 
         foreach (FragmentController fragment in fragments)
         {
-            if (fragment.currentState != FragmentController.states.FOLLOW && fragment.currentState != FragmentController.states.VOID)
+            if (fragment.currentState == FragmentController.states.IDLE)
             {
                 float distance = Vector3.Distance(transform.position, fragment.transform.position);
                 if (distance <= minimumDistance || minimumDistance <= 0)
