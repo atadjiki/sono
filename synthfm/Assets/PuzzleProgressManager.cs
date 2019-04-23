@@ -19,6 +19,8 @@ public class PuzzleProgressManager : MonoBehaviour
     private int fiber_count = 0;
     private bool fiber_deleted = false;
 
+    private GameObject lastCompleted = null;
+
     Cinemachine.CinemachineVirtualCamera mainCamera;
 
     public enum World { Amber, Latte, Fiber};
@@ -38,8 +40,11 @@ public class PuzzleProgressManager : MonoBehaviour
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
     }
 
-    public bool NotifyCount(World world)
+    public bool NotifyCount(World world, GameObject completedPuzzle)
     {
+
+        lastCompleted = completedPuzzle;
+
         if(world == World.Amber)
         {
             if (amber_deleted) return false;
@@ -49,11 +54,13 @@ public class PuzzleProgressManager : MonoBehaviour
 
             if (amber_count >= amber_puzzles)
             {
+                Debug.Log("Spawning Artifact");
+                ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
                 Debug.Log("Deleting amber puzzles");
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
                 {
                     Destroy(puzzle.gameObject);
-                    ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
+                    
                 }
                 mainCamera.enabled = true;
                 amber_deleted = true;
@@ -117,5 +124,15 @@ public class PuzzleProgressManager : MonoBehaviour
         }
     }
 
-    
+    public GameObject GetLastPuzzle()
+    {
+        return lastCompleted;
+    }
+
+    public Transform GetLastPuzzleLocation()
+    {
+        return lastCompleted.transform;
+    }
+
+
 }

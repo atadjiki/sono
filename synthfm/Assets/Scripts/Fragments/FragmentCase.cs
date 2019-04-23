@@ -60,6 +60,20 @@ public class FragmentCase : MonoBehaviour
             }
             if (fragment.currentState != FragmentController.states.DEPOSIT)
             {
+
+                if (GetComponentInParent<LattePuzzle>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.LATTE)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte, this.gameObject);
+                }
+                else if (GetComponentInParent<GatePuzzle>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.FIBER)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber, this.gameObject);
+                }
+                if (GetComponentInParent<ClusterManager>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.AMBER)
+                {
+                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber, this.gameObject);
+                }
+
                 fragment.Collect(LevelManager.instance.getPlayer().transform);
                 if (GetComponentInParent<Puzzle>() == null)
                 {
@@ -71,17 +85,7 @@ public class FragmentCase : MonoBehaviour
                     GetComponentInParent<Puzzle>().setPieceCamera.enabled = false;
                 }
 
-                if (GetComponentInParent<LattePuzzle>() != null)
-                {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte);
-                }else if (GetComponentInParent<GatePuzzle>() != null)
-                {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber);
-                }
-                if (GetComponentInParent<ClusterManager>() != null)
-                {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber);
-                }
+                
 
             }
 

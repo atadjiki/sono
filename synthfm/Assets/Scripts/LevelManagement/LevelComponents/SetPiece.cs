@@ -21,8 +21,8 @@ public class SetPiece : MonoBehaviour
 
     private void OnEnable()
     {
-        if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log(" Set Piece Initialized "); return; }
-        DoSetup();
+        if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) {  return; }
+//        DoSetup();
     }
 
     public void DoSetup()
