@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: currentWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1459050426, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -291,10 +295,6 @@ PrefabInstance:
     - target: {fileID: 1459050426, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -6645,13 +6645,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7060155435660702504, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
+      propertyPath: Crystalls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060155435660702504, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 1086417844}
+    - target: {fileID: 7060155435660702504, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6043265197013053636, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043265198740425533, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000024408102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990090424185340872, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: ToShakeRotate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348236239189782670, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: ToShakeRotate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610943806121600281, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: ToShakeRotate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874091128478594495, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: ToShakeRotate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
@@ -6730,13 +6765,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1090992495479256720, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
+      propertyPath: Crystalls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090992495479256720, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
       propertyPath: setPieceCamera
       value: 
       objectReference: {fileID: 215624111}
+    - target: {fileID: 1090992495479256720, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7485162546142516585, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485162544415698576, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000010967255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485162544415698576, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000023841858
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be4e9a7f0f8e01459e87223da1c7fa7, type: 3}

@@ -65,7 +65,7 @@ public class ClusterManager : Puzzle
                 Num_Of_Actives--;
             }
 
-            if (Num_Of_Actives == Crystalls.Length)  // puzzle complete
+            if (Num_Of_Actives >= Crystalls.Length)  // puzzle complete
             {
                 IsComplete = true;
                 //// destroy rock -- Arash - keep rocks for now until we delete puzzles and drop artifact
