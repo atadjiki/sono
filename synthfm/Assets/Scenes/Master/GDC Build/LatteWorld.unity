@@ -707,6 +707,11 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
 --- !u!4 &171385623 stripped
@@ -11266,6 +11271,16 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
 --- !u!4 &1519233698 stripped
@@ -13742,6 +13757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
