@@ -153,7 +153,6 @@ public class TransferRealms : MonoBehaviour
                 ScoreManager._instance.LoadPattern(2);
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-                Debug.Log("LaTTE");
                 FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
 
                 HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions

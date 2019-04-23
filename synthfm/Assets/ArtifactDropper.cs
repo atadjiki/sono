@@ -11,15 +11,8 @@ public class ArtifactDropper : MonoBehaviour
     public GameObject fiber_artifact;
     public GameObject latte_artifact;
 
-    public Transform amber_drop_location;
     private bool amber_dropped = false;
-
-    
-    public Transform fiber_drop_location;
     private bool fiber_dropped = false;
-
-   
-    public Transform latte_drop_location;
     private bool latte_dropped = false;
 
     public enum World { Latte, Amber, Fiber};
@@ -44,7 +37,7 @@ public class ArtifactDropper : MonoBehaviour
             if (amber_artifact != null)
             {
                 GameObject artifact = Instantiate<GameObject>(amber_artifact);
-                artifact.transform.position = amber_drop_location.position;
+                artifact.transform.position = PuzzleProgressManager.instance.GetLastPuzzleLocation().position;
                 Vector3 newpos = new Vector3(0, 0, 30);
                 artifact.transform.position += newpos;
                 amber_dropped = true;
@@ -56,7 +49,7 @@ public class ArtifactDropper : MonoBehaviour
             if (amber_artifact != null)
             {
                 GameObject artifact = Instantiate<GameObject> (fiber_artifact);
-                artifact.transform.position = fiber_drop_location.position;
+                artifact.transform.position = PuzzleProgressManager.instance.GetLastPuzzleLocation().position;
                 Vector3 newpos = new Vector3(0, 0, 30);
                 artifact.transform.position += newpos;
                 fiber_dropped = true;
@@ -68,7 +61,7 @@ public class ArtifactDropper : MonoBehaviour
             if (amber_artifact != null)
             {
                 GameObject artifact = Instantiate<GameObject>(latte_artifact);
-                artifact.transform.position = latte_drop_location.position;
+                artifact.transform.position = PuzzleProgressManager.instance.GetLastPuzzleLocation().position;
                 Vector3 newpos = new Vector3(0, 0, 30);
                 artifact.transform.position += newpos;
                 latte_dropped = true;

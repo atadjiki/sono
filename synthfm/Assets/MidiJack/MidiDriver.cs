@@ -113,10 +113,6 @@ namespace MidiJack
 
         #endregion
 
-        #region Editor Support
-
-        #if UNITY_EDITOR
-
         // Update timer
         const float _updateInterval = 1.0f / 30;
         float _lastUpdateTime;
@@ -148,10 +144,6 @@ namespace MidiJack
             get { return _messageHistory; }
         }
 
-        #endif
-
-        #endregion
-
         #region Public Methods
 
         MidiDriver()
@@ -160,9 +152,7 @@ namespace MidiJack
             for (var i = 0; i < 17; i++)
                 _channelArray[i] = new ChannelState();
 
-            #if UNITY_EDITOR
             _messageHistory = new Queue<MidiMessage>();
-            #endif
         }
 
         #endregion
@@ -181,9 +171,7 @@ namespace MidiJack
             }
             else
             {
-                #if UNITY_EDITOR
                 if (CheckUpdateInterval()) Update();
-                #endif
             }
         }
 
@@ -248,18 +236,14 @@ namespace MidiJack
                         knobDelegate((MidiChannel)channelNumber, message.data1, level);
                 }
 
-                #if UNITY_EDITOR
                 // Record the message.
                 _totalMessageCount++;
                 _messageHistory.Enqueue(message);
-                #endif
             }
 
-            #if UNITY_EDITOR
             // Truncate the history.
             while (_messageHistory.Count > 8)
                 _messageHistory.Dequeue();
-            #endif
         }
 
         #endregion
