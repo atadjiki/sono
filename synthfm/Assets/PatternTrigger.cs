@@ -11,7 +11,7 @@ public class PatternTrigger : MonoBehaviour
     GameObject playerRef;
     float PrevAcceleration;
     PlayerInput.TurntableController tController;
-    Cinemachine.CinemachineVirtualCamera mainCamera;
+  //  Cinemachine.CinemachineVirtualCamera mainCamera;
     float prevFieldofView;
 
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class PatternTrigger : MonoBehaviour
     {
         playerRef = GameObject.Find("Player");
         tController = playerRef.GetComponent<PlayerInput.TurntableController>();
-        mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+     //   mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
     }
 
