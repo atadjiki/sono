@@ -8,6 +8,7 @@ public class Navpoint : MonoBehaviour
     public GameObject target;
     public GameObject eyeball;
     public GameObject centerOfEye;
+    public Transform hub;
     public SphereCollider sphereCollider;
     public bool locked = true;
 
@@ -118,12 +119,22 @@ public class Navpoint : MonoBehaviour
                 CheckForNewFragment();
             }
         }
+        else if(amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments)
+        {
+            CheckForHub();
+        }
         else
         {
             CheckForNewFragment();
           
         }
     }
+
+    public void CheckForHub()
+    {
+        target = hub.gameObject;
+    }
+
     public bool CheckForNewWorld()
     {
         Vector3 playerPos = GameObject.Find("Player").transform.position;
