@@ -22,7 +22,7 @@ public class SetPiece : MonoBehaviour
     private void OnEnable()
     {
        // if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log(" Set Piece Initialized "); return; }
-      //  DoSetup();
+        DoSetup();
     }
 
     public void DoSetup()
@@ -39,11 +39,15 @@ public class SetPiece : MonoBehaviour
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
+        print(setPieceCamera);
+        if (setPieceCamera == null)
+        {
+            GameObject VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
+            VCam.name = "CM_" + this.name;
+            VCam.transform.parent = GameObject.Find("Camera Rig").transform;
+            setPieceCamera = VCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        }
 
-        GameObject VCam = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Cameras/CM_Puzzle"));
-        VCam.name = "CM_" + this.name;
-        VCam.transform.parent = GameObject.Find("Camera Rig").transform;
-        setPieceCamera = VCam.GetComponent<Cinemachine.CinemachineVirtualCamera>();
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset = new Vector3(0, 0, -200);
         setPieceCamera.AddCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
         setPieceCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0.2f;

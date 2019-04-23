@@ -54,6 +54,10 @@ public class PatternGenerator : MonoBehaviour
                 break;
         }
 
+        if(CurvePair == null)
+        {
+            Debug.Log("ERROR:: PAtterns not Assigned Successfully");
+        }
 
         routes = new Transform[CurvePair.transform.childCount];
         for (int i = 0; i < routes.Length; i++)

@@ -200,7 +200,7 @@ public class Crystal: MonoBehaviour
     IEnumerator setListener()
     {
         IsListening = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         IsListening = true;
     }
 

@@ -223,7 +223,7 @@ public class FragmentController : MonoBehaviour
         tr.time = i_time;
     }
 
-    public void Void()
+    public void Void() // Stays in void
     {
         rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f);
     }

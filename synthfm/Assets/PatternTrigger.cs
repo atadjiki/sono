@@ -5,10 +5,9 @@ using Cinemachine;
 
 public class PatternTrigger : MonoBehaviour
 {
-    public float cmrFieldView;
+   // public float cmrFieldView;
     public float timeOut;
     
-
     GameObject playerRef;
     float PrevAcceleration;
     PlayerInput.TurntableController tController;
@@ -48,7 +47,9 @@ public class PatternTrigger : MonoBehaviour
             {
                 if (fragment.currentState == FragmentController.states.PRE_FINAL || fragment.currentState == FragmentController.states.FOLLOW)
                 {
-                        fragment.currentState = FragmentController.states.FINAL_PATERN;
+                    fragment.changeTrailTime(5);
+                    fragment.currentState = FragmentController.states.FINAL_PATERN;
+                       
                          Debug.Log("generating patterns");
                 }
             }

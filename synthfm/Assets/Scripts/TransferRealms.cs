@@ -120,7 +120,7 @@ public class TransferRealms : MonoBehaviour
                 HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
                 
             }
-            else if (gameObject.tag == "Realm2")
+            else if (gameObject.tag == "Realm2") // FIBER
             {
                 if (isFiberLoaded == false)
                 {
@@ -137,6 +137,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
                 HandleEnterActions(FragmentController.world.FIBER); // Fragment enter actions
+                changeStateToVoid(FragmentController.world.AMBER); // make fragment stop following you in FIber world
 
                 FXToggle.instance.ToggleFX(FragmentController.world.FIBER);
             }
@@ -156,6 +157,8 @@ public class TransferRealms : MonoBehaviour
                 FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
 
                 HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions
+               // changeStateToVoid(FragmentController.world.LATTE); // make fragment stop following you in FIber world
+
                 prepareForCurve();
             }
             else if (gameObject.tag == "Realm4")
@@ -275,18 +278,17 @@ public class TransferRealms : MonoBehaviour
             {
                 fragment.changeTrailTime(0);
                 fragment.getReadyForCurve();
-              
             }
-        }
+        } // all 6 frags have PRE_FINAL state after this
     }
 
     // Change state to void
-    private void changeStateToVoid()
+    private void changeStateToVoid(FragmentController.world i_World)
     {
         FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
         foreach (FragmentController fragment in fragments)
         {
-            if(fragment.currentState == FragmentController.states.FOLLOW)
+            if(fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == i_World)
             {
                 fragment.currentState = FragmentController.states.VOID;
             }
@@ -294,7 +296,7 @@ public class TransferRealms : MonoBehaviour
     }
 
     // to move fragment to void around player
-    private void JoinInVoid()  
+    private void JoinInVoid()   // Amber Frags joins you in void between Fiber and Latte
     {
         Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
         // change trail to zero
@@ -308,9 +310,9 @@ public class TransferRealms : MonoBehaviour
                 fragment.changeTrailTime(0);
                 fragment.transform.position = playerPos + new Vector3(150,0,0);
                 fragment.changeTrailTime(5);
-                fragment.currentState = FragmentController.states.FOLLOW;
+                fragment.currentState = FragmentController.states.FOLLOW; 
             }
-        }
+        } // so all 6 fragment have follow state now afer this
     }
 
 
