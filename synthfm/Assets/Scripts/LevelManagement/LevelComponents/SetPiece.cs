@@ -21,7 +21,7 @@ public class SetPiece : MonoBehaviour
 
     private void OnEnable()
     {
-       // if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log(" Set Piece Initialized "); return; }
+        if (!Application.isEditor || Application.isPlaying || transform.childCount != 0) { Debug.Log(" Set Piece Initialized "); return; }
         DoSetup();
     }
 
@@ -34,7 +34,6 @@ public class SetPiece : MonoBehaviour
             this.gameObject.AddComponent<CircleCollider2D>();
             this.gameObject.GetComponent<CircleCollider2D>().radius = 75;
             this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-            Debug.Log("Already has collider");
         }
         //get player and main camera
         mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
