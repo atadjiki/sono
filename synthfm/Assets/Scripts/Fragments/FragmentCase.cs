@@ -68,6 +68,7 @@ public class FragmentCase : MonoBehaviour
                 {
                     if(this.gameObject != PuzzleProgressManager.instance.GetLastPuzzle())
                     {
+
                         PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte, this.gameObject);
                         this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
                         if (GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>() != null)
@@ -84,11 +85,39 @@ public class FragmentCase : MonoBehaviour
                 }
                 else if (GetComponentInParent<GatePuzzle>() != null || world == FragmentController.world.FIBER)
                 {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber, this.gameObject);
+                    if (this.gameObject != PuzzleProgressManager.instance.GetLastPuzzle())
+                    {
+
+                        PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber, this.gameObject);
+                        this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                        if (GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>() != null)
+                        {
+                            GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>().enabled = true;
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.Log("Already picked up this fragment!");
+                    }
                 }
                 else if (GetComponentInParent<ClusterManager>() != null || world == FragmentController.world.AMBER)
                 {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber, this.gameObject);
+                    if (this.gameObject != PuzzleProgressManager.instance.GetLastPuzzle())
+                    {
+
+                        PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber, this.gameObject);
+                        this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                        if (GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>() != null)
+                        {
+                            GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>().enabled = true;
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.Log("Already picked up this fragment!");
+                    }
                 }
 
                 fragment.Collect(LevelManager.instance.getPlayer().transform);
