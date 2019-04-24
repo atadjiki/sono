@@ -12,6 +12,8 @@ public class GateTrigger : MonoBehaviour
     public bool ignoreAngle = false;
     public bool collided = false;
     public VisualEffect GateReact;
+    public Animator animator;
+    public string animationName;
 
     private bool reacting = false;
     private bool shrinking = false;
@@ -21,6 +23,7 @@ public class GateTrigger : MonoBehaviour
     public Vector3 shrinkSize = new Vector3(0.5f, 0.5f, 0.5f);
     public Vector3 expandSize = new Vector3(1.5f, 1.5f, 1.5f);
     public float lerpTime = 0.05f;
+
 
     private void Start()
     {
@@ -87,6 +90,10 @@ public class GateTrigger : MonoBehaviour
     IEnumerator GateReaction()
     {
         
+        if(animator != null)
+        {
+            animator.SetTrigger(animationName);
+        }
         yield return new WaitForSeconds(.5f);
         GateReact.SetFloat("React", -100);
 
