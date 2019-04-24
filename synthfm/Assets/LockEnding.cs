@@ -21,6 +21,10 @@ public class LockEnding : MonoBehaviour
     public SpriteRenderer top;
     public SpriteRenderer bottom;
 
+    public GameObject restartPanel;
+
+    private bool waitingForRestart = false;
+
     void Awake()
     {
         if (player == null)
@@ -78,11 +82,18 @@ public class LockEnding : MonoBehaviour
         StartCoroutine(FadeTo(top));
         StartCoroutine(FadeTo(bottom));
 
+        yield return new WaitForSeconds(4.0f);
+
+        ShowCreditsPanel();
+
         yield return new WaitForSecondsRealtime(lockTime);
+        
+    }
 
-        StartCoroutine(RestartLevel());
-
-
+    void ShowCreditsPanel()
+    {
+        waitingForRestart = true;
+        restartPanel.SetActive(true);
     }
 
     IEnumerator LockControls()
@@ -90,17 +101,6 @@ public class LockEnding : MonoBehaviour
         yield return new WaitForSeconds(controllerLockDelay);
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
-    }
-
-    IEnumerator RestartLevel()
-    {
-        if (restartLevel)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
-        yield return new WaitForEndOfFrame();
-
     }
 
     IEnumerator FadeTo(SpriteRenderer renderer)
@@ -150,6 +150,20 @@ public class LockEnding : MonoBehaviour
 
             // Wait one frame, and repeat.
             yield return null;
+        }
+    }
+
+    private void Update()
+    {
+        if (waitingForRestart)
+        {
+            if(GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>().turntableManager.lastInteracted == PlayerInput.TurntableManager.DJTechControl.Play)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 

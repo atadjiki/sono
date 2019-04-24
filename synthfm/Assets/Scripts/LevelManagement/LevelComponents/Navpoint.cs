@@ -77,11 +77,6 @@ public class Navpoint : MonoBehaviour
                 {
                     SortFragments();
 
-                    print(amberFragments);
-                    print(maxFragments);
-                    print(latteFragments);
-                    print(fiberFragments);
-
                     if ((amberFragments >= maxFragments) && (fiberFragments >= maxFragments) && (latteFragments >= maxFragments))
                     {
                         CheckForHub();
