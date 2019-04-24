@@ -19,6 +19,9 @@ public class PuzzleProgressManager : MonoBehaviour
     private int fiber_count = 0;
     private bool fiber_deleted = false;
 
+    public List<GameObject> boundaries;
+    private bool boundariesDeleted = false;
+
     private GameObject lastCompleted = null;
 
     Cinemachine.CinemachineVirtualCamera mainCamera;
@@ -221,6 +224,23 @@ public class PuzzleProgressManager : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void DeleteBoundaries()
+    {
+        foreach(GameObject obj in boundaries)
+        {
+            Destroy(obj);
+        }
+    }
+
+    private void Update()
+    {
+        if (isCompletedWithGame() && !boundariesDeleted)
+        {
+            DeleteBoundaries();
+            boundariesDeleted = true;
         }
     }
 

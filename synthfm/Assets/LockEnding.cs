@@ -72,7 +72,7 @@ public class LockEnding : MonoBehaviour
             fragment.currentState = FragmentController.states.DEPOSIT;
         }
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(4.0f);
 
         StartCoroutine(LerpScale(emissive));
         StartCoroutine(FadeTo(top));
