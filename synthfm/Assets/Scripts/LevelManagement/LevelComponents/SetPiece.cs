@@ -15,6 +15,7 @@ public class SetPiece : MonoBehaviour
     public PlayerInput.TurntableController player;
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
     public GameObject center;
+    public bool FinalZone = false;
 
     private bool centerExists = false;
     // Start is called before the first frame update
@@ -110,6 +111,11 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+
+        if (FinalZone)
+        {
+            return;
+        }
         if (collision != null && player != null)
         {
             if (collision.gameObject == player.gameObject)
