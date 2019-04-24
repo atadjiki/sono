@@ -4879,68 +4879,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &256095859
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 256095862}
-  - component: {fileID: 256095861}
-  - component: {fileID: 256095860}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &256095860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256095859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9aee6ef4fcf964184431ff305848c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vfx: {fileID: 0}
-  cc: {fileID: 0}
---- !u!58 &256095861
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256095859}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 250
---- !u!4 &256095862
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256095859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 365, y: -53, z: 90.24797}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &276845988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5212,7 +5150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   clearColorMode: 1
-  backgroundColorHDR: {r: 0.02178352, g: 0.04429672, b: 0.06593698, a: 0}
+  backgroundColorHDR: {r: 0.01573336, g: 0.03929411, b: 0.05891765, a: 0}
   clearDepth: 1
   renderingPath: 0
   volumeLayerMask:
@@ -5498,8 +5436,8 @@ MonoBehaviour:
   - {r: 0.654902, g: 0.8784314, b: 0.20784314, a: 1}
   - {r: 0.21176471, g: 0.8745098, b: 0.21960784, a: 1}
   - {r: 0.10980392, g: 0.70980394, b: 0.8, a: 1}
-  currentPlayercolor: {r: 0.4676107, g: 0.2764574, b: 0.4026153, a: 0}
-  currentTrailColor: {r: 0.4666667, g: 0.2784314, b: 0.4039216, a: 0}
+  currentPlayercolor: {r: 0.385262, g: 0.330172, b: 0.4387533, a: 0}
+  currentTrailColor: {r: 0.3843137, g: 0.3294118, b: 0.4392157, a: 0}
 --- !u!20 &504042470
 Camera:
   m_ObjectHideFlags: 0
@@ -5550,7 +5488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504042465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.3, z: -200}
+  m_LocalPosition: {x: 1870.9, y: -1384, z: -220}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 245882009}
@@ -8092,7 +8030,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1294251451
 GameObject:
@@ -8272,7 +8210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0, z: -90.7896}
+  m_FollowOffset: {x: 0, y: 0, z: -86.68361}
   m_XDamping: 0.25
   m_YDamping: 0.25
   m_ZDamping: 0.25

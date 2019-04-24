@@ -66,8 +66,10 @@ public class FragmentController : MonoBehaviour
         scoreManager = ScoreManager.GetInstance();
         playerEyeball = GameObject.Find("Player").GetComponent<Navpoint>();
 
-        Physics2D.IgnoreCollision(GameObject.Find("Player").GetComponent<PolygonCollider2D>(), GetComponentInChildren<CapsuleCollider2D>());
-
+        if(GetComponentInChildren<CapsuleCollider2D>() != null)
+        {
+            Physics2D.IgnoreCollision(GameObject.Find("Player").GetComponent<PolygonCollider2D>(), GetComponentInChildren<CapsuleCollider2D>());
+        }
     }
 
     private void Update()

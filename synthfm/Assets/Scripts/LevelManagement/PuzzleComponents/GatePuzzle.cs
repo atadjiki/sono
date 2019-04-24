@@ -137,9 +137,9 @@ public class GatePuzzle : Puzzle
                 else
                 {
                     //if the player touched another gate, update accordingly 
-                    Debug.Log("Gate " + index + " hit");
+                  //  Debug.Log("Gate " + index + " hit");
                     gatesHit++;
-                    Debug.Log(gates.Count - gatesHit + " gates left!");
+                 //   Debug.Log(gates.Count - gatesHit + " gates left!");
                     trigger.PlayAudioClip(AssetManager.instance.gateTones[currentIndex]);
                     if (gatesHit == currentList.Count)
                     {
