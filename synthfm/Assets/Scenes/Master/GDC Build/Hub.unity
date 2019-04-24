@@ -5462,7 +5462,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 1
   orthographic: 0
   orthographic size: 50
   m_Depth: -1
@@ -5488,7 +5488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504042465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1870.9, y: -1384, z: -220}
+  m_LocalPosition: {x: 0, y: 0.5299902, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 245882009}
@@ -6187,14 +6187,14 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Time
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1929451584604128813, guid: 472ede1e5d4d3974db213d411c4253e4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Time
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -7248,6 +7248,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 982068445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &982068447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 765795257570068063, guid: 8f8176cb54a5c7046b754166c94d010f,
+    type: 3}
+  m_PrefabInstance: {fileID: 982068445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &982068448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982068447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa8ca9d3402cf04a8a5e062048b91d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1049933508
 GameObject:
   m_ObjectHideFlags: 0
@@ -7298,6 +7316,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8356c21970f6e114b9892257fceb5a34, type: 2}
   VoidPattern: {fileID: 11400000, guid: 83a70284103a1ce499a7afd9f021fa8a, type: 2}
   finalCinematic: {fileID: 0}
+  CreditsPattern: {fileID: 0}
   docks:
   - mixer: {fileID: 24100000, guid: 91d5a376e84597b4585177d5068f8257, type: 2}
     currentScorepattern: {fileID: 11400000, guid: e713b3ca8445b48408d5e92593c0dd74,
@@ -8647,6 +8666,10 @@ PrefabInstance:
       propertyPath: CM_Deposit
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1373684000, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1109981465, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -8740,10 +8763,6 @@ PrefabInstance:
     - target: {fileID: 2101617623, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_SortingOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1373684000, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
-      propertyPath: levelManager
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3978961223648508717, guid: 31b04e96d7caf8444a4b74356b765581,
         type: 3}
