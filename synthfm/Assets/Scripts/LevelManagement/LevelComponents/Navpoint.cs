@@ -117,7 +117,7 @@ public class Navpoint : MonoBehaviour
             CheckForHub();
         }
 
-        if (amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
+        else if (amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
         {
             if(!CheckForNewWorld())
             {
