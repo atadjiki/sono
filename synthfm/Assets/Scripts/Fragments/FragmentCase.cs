@@ -69,7 +69,11 @@ public class FragmentCase : MonoBehaviour
                     if(this.gameObject != PuzzleProgressManager.instance.GetLastPuzzle())
                     {
                         PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte, this.gameObject);
-                        GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>().enabled = true;
+                        if (GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>() != null)
+                        {
+                            GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>().enabled = true;
+                        }
+                        
                     }
                     else
                     {
