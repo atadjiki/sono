@@ -48,9 +48,6 @@ public class GateTrigger : MonoBehaviour
             float angle = Vector3.Dot(transform.up, normalizedVelocity);
             if (angle > 0.5f || ignoreAngle)
             {
-                //audioSource.clip = AssetManager.instance.gateTones[0];
-                //audioSource.Play();
-                // Debug.Log("Hit gate");
                 if (animator != null)
                 {
                     animator.SetTrigger(animationName);
