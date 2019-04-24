@@ -9,5 +9,6 @@ public class PlayFinalZoneAudio : MonoBehaviour
         Debug.Log("Starting Final Audio");
         ScoreManager._instance.LoadFinalZone();
         ScoreManager._instance.Crossfade();
+        StartCoroutine(ScoreManager._instance.PlayCreditsAfterFinal());
     }
 }

@@ -163,6 +163,7 @@ public class ScoreManager : MonoBehaviour
     public ScorePattern[] scorePatterns;
     public ScorePattern VoidPattern;
     public ScorePattern finalCinematic;
+    public ScorePattern CreditsPattern;
 
     [Header("Docks")]
     public Mixer[] docks;
@@ -386,6 +387,23 @@ public class ScoreManager : MonoBehaviour
     {
         LoadPattern(finalCinematic);
         docks[(CurrentActiveDock + 1) % 2].Pause();
+        docks[(CurrentActiveDock + 1) % 2].sources[0].loop = false;
+    }
+
+    public void LoadCreditsTrack()
+    {
+        LoadPattern(CreditsPattern);
+        docks[(CurrentActiveDock + 1) % 2].Pause();
+    }
+
+    public IEnumerator PlayCreditsAfterFinal()
+    {
+        yield return new WaitForSeconds(5);
+        while (docks[CurrentActiveDock].sources[0].isPlaying)
+            yield return null;
+        LoadCreditsTrack();
+        Crossfade();
+        yield return null;
     }
 
     /* This code might come in handy for manual mixing
