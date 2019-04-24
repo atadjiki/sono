@@ -9,28 +9,22 @@ public class LockEnding : MonoBehaviour
     public bool active = false;
     public float lockTime = 10.0f;
     public PlayerInput.TurntableController player;
-    public Navpoint navPoint;
-    public GameObject bubbles;
-    public GameObject playerTrail;
-    public Animator animator;
-
-
     public GameObject rbPlayer;
+    private bool dirty = false;
 
     void Awake()
     {
         if (player == null)
             player = GameObject.Find("Player").GetComponent<PlayerInput.TurntableController>();
-        if (navPoint == null)
-            navPoint = GameObject.Find("Player").GetComponent<Navpoint>();
         if (rbPlayer == null)
             rbPlayer = GameObject.Find("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(active && collision.gameObject == GameObject.Find("Player"))
+        if(!dirty && active && collision.gameObject == GameObject.Find("Player"))
         {
+            dirty = true;
             StartCoroutine(Lock());
         }
     }
@@ -52,9 +46,8 @@ public class LockEnding : MonoBehaviour
 
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
-        // navPoint.Unlock();
-        Debug.Log("Title screen finished " + Time.time + " secs");
+        Debug.Log("Ending screen finished " + Time.time + " secs");
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
