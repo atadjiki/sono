@@ -112,17 +112,19 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        if(amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
+        if (amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments)
+        {
+            CheckForHub();
+        }
+
+        if (amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
         {
             if(!CheckForNewWorld())
             {
                 CheckForNewFragment();
             }
         }
-        else if(amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments)
-        {
-            CheckForHub();
-        }
+
         else
         {
             CheckForNewFragment();
