@@ -57,7 +57,7 @@ public class PuzzleProgressManager : MonoBehaviour
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
                 {
-                    StartCoroutine(DeleteOnOffset(puzzle.gameObject));
+                    StartCoroutine(FadeOutPuzzle(puzzle.gameObject));
                     //TODO: Fade out
 
                 }
@@ -80,7 +80,7 @@ public class PuzzleProgressManager : MonoBehaviour
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Fiber);
                 foreach (GatePuzzle puzzle in GameObject.FindObjectsOfType<GatePuzzle>())
                 {
-                    StartCoroutine(DeleteOnOffset(puzzle.gameObject));
+                    StartCoroutine(FadeOutPuzzle(puzzle.gameObject));
                     //TODO: Fade out
                 }
 
@@ -101,7 +101,7 @@ public class PuzzleProgressManager : MonoBehaviour
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Latte);
                 foreach (LattePuzzle puzzle in GameObject.FindObjectsOfType<LattePuzzle>())
                 {
-                    StartCoroutine(DeleteOnOffset(puzzle.gameObject));
+                    StartCoroutine(FadeOutPuzzle(puzzle.gameObject));
                    //TODO: Fade out
                     
                 }
@@ -115,11 +115,50 @@ public class PuzzleProgressManager : MonoBehaviour
         }
     }
 
-    public IEnumerator DeleteOnOffset(GameObject toDelete)
+    public IEnumerator FadeOutPuzzle(GameObject toDelete)
+    {
+        Debug.Log("Fading out puzzle " + toDelete.gameObject.name);
+        foreach(SpriteRenderer renderer in toDelete.GetComponentsInChildren<SpriteRenderer>())
+        {
+            Debug.Log("Fading out " + renderer.gameObject.name);
+            StartCoroutine(FadeTo(renderer));
+        }
+        yield return new WaitForSeconds(2.5f);
+        //Destroy(toDelete);
+    }
+
+    // Define an enumerator to perform our fading.
+    // Pass it the material to fade, the opacity to fade to (0 = transparent, 1 = opaque),
+    // and the number of seconds to fade over.
+  //  https://gamedev.stackexchange.com/questions/142791/how-can-i-fade-a-game-object-in-and-out-over-a-specified-duration
+    IEnumerator FadeTo(SpriteRenderer renderer)
     {
 
-        yield return new WaitForSeconds(5);
-        Destroy(toDelete);
+        // Cache the current color of the material, and its initiql opacity.
+        Color color = renderer.color;
+        float startOpacity = color.a;
+        float targetOpacity = 0.0f;
+        float duration = 2.5f;
+
+        // Track how many seconds we've been fading.
+        float t = 0;
+
+        while (t < duration)
+        {
+            // Step the fade forward one frame.
+            t += Time.deltaTime;
+            // Turn the time into an interpolation factor between 0 and 1.
+            float blend = Mathf.Clamp01(t / duration);
+
+            // Blend to the corresponding opacity between start & target.
+            color.a = Mathf.Lerp(startOpacity, targetOpacity, blend);
+
+            // Apply the resulting color to the material.
+            renderer.color = color;
+
+            // Wait one frame, and repeat.
+            yield return null;
+        }
     }
 
     public int GetCount(World world)
