@@ -184,9 +184,9 @@ public class TransferRealms : MonoBehaviour
                     ScoreManager._instance.Crossfade();
                     changeAppearance("Void");
 
-                    ParasiteSpawner.instance.RunSpawn();
-
                     FXToggle.instance.AllFXOff();
+
+                  //  ParasiteSpawner.instance.RunSpawn();
 
                     Debug.Log("Entering 4");
                 }
@@ -237,8 +237,8 @@ public class TransferRealms : MonoBehaviour
         if(gameObject.tag != "Realm4")
         {
 
-            ParasiteSpawner.instance.KillParasites();
-            ParasiteSpawner.instance.StopSpawn();
+         //   ParasiteSpawner.instance.KillParasites();
+          //  ParasiteSpawner.instance.StopSpawn();
         }
     }
 

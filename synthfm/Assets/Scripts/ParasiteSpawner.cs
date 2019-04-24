@@ -32,8 +32,6 @@ public class ParasiteSpawner : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
 
-        player = GameObject.Find("Player").transform;
-
         if (player == null)
             player = GameObject.Find("Player").transform;
         if (mainCamera == null)
