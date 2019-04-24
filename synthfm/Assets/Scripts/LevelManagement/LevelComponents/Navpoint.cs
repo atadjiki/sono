@@ -61,13 +61,20 @@ public class Navpoint : MonoBehaviour
         //print(FragmentManager.instance.CountAttachedFragments());
         if (!locked)
         {
-            if (amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments)
-            {
-                CheckForHub();
-            }
+
             if (currentFrames >= maxFrames)
             {
                 SortFragments();
+
+                print(amberFragments);
+                print(maxFragments);
+                print(latteFragments);
+                print(fiberFragments);
+
+                if ((amberFragments >= maxFragments) && (fiberFragments >= maxFragments) && (latteFragments >= maxFragments))
+                {
+                    CheckForHub();
+                }
 
                 CheckForNewTarget();
                 currentFrames = 0;
