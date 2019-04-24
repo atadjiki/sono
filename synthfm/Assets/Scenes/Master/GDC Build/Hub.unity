@@ -8732,6 +8732,7 @@ GameObject:
   - component: {fileID: 1395415117}
   - component: {fileID: 1395415118}
   - component: {fileID: 1395415119}
+  - component: {fileID: 1395415120}
   m_Layer: 0
   m_Name: Void Realm Entry Point 1
   m_TagString: Realm4
@@ -8775,7 +8776,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395415116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -8784,6 +8785,32 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1500, y: 1250}
   m_Direction: 1
+--- !u!68 &1395415120
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395415116}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 175
+  m_Points:
+  - {x: -520.56494, y: 52.50646}
+  - {x: 521.5061, y: 52.958035}
+  - {x: 1017.6067, y: -1871.675}
+  - {x: 928.44525, y: -3690.7625}
+  - {x: 383.13483, y: -6002.304}
+  - {x: -513.44086, y: -7769.1543}
+  - {x: -1080.5103, y: -7680.1714}
+  - {x: -1681.681, y: -5318.2173}
+  - {x: -1430.814, y: -3555.9133}
+  - {x: -913.73193, y: -1603.2675}
 --- !u!1 &1412285068
 GameObject:
   m_ObjectHideFlags: 3
@@ -9045,7 +9072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -400}
+  m_FollowOffset: {x: 0, y: 0, z: -1000}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -9162,6 +9189,7 @@ GameObject:
   - component: {fileID: 1680576462}
   - component: {fileID: 1680576464}
   - component: {fileID: 1680576463}
+  - component: {fileID: 1680576465}
   m_Layer: 0
   m_Name: Void Realm Entry Point 2
   m_TagString: Realm4
@@ -9190,7 +9218,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680576461}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -9214,6 +9242,32 @@ MonoBehaviour:
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
   CurrentWorld: 
+--- !u!68 &1680576465
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680576461}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 175
+  m_Points:
+  - {x: -1835.9542, y: 3566.4658}
+  - {x: -1052.1969, y: 1376.8704}
+  - {x: -840.4223, y: 890.0578}
+  - {x: -290.97382, y: -8.674899}
+  - {x: 289.8244, y: -24.7218}
+  - {x: 248.50392, y: 1666.9025}
+  - {x: -245.88982, y: 3891.961}
+  - {x: -1072.6727, y: 6115.0986}
+  - {x: -1594.9105, y: 7133.929}
+  - {x: -2041.2667, y: 7649.178}
 --- !u!1 &1720605054
 GameObject:
   m_ObjectHideFlags: 0
@@ -9517,15 +9571,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1530501152, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1373683999, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: CM_Deposit
@@ -9977,6 +10031,7 @@ GameObject:
   - component: {fileID: 1929161474}
   - component: {fileID: 1929161476}
   - component: {fileID: 1929161475}
+  - component: {fileID: 1929161477}
   m_Layer: 0
   m_Name: Void Realm Entry Point 3
   m_TagString: Realm4
@@ -10005,7 +10060,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929161473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -10029,6 +10084,33 @@ MonoBehaviour:
   player: {fileID: 369758904}
   memoryManager: {fileID: 1775423724}
   CurrentWorld: 
+--- !u!68 &1929161477
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929161473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 175
+  m_Points:
+  - {x: -5.6807957, y: 573.3559}
+  - {x: -10.730521, y: -743.61676}
+  - {x: 322.06903, y: -1548.6821}
+  - {x: 952.4261, y: -2018.6102}
+  - {x: 1579.4825, y: -1955.3447}
+  - {x: 2094.0552, y: -1153.3949}
+  - {x: 2201.667, y: -171.31049}
+  - {x: 2215.8, y: 1012.91406}
+  - {x: 1960.154, y: 1931.0137}
+  - {x: 1552.7811, y: 2456.5898}
+  - {x: 1108.2203, y: 2546.0247}
 --- !u!1 &1969531330
 GameObject:
   m_ObjectHideFlags: 0
