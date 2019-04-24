@@ -65,6 +65,13 @@ public class Navpoint : MonoBehaviour
             {
                 SortFragments();
 
+                if(FragmentManager.instance.fragments.Count == 9)
+                {
+                    print("GO TO HUB");
+                    target = hub.gameObject;
+
+                }
+
                 CheckForNewTarget();
                 currentFrames = 0;
             }
