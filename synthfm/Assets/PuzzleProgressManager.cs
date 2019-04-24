@@ -20,7 +20,7 @@ public class PuzzleProgressManager : MonoBehaviour
     private bool fiber_deleted = false;
 
     public List<GameObject> boundaries;
-    private bool boundariesDeleted = false;
+    private bool gameCompleteActions = false;
 
     private GameObject lastCompleted = null;
 
@@ -235,12 +235,23 @@ public class PuzzleProgressManager : MonoBehaviour
         }
     }
 
+    public void DeleteAllTransferRealmsScripts()
+    {
+        foreach(TransferRealms scripts in GameObject.FindObjectsOfType<TransferRealms>())
+        {
+            scripts.enabled = false;
+        }
+    }
+
     private void Update()
     {
-        if (isCompletedWithGame() && !boundariesDeleted)
+        if (isCompletedWithGame() && !gameCompleteActions)
         {
             DeleteBoundaries();
-            boundariesDeleted = true;
+            DeleteAllTransferRealmsScripts();
+            GameObject.Find("Player").GetComponent<Navpoint>().pointToFinalZone = true;
+            
+            gameCompleteActions = true;
         }
     }
 

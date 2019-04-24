@@ -42,6 +42,10 @@ public class Navpoint : MonoBehaviour
     private int latteFragments;
     private int fiberFragments;
 
+    public GameObject finalZone;
+
+    public bool pointToFinalZone = false;
+
     private void Start()
     {
         //Lock();
@@ -62,8 +66,15 @@ public class Navpoint : MonoBehaviour
         if (!locked)
         {
 
+            
             if (currentFrames >= maxFrames)
             {
+                if (pointToFinalZone)
+                {
+                    target = finalZone;
+                    return;
+                }
+
                 SortFragments();
 
                 print(amberFragments);
