@@ -30,4 +30,15 @@ public class PlayAudioOnCollision : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (source.isPlaying)
+            return;
+        if (collision.gameObject.tag == "Player")
+        {
+            int i = Random.Range(0, SoundsToPlay.Length);
+            source.PlayOneShot(SoundsToPlay[i], 1.0f);
+        }
+    }
+
 }
