@@ -63,8 +63,9 @@ public class Navpoint : MonoBehaviour
         {
             if (currentFrames >= maxFrames)
             {
-                CheckForNewTarget();
                 SortFragments();
+
+                CheckForNewTarget();
                 currentFrames = 0;
             }
             else
@@ -112,7 +113,8 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        if (amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments)
+        SortFragments();
+        if ((amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments) || FragmentManager.instance.fragments.Count == 9)
         {
             CheckForHub();
         }
