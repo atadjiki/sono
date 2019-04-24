@@ -61,16 +61,13 @@ public class Navpoint : MonoBehaviour
         //print(FragmentManager.instance.CountAttachedFragments());
         if (!locked)
         {
+            if (amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments)
+            {
+                CheckForHub();
+            }
             if (currentFrames >= maxFrames)
             {
                 SortFragments();
-
-                if(FragmentManager.instance.fragments.Count == 9)
-                {
-                    print("GO TO HUB");
-                    target = hub.gameObject;
-
-                }
 
                 CheckForNewTarget();
                 currentFrames = 0;
@@ -120,13 +117,8 @@ public class Navpoint : MonoBehaviour
 
     public void CheckForNewTarget()
     {
-        SortFragments();
-        if ((amberFragments >= maxFragments && fiberFragments >= maxFragments && latteFragments >= maxFragments) || FragmentManager.instance.fragments.Count == 9)
-        {
-            CheckForHub();
-        }
 
-        else if (amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
+        if (amberFragments >= maxFragments || fiberFragments >=maxFragments || latteFragments>=maxFragments)
         {
             if(!CheckForNewWorld())
             {
