@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 4615436934168491100}
   - component: {fileID: 2047453441320319830}
   - component: {fileID: 8993400179032434626}
+  - component: {fileID: 7478423433478657278}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -305,7 +306,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partOfPuzzle: 0
   ignoreAngle: 0
+  collided: 0
   GateReact: {fileID: 561892303}
+  shrinkSize: {x: 0.5, y: 0.5, z: 0.5}
+  expandSize: {x: 1.5, y: 1.5, z: 1.5}
+  lerpTime: 0.05
+--- !u!95 &7478423433478657278
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979491357586931722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b30cbd8ece6e96a478e513947e8f6b4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5982045505624377508
 PrefabInstance:
   m_ObjectHideFlags: 0
