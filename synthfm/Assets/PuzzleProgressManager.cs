@@ -132,8 +132,12 @@ public class PuzzleProgressManager : MonoBehaviour
         Debug.Log("Fading out puzzle " + toDelete.gameObject.name);
         foreach(SpriteRenderer renderer in toDelete.GetComponentsInChildren<SpriteRenderer>())
         {
-            Debug.Log("Fading out " + renderer.gameObject.name);
-            StartCoroutine(FadeTo(renderer));
+
+            if (renderer.gameObject.GetComponentInParent<FragmentController>() == null)
+            {
+                Debug.Log("Fading out " + renderer.gameObject.name);
+                StartCoroutine(FadeTo(renderer));
+            }
         }
         yield return new WaitForSeconds(2.5f);
         //Destroy(toDelete);

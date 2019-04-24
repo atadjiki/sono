@@ -39,7 +39,6 @@ public class PlayAudioOnCollision : MonoBehaviour
             int i = Random.Range(0, SoundsToPlay.Length);
             source.PlayOneShot(SoundsToPlay[i], 1.0f);
         }
-
     }
 
 }
