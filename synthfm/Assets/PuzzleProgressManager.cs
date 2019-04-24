@@ -57,12 +57,13 @@ public class PuzzleProgressManager : MonoBehaviour
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
                 {
-                    Destroy(puzzle.gameObject);
+                    StartCoroutine(DeleteOnOffset(puzzle.gameObject));
                     //TODO: Fade out
-                    
+
                 }
                 mainCamera.enabled = true;
                 amber_deleted = true;
+                FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
             }
             return true;
 
@@ -79,12 +80,13 @@ public class PuzzleProgressManager : MonoBehaviour
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Fiber);
                 foreach (GatePuzzle puzzle in GameObject.FindObjectsOfType<GatePuzzle>())
                 {
-                    Destroy(puzzle.gameObject);
-                   //TODO: Fade out
+                    StartCoroutine(DeleteOnOffset(puzzle.gameObject));
+                    //TODO: Fade out
                 }
 
                 mainCamera.enabled = true;
                 fiber_deleted = true;
+                FXToggle.instance.ToggleFX(FragmentController.world.FIBER);
             }
             return true;
         }
@@ -99,17 +101,25 @@ public class PuzzleProgressManager : MonoBehaviour
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Latte);
                 foreach (LattePuzzle puzzle in GameObject.FindObjectsOfType<LattePuzzle>())
                 {
-                   Destroy(puzzle.gameObject);
+                    StartCoroutine(DeleteOnOffset(puzzle.gameObject));
                    //TODO: Fade out
                     
                 }
 
                 mainCamera.enabled = true;
                 latte_deleted = true;
+                FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
             }
 
             return true;
         }
+    }
+
+    public IEnumerator DeleteOnOffset(GameObject toDelete)
+    {
+
+        yield return new WaitForSeconds(5);
+        Destroy(toDelete);
     }
 
     public int GetCount(World world)
