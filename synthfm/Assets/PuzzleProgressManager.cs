@@ -202,5 +202,26 @@ public class PuzzleProgressManager : MonoBehaviour
         return lastCompleted.transform;
     }
 
+    public int GetTotalCount()
+    {
+        return amber_count + fiber_count + latte_count;
+    }
+
+    public int GetMaxCount()
+    {
+        return amber_puzzles + fiber_puzzles + latte_puzzles;
+    }
+
+    public bool isCompletedWithGame()
+    {
+        if(GetTotalCount() == GetMaxCount())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
