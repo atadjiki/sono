@@ -50,21 +50,21 @@ public class GateTrigger : MonoBehaviour
             {
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 //audioSource.Play();
-               // Debug.Log("Hit gate");
-                
-                GateReact.SetFloat("React", 40);
-
-                GateReact.SetFloat("Emission", 0);
+                // Debug.Log("Hit gate");
+                if (animator != null)
+                {
+                    animator.SetTrigger(animationName);
+                }
 
                 if (!collided)
                 {
+                    GateReact.SetFloat("React", 40);
+                    GateReact.SetFloat("Emission", 0);
                     NotifyPuzzle();
+                    GateReact.SetVector3("Position", new Vector3(0, 5, 0));
+                    StartCoroutine(GateReaction());
                 }
                 collided = true;
-                
-                GateReact.SetVector3("Position", new Vector3 (0, 5, 0));
-                StartCoroutine(GateReaction());
-
 
             }
             else
@@ -89,11 +89,6 @@ public class GateTrigger : MonoBehaviour
     }
     IEnumerator GateReaction()
     {
-        
-        if(animator != null)
-        {
-            animator.SetTrigger(animationName);
-        }
         yield return new WaitForSeconds(.5f);
         GateReact.SetFloat("React", -100);
 
