@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PickupScript : MonoBehaviour
 {
-    public Animation Pickup;
+    public Animator Pickup;
+    public CircleCollider2D cc;
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+        {
+            Physics2D.IgnoreCollision(collider, cc);
+        }
         
     }
 
@@ -16,8 +21,13 @@ public class PickupScript : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
+
     {
-        Pickup.Play("Static");
+        if(collision.gameObject == GameObject.Find("Player"))
+        {
+            Pickup.SetTrigger("Switch");
+        }
+           
     }
 }
