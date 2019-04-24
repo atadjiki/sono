@@ -55,8 +55,20 @@ public class PuzzleProgressManager : MonoBehaviour
             if (amber_count >= amber_puzzles || amber_count >= amber_puzzles)
             {
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
+
+                
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
                 {
+                    foreach (RockIt rock in puzzle.gameObject.GetComponentsInChildren<RockIt>())
+                    {
+                        rock.enabled = false;
+                    }
+                    foreach (Crystal crystal in puzzle.gameObject.GetComponentsInChildren<Crystal>())
+                    {
+                        crystal.enabled = false;
+                    }
+
+
                     StartCoroutine(FadeOutPuzzle(puzzle.gameObject));
                     //TODO: Fade out
 
