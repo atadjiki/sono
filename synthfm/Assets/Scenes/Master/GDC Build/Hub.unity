@@ -5549,41 +5549,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: hubWorld
-      value: 
-      objectReference: {fileID: 608599379}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: amberWorldTrigger
-      value: 
-      objectReference: {fileID: 1867114663}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: fiberWorldTrigger
-      value: 
-      objectReference: {fileID: 856997989}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: latteWorldTrigger
-      value: 
-      objectReference: {fileID: 1720605054}
-    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: hub
-      value: 
-      objectReference: {fileID: 1852472964}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: i_Menu
-      value: 
-      objectReference: {fileID: 2029814391}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: CM_Main
-      value: 
-      objectReference: {fileID: 705638743}
     - target: {fileID: 1855229569708447589, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5658,14 +5623,253 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: i_Menu
+      value: 
+      objectReference: {fileID: 2029814391}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: CM_Main
+      value: 
+      objectReference: {fileID: 705638743}
+    - target: {fileID: 2729162715487004530, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729162715487004530, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729162715487004530, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098752892492178616, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098752892492178616, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098752892492178616, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 238.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 136.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 238.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 136.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859578476645, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 238.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 136.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860657314098, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 238.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 136.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485860844029239, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     - target: {fileID: 828374271, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: hubWorld
+      value: 
+      objectReference: {fileID: 608599379}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: amberWorldTrigger
+      value: 
+      objectReference: {fileID: 1867114663}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: fiberWorldTrigger
+      value: 
+      objectReference: {fileID: 856997989}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: latteWorldTrigger
+      value: 
+      objectReference: {fileID: 1720605054}
+    - target: {fileID: 2404547506729140261, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: hub
+      value: 
+      objectReference: {fileID: 1852472964}
     - target: {fileID: 7440548671984367836, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_Name
       value: BlinkingAndDiamond
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352253278, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856007472480957157, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856007472480957157, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 71.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
@@ -5706,7 +5910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  restartLevel: 0
   lockTime: 10
+  controllerLockDelay: 1
   player: {fileID: 369758907}
   rbPlayer: {fileID: 369758904}
   mainCamera: {fileID: 705638743}
@@ -6166,6 +6372,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929451584604128813, guid: 472ede1e5d4d3974db213d411c4253e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6182,11 +6393,6 @@ PrefabInstance:
     - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929451584604128813, guid: 472ede1e5d4d3974db213d411c4253e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Time
@@ -8662,6 +8868,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1109981465, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2101617622, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -8696,10 +8906,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2101617622, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109981465, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2101617622, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
