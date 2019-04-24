@@ -61,6 +61,8 @@ public class FXToggle : MonoBehaviour
                 particleSystem.Play();
             }
         }
+
+        Debug.Log("Toggling FX - " + world.ToString());
     }
 
     public void TogglePlayerFog(GameObject puzzle, bool enteredPuzzle)

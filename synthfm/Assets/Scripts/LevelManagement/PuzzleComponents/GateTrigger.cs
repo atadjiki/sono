@@ -47,7 +47,7 @@ public class GateTrigger : MonoBehaviour
             {
                 //audioSource.clip = AssetManager.instance.gateTones[0];
                 //audioSource.Play();
-                Debug.Log("Hit gate");
+               // Debug.Log("Hit gate");
                 
                 GateReact.SetFloat("React", 40);
 

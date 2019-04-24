@@ -50,9 +50,9 @@ public class PuzzleProgressManager : MonoBehaviour
             if (amber_deleted) return false;
 
             amber_count++;
-            Debug.Log("Notified - amber");
+            Debug.Log("Notified - amber - " + amber_count);
 
-            if (amber_count >= amber_puzzles)
+            if (amber_count >= amber_puzzles || amber_count >= amber_puzzles)
             {
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Amber);
                 foreach (ClusterManager puzzle in GameObject.FindObjectsOfType<ClusterManager>())
@@ -69,10 +69,10 @@ public class PuzzleProgressManager : MonoBehaviour
         }else if(world == World.Fiber)
         {
 
-            if (fiber_deleted) return false;
+            if (fiber_deleted ||fiber_count >= fiber_puzzles) return false;
 
             fiber_count++;
-            Debug.Log("Notified - Fiber");
+            Debug.Log("Notified - Fiber - " + fiber_count);
 
             if (fiber_count >= fiber_puzzles)
             {
@@ -90,10 +90,10 @@ public class PuzzleProgressManager : MonoBehaviour
         }
         else
         {
-            if (latte_deleted) return false;
+            if (latte_deleted || latte_count >= latte_puzzles) return false;
 
             latte_count++;
-            Debug.Log("Notified - latte");
+            Debug.Log("Notified - latte - " + latte_count);
             if (latte_count >= latte_puzzles)
             {
                 ArtifactDropper.instance.DropArtifact(ArtifactDropper.World.Latte);
