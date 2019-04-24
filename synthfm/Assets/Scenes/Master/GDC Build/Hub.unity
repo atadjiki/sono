@@ -5917,6 +5917,24 @@ MonoBehaviour:
   rbPlayer: {fileID: 369758904}
   mainCamera: {fileID: 705638743}
   setPieceCamera: {fileID: 1969531332}
+--- !u!1 &635755121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 765795257570068063, guid: 8f8176cb54a5c7046b754166c94d010f,
+    type: 3}
+  m_PrefabInstance: {fileID: 982068445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &635755122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635755121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa8ca9d3402cf04a8a5e062048b91d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &667764380
 GameObject:
   m_ObjectHideFlags: 0
@@ -6397,6 +6415,11 @@ PrefabInstance:
     - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Time
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929451584604128813, guid: 472ede1e5d4d3974db213d411c4253e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
@@ -7499,6 +7522,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34f4d49bea7e23e47bd016e51b23e9ba, type: 2}
   - {fileID: 11400000, guid: 8356c21970f6e114b9892257fceb5a34, type: 2}
   VoidPattern: {fileID: 11400000, guid: 83a70284103a1ce499a7afd9f021fa8a, type: 2}
+  finalCinematic: {fileID: 11400000, guid: 00aef6b42fe70fa4ea252b482d28b80a, type: 2}
   docks:
   - mixer: {fileID: 24100000, guid: 91d5a376e84597b4585177d5068f8257, type: 2}
     currentScorepattern: {fileID: 11400000, guid: e713b3ca8445b48408d5e92593c0dd74,
@@ -8832,6 +8856,10 @@ PrefabInstance:
       propertyPath: CM_Deposit
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1373684000, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1109981465, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -8926,10 +8954,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 46c42027777ee1a4a841560c17f2e81d,
         type: 3}
-    - target: {fileID: 1373684000, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
-      propertyPath: levelManager
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b04e96d7caf8444a4b74356b765581, type: 3}
 --- !u!4 &1852472964 stripped

@@ -162,6 +162,7 @@ public class ScoreManager : MonoBehaviour
     [Header("Score Patterns")]
     public ScorePattern[] scorePatterns;
     public ScorePattern VoidPattern;
+    public ScorePattern finalCinematic;
 
     [Header("Docks")]
     public Mixer[] docks;
@@ -377,6 +378,14 @@ public class ScoreManager : MonoBehaviour
     {
         LoadPattern(VoidPattern);
         docks[(CurrentActiveDock + 1) % 2].SetLowPassCutoffLevel(VoidLevel);
+    }
+
+    /** Final Zone Handling **/
+
+    public void LoadFinalZone()
+    {
+        LoadPattern(finalCinematic);
+        docks[(CurrentActiveDock + 1) % 2].Pause();
     }
 
     /* This code might come in handy for manual mixing
