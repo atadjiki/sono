@@ -216,6 +216,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FragmentCase
       objectReference: {fileID: 0}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: isAttached
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: currentWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.221
@@ -271,14 +279,6 @@ PrefabInstance:
     - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: isAttached
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: currentWorld
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -470,7 +470,6 @@ GameObject:
   - component: {fileID: 223628735}
   - component: {fileID: 223628736}
   - component: {fileID: 223628737}
-  - component: {fileID: 223628738}
   m_Layer: 0
   m_Name: CompletedPuzzle
   m_TagString: Amber3
@@ -527,18 +526,6 @@ MonoBehaviour:
   player: {fileID: 0}
   setPieceCamera: {fileID: 71409941}
   center: {fileID: 1129820536}
---- !u!114 &223628738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223628734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9164fd8ff95d6984dba0aa09fae0c900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &245882008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,6 +6756,12 @@ PrefabInstance:
       propertyPath: ToShakeRotate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6658258383822181901, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: Sprite_Bright
+      value: 
+      objectReference: {fileID: 21300000, guid: 80a1953e7bcd9cf4d9c3a94489ccef9b,
+        type: 3}
     - target: {fileID: 6043265198144425061, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6779,6 +6772,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 7483719886197114817, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 85b2153abe662cd42a9cde3257a00c22,
+        type: 3}
     - target: {fileID: 5267861722506692548, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6794,18 +6793,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6658258383822181901, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: Sprite_Bright
-      value: 
-      objectReference: {fileID: 21300000, guid: 80a1953e7bcd9cf4d9c3a94489ccef9b,
-        type: 3}
-    - target: {fileID: 7483719886197114817, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 85b2153abe662cd42a9cde3257a00c22,
-        type: 3}
     m_RemovedComponents:
     - {fileID: 6043265197252512411, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}

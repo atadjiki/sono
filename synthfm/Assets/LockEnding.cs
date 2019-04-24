@@ -13,8 +13,6 @@ public class LockEnding : MonoBehaviour
     public GameObject bubbles;
     public GameObject playerTrail;
     public Animator animator;
-    public Cinemachine.CinemachineVirtualCamera CM_Main;
-    public Cinemachine.CinemachineVirtualCamera CM_Final;
 
 
     public GameObject rbPlayer;
@@ -43,8 +41,6 @@ public class LockEnding : MonoBehaviour
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
         FXToggle.instance.AllFXOff();
-        CM_Main.enabled = false;
-        CM_Final.enabled = true;
 
 
         foreach(FragmentController fragment in GameObject.FindObjectsOfType<FragmentController>())
