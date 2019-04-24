@@ -18,6 +18,9 @@ public class LockEnding : MonoBehaviour
     public float emissionRate = 0.05f;
     public Vector3 finalSize = new Vector3(500, 500, 100);
 
+    public SpriteRenderer top;
+    public SpriteRenderer bottom;
+
     void Awake()
     {
         if (player == null)
@@ -72,6 +75,8 @@ public class LockEnding : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
 
         StartCoroutine(LerpScale(emissive));
+        StartCoroutine(FadeTo(top));
+        StartCoroutine(FadeTo(bottom));
 
         yield return new WaitForSecondsRealtime(lockTime);
 
@@ -96,6 +101,36 @@ public class LockEnding : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
+    }
+
+    IEnumerator FadeTo(SpriteRenderer renderer)
+    {
+
+        // Cache the current color of the material, and its initiql opacity.
+        Color color = renderer.color;
+        float startOpacity = color.a;
+        float targetOpacity = 0.0f;
+        float duration =5.0f;
+
+        // Track how many seconds we've been fading.
+        float t = 0;
+
+        while (t < duration)
+        {
+            // Step the fade forward one frame.
+            t += Time.deltaTime;
+            // Turn the time into an interpolation factor between 0 and 1.
+            float blend = Mathf.Clamp01(t / duration);
+
+            // Blend to the corresponding opacity between start & target.
+            color.a = Mathf.Lerp(startOpacity, targetOpacity, blend);
+
+            // Apply the resulting color to the material.
+            renderer.color = color;
+
+            // Wait one frame, and repeat.
+            yield return null;
+        }
     }
 
     IEnumerator LerpScale(Transform transform)

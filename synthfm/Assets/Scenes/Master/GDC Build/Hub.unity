@@ -7292,6 +7292,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34f4d49bea7e23e47bd016e51b23e9ba, type: 2}
   - {fileID: 11400000, guid: 8356c21970f6e114b9892257fceb5a34, type: 2}
   VoidPattern: {fileID: 11400000, guid: 83a70284103a1ce499a7afd9f021fa8a, type: 2}
+  finalCinematic: {fileID: 0}
   docks:
   - mixer: {fileID: 24100000, guid: 91d5a376e84597b4585177d5068f8257, type: 2}
     currentScorepattern: {fileID: 11400000, guid: e713b3ca8445b48408d5e92593c0dd74,
@@ -8541,6 +8542,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 855701783}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1848662422 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2101617623, guid: 31b04e96d7caf8444a4b74356b765581,
+    type: 3}
+  m_PrefabInstance: {fileID: 1852472963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1852472963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8738,7 +8745,7 @@ PrefabInstance:
     - target: {fileID: 3978961223648508717, guid: 31b04e96d7caf8444a4b74356b765581,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3978961223648508717, guid: 31b04e96d7caf8444a4b74356b765581,
         type: 3}
@@ -8755,6 +8762,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4996258796674248936, guid: 31b04e96d7caf8444a4b74356b765581,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 729172283991907881, guid: 31b04e96d7caf8444a4b74356b765581,
         type: 3}
       propertyPath: m_CastShadows
@@ -9458,13 +9470,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091097b3f2281ce4faff3e7a546e2fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkForFragments: 0
-  active: 0
+  checkForFragments: 1
+  active: 1
   restartLevel: 1
   lockTime: 20
   controllerLockDelay: 1
   player: {fileID: 369758907}
   rbPlayer: {fileID: 369758904}
   emissive: {fileID: 1318779663}
-  emissionRate: 0.001875
-  finalSize: {x: 750, y: 750, z: 1}
+  emissionRate: 0.004
+  finalSize: {x: 750, y: 750, z: 150}
+  top: {fileID: 2124623762}
+  bottom: {fileID: 1848662422}
+--- !u!212 &2124623762 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1109981466, guid: 31b04e96d7caf8444a4b74356b765581,
+    type: 3}
+  m_PrefabInstance: {fileID: 1852472963}
+  m_PrefabAsset: {fileID: 0}
