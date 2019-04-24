@@ -35,7 +35,7 @@ public class LockEnding : MonoBehaviour
 
         if (checkForFragments)
         {
-            if (PuzzleProgressManager.instance.isCompletedWithGame())
+            if (!PuzzleProgressManager.instance.isCompletedWithGame())
             {
                 return;
             }

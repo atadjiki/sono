@@ -71,24 +71,25 @@ public class Navpoint : MonoBehaviour
             {
                 if (pointToFinalZone)
                 {
-                    target = finalZone;
-                    return;
+                    SetTarget(finalZone);
                 }
-
-                SortFragments();
-
-                print(amberFragments);
-                print(maxFragments);
-                print(latteFragments);
-                print(fiberFragments);
-
-                if ((amberFragments >= maxFragments) && (fiberFragments >= maxFragments) && (latteFragments >= maxFragments))
+                else
                 {
-                    CheckForHub();
-                }
+                    SortFragments();
 
-                CheckForNewTarget();
-                currentFrames = 0;
+                    print(amberFragments);
+                    print(maxFragments);
+                    print(latteFragments);
+                    print(fiberFragments);
+
+                    if ((amberFragments >= maxFragments) && (fiberFragments >= maxFragments) && (latteFragments >= maxFragments))
+                    {
+                        CheckForHub();
+                    }
+
+                    CheckForNewTarget();
+                    currentFrames = 0;
+                }
             }
             else
             {

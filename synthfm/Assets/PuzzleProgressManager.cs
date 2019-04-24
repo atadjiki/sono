@@ -217,7 +217,7 @@ public class PuzzleProgressManager : MonoBehaviour
 
     public bool isCompletedWithGame()
     {
-        if(GetTotalCount() == GetMaxCount())
+        if(GetTotalCount() >= GetMaxCount())
         {
             return true;
         }
