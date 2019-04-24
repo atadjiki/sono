@@ -136,7 +136,6 @@ public class Crystal: MonoBehaviour
        
         if (collision.gameObject.tag == "Player" && IsListening)
         {
-            Debug.Log("Entering");
             StartCoroutine(setListener());
             if ((_state == ClusterManager.State.OFF)) // notify if this OFF
             {
