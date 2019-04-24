@@ -7,7 +7,8 @@ public class enableGatePuzzle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.GetComponent<GatePuzzle>().enabled = true;
+
     }
 
     // Update is called once per frame
@@ -18,10 +19,5 @@ public class enableGatePuzzle : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        gameObject.GetComponent<GatePuzzle>().enabled = true;
-        if(GameObject.Find("FinalTest")== true)
-        {
-            GameObject.Find("FinalTest").GetComponent<GatePuzzle>().enabled = true;
-        }
     }
 }
