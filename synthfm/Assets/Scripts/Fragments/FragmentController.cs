@@ -81,11 +81,8 @@ public class FragmentController : MonoBehaviour
     {
         if (currentState == states.DEPOSIT)
         {
-            // TO DO: DO A MOTHERFUCKING SPIRAL
             //transform.LookAt(portal.transform);
-            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("MoveTowards").transform.position, 20 * Time.deltaTime);
-          
-
+            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("FinalZone").transform.position, 20 * Time.deltaTime);
         }
     }
 

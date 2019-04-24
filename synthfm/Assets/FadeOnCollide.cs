@@ -31,11 +31,9 @@ public class FadeOnCollide : MonoBehaviour
 
         // Track how many seconds we've been fading.
         float t = 0;
-        Debug.Log("Begin fade!");
 
         while (t < duration)
         {
-            Debug.Log("Fading!");
             // Step the fade forward one frame.
             t += Time.deltaTime;
             // Turn the time into an interpolation factor between 0 and 1.
