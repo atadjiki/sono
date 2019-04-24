@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1459050425, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1929451585230730661, guid: 472ede1e5d4d3974db213d411c4253e4,
         type: 3}
       propertyPath: m_Radius
@@ -526,6 +530,7 @@ MonoBehaviour:
   player: {fileID: 0}
   setPieceCamera: {fileID: 71409941}
   center: {fileID: 1129820536}
+  FinalZone: 0
 --- !u!1 &245882008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,6 +6798,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 85b2153abe662cd42a9cde3257a00c22,
         type: 3}
+    - target: {fileID: 6043265196731930205, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6043265197252512411, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ebdd7d00eb76cfc4a8f1679d24029c9d, type: 3}
@@ -7732,6 +7742,11 @@ PrefabInstance:
     - target: {fileID: 9018012210323006057, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485162545878381552, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
