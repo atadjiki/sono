@@ -25,29 +25,36 @@ public class LockEnding : MonoBehaviour
             rbPlayer = GameObject.Find("Player");
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!dirty && active)
+
+        if (PuzzleProgressManager.instance.isCompletedWithGame())
         {
-            if (collision != null && player != null)
+            if (!dirty && active)
             {
-                if (collision.gameObject == player.gameObject)
+                if (collision != null && player != null)
                 {
-                    if (mainCamera != null && setPieceCamera != null)
+                    if (collision.gameObject == player.gameObject)
                     {
-                        Debug.Log("Switching camera to " + setPieceCamera.name);
-                        mainCamera.enabled = false;
-                        setPieceCamera.enabled = true;
-                        setPieceCamera.Priority = 20;
+                        if (mainCamera != null && setPieceCamera != null)
+                        {
+                            Debug.Log("Switching camera to " + setPieceCamera.name);
+                            mainCamera.enabled = false;
+                            setPieceCamera.enabled = true;
+                            setPieceCamera.Priority = 20;
+                        }
+
                     }
 
                 }
 
+                dirty = true;
+                StartCoroutine(Lock());
             }
-
-            dirty = true;
-            StartCoroutine(Lock());
         }
+
+        
     }
 
     IEnumerator Lock()
