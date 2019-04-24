@@ -12,6 +12,8 @@ public class FragmentCase : MonoBehaviour
     public bool setPickup;
     public GameObject Ping;
     public GameObject Pickup;
+    private FragmentController.world world;
+
 
 
 
@@ -24,7 +26,8 @@ public class FragmentCase : MonoBehaviour
         }
         setPing = true;
         setPickup = false;
-        
+
+        world = GetComponentInChildren<FragmentController>().currentWorld;
 
     }
 
@@ -61,15 +64,24 @@ public class FragmentCase : MonoBehaviour
             if (fragment.currentState != FragmentController.states.DEPOSIT)
             {
 
-                if (GetComponentInParent<LattePuzzle>() != null)
+                if (GetComponentInParent<LattePuzzle>() != null || world == FragmentController.world.LATTE)
                 {
-                    PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte, this.gameObject);
+                    if(this.gameObject != PuzzleProgressManager.instance.GetLastPuzzle())
+                    {
+                        PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Latte, this.gameObject);
+                        GetComponentInChildren<FragmentController>().GetComponentInChildren<CapsuleCollider2D>().enabled = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Already picked up this fragment!");
+                    }
+                    
                 }
-                else if (GetComponentInParent<GatePuzzle>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.FIBER)
+                else if (GetComponentInParent<GatePuzzle>() != null || world == FragmentController.world.FIBER)
                 {
                     PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Fiber, this.gameObject);
                 }
-                else if (GetComponentInParent<ClusterManager>() != null || GetComponentInChildren<FragmentController>().currentWorld == FragmentController.world.AMBER)
+                else if (GetComponentInParent<ClusterManager>() != null || world == FragmentController.world.AMBER)
                 {
                     PuzzleProgressManager.instance.NotifyCount(PuzzleProgressManager.World.Amber, this.gameObject);
                 }
