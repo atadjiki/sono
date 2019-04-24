@@ -19,7 +19,7 @@ public class GatePuzzle : Puzzle
     private int currentIndex;
     private bool inProgress;
     public bool useTimer = false;
-    public bool inOrder = true;
+    public bool inOrder = false;
     private int gatesHit = 0;// for out of order puzzles
 
     public new void DoSetup()
@@ -32,7 +32,11 @@ public class GatePuzzle : Puzzle
     {
 
         base.Initialize();
+        currentList.Clear();
+        currentList = new List<GateTrigger>();
+
         currentList = gates;
+
         currentIndex = 0;
         inProgress = false;
         SetStatus(false);
