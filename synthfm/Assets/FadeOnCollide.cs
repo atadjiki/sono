@@ -8,8 +8,11 @@ public class FadeOnCollide : MonoBehaviour
     {
         if (collision.gameObject == GameObject.Find("Player"))
         {
+            foreach(SpriteRenderer renderer in this.gameObject.GetComponentsInChildren<SpriteRenderer>())
+            {
+                StartCoroutine(FadeTo(renderer));
+            }
             
-            StartCoroutine(FadeTo(this.GetComponentInChildren<SpriteRenderer>()));
         }
     }
 
