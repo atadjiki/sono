@@ -84,9 +84,6 @@ public class FragmentCase : MonoBehaviour
                     GetComponentInParent<Puzzle>().mainCamera.enabled = true;
                     GetComponentInParent<Puzzle>().setPieceCamera.enabled = false;
                 }
-
-                
-
             }
 
         }

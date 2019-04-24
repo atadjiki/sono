@@ -44,7 +44,7 @@ public class LockTitle : MonoBehaviour
         Debug.Log("Title screen finished " + Time.time + " secs");
         bubbles.SetActive(true);
         playerTrail.SetActive(true);
-        FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
+        
 
        // yield return new WaitForSecondsRealtime(2f);
 

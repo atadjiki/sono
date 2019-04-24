@@ -114,9 +114,10 @@ public class TransferRealms : MonoBehaviour
                 print("Entering Amber");
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
 
-                FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
-
-
+                if (TitleSequenceFX.instance.unlockAmberFX)
+                {
+                    FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
+                }
                 HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
                 
             }
