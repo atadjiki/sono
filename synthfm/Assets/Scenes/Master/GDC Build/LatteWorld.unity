@@ -601,6 +601,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: isAttached
       value: 0
@@ -608,10 +612,6 @@ PrefabInstance:
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: currentWorld
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -639,7 +639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_UseAutoMass
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851868, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1679008919, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Name
@@ -952,6 +956,7 @@ MonoBehaviour:
   player: {fileID: 0}
   setPieceCamera: {fileID: 71409941}
   center: {fileID: 1129820536}
+  FinalZone: 0
 --- !u!114 &223628738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6839,6 +6844,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: TrackIndex
       value: 2
@@ -6846,10 +6863,6 @@ PrefabInstance:
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: currentWorld
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6867,14 +6880,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Material
       value: 
@@ -6885,7 +6890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_UseAutoMass
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851868, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Sprite
@@ -7042,6 +7051,7 @@ MonoBehaviour:
   player: {fileID: 0}
   setPieceCamera: {fileID: 421947215}
   center: {fileID: 891865765}
+  FinalZone: 0
 --- !u!70 &793066232
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7237,6 +7247,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 14.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: TrackIndex
       value: 3
@@ -7244,10 +7266,6 @@ PrefabInstance:
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: currentWorld
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7265,14 +7283,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Material
       value: 
@@ -7283,7 +7293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_UseAutoMass
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773851868, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Sprite
@@ -11876,6 +11890,7 @@ MonoBehaviour:
   player: {fileID: 0}
   setPieceCamera: {fileID: 836900555}
   center: {fileID: 1577593601}
+  FinalZone: 0
 --- !u!70 &1466865273
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
