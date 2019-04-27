@@ -32,7 +32,7 @@ public class PatternTrigger : MonoBehaviour
             Debug.Log("Starting sequence");
 
             PrevAcceleration = tController.acceleration;
-            tController.acceleration = 2;
+            tController.acceleration = 1000;
 
             // change camera
             // prevFieldofView = mainCamera.m_Lens.FieldOfView;
