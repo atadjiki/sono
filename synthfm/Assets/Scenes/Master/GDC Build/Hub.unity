@@ -5132,7 +5132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &384632568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5302,7 +5302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &470897262
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5860,17 +5860,17 @@ PrefabInstance:
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: torque_slow
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
-        type: 3}
-      propertyPath: torque_normal
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
-      propertyPath: torque_fast
+      propertyPath: torque_normal
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: torque_fast
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1855229569708447585, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -6523,8 +6523,7 @@ MonoBehaviour:
 
     TRAVIS TREADWAY
 
-
-'
+    SEAN JUREWICZ'
 --- !u!222 &786382308
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8139,8 +8138,7 @@ MonoBehaviour:
 
     TRAVIS TREADWAY
 
-
-'
+    SEAN JUREWICZ'
 --- !u!222 &1036985671
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -123,7 +123,7 @@ public class PuzzleProgressManager : MonoBehaviour
 
                 mainCamera.enabled = true;
                 latte_deleted = true;
-                FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
+                //FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
             }
 
             return true;
