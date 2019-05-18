@@ -118,8 +118,11 @@ public class TransferRealms : MonoBehaviour
                 {
                     FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
                 }
+
                 HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
-                
+
+                // Fragment Events
+                HandleEnterEvents(FragmentController.world.AMBER);
             }
             else if (gameObject.tag == "Realm2") // FIBER
             {
@@ -141,6 +144,9 @@ public class TransferRealms : MonoBehaviour
                 changeStateToVoid(FragmentController.world.AMBER); // make fragment stop following you in FIber world
 
                 FXToggle.instance.ToggleFX(FragmentController.world.FIBER);
+
+                // Fragment Events
+                HandleEnterEvents(FragmentController.world.FIBER);
             }
             else if (gameObject.tag == "Realm3")
             {
@@ -160,6 +166,9 @@ public class TransferRealms : MonoBehaviour
                // changeStateToVoid(FragmentController.world.LATTE); // make fragment stop following you in FIber world
 
                 prepareForCurve();
+
+                // Fragment Events
+                HandleEnterEvents(FragmentController.world.LATTE);
             }
             else if (gameObject.tag == "Realm4")
             {
@@ -186,8 +195,7 @@ public class TransferRealms : MonoBehaviour
 
                     FXToggle.instance.AllFXOff();
 
-                  //  ParasiteSpawner.instance.RunSpawn();
-
+                    //  ParasiteSpawner.instance.RunSpawn();
                     Debug.Log("Entering 4");
                 }
             }
@@ -240,6 +248,19 @@ public class TransferRealms : MonoBehaviour
          //   ParasiteSpawner.instance.KillParasites();
           //  ParasiteSpawner.instance.StopSpawn();
         }
+    }
+
+
+    // Whenever player enter any world...Handle Fragment Events
+    private void HandleEnterEvents(FragmentController.world iWorld)
+    {
+
+    }
+
+    // Whenever player exit any world...Handle Fragment Events 
+    private void HandleExitEvents(FragmentController.world iWorld)
+    {
+
     }
 
     private void SpawnFinalPatternZone()

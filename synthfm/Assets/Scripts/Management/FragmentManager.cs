@@ -63,7 +63,6 @@ public class FragmentManager : MonoBehaviour
         else
         {
             print("no fragments to get, cant populate json!");
-
         }
     }
     
