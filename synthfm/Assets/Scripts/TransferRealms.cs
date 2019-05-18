@@ -7,6 +7,13 @@ public class TransferRealms : MonoBehaviour
 {
     // [Header("The maximum amount of fragments to exit this world")]
     private int maxToExit = 3;
+    private int totalFrgments = 9; // total number of frgaments in the game
+
+    // public for debuging
+    public bool IsAmberDone; // whether all fragments are collected in world
+    public bool IsFiberDone;
+    public bool IsLatteDone;
+
 
     //  [SerializeField] private bool IsPlayerInside;
 
@@ -86,8 +93,6 @@ public class TransferRealms : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ParasiteVoid", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
             FragmentManager.instance.currentFrames = FragmentManager.instance.maxFrames;
-
-
         }
     }
 
@@ -119,10 +124,8 @@ public class TransferRealms : MonoBehaviour
                     FXToggle.instance.ToggleFX(FragmentController.world.AMBER);
                 }
 
-                HandleEnterActions(FragmentController.world.AMBER); // Fragment enter actions
-
                 // Fragment Events
-                HandleEnterEvents(FragmentController.world.AMBER);
+                HandleEnterEvents(FragmentController.world.AMBER, ref IsAmberDone);
             }
             else if (gameObject.tag == "Realm2") // FIBER
             {
@@ -139,14 +142,13 @@ public class TransferRealms : MonoBehaviour
                 ScoreManager._instance.LoadPattern(1);
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
-
-                HandleEnterActions(FragmentController.world.FIBER); // Fragment enter actions
-                changeStateToVoid(FragmentController.world.AMBER); // make fragment stop following you in FIber world
-
+                
                 FXToggle.instance.ToggleFX(FragmentController.world.FIBER);
 
                 // Fragment Events
-                HandleEnterEvents(FragmentController.world.FIBER);
+                HandleEnterEvents(FragmentController.world.FIBER, ref IsFiberDone);
+                changeStateToVoid(FragmentController.world.AMBER); // make fragment stop following you in FIber world
+
             }
             else if (gameObject.tag == "Realm3")
             {
@@ -162,13 +164,11 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
                 FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
 
-                HandleEnterActions(FragmentController.world.LATTE); // Fragment enter actions
-               // changeStateToVoid(FragmentController.world.LATTE); // make fragment stop following you in FIber world
-
+    
+                // Fragment Events
+                HandleEnterEvents(FragmentController.world.LATTE, ref IsLatteDone);
                 prepareForCurve();
 
-                // Fragment Events
-                HandleEnterEvents(FragmentController.world.LATTE);
             }
             else if (gameObject.tag == "Realm4")
             {
@@ -203,7 +203,6 @@ public class TransferRealms : MonoBehaviour
 
     }
 
-   
     private void OnTriggerExit2D(Collider2D collision)  // ** EXIT **
     {
         findDistance = true;
@@ -213,7 +212,7 @@ public class TransferRealms : MonoBehaviour
         {
             gameObject.GetComponent<AmberWorld>().enabled = false;
 
-            HandleExitActions(FragmentController.world.AMBER);
+            HandleExitEvents(FragmentController.world.AMBER, ref IsAmberDone);
         }
 
         if (gameObject.tag == "Realm2")
@@ -223,7 +222,7 @@ public class TransferRealms : MonoBehaviour
 
             if (collision.gameObject.tag == "Player")
             {
-                HandleExitActions(FragmentController.world.FIBER);
+                HandleExitEvents(FragmentController.world.FIBER, ref IsFiberDone);
                 // join with the Amber Fragments
                 JoinInVoid();
             }
@@ -236,7 +235,7 @@ public class TransferRealms : MonoBehaviour
 
             if (collision.gameObject.tag == "Player")
             {
-                HandleExitActions(FragmentController.world.LATTE);
+                HandleExitEvents(FragmentController.world.LATTE, ref IsLatteDone);
 
                 SpawnFinalPatternZone();
             }
@@ -250,18 +249,86 @@ public class TransferRealms : MonoBehaviour
         }
     }
 
-
     // Whenever player enter any world...Handle Fragment Events
-    private void HandleEnterEvents(FragmentController.world iWorld)
+    private void HandleEnterEvents(FragmentController.world iWorld, ref bool IsWorldDone)
     {
+        if (FragmentManager.instance.CountAttachedFragments() == totalFrgments)  // all 9 collected
+        {
+            // can enter any world with 9 frggments
 
+        }
+        else // Flee - > follow and other world fragments will wait outside
+        {
+            // If Flee -> change to FOLLOW
+            List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
+            foreach (FragmentController fragment in fragments)
+            {
+                if(fragment.currentWorld != iWorld) // others wait outside
+                {
+                    fragment.currentState = FragmentController.states.VOID;
+                }
+                else if (fragment.currentState == FragmentController.states.FLEE && fragment.currentWorld == iWorld)
+                {
+                    fragment.currentState = FragmentController.states.FOLLOW;
+                    Debug.Log("Rejoining with fragments for : " + iWorld.ToString());
+                }
+                else
+                {
+                    Debug.Log("WARNING: This should never happen !!!");
+                }
+
+            }
+
+        }
     }
 
     // Whenever player exit any world...Handle Fragment Events 
-    private void HandleExitEvents(FragmentController.world iWorld)
+    private void HandleExitEvents(FragmentController.world iWorld,ref bool IsWorldDone)
     {
+        if (FragmentManager.instance.CountAttachedFragments() == totalFrgments) // all 9 collected
+        {
+            // spawn patterns
+        }
+        else
+        {
+            if (IsWorldDone)    // if all 3 collected
+            {
+                Debug.Log("World Is Completed");
+            }
+            else
+            {
+                int n = 0; // count the attached fragments
+                List<FragmentController> ToHandle = new List<FragmentController>();
 
+                List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
+                foreach (FragmentController fragment in fragments)
+                {
+                    if (fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == iWorld)
+                    {
+                        n++;
+                        ToHandle.Add(fragment);
+                    }
+                }
+
+                // If FOLLOW -> change to FLEE
+                foreach (FragmentController fc in ToHandle)
+                {
+                    if (n < maxToExit) // id not all 3 collected
+                    {
+                        fc.currentState = FragmentController.states.FLEE;
+                    }
+                    else // change the world to true
+                    {
+                        IsWorldDone = true;
+                        Debug.Log("Successfully exiting the world !");
+                    }
+                }
+            }
+           
+        }
     }
+
+    
 
     private void SpawnFinalPatternZone()
     {
@@ -346,52 +413,10 @@ public class TransferRealms : MonoBehaviour
     }
 
 
-    // Fragments Behaviour when player ENTER any world
-    private void HandleEnterActions(FragmentController.world iWorld)
-   {
-        // If Flee -> change to FOLLOW
-        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
-        foreach (FragmentController fragment in fragments)
-        {
-            if (fragment.currentState == FragmentController.states.FLEE && fragment.currentWorld == iWorld)
-            {
-                fragment.currentState = FragmentController.states.FOLLOW;
-                Debug.Log("Rejoining with fragments for : " + iWorld);
-            }
-        }
-   }
+    
 
 
-    // Fragments behaviour when player EXIT any world
-    private void HandleExitActions(FragmentController.world iWorld)
-    {
-        int n = 0; // count the fragments
-        List<FragmentController> ToHandle = new List<FragmentController>();
-       
-        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
-        foreach (FragmentController fragment in fragments)
-        {
-            if (fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == iWorld)
-            {
-                n++;
-                ToHandle.Add(fragment);
-            }
-        }
-
-
-        // If FOLLOW -> change to FLEE
-        foreach (FragmentController fc in ToHandle)
-        {
-            if (n < maxToExit) // 
-            {
-                fc.currentState = FragmentController.states.FLEE;
-            }
-            else // move them to the void after few seconds
-            {
-                Debug.Log("Successfully exiting the world !");
-            }
-        }
-    }
+   
 
 
 }

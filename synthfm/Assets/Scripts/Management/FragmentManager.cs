@@ -76,6 +76,7 @@ public class FragmentManager : MonoBehaviour
 
         SavedData.instance.fragments = fragments;
     }
+
     public List<FragmentController> AttachedFragments()
     {
         List<FragmentController> attachedFragments = new List<FragmentController>();
