@@ -198,13 +198,13 @@ public class FragmentController : MonoBehaviour
     {
          // move to starting points of curve
          StartCoroutine(MoveToCurve());
-        currentState = states.PRE_FINAL;
+            currentState = states.PRE_FINAL;
     }
 
     // change the position to curve starting point
     IEnumerator MoveToCurve()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         this.gameObject.transform.position = ptGenerator.getStartingPoint().position;
         changeTrailTime(5);
     }

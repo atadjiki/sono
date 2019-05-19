@@ -152,6 +152,6 @@ public class FragmentManager : MonoBehaviour
     public void AddFragment(FragmentController fragment)
     {
         fragments.Add(fragment);
-
+        Debug.Log("ATTAching");
     }
 }

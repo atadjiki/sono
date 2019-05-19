@@ -13,7 +13,7 @@ public class TransferRealms : MonoBehaviour
     public bool IsAmberDone; // whether all fragments are collected in world
     public bool IsFiberDone;
     public bool IsLatteDone;
-
+    public bool IsPatternDone; // whether the pattern has been generated
 
     //  [SerializeField] private bool IsPlayerInside;
 
@@ -147,7 +147,7 @@ public class TransferRealms : MonoBehaviour
 
                 // Fragment Events
                 HandleEnterEvents(FragmentController.world.FIBER, ref IsFiberDone);
-                changeStateToVoid(FragmentController.world.AMBER); // make fragment stop following you in FIber world
+           //     changeStateToVoid(FragmentController.world.AMBER); // make fragment stop following you in FIber world
 
             }
             else if (gameObject.tag == "Realm3")
@@ -167,7 +167,7 @@ public class TransferRealms : MonoBehaviour
     
                 // Fragment Events
                 HandleEnterEvents(FragmentController.world.LATTE, ref IsLatteDone);
-                prepareForCurve();
+               // prepareForCurve();
 
             }
             else if (gameObject.tag == "Realm4")
@@ -212,7 +212,15 @@ public class TransferRealms : MonoBehaviour
         {
             gameObject.GetComponent<AmberWorld>().enabled = false;
 
-            HandleExitEvents(FragmentController.world.AMBER, ref IsAmberDone);
+/* ROHAN:  "I think it's appropriate to move this(following) line to the top
+ * and have the whole code inside if condition and only run if the collided object is player. 
+ * I am not sure if it affects other's code so for now keeping it here :)
+ */
+            if (collision.gameObject.tag == "Player")   
+            {
+                // Fragment Events
+                HandleExitEvents(FragmentController.world.AMBER, ref IsAmberDone);
+            }
         }
 
         if (gameObject.tag == "Realm2")
@@ -222,9 +230,8 @@ public class TransferRealms : MonoBehaviour
 
             if (collision.gameObject.tag == "Player")
             {
+                // Fragment Events
                 HandleExitEvents(FragmentController.world.FIBER, ref IsFiberDone);
-                // join with the Amber Fragments
-                JoinInVoid();
             }
         }
 
@@ -235,9 +242,9 @@ public class TransferRealms : MonoBehaviour
 
             if (collision.gameObject.tag == "Player")
             {
+                // Fragment Events
                 HandleExitEvents(FragmentController.world.LATTE, ref IsLatteDone);
-
-                SpawnFinalPatternZone();
+//                SpawnFinalPatternZone();
             }
         }
 
@@ -259,13 +266,15 @@ public class TransferRealms : MonoBehaviour
         }
         else // Flee - > follow and other world fragments will wait outside
         {
-            // If Flee -> change to FOLLOW
             List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
             foreach (FragmentController fragment in fragments)
             {
-                if(fragment.currentWorld != iWorld) // others wait outside
+                if (fragment.currentWorld != iWorld) // others wait outside
                 {
-                    fragment.currentState = FragmentController.states.VOID;
+                    if (fragment.currentState == FragmentController.states.FOLLOW)    // Only if they are Following
+                    {
+                        fragment.currentState = FragmentController.states.VOID;
+                    }
                 }
                 else if (fragment.currentState == FragmentController.states.FLEE && fragment.currentWorld == iWorld)
                 {
@@ -276,9 +285,7 @@ public class TransferRealms : MonoBehaviour
                 {
                     Debug.Log("WARNING: This should never happen !!!");
                 }
-
             }
-
         }
     }
 
@@ -287,19 +294,27 @@ public class TransferRealms : MonoBehaviour
     {
         if (FragmentManager.instance.CountAttachedFragments() == totalFrgments) // all 9 collected
         {
-            // spawn patterns
+            // spawn patterns Only Once
+            if(!IsPatternDone)
+            {
+                prepareForCurve(iWorld);
+                StartCoroutine(_SpawnFinalPatterns(iWorld));
+               
+                IsPatternDone = true;
+            }
         }
         else
         {
-            if (IsWorldDone)    // if all 3 collected
+            // other fragments join
+            JoinInVoid(iWorld);
+            if (IsWorldDone)    // if all 3 collected they can exit
             {
-                Debug.Log("World Is Completed");
+                Debug.Log("World Is Completed");    // keep FOLLOW
             }
             else
             {
                 int n = 0; // count the attached fragments
                 List<FragmentController> ToHandle = new List<FragmentController>();
-
                 List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
                 foreach (FragmentController fragment in fragments)
                 {
@@ -324,24 +339,27 @@ public class TransferRealms : MonoBehaviour
                     }
                 }
             }
-           
         }
     }
-
     
+    IEnumerator _SpawnFinalPatterns(FragmentController.world iWorld)
+    {
+        yield return new WaitForSeconds(3);
+        SpawnFinalPatternZone(iWorld);
+    }
 
-    private void SpawnFinalPatternZone()
+    private void SpawnFinalPatternZone(FragmentController.world iWorld)
     {
         // spawn the finalPattern Zone
         GameObject finalPattern = GameObject.Find("Final Pattern Zone");
         Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
-        finalPattern.transform.position = playerPos - new Vector3(100, 0, 0);
+        finalPattern.transform.position = playerPos - new Vector3(100, 0, 0); // position is not perfect
 
-        // make the Latte frags follow starting point
-        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        // make the 3 attached frags follow starting point
+        List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
         foreach (FragmentController fragment in fragments)
         {
-            if(fragment.currentWorld == FragmentController.world.LATTE && fragment.currentState == FragmentController.states.FOLLOW)
+            if(fragment.currentWorld == iWorld && fragment.currentState == FragmentController.states.FOLLOW)
             {
                 fragment.makeFollowCurveStartingPoint();
             }
@@ -366,12 +384,12 @@ public class TransferRealms : MonoBehaviour
     }
 
     // move fragments to the curve pos
-    private void prepareForCurve()
+    private void prepareForCurve(FragmentController.world iWorld)
     {
-        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
         foreach (FragmentController fragment in fragments)
         {
-            if (fragment.currentState == FragmentController.states.FOLLOW)
+            if (fragment.currentWorld != iWorld) // move other fragments to curve positions
             {
                 fragment.changeTrailTime(0);
                 fragment.getReadyForCurve();
@@ -379,44 +397,22 @@ public class TransferRealms : MonoBehaviour
         } // all 6 frags have PRE_FINAL state after this
     }
 
-    // Change state to void
-    private void changeStateToVoid(FragmentController.world i_World)
+    // Move around player for the world except passed arg 
+    // VOID -> FOLLOW
+    private void JoinInVoid( FragmentController.world iWorld)   // Amber Frags joins you in void
     {
-        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
+        Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
+        List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
         foreach (FragmentController fragment in fragments)
         {
-            if(fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == i_World)
+            if(fragment.currentState == FragmentController.states.VOID && fragment.currentWorld != iWorld)
             {
-                fragment.currentState = FragmentController.states.VOID;
+                fragment.changeTrailTime(0);    // change trail to zero
+                fragment.transform.position = playerPos + new Vector3(120,0,0); // move around player
+                fragment.changeTrailTime(5);    // change trail time to 10
+                fragment.currentState = FragmentController.states.FOLLOW; 
             }
         }
     }
-
-    // to move fragment to void around player
-    private void JoinInVoid()   // Amber Frags joins you in void between Fiber and Latte
-    {
-        Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
-        // change trail to zero
-        // move around player
-        // change trail time to 10
-        FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
-        foreach (FragmentController fragment in fragments)
-        {
-            if(fragment.currentState == FragmentController.states.VOID && fragment.currentWorld == FragmentController.world.AMBER)
-            {
-                fragment.changeTrailTime(0);
-                fragment.transform.position = playerPos + new Vector3(150,0,0);
-                fragment.changeTrailTime(5);
-                fragment.currentState = FragmentController.states.FOLLOW; 
-            }
-        } // so all 6 fragment have follow state now afer this
-    }
-
-
     
-
-
-   
-
-
 }
