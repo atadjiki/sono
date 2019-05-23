@@ -10,6 +10,7 @@ public class Mixer
     public ScorePattern currentScorepattern;
     [HideInInspector] public int NumberOfAudioTracks;
     [HideInInspector] public AudioSource[] sources;
+    [HideInInspector] public float maxVolume;
     AudioMixerGroup[] fragmentMixerGroups;
     public float fadeTime = 0.5f;
 
@@ -71,7 +72,7 @@ public class Mixer
         float timer = 0; //-80dB to 0dB
         while(timer <= fadeTime)
         {
-            mixer.SetFloat("Vol Fragment " + mixerGroupIndex, Mathf.Lerp(0, -80.0f, timer / fadeTime));
+            mixer.SetFloat("Vol Fragment " + mixerGroupIndex, Mathf.Lerp(maxVolume, -80.0f, timer / fadeTime));
             timer += Time.deltaTime;
             yield return null;
         }
@@ -84,7 +85,7 @@ public class Mixer
         float timer = 0; //-80dB to 0dB
         while (timer <= fadeTime)
         {
-            float newVol = Mathf.Lerp(0f, -80f, (timer / fadeTime));
+            float newVol = Mathf.Lerp(maxVolume, -80f, (timer / fadeTime));
             //Debug.Log((timer / fadeTime));
             mixer.SetFloat("Vol Master", newVol);
            // mixer.GetFloat("Vol Master", out newVol);
@@ -101,13 +102,13 @@ public class Mixer
         float timer = 0; //-80dB to 0dB
         while (timer <= fadeTime)
         {
-            float newVol = Mathf.Lerp(-80f, 0f, (timer / fadeTime));
+            float newVol = Mathf.Lerp(-80f, maxVolume, (timer / fadeTime));
             //Debug.Log((timer / fadeTime));
             mixer.SetFloat("Vol Fragment " + mixerGroupIndex, newVol);
             timer += Time.deltaTime;
             yield return null;
         }
-        mixer.SetFloat("Vol Fragment " + mixerGroupIndex, 0);
+        mixer.SetFloat("Vol Fragment " + mixerGroupIndex, maxVolume);
         yield return null;
     }
 
@@ -116,7 +117,7 @@ public class Mixer
         float timer = 0; //-80dB to 0dB
         while (timer <= fadeTime)
         {
-            float newVol = Mathf.Lerp(-80f, 0f, (timer / fadeTime));
+            float newVol = Mathf.Lerp(-80f, maxVolume, (timer / fadeTime));
             //Debug.Log((timer / fadeTime));
             mixer.SetFloat("Vol Master", newVol);
             //mixer.GetFloat("Vol Master", out newVol);
@@ -124,7 +125,7 @@ public class Mixer
             timer += Time.deltaTime;
             yield return null;
         }
-        mixer.SetFloat("Vol Master", 0);
+        mixer.SetFloat("Vol Master", maxVolume);
         yield return null;
     }
 
@@ -211,10 +212,14 @@ public class ScoreManager : MonoBehaviour
         if(bpm != 0)
             nextTick = startTick + (60.0 / bpm);
 
+        float maxVolume;
+        docks[0].mixer.GetFloat("Vol Master", out maxVolume);
+
         for (int i = 0; i < docks.Length; i++)
         {
             docks[i].NumberOfAudioTracks = NoOfAudioTracksPerDock;
             docks[i].CreateSources(gameObject);
+            docks[i].maxVolume = maxVolume;
         }
     }
 
