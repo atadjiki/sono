@@ -55,6 +55,12 @@ public class TransferRealms : MonoBehaviour
             float distX = collPosition - (player.transform.position).magnitude;
             smm.BRsceneDistance = distX;
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("Spawning");
+            SpawnFinalPatternZone(FragmentController.world.AMBER);
+        }
     }
 
    
@@ -344,7 +350,7 @@ public class TransferRealms : MonoBehaviour
     
     IEnumerator _SpawnFinalPatterns(FragmentController.world iWorld)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SpawnFinalPatternZone(iWorld);
     }
 
@@ -352,8 +358,13 @@ public class TransferRealms : MonoBehaviour
     {
         // spawn the finalPattern Zone
         GameObject finalPattern = GameObject.Find("Final Pattern Zone");
-        Vector3 playerPos = GameObject.Find("Player").gameObject.transform.position;
-        finalPattern.transform.position = playerPos - new Vector3(100, 0, 0); // position is not perfect
+        GameObject player = GameObject.Find("Player");
+        Vector3 playerPos = player.transform.position;
+        Vector3 PlayerVelocity = player.GetComponent<PlayerInput.TurntableController>().getVelocity();
+        Quaternion playerRotation = player.transform.rotation;
+
+        finalPattern.transform.rotation = playerRotation;
+        finalPattern.transform.position = playerPos + PlayerVelocity*2; // position is not perfect
 
         // make the 3 attached frags follow starting point
         List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();

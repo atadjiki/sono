@@ -13,6 +13,9 @@ public class FragmentManager : MonoBehaviour
     public float maxFrames = 120;
     public float currentFrames = 0;
 
+    [SerializeField]
+    private int numOfAttachedFargments;
+
     private void Awake()
     {
         //fragmentList = new SavedData();
@@ -50,6 +53,8 @@ public class FragmentManager : MonoBehaviour
         {
             currentFrames++;
         }
+
+        numOfAttachedFargments = CountAttachedFragments();
     }
     
     public void SetupFragments()

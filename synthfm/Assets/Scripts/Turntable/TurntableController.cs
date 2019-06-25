@@ -100,6 +100,7 @@
 
         [Header("Animations")]
         public Animator animator;
+        
 
         void OnEnable()
         {
@@ -185,7 +186,6 @@
             if (i_Menu != null)              // Only if menu is there
                 DoMenuActions();
 
-
         }
 
         void UpdateVariables()
@@ -250,6 +250,8 @@
                 return accel_fast;
             }
         }
+
+        public Vector2 getVelocity() { return rigidbody.velocity; }
 
         bool DoSpeedInput()
         {
