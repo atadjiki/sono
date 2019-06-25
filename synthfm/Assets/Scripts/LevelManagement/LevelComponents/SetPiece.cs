@@ -114,7 +114,7 @@ public class SetPiece : MonoBehaviour
 
         if (FinalZone)
         {
-            return;
+           // return;
         }
         if (collision != null && player != null)
         {
