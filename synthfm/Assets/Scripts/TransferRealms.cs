@@ -56,11 +56,11 @@ public class TransferRealms : MonoBehaviour
             smm.BRsceneDistance = distX;
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("Spawning");
-            SpawnFinalPatternZone(FragmentController.world.AMBER);
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Debug.Log("Spawning");
+        //    SpawnFinalPatternZone(FragmentController.world.AMBER);
+        //}
     }
 
    
