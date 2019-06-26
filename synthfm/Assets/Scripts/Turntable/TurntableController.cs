@@ -282,6 +282,7 @@
             {
                 fast_override = true;
                 UpdateAnimation(Speed.Fast);
+                ChangeSpeed(Speed.Fast);
                 return Speed.Fast;
             }
             else if (inputBindings.SpeedUp.WasReleased)
@@ -294,6 +295,7 @@
             {
                 slow_override = true;
                 UpdateAnimation(Speed.Slow);
+                ChangeSpeed(Speed.Slow);
                 return Speed.Slow;
             }
             else if (inputBindings.SlowDown.WasReleased)
