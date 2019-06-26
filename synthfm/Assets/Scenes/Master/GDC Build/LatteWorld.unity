@@ -629,15 +629,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e3202500e9f716c49b93ed853b0b50d7,
-        type: 3}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Material
       value: 
@@ -654,10 +645,23 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 773851868, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1679008919, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e3202500e9f716c49b93ed853b0b50d7,
+        type: 3}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Time
       value: 5
@@ -6864,14 +6868,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.88
@@ -6888,15 +6884,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3d5cfd44721f1d940a94d1cd20d6dff2,
-        type: 3}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Material
       value: 
@@ -6913,6 +6908,15 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d5cfd44721f1d940a94d1cd20d6dff2,
+        type: 3}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Time
       value: 5
@@ -7275,14 +7279,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.867
@@ -7299,15 +7295,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b569c9b71fd17e8458576a8451e3f7a4,
-        type: 3}
-    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 773851869, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Material
       value: 
@@ -7324,6 +7319,15 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b569c9b71fd17e8458576a8451e3f7a4,
+        type: 3}
+    - target: {fileID: 1459050427, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ef943280dc4c34a8c8ad8f2d22670f, type: 2}
     - target: {fileID: 1679008921, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_Time
       value: 5
@@ -15395,7 +15399,7 @@ PrefabInstance:
     - target: {fileID: 1761917692435572908, guid: 9aa8c88c8ea49974d8a9a7a38e9d35de,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1761917692435572908, guid: 9aa8c88c8ea49974d8a9a7a38e9d35de,
         type: 3}

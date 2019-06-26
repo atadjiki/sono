@@ -329,6 +329,13 @@ public class TransferRealms : MonoBehaviour
                         n++;
                         ToHandle.Add(fragment);
                     }
+
+                    /////
+                    if(fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == FragmentController.world.LATTE)
+                    {
+                        Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
+                        rb.angularVelocity = 0.0f;
+                    }
                 }
 
                 // If FOLLOW -> change to FLEE

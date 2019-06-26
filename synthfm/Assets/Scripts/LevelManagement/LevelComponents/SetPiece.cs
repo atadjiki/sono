@@ -111,10 +111,11 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
+       
         if (FinalZone)
         {
-           // return;
+           //  return;
+          
         }
         if (collision != null && player != null)
         {
