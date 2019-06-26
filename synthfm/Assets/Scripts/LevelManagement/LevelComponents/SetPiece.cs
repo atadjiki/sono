@@ -111,11 +111,9 @@ public class SetPiece : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-       
-        if (FinalZone)
+        if (FinalZone && PuzzleProgressManager.instance.isCompletedWithGame())
         {
-           //  return;
-          
+             return;
         }
         if (collision != null && player != null)
         {
