@@ -249,6 +249,7 @@ public class PuzzleProgressManager : MonoBehaviour
         {
             DeleteBoundaries();
             DeleteAllTransferRealmsScripts();
+            ScoreManager._instance.ReplaceVoidWithFinal();
             GameObject.Find("Player").GetComponent<Navpoint>().pointToFinalZone = true;
             
             gameCompleteActions = true;

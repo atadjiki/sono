@@ -386,6 +386,12 @@ public class ScoreManager : MonoBehaviour
         docks[(CurrentActiveDock + 1) % 2].SetLowPassCutoffLevel(VoidLevel);
     }
 
+    public void ReplaceVoidWithFinal()
+    {
+        if(VoidPattern != finalCinematic)
+            VoidPattern = finalCinematic;
+    }
+
     /** Final Zone Handling **/
 
     public void LoadFinalZone()
