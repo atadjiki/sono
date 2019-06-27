@@ -14,13 +14,15 @@ public class PatternTrigger : MonoBehaviour
   //  Cinemachine.CinemachineVirtualCamera mainCamera;
     float prevFieldofView;
 
+    Vector3 originalPos;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRef = GameObject.Find("Player");
         tController = playerRef.GetComponent<PlayerInput.TurntableController>();
-     //   mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-
+        //   mainCamera = GameObject.Find("CM_Main").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        originalPos = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,7 +69,9 @@ public class PatternTrigger : MonoBehaviour
     IEnumerator restoreState()
     {
         yield return new WaitForSeconds(timeOut);
-        Debug.Log("Restoring");
+        Debug.Log("Moved the pattern away.");
+        transform.parent.gameObject.transform.position = originalPos;
+
         tController.acceleration = PrevAcceleration;
         StartCoroutine(resetCamera());
 
