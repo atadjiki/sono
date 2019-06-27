@@ -24,6 +24,7 @@ public class ChangeFiberColorProfiles : MonoBehaviour
         else if (gameObject.tag == "Fiber3" && collision.gameObject.tag == "Player")
         {
             StartCoroutine(cc.changeColor(cc.saturated, cc.thirdFiberPuzzleColor[2], cc.thirdFiberPuzzleColor[3]));
+     
         }
     }
 }
