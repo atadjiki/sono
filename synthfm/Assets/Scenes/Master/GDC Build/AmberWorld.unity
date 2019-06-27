@@ -317,10 +317,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.01
       objectReference: {fileID: 0}
-    - target: {fileID: 1459050425, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1929451584604128800, guid: 472ede1e5d4d3974db213d411c4253e4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -350,6 +346,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459050425, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1929451585230730661, guid: 472ede1e5d4d3974db213d411c4253e4,
         type: 3}
@@ -483,9 +483,10 @@ GameObject:
   - component: {fileID: 223628735}
   - component: {fileID: 223628736}
   - component: {fileID: 223628737}
+  - component: {fileID: 223628738}
   m_Layer: 0
   m_Name: CompletedPuzzle
-  m_TagString: Amber3
+  m_TagString: Amber1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540,6 +541,18 @@ MonoBehaviour:
   setPieceCamera: {fileID: 71409941}
   center: {fileID: 1129820536}
   FinalZone: 0
+--- !u!114 &223628738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223628734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ae9fe326ef0c74f8205354c15c376a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &245882008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6649,6 +6662,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmberEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 7005275810511583704, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Amber3
+      objectReference: {fileID: 0}
     - target: {fileID: 4356335838464313623, guid: ebdd7d00eb76cfc4a8f1679d24029c9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7742,6 +7760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AmberStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130721904489836905, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Amber2
       objectReference: {fileID: 0}
     - target: {fileID: 143732288644234109, guid: 1be4e9a7f0f8e01459e87223da1c7fa7,
         type: 3}
