@@ -35,13 +35,15 @@ public class Mixer
     public void Load(ScorePattern scorePattern, bool AllTracksActive)
     {
         Debug.Assert(scorePattern.clips.Length == sources.Length);
+        Debug.Log("Loading " + scorePattern.name + "  -- " +  AllTracksActive);
         currentScorepattern = scorePattern;
         for (int i = 0; i < sources.Length; i++)
         {
             sources[i].clip = scorePattern.clips[i];
-            if(AllTracksActive)
+            if(AllTracksActive && i != 0)
                 SetVolume(i, 0);
         }
+
     }
 
     public void Unload()
@@ -230,7 +232,7 @@ public class ScoreManager : MonoBehaviour
         LoadPatternOntoDock(0, docks[0].currentScorepattern);
         //LoadPattern(1, 1);
         LoadPatternOntoDock(1, docks[1].currentScorepattern);
-        LoadPattern(1);
+        LoadPattern(1, false);
         CurrentActiveDock = 0;
 
         ResetToDefault(CurrentActiveDock);
@@ -318,10 +320,10 @@ public class ScoreManager : MonoBehaviour
 
 
     //These are all different ways you can load the next pattern into the other dock
-    public void LoadPattern(int Index, bool AllTracksActive = false)
+    public void LoadPattern(int Index, bool AllTracksActive)
     {
         int DockIndex = (CurrentActiveDock + 1) % docks.Length;
-        LoadPattern(Index, DockIndex);
+        LoadPattern(Index, DockIndex, AllTracksActive);
     }
 
     public void LoadPattern(ScorePattern pattern, bool AllTracksActive = false)
@@ -333,19 +335,19 @@ public class ScoreManager : MonoBehaviour
     public void LoadPattern(ScorePattern pattern, int DockIndex, bool AllTracksActive = false)
     {
         docks[DockIndex].Load(pattern, AllTracksActive);
-        ResetToDefault(DockIndex);
+        if(!AllTracksActive) ResetToDefault(DockIndex);
     }
 
     public void LoadPattern(int Index, int DockIndex, bool AllTracksActive=false)
     {
         docks[DockIndex].Load(scorePatterns[Index], AllTracksActive);
-        ResetToDefault(DockIndex);
+        if(!AllTracksActive) ResetToDefault(DockIndex);
     }
 
     public void LoadPatternOntoDock(int DockIndex, ScorePattern pattern, bool AllTracksActive = false)
     {
         docks[DockIndex].Load(pattern, AllTracksActive);
-        ResetToDefault(DockIndex);
+        if (!AllTracksActive) ResetToDefault(DockIndex);
     }
 
     public void SetHighPassDuck(bool isActive)
@@ -384,6 +386,11 @@ public class ScoreManager : MonoBehaviour
     {
         LoadPattern(VoidPattern);
         docks[(CurrentActiveDock + 1) % 2].SetLowPassCutoffLevel(VoidLevel);
+    }
+
+    public void LoadPatternAtLevel(ScorePattern pattern, int level)
+    {
+
     }
 
     public void ReplaceVoidWithFinal()
