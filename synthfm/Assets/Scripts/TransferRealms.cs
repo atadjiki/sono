@@ -120,7 +120,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredAmberWorld = true;
                 gameObject.GetComponent<AmberWorld>().enabled = true;
                 changeAppearance("Amber");
-                ScoreManager._instance.LoadPattern(3);
+                ScoreManager._instance.LoadPattern(3, IsAmberDone);
                 ScoreManager._instance.Crossfade();
                 print("Entering Amber");
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
@@ -145,7 +145,7 @@ public class TransferRealms : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredFiberWorld = true;
                 changeAppearance("Fiber");
                 gameObject.GetComponent<FiberWorld>().enabled = true;
-                ScoreManager._instance.LoadPattern(1);
+                ScoreManager._instance.LoadPattern(1, IsFiberDone);
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
                 
@@ -165,7 +165,7 @@ public class TransferRealms : MonoBehaviour
                 }
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredLatteWorld = true;
                 gameObject.GetComponent<LatteWorld>().enabled = true;
-                ScoreManager._instance.LoadPattern(2);
+                ScoreManager._instance.LoadPattern(2, IsLatteDone);
                 ScoreManager._instance.Crossfade();
                 GameObject.Find("Player").GetComponent<Navpoint>().maxFragments = 3;
                 FXToggle.instance.ToggleFX(FragmentController.world.LATTE);
