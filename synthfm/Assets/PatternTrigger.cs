@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class PatternTrigger : MonoBehaviour
 {
+    public static PatternTrigger Instance;
+
    // public float cmrFieldView;
     public float timeOut;
     
@@ -14,7 +16,14 @@ public class PatternTrigger : MonoBehaviour
   //  Cinemachine.CinemachineVirtualCamera mainCamera;
     float prevFieldofView;
 
+    public bool IsPatternDone = false;
+
     Vector3 originalPos;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +37,7 @@ public class PatternTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.gameObject == GameObject.Find("Player"))
+        if (collision.gameObject == GameObject.Find("Player") && !IsPatternDone)
         {
             // change speed
             Debug.Log("Starting sequence");
@@ -55,6 +64,8 @@ public class PatternTrigger : MonoBehaviour
                          Debug.Log("generating patterns");
                 }
             }
+
+            IsPatternDone = true;
             // start coroutine and set everything back to prev
             StartCoroutine(restoreState());
         }
@@ -70,10 +81,9 @@ public class PatternTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(timeOut);
         Debug.Log("Moved the pattern away.");
-        transform.parent.gameObject.transform.position = originalPos;
-
+       
         tController.acceleration = PrevAcceleration;
-        StartCoroutine(resetCamera());
+       // StartCoroutine(movepattern());
 
         Transform pos = GameObject.Find("Player").gameObject.transform;
 
@@ -91,11 +101,13 @@ public class PatternTrigger : MonoBehaviour
             }
 
         }
+        
     }
 
-    IEnumerator resetCamera()
+    IEnumerator movepattern()
     {
         yield return new WaitForSeconds(5);
-       // mainCamera.m_Lens.FieldOfView = prevFieldofView;
+        // mainCamera.m_Lens.FieldOfView = prevFieldofView;
+        transform.parent.gameObject.transform.position = originalPos;
     }
 }

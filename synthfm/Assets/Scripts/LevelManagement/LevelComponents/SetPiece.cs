@@ -16,6 +16,7 @@ public class SetPiece : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera setPieceCamera;
     public GameObject center;
     public bool FinalZone = false;
+    public bool IsPattern;
 
     private bool centerExists = false;
     // Start is called before the first frame update
@@ -96,12 +97,23 @@ public class SetPiece : MonoBehaviour
         {
             if (collision.gameObject == player.gameObject)
             {
-                if (mainCamera != null && setPieceCamera != null)
+                
+                if (mainCamera != null && setPieceCamera != null && !IsPattern)
                 {
                     Debug.Log("Switching camera to " + setPieceCamera.name);
                     mainCamera.enabled = false;
                     setPieceCamera.enabled = true;
                     setPieceCamera.Priority = 20;
+                    
+                }
+
+                if(IsPattern && !PatternTrigger.Instance.IsPatternDone && mainCamera != null && setPieceCamera != null)
+                {
+                    Debug.Log("Switching camera to Pattern :" + setPieceCamera.name);
+                    mainCamera.enabled = false;
+                    setPieceCamera.enabled = true;
+                    setPieceCamera.Priority = 20;
+                    
                 }
 
             }
@@ -119,7 +131,6 @@ public class SetPiece : MonoBehaviour
         {
             if (collision.gameObject == player.gameObject)
             {
-
                 if(mainCamera != null && setPieceCamera != null)
                 {
                     Debug.Log("Switching camera to " + mainCamera.Name);

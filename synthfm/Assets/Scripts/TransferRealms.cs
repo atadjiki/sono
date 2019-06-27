@@ -13,7 +13,7 @@ public class TransferRealms : MonoBehaviour
     public bool IsAmberDone; // whether all fragments are collected in world
     public bool IsFiberDone;
     public bool IsLatteDone;
-    public bool IsPatternDone; // whether the pattern has been generated
+   // public bool IsPatternDone; // whether the pattern has been generated
 
     //  [SerializeField] private bool IsPlayerInside;
 
@@ -164,6 +164,7 @@ public class TransferRealms : MonoBehaviour
                     isLatteLoaded = true;
                 }
                 GameObject.Find("Player").GetComponent<Navpoint>().enteredLatteWorld = true;
+                changeAppearance("Latte");
                 gameObject.GetComponent<LatteWorld>().enabled = true;
                 ScoreManager._instance.LoadPattern(2, IsLatteDone);
                 ScoreManager._instance.Crossfade();
@@ -302,12 +303,11 @@ public class TransferRealms : MonoBehaviour
         if (FragmentManager.instance.CountAttachedFragments() == totalFrgments) // all 9 collected
         {
             // spawn patterns Only Once
-            if(!IsPatternDone)
+            if(!PatternTrigger.Instance.IsPatternDone)
             {
                 prepareForCurve(iWorld);
                 StartCoroutine(_SpawnFinalPatterns(iWorld));
                
-                IsPatternDone = true;
             }
         }
         else
@@ -399,7 +399,11 @@ public class TransferRealms : MonoBehaviour
     private void changeAppearance(string destination)
     {
         ChangeColor cc = GameObject.Find("Main Camera").GetComponent<ChangeColor>();
-        if (destination == "Void")
+        if (destination == "Void" && PuzzleProgressManager.instance.isCompletedWithGame())
+        {
+            StartCoroutine(cc.changeColor(cc.dark, cc.firstamberPuzzleColor[2], cc.firstamberPuzzleColor[3]));
+        }
+        else if (destination == "Void")
         {
             StartCoroutine(cc.changeColor(cc.voidbgColor, cc.voidColor[2], cc.voidColor[3]));
         }
@@ -409,7 +413,11 @@ public class TransferRealms : MonoBehaviour
         }
         else if (destination == "Fiber")
         {
-            StartCoroutine(cc.changeColor(cc.dark, cc.currentPlayercolor, cc.currentTrailColor));
+            StartCoroutine(cc.changeColor(cc.dark, cc.firstFiberPuzzleColor[2], cc.firstFiberPuzzleColor[3]));
+        }
+        else if (destination == "Latte")
+        {
+            StartCoroutine(cc.changeColor(cc.dark, cc.firstlattePuzzleColor[2], cc.firstlattePuzzleColor[3]));
         }
     }
 
