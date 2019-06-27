@@ -289,7 +289,7 @@ public class TransferRealms : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("WARNING: This should never happen !!!");
+                   // Debug.Log("WARNING: This should never happen !!!");
                 }
             }
         }
@@ -298,6 +298,7 @@ public class TransferRealms : MonoBehaviour
     // Whenever player exit any world...Handle Fragment Events 
     private void HandleExitEvents(FragmentController.world iWorld,ref bool IsWorldDone)
     {
+        resetAngularVelocities(); // this is important to avoid weird latter frag behavior
         if (FragmentManager.instance.CountAttachedFragments() == totalFrgments) // all 9 collected
         {
             // spawn patterns Only Once
@@ -319,6 +320,7 @@ public class TransferRealms : MonoBehaviour
             }
             else
             {
+                Debug.Log("World Is Not Completed");
                 int n = 0; // count the attached fragments
                 List<FragmentController> ToHandle = new List<FragmentController>();
                 List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
@@ -329,13 +331,7 @@ public class TransferRealms : MonoBehaviour
                         n++;
                         ToHandle.Add(fragment);
                     }
-
-                    /////
-                    if(fragment.currentState == FragmentController.states.FOLLOW && fragment.currentWorld == FragmentController.world.LATTE)
-                    {
-                        Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
-                        rb.angularVelocity = 0.0f;
-                    }
+                    
                 }
 
                 // If FOLLOW -> change to FLEE
@@ -355,6 +351,22 @@ public class TransferRealms : MonoBehaviour
         }
     }
     
+    // To avoid following..
+    // for some reasons the Latte puzzle starts spinning 
+    void resetAngularVelocities()
+    {
+        /////
+         List<FragmentController> fragments = FragmentManager.instance.AttachedFragments();
+        foreach (FragmentController fg in fragments)
+        {
+            if (fg.currentState == FragmentController.states.FOLLOW && fg.currentWorld == FragmentController.world.LATTE)
+            {
+                Rigidbody2D rb = fg.GetComponent<Rigidbody2D>();
+                rb.angularVelocity = 0.0f;
+            }
+        }
+    }
+
     IEnumerator _SpawnFinalPatterns(FragmentController.world iWorld)
     {
         yield return new WaitForSeconds(2);
