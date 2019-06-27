@@ -15,9 +15,13 @@ public class ChangeAmberPuzzleProfiles : MonoBehaviour
     {
         if(gameObject.tag == "Amber1" && collision.gameObject.tag == "Player")
         {
-            StartCoroutine(cc.changeColor(cc.dark, cc.secondamberPuzzleColor[2], cc.secondamberPuzzleColor[3]));
+            StartCoroutine(cc.changeColor(cc.dark, cc.firstamberPuzzleColor[2], cc.firstamberPuzzleColor[3]));
         }
         else if (gameObject.tag == "Amber2" && collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(cc.changeColor(cc.dark, cc.secondamberPuzzleColor[2], cc.secondamberPuzzleColor[3]));
+        }
+        else if (gameObject.tag == "Amber3" && collision.gameObject.tag == "Player")
         {
             StartCoroutine(cc.changeColor(cc.dark, cc.thirdamberPuzzleColor[2], cc.thirdamberPuzzleColor[3]));
         }
