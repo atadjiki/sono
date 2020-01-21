@@ -70,18 +70,37 @@ public class FXToggle : MonoBehaviour
        // Debug.Log("Toggle Player Fog");
         if (enteredPuzzle)
         {
-            LatteFX.SetActive(false);
+            foreach (ParticleSystem particleSystem in LatteFX.GetComponentsInChildren<ParticleSystem>())
+            {
+                particleSystem.Stop();
+            }
         }
         else
         {
-            LatteFX.SetActive(true);
+            foreach (ParticleSystem particleSystem in LatteFX.GetComponentsInChildren<ParticleSystem>())
+            {
+                particleSystem.Play();
+            }
         }
     }
 
     public void AllFXOff()
     {
-        FiberFX.SetActive(false);
-        AmberFX.SetActive(false);
-        LatteFX.SetActive(false);
+        //FiberFX.SetActive(false);
+        //AmberFX.SetActive(false);
+        //LatteFX.SetActive(false);
+        foreach (ParticleSystem particleSystem in AmberFX.GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Stop();
+        }
+        foreach (ParticleSystem particleSystem in FiberFX.GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Stop();
+        }
+        foreach (ParticleSystem particleSystem in LatteFX.GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Stop();
+        }
+
     }
 }

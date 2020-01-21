@@ -839,6 +839,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FixedFog
       objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751427, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5364277800844751426, guid: 442d83f9ad17256459bc0b31309e0e1a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -908,6 +913,26 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.radiusScale
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: looping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
@@ -12447,6 +12472,21 @@ PrefabInstance:
       propertyPath: CollisionModule.radiusScale
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
 --- !u!4 &1519233698 stripped
@@ -15170,6 +15210,21 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.radiusScale
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364277800844751431, guid: 442d83f9ad17256459bc0b31309e0e1a,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442d83f9ad17256459bc0b31309e0e1a, type: 3}
