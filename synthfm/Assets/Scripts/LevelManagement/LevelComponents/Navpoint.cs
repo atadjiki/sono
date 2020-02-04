@@ -297,7 +297,7 @@ public class Navpoint : MonoBehaviour
         float angle = Vector3.Angle(sphereCollider.transform.position, target.transform.position);
 
 
-        eyeball.transform.position = Vector3.Lerp(eyeball.transform.position, position, .1f);
+        eyeball.transform.position = position;
         //    Debug.DrawRay(transform.position, target.transform.position);
     }
 

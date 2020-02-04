@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194783006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: -1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 773851865}
@@ -602,7 +602,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -834,26 +834,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 178670977}
     m_Modifications:
-    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: Pickup
-      value: 
-      objectReference: {fileID: 1929451584604128802}
-    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: cc
-      value: 
-      objectReference: {fileID: 1929451585230730661}
-    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 2244682443739969335, guid: 1cc22c58a718c4e48a99031ab80d24f9,
         type: 3}
       propertyPath: m_Name
@@ -928,6 +908,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: Pickup
+      value: 
+      objectReference: {fileID: 1929451584604128802}
+    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: cc
+      value: 
+      objectReference: {fileID: 1929451585230730661}
+    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc22c58a718c4e48a99031ab80d24f9, type: 3}
