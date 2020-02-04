@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561892301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0027648925, y: -14.16, z: -1.5900002}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0027648925, y: -16, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5739735119460921860}
   m_RootOrder: 1
@@ -49,7 +49,7 @@ VisualEffect:
       - m_Value: 108.7
         m_Name: Emission
         m_Overridden: 0
-      - m_Value: 7.65
+      - m_Value: 1000
         m_Name: React
         m_Overridden: 0
       - m_Value: 0
@@ -59,9 +59,9 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0, y: 0, z: 0}
+      - m_Value: {x: 0, y: 30, z: 0}
         m_Name: Position
-        m_Overridden: 0
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -194,7 +194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.13, y: 0.5}
+  m_Size: {x: 20, y: 0.5}
   m_EdgeRadius: 0
 --- !u!82 &2047453441320319830
 AudioSource:
