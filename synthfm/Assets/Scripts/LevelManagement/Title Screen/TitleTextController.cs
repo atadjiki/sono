@@ -14,8 +14,10 @@ public class TitleTextController : MonoBehaviour
 
     private IEnumerator Idle()
     {
+        Debug.Log("Coroutine Started");
+        
         yield return new WaitForSeconds(idleTime);
-
+        Debug.Log("Coroutine Ended");
         anim.SetTrigger("Out");
     }
 }
