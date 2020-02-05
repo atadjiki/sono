@@ -6132,7 +6132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1352253278, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1352253279, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7095,7 +7095,7 @@ PrefabInstance:
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_VertexStreams.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -7120,7 +7120,7 @@ PrefabInstance:
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_VertexStreams.Array.data[1]
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -7130,12 +7130,22 @@ PrefabInstance:
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_UseCustomVertexStreams
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_ApplyActiveColorSpace
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[0]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859578476644, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
