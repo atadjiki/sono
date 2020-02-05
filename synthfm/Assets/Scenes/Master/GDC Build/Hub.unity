@@ -6132,7 +6132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1352253278, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1352253279, guid: b8a011f487dba2644adbd6046cdde4d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6905,12 +6905,12 @@ PrefabInstance:
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -6920,12 +6920,12 @@ PrefabInstance:
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: lengthInSec
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -6970,7 +6970,7 @@ PrefabInstance:
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -7000,7 +7000,42 @@ PrefabInstance:
     - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: RotationModule.separateAxes
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: RotationModule.curve.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: RotationModule.curve.minScalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: RotationModule.y.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: RotationModule.x.scalar
+      value: 0.2617994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850656, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850657, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
@@ -7059,22 +7094,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d8950e3421e7de542b65142705f59d0a, type: 2}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_RenderMode
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919485859389850659, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: m_ApplyActiveColorSpace
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919485859578476644, guid: b8a011f487dba2644adbd6046cdde4d9,
