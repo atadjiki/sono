@@ -19,11 +19,11 @@ public class changeLatteColorProfiles : MonoBehaviour
         }
         else if (gameObject.tag == "Latte2" && collision.gameObject.tag == "Player")
         {
-            StartCoroutine(cc.changeColor(cc.saturated, cc.secondlattePuzzleColor[2], cc.secondlattePuzzleColor[3]));
+            StartCoroutine(cc.changeColor(cc.dark, cc.secondlattePuzzleColor[2], cc.secondlattePuzzleColor[3]));
         }
         else if (gameObject.tag == "Latte3" && collision.gameObject.tag == "Player")
         {
-            StartCoroutine(cc.changeColor(cc.saturated, cc.thirdlattePuzzleColor[2], cc.thirdlattePuzzleColor[3]));
+            StartCoroutine(cc.changeColor(cc.dark, cc.thirdlattePuzzleColor[2], cc.thirdlattePuzzleColor[3]));
 
         }
     }
