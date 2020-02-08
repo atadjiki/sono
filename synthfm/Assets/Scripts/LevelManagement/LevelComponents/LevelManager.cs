@@ -25,7 +25,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(SavedData.instance == null)
+        Cursor.visible = false;
+
+        if (SavedData.instance == null)
         {
             SavedData.instance = new SavedData();
         }
