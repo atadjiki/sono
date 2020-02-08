@@ -5587,7 +5587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   clearColorMode: 1
-  backgroundColorHDR: {r: 0.019607844, g: 0.029411765, b: 0.043137256, a: 1}
+  backgroundColorHDR: {r: 0.009803922, g: 0.015686275, b: 0.021568628, a: 1}
   clearDepth: 1
   renderingPath: 0
   volumeLayerMask:
@@ -6910,6 +6910,11 @@ PrefabInstance:
     - target: {fileID: 6840359925433668879, guid: b8a011f487dba2644adbd6046cdde4d9,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304104125446845382, guid: b8a011f487dba2644adbd6046cdde4d9,
+        type: 3}
+      propertyPath: enableXInput
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440548671984367836, guid: b8a011f487dba2644adbd6046cdde4d9,
