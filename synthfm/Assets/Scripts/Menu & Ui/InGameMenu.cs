@@ -49,9 +49,9 @@ public class InGameMenu : MonoBehaviour
                 break;
 
             case MenuStates.Restart:
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("Hub");
                 Time.timeScale = 1;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                //  SceneManager.LoadScene("Hub");
                 break;
 
             case MenuStates.Exit:
