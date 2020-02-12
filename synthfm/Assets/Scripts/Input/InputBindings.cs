@@ -73,7 +73,7 @@
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.RightTrigger);
 
             playerActions.Pause.AddDefaultBinding(Key.Escape);
-            playerActions.Pause.AddDefaultBinding(InputControlType.Start);
+            playerActions.Pause.AddDefaultBinding(InputControlType.Menu);
 
             playerActions.SlowSpeed.AddDefaultBinding(Key.Key1);
             playerActions.NormalSpeed.AddDefaultBinding(Key.Key2);
