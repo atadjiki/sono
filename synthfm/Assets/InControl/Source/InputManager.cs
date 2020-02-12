@@ -111,11 +111,7 @@ namespace InControl
 				return false;
 			}
 
-#if !NETFX_CORE && !UNITY_WEBPLAYER && !UNITY_EDITOR_OSX && (UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN)
-			Platform = Utility.GetWindowsVersion().ToUpper();
-#else
-			Platform = (SystemInfo.operatingSystem + " " + SystemInfo.deviceModel).ToUpper();
-#endif
+			Platform = Utility.GetPlatformName();
 
 			enabled = true;
 
@@ -751,7 +747,7 @@ namespace InControl
 		/// input updates will be processed. Input updates will resume when the app
 		/// regains focus.
 		/// </summary>
-		public static bool SuspendInBackground { get; internal set; }
+		public static bool SuspendInBackground { get; set; }
 
 
 		/// <summary>

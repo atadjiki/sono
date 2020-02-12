@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class HoriRealArcadeProEXSEMacProfile : Xbox360DriverMacProfile
 	{
 		public HoriRealArcadeProEXSEMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Hori Real Arcade Pro EX SE";
 			Meta = "Hori Real Arcade Pro EX SE on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0f0d,
 					ProductID = 0x0016,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

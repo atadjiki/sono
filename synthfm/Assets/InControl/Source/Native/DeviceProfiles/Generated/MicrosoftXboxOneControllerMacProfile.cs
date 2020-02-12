@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class MicrosoftXboxOneControllerMacProfile : XboxOneDriverMacProfile
 	{
 		public MicrosoftXboxOneControllerMacProfile()
@@ -11,22 +9,27 @@ namespace InControl.NativeProfile
 			Name = "Microsoft Xbox One Controller";
 			Meta = "Microsoft Xbox One Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x045e,
 					ProductID = 0x02d1,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x045e,
 					ProductID = 0x02dd,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x045e,
 					ProductID = 0x02fd,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

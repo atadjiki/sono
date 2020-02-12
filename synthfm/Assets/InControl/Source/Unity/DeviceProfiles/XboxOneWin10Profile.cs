@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class XboxOneWin10Profile : UnityInputDeviceProfile
 	{
 		public XboxOneWin10Profile()

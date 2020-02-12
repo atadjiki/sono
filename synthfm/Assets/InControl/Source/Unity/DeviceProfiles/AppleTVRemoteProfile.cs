@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class AppleTVRemoteProfile : UnityInputDeviceProfile
 	{
 		// Naming of this file/class is important. It needs to come before the

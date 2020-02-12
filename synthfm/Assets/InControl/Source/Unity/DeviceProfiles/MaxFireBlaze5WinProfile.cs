@@ -1,7 +1,7 @@
 ﻿namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class MaxFireBlaze5Profile : UnityInputDeviceProfile
 	{
 		public MaxFireBlaze5Profile()

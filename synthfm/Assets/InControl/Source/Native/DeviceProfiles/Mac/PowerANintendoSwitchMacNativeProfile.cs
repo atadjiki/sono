@@ -1,7 +1,7 @@
 namespace InControl.NativeProfile
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PowerANintendoSwitchMacNativeProfile : NativeInputDeviceProfile
 	{
 		public PowerANintendoSwitchMacNativeProfile()
@@ -24,7 +24,8 @@ namespace InControl.NativeProfile
 			{
 				new NativeInputDeviceMatcher
 				{
-					VendorID = 0x20d6, ProductID = 0xa711,
+					VendorID = 0x20d6,
+					ProductID = 0xa711,
 					// VersionNumber = 0x200,
 				},
 			};

@@ -1,5 +1,6 @@
 namespace InControl
 {
+	[Preserve]
 	public abstract class NativeInputDeviceProfile : InputDeviceProfile
 	{
 		public NativeInputDeviceMatcher[] Matchers;

@@ -6,7 +6,6 @@ namespace InControl
 	public class TouchButtonControl : TouchControl
 	{
 		[Header( "Position" )]
-
 		[SerializeField]
 		TouchControlAnchor anchor = TouchControlAnchor.BottomRight;
 
@@ -21,8 +20,8 @@ namespace InControl
 
 
 		[Header( "Options" )]
-
 		public ButtonTarget target = ButtonTarget.Action1;
+
 		public bool allowSlideToggle = true;
 		public bool toggleOnLeave = false;
 
@@ -32,7 +31,6 @@ namespace InControl
 
 
 		[Header( "Sprites" )]
-
 		public TouchSprite button = new TouchSprite( 15.0f );
 
 
@@ -102,15 +100,16 @@ namespace InControl
 							var touch = TouchManager.GetTouch( i );
 							if (button.Contains( touch ))
 							{
-								buttonValue = Utility.Max( buttonValue, touch.normalizedPressure );
+								buttonValue = Utility.Max( buttonValue, touch.NormalizedPressure );
 							}
 						}
 					}
 				}
 				else
 				{
-					buttonValue = currentTouch.normalizedPressure;
+					buttonValue = currentTouch.NormalizedPressure;
 				}
+
 				ButtonState = buttonValue > 0.0f;
 				SubmitButtonValue( target, buttonValue, updateTick, deltaTime );
 				return;
@@ -126,6 +125,7 @@ namespace InControl
 					ButtonState = ButtonState || button.Contains( TouchManager.GetTouch( i ) );
 				}
 			}
+
 			SubmitButtonState( target, ButtonState, updateTick, deltaTime );
 		}
 
@@ -267,4 +267,3 @@ namespace InControl
 		}
 	}
 }
-

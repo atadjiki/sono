@@ -9,7 +9,7 @@ namespace InControl
 		const float LowerDeadZone = 0.2f;
 		const float UpperDeadZone = 0.9f;
 
-		XInputDeviceManager owner;
+		readonly XInputDeviceManager owner;
 		GamePadState state;
 
 		public int DeviceIndex { get; private set; }
@@ -90,8 +90,6 @@ namespace InControl
 
 			UpdateWithState( InputControlType.Start, state.Buttons.Start == ButtonState.Pressed, updateTick, deltaTime );
 			UpdateWithState( InputControlType.Back, state.Buttons.Back == ButtonState.Pressed, updateTick, deltaTime );
-
-			Commit( updateTick, deltaTime );
 		}
 
 

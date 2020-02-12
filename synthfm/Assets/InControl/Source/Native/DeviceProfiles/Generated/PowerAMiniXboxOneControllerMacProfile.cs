@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class PowerAMiniXboxOneControllerMacProfile : XboxOneDriverMacProfile
 	{
 		public PowerAMiniXboxOneControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Power A Mini Xbox One Controller";
 			Meta = "Power A Mini Xbox One Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x24c6,
 					ProductID = 0x543a,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

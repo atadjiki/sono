@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class PDPMetallicsLEControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public PDPMetallicsLEControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "PDP Metallics LE Controller";
 			Meta = "PDP Metallics LE Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0x0159,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

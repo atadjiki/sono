@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class MLGControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public MLGControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "MLG Controller";
 			Meta = "MLG Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xf023,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

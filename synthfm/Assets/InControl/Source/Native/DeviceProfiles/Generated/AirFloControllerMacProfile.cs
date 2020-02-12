@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class AirFloControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public AirFloControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Air Flo Controller";
 			Meta = "Air Flo Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x24c6,
 					ProductID = 0x5303,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class Xbox360WinProfile : UnityInputDeviceProfile
 	{
 		public Xbox360WinProfile()
@@ -120,6 +120,7 @@ namespace InControl
 				DPadUpMapping2( Analog6 ),
 				DPadDownMapping2( Analog6 ),
 
+#if !UNITY_2018_3_OR_NEWER
 				new InputControlMapping {
 					Handle = "Left Trigger",
 					Target = InputControlType.LeftTrigger,
@@ -134,6 +135,7 @@ namespace InControl
 					SourceRange = InputRange.ZeroToMinusOne,
 					TargetRange = InputRange.ZeroToOne,
 				},
+#endif
 
 				new InputControlMapping {
 					Handle = "Left Trigger",

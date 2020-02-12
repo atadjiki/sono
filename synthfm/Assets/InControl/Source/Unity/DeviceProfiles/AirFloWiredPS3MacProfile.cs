@@ -1,7 +1,7 @@
 ﻿namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class AirFloWiredPS3MacProfile : UnityInputDeviceProfile
 	{
 		public AirFloWiredPS3MacProfile()

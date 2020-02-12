@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 namespace InControl
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Text.RegularExpressions;
 	using UnityEditor;
@@ -8,16 +9,19 @@ namespace InControl
 
 
 	[InitializeOnLoad]
-	internal class InputManagerAssetGenerator
+	class InputManagerAssetGenerator
 	{
 		static readonly List<AxisPreset> axisPresets = new List<AxisPreset>();
 
 
 		static InputManagerAssetGenerator()
 		{
-			if (!CheckAxisPresets())
+			if (!EditorApplication.isPlayingOrWillChangePlaymode)
 			{
-				Debug.LogError( "InControl needs to modify your InputManager settings. Please run the 'InControl > Setup InputManager Settings' menu item." );
+				if (!CheckAxisPresets())
+				{
+					Debug.LogError( "InControl needs to modify your InputManager settings. Please run the 'InControl > Setup InputManager Settings' menu item." );
+				}
 			}
 		}
 
@@ -46,7 +50,15 @@ namespace InControl
 
 		static bool CheckAxisPresets()
 		{
-			SetupAxisPresets();
+			try
+			{
+				SetupAxisPresets();
+			}
+			catch (IndexOutOfRangeException)
+			{
+				// This can happen on first load when the Library folder is deleted.
+				return true;
+			}
 
 			var axisArray = GetInputManagerAxisArray();
 

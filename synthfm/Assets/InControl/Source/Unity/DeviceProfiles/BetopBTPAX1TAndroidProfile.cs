@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class BetopBTPAX1TAndroidProfile : UnityInputDeviceProfile
 	{
 		// BETOP 卡洛蓝牙六轴版  BTP-AX1T

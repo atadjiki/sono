@@ -1,6 +1,7 @@
 ﻿namespace InControl.NativeProfile
 {
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class XboxOneDriverMacProfile : NativeInputDeviceProfile
 	{
 		// This profile doesn't match anything by itself, but subclasses can specify

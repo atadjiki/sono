@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class EightBitdoNES30ProAndroidProfile : UnityInputDeviceProfile
 	{
 

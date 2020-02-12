@@ -3,6 +3,7 @@
 	// TODO: This class should be folded right into UnityInputDeviceProfile once
 	// CustomInputDeviceProfile is finally removed.
 	//
+	[Preserve]
 	public abstract class UnityInputDeviceProfileBase : InputDeviceProfile
 	{
 		public abstract bool IsJoystick { get; }
@@ -12,11 +13,12 @@
 
 
 		public bool IsNotJoystick
-		{ 
+		{
 			get
-			{ 
-				return !IsJoystick; 
-			} 
+			{
+				return !IsJoystick;
+			}
 		}
 	}
 }
+

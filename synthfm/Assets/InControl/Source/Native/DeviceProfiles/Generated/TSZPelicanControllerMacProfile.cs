@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class TSZPelicanControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public TSZPelicanControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "TSZ Pelican Controller";
 			Meta = "TSZ Pelican Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0x0201,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

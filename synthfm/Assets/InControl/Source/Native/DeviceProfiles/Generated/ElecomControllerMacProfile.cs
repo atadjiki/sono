@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class ElecomControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public ElecomControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Elecom Controller";
 			Meta = "Elecom Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x056e,
 					ProductID = 0x2004,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

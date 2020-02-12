@@ -25,6 +25,7 @@
 		NintendoWii,
 		NintendoWiiU,
 		NintendoSwitch,
+		GoogleStadia,
 		Vive,
 		Oculus,
 	}

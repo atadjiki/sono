@@ -3,7 +3,7 @@ namespace InControl
 {
 	public class ICadeDevice : InputDevice
 	{
-		ICadeDeviceManager owner;
+		readonly ICadeDeviceManager owner;
 		ICadeState state;
 
 
@@ -28,10 +28,10 @@ namespace InControl
 			AddControl( InputControlType.Action7, "Button 7" );
 			AddControl( InputControlType.Action8, "Button 8" );
 
-//			AddControl( InputControlType.LeftTrigger, "Left Trigger" );
-//			AddControl( InputControlType.RightTrigger, "Right Trigger" );
-//			AddControl( InputControlType.Select, "Select" );
-//			AddControl( InputControlType.Start, "Start" );
+			// AddControl( InputControlType.LeftTrigger, "Left Trigger" );
+			// AddControl( InputControlType.RightTrigger, "Right Trigger" );
+			// AddControl( InputControlType.Select, "Select" );
+			// AddControl( InputControlType.Start, "Start" );
 		}
 
 
@@ -53,12 +53,10 @@ namespace InControl
 			UpdateWithState( InputControlType.Action7, IsPressed( ICadeState.Button7 ), updateTick, deltaTime );
 			UpdateWithState( InputControlType.Action8, IsPressed( ICadeState.Button8 ), updateTick, deltaTime );
 
-//			UpdateWithState( InputControlType.RightTrigger, IsPressed( ICadeState.Button5 ), updateTick, deltaTime );
-//			UpdateWithState( InputControlType.LeftTrigger, IsPressed( ICadeState.Button6 ), updateTick, deltaTime );
-//			UpdateWithState( InputControlType.Start, IsPressed( ICadeState.Button1 ), updateTick, deltaTime );
-//			UpdateWithState( InputControlType.Select, IsPressed( ICadeState.Button3 ), updateTick, deltaTime );
-
-			Commit( updateTick, deltaTime );
+			// UpdateWithState( InputControlType.RightTrigger, IsPressed( ICadeState.Button5 ), updateTick, deltaTime );
+			// UpdateWithState( InputControlType.LeftTrigger, IsPressed( ICadeState.Button6 ), updateTick, deltaTime );
+			// UpdateWithState( InputControlType.Start, IsPressed( ICadeState.Button1 ), updateTick, deltaTime );
+			// UpdateWithState( InputControlType.Select, IsPressed( ICadeState.Button3 ), updateTick, deltaTime );
 		}
 
 

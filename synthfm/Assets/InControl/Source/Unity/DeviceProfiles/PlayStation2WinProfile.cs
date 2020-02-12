@@ -1,7 +1,7 @@
 ﻿namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PlayStation2WinProfile : UnityInputDeviceProfile
 	{
 		public PlayStation2WinProfile()

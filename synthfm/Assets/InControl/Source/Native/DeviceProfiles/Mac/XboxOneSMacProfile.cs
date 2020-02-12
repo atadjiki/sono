@@ -1,6 +1,7 @@
 ﻿namespace InControl.NativeProfile
 {
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class XboxOneSMacProfile : NativeInputDeviceProfile
 	{
 		// We need this explicit profile instead of inheriting XboxOneDriverMacProfile
@@ -19,8 +20,10 @@
 				"OS X"
 			};
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x045e,
 					ProductID = 0x02ea,
 				},

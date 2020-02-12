@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class LogitechF710ModeXWinProfile : UnityInputDeviceProfile
 	{
 		public LogitechF710ModeXWinProfile()

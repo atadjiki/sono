@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class RazerServalMacProfile : UnityInputDeviceProfile
 	{
 		// Connected over USB or Bluetooth.

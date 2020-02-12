@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class DroidBoxPS3AndroidProfile : UnityInputDeviceProfile
 	{
 		// https://www.amazon.com/DroidBOX-Gamepad-Handheld-Touchscreen-Mali-T764-Linux/dp/B01B4ESXT0

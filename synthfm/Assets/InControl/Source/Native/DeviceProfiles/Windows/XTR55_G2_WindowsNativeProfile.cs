@@ -1,7 +1,7 @@
 namespace InControl.NativeProfile
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class XTR55_G2_WindowsNativeProfile : NativeInputDeviceProfile
 	{
 		public XTR55_G2_WindowsNativeProfile()
@@ -11,16 +11,20 @@ namespace InControl.NativeProfile
 
 			DeviceClass = InputDeviceClass.Controller;
 
-			IncludePlatforms = new[] {
+			IncludePlatforms = new[]
+			{
 				"Windows"
 			};
 
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0xb9b,
 					ProductID = 0x4012,
-					NameLiterals = new [] {
+					NameLiterals = new[]
+					{
 						"SAILI Simulator --- XTR5.5+G2+FMS Controller"
 					}
 				},
@@ -88,6 +92,6 @@ namespace InControl.NativeProfile
 			*/
 		}
 	}
+
 	// @endcond
 }
-

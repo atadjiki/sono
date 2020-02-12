@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class RazerOnzaControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public RazerOnzaControllerMacProfile()
@@ -11,18 +9,22 @@ namespace InControl.NativeProfile
 			Name = "Razer Onza Controller";
 			Meta = "Razer Onza Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xfd01,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1689,
 					ProductID = 0xfd01,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

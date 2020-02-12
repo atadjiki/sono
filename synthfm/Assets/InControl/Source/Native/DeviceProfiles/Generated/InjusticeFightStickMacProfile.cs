@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class InjusticeFightStickMacProfile : Xbox360DriverMacProfile
 	{
 		public InjusticeFightStickMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Injustice Fight Stick";
 			Meta = "Injustice Fight Stick on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0x0125,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

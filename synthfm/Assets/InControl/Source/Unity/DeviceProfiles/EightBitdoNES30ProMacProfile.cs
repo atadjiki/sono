@@ -4,7 +4,7 @@ namespace InControl
 
 
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class EightBitdoNES30ProMacProfile : UnityInputDeviceProfile
 	{
 		public EightBitdoNES30ProMacProfile()

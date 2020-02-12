@@ -1,7 +1,7 @@
 namespace InControl.NativeProfile
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class XTR_G2_MacNativeProfile : NativeInputDeviceProfile
 	{
 		public XTR_G2_MacNativeProfile()
@@ -11,15 +11,19 @@ namespace InControl.NativeProfile
 
 			DeviceClass = InputDeviceClass.Controller;
 
-			IncludePlatforms = new[] {
+			IncludePlatforms = new[]
+			{
 				"OS X"
 			};
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0xb9b,
 					ProductID = 0x4012,
-					NameLiterals = new [] {
+					NameLiterals = new[]
+					{
 						"KMODEL Simulator - XTR+G2+FMS Controller"
 					}
 				},
@@ -87,6 +91,6 @@ namespace InControl.NativeProfile
 			*/
 		}
 	}
+
 	// @endcond
 }
-

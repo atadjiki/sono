@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class BeboncoolDA015CAAndroidProfile : UnityInputDeviceProfile
 	{
 		// BEBONCOOL DA015-CA

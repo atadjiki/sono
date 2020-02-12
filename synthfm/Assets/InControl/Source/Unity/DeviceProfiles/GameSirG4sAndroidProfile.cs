@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class GameSirG4sAndroidProfile : UnityInputDeviceProfile
 	{
 		public GameSirG4sAndroidProfile()

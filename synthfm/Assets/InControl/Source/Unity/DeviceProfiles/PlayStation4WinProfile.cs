@@ -7,7 +7,7 @@ namespace InControl
 	// The alternate mappings are commented out below.
 	//
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PlayStation4WinProfile : UnityInputDeviceProfile
 	{
 		public PlayStation4WinProfile()

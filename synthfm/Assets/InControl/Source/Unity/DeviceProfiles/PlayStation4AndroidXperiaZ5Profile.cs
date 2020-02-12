@@ -2,7 +2,7 @@ namespace InControl
 {
 	// @cond nodoc
 	// Tested by customer using Bluetooth.
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PlayStation4AndroidXperiaZ5Profile : UnityInputDeviceProfile
 	{
 		public PlayStation4AndroidXperiaZ5Profile()

@@ -254,8 +254,16 @@ namespace InControl
 		{
 			foreach (var typeName in NativeInputDeviceProfileList.Profiles)
 			{
-				var deviceProfile = (NativeInputDeviceProfile) Activator.CreateInstance( Type.GetType( typeName ) );
-				AddSystemDeviceProfile( deviceProfile );
+				var type = Type.GetType( typeName );
+				if (type == null)
+				{
+					Debug.Log( "Cannot find type: " + typeName + "(is it being IL2CPP stripping level too high?)" );
+				}
+				else
+				{
+					var deviceProfile = (NativeInputDeviceProfile) Activator.CreateInstance( type );
+					AddSystemDeviceProfile( deviceProfile );
+				}
 			}
 		}
 

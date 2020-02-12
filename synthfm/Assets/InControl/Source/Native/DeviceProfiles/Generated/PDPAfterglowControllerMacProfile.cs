@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class PDPAfterglowControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public PDPAfterglowControllerMacProfile()
@@ -11,54 +9,77 @@ namespace InControl.NativeProfile
 			Name = "PDP Afterglow Controller";
 			Meta = "PDP Afterglow Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x24c6,
 					ProductID = 0xfafc,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xf907,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x24c6,
 					ProductID = 0xfafd,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x045e,
 					ProductID = 0x02e6,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0x0300,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
+					VendorID = 0x24c6,
+					ProductID = 0x581a,
+				},
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0x0413,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xf900,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0xf900,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0x0113,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x0e6f,
 					ProductID = 0x0213,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x12ab,
 					ProductID = 0x0301,
+				},
+				new NativeInputDeviceMatcher
+				{
+					VendorID = 0x0e6f,
+					ProductID = 0x1113,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

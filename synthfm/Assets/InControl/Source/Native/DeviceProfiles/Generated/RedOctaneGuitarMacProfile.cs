@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class RedOctaneGuitarMacProfile : Xbox360DriverMacProfile
 	{
 		public RedOctaneGuitarMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "RedOctane Guitar";
 			Meta = "RedOctane Guitar on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1430,
 					ProductID = 0x070b,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

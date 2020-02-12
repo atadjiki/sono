@@ -10,11 +10,14 @@ namespace InControl
 
 
 	[InitializeOnLoad]
-	internal class NativeProfileListGenerator
+	class NativeProfileListGenerator
 	{
 		static NativeProfileListGenerator()
 		{
-			DiscoverProfiles();
+			if (!EditorApplication.isPlayingOrWillChangePlaymode)
+			{
+				DiscoverProfiles();
+			}
 		}
 
 
@@ -24,14 +27,11 @@ namespace InControl
 
 			var names = new List<string>();
 
-			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+			foreach (var type in Reflector.AllAssemblyTypes)
 			{
-				foreach (var type in assembly.GetTypes())
+				if (type.IsSubclassOf( nativeInputDeviceProfileType ))
 				{
-					if (type.IsSubclassOf( nativeInputDeviceProfileType ))
-					{
-						names.Add( type.FullName );
-					}
+					names.Add( type.FullName );
 				}
 			}
 

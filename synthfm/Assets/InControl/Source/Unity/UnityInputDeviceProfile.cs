@@ -6,11 +6,10 @@ namespace InControl
 	using UnityEngine;
 
 
-	public sealed class AutoDiscover : Attribute
-	{
-	}
+	public sealed class AutoDiscover : Attribute {}
 
 
+	[Preserve]
 	public class UnityInputDeviceProfile : UnityInputDeviceProfileBase
 	{
 		// [SerializeField]
@@ -436,3 +435,4 @@ namespace InControl
 		#endregion
 	}
 }
+

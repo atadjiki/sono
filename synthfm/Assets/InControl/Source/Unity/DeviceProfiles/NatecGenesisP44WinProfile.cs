@@ -1,7 +1,7 @@
 ﻿namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class NatecGenesisP44Profile : UnityInputDeviceProfile
 	{
 		public NatecGenesisP44Profile()

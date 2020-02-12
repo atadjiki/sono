@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class MadCatzCODControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public MadCatzCODControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Mad Catz COD Controller";
 			Meta = "Mad Catz COD Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xf025,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

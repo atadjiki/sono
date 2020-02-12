@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class XboxOneWin10AEProfile : UnityInputDeviceProfile
 	{
 		public XboxOneWin10AEProfile()
@@ -173,6 +173,7 @@ namespace InControl
 					TargetRange = InputRange.ZeroToOne,
 				},
 
+#if !UNITY_2018_3_OR_NEWER
 				new InputControlMapping {
 					Handle = "Left Trigger",
 					Target = InputControlType.LeftTrigger,
@@ -187,6 +188,7 @@ namespace InControl
 					SourceRange = InputRange.ZeroToMinusOne,
 					TargetRange = InputRange.ZeroToOne,
 				},
+#endif
 
 				new InputControlMapping {
 					Handle = "Left Trigger",

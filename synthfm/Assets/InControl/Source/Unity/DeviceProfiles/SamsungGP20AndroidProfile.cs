@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class SamsungGP20AndroidProfile : UnityInputDeviceProfile
 	{
 		public SamsungGP20AndroidProfile()

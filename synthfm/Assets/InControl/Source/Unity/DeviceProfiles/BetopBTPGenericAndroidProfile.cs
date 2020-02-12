@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class BetopBTPGenericAndroidProfile : UnityInputDeviceProfile
 	{
 		// This seems to be a generic Xbox-styled controller from BETOP;

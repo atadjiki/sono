@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class IonDrumRockerMacProfile : Xbox360DriverMacProfile
 	{
 		public IonDrumRockerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Ion Drum Rocker";
 			Meta = "Ion Drum Rocker on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0x0130,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

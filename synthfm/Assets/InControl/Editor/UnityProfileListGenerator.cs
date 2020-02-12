@@ -10,32 +10,32 @@ namespace InControl
 
 
 	[InitializeOnLoad]
-	internal class UnityProfileListGenerator
+	class UnityProfileListGenerator
 	{
 		static UnityProfileListGenerator()
 		{
-			DiscoverProfiles();
+			if (!EditorApplication.isPlayingOrWillChangePlaymode)
+			{
+				DiscoverProfiles();
+			}
 		}
 
 
 		static void DiscoverProfiles()
 		{
 			var unityInputDeviceProfileType = typeof(UnityInputDeviceProfile);
-			var autoDiscoverAttributeType = typeof(InControl.AutoDiscover);
+			var autoDiscoverAttributeType = typeof(AutoDiscover);
 
 			var names = new List<string>();
 
-			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+			foreach (var type in Reflector.AllAssemblyTypes)
 			{
-				foreach (var type in assembly.GetTypes())
+				if (type.IsSubclassOf( unityInputDeviceProfileType ))
 				{
-					if (type.IsSubclassOf( unityInputDeviceProfileType ))
+					var typeAttrs = type.GetCustomAttributes( autoDiscoverAttributeType, false );
+					if (typeAttrs.Length > 0)
 					{
-						var typeAttrs = type.GetCustomAttributes( autoDiscoverAttributeType, false );
-						if (typeAttrs.Length > 0)
-						{
-							names.Add( type.FullName );
-						}
+						names.Add( type.FullName );
 					}
 				}
 			}
@@ -80,7 +80,6 @@ namespace InControl
 			var streamReader = new StreamReader( fileName );
 			var fileContents = streamReader.ReadToEnd();
 			streamReader.Close();
-
 			return fileContents;
 		}
 
@@ -97,7 +96,6 @@ namespace InControl
 			streamWriter.Write( content );
 			streamWriter.Flush();
 			streamWriter.Close();
-
 			return true;
 		}
 

@@ -2,7 +2,7 @@
 {
 	// Currently works only with the F710 for some reason.
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class LogitechModeDAmazonProfile : UnityInputDeviceProfile
 	{
 		public LogitechModeDAmazonProfile()

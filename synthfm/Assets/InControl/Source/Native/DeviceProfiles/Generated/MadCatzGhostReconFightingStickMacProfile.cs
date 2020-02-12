@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class MadCatzGhostReconFightingStickMacProfile : Xbox360DriverMacProfile
 	{
 		public MadCatzGhostReconFightingStickMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Mad Catz Ghost Recon Fighting Stick";
 			Meta = "Mad Catz Ghost Recon Fighting Stick on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xf021,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

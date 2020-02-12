@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class NVidiaShield2017AndroidProfile : UnityInputDeviceProfile
 	{
 		public NVidiaShield2017AndroidProfile()

@@ -5,7 +5,7 @@ namespace InControl
 
 	/// <summary>
 	/// An enumeration of input controls.
-	/// This includes both the standardized set of controls and a variety 
+	/// This includes both the standardized set of controls and a variety
 	/// of non-standard and generic unnamed controls.
 	/// </summary>
 	public enum InputControlType : int
@@ -64,6 +64,7 @@ namespace InControl
 		View,
 		Power,
 		Capture,
+		Assistant,
 		Plus,
 		Minus,
 
@@ -166,4 +167,3 @@ namespace InControl
 		Count
 	}
 }
-

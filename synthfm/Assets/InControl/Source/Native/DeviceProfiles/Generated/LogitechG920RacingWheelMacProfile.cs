@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class LogitechG920RacingWheelMacProfile : Xbox360DriverMacProfile
 	{
 		public LogitechG920RacingWheelMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Logitech G920 Racing Wheel";
 			Meta = "Logitech G920 Racing Wheel on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x046d,
 					ProductID = 0xc261,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

@@ -5,6 +5,7 @@ namespace InControl
 	using UnityEngine;
 
 
+	[Preserve]
 	public abstract class InputDeviceProfile
 	{
 		// [SerializeField]

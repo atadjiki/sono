@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class IpegaPG9023AndroidProfile : UnityInputDeviceProfile
 	{
 		// https://github.com/pbhogan/InControl/issues/202

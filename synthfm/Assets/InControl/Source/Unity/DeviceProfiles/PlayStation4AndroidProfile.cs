@@ -2,7 +2,7 @@ namespace InControl
 {
 	// @cond nodoc
 	// Tested with Samsung Galaxy Note 2 connected by OTG cable.
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PlayStation4AndroidProfile : UnityInputDeviceProfile
 	{
 		public PlayStation4AndroidProfile()

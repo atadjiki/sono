@@ -165,7 +165,7 @@ namespace InControl
 				// On PS4 console, disconnected controllers may have this name.
 				return;
 			}
-			#endif
+#endif
 
 			if (unityJoystickName.IndexOf( "webcam", StringComparison.OrdinalIgnoreCase ) != -1)
 			{
@@ -266,8 +266,16 @@ namespace InControl
 		{
 			foreach (var typeName in UnityInputDeviceProfileList.Profiles)
 			{
-				var deviceProfile = (UnityInputDeviceProfile) Activator.CreateInstance( Type.GetType( typeName ) );
-				AddSystemDeviceProfile( deviceProfile );
+				var type = Type.GetType( typeName );
+				if (type == null)
+				{
+					Debug.Log( "Cannot find type: " + typeName + "(is it being IL2CPP stripping level too high?)" );
+				}
+				else
+				{
+					var deviceProfile = (UnityInputDeviceProfile) Activator.CreateInstance( type );
+					AddSystemDeviceProfile( deviceProfile );
+				}
 			}
 		}
 

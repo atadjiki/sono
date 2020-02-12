@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class PowerAMiniProExControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public PowerAMiniProExControllerMacProfile()
@@ -11,22 +9,27 @@ namespace InControl.NativeProfile
 			Name = "PowerA Mini Pro Ex Controller";
 			Meta = "PowerA Mini Pro Ex Controller on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x15e4,
 					ProductID = 0x3f00,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x24c6,
 					ProductID = 0x531a,
 				},
-				new NativeInputDeviceMatcher {
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x24c6,
 					ProductID = 0x5300,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

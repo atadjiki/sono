@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class NexusPlayerMacProfile : UnityInputDeviceProfile
 	{
 		// No trigger support, sadly. They're probably out of the

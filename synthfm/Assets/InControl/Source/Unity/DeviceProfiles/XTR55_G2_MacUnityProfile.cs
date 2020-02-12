@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class XTR55_G2_MacUnityProfile : UnityInputDeviceProfile
 	{
 		public XTR55_G2_MacUnityProfile()

@@ -1,19 +1,25 @@
+// ReSharper disable InconsistentNaming
+// ReSharper disable NotAccessedField.Global
+// ReSharper disable UnusedMember.Global
 namespace InControl
 {
+	using System;
 	using UnityEngine;
 
 
 	public class Touch
 	{
-		public readonly static int FingerID_None = -1;
-		public readonly static int FingerID_Mouse = -2;
+		public const int FingerID_None = -1;
+		public const int FingerID_Mouse = -2;
 
 		public int fingerId;
+		public int mouseButton;
 
 		public TouchPhase phase;
 		public int tapCount;
 
 		public Vector2 position;
+		public Vector2 startPosition;
 		public Vector2 deltaPosition;
 		public Vector2 lastPosition;
 
@@ -40,14 +46,16 @@ namespace InControl
 		internal void Reset()
 		{
 			fingerId = FingerID_None;
+			mouseButton = 0;
 			phase = TouchPhase.Ended;
 			tapCount = 0;
 			position = Vector2.zero;
+			startPosition = Vector2.zero;
 			deltaPosition = Vector2.zero;
 			lastPosition = Vector2.zero;
 			deltaTime = 0.0f;
 			updateTick = 0;
-			type = (TouchType) 0;
+			type = 0;
 			altitudeAngle = 0.0f;
 			azimuthAngle = 0.0f;
 			maximumPossiblePressure = 1.0f;
@@ -57,6 +65,7 @@ namespace InControl
 		}
 
 
+		[Obsolete( "normalizedPressure is deprecated, please use NormalizedPressure instead." )]
 		public float normalizedPressure
 		{
 			get
@@ -67,10 +76,27 @@ namespace InControl
 		}
 
 
+		public float NormalizedPressure
+		{
+			get
+			{
+				// Return at least a tiny value otherwise pressure can be zero.
+				return Mathf.Clamp( pressure / maximumPossiblePressure, 0.001f, 1.0f );
+			}
+		}
+
+
+		public bool IsMouse
+		{
+			get { return type == TouchType.Mouse; }
+		}
+
+
 		internal void SetWithTouchData( UnityEngine.Touch touch, ulong updateTick, float deltaTime )
 		{
 			phase = touch.phase;
 			tapCount = touch.tapCount;
+			mouseButton = 0;
 
 #if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2
 			type = TouchType.Direct;
@@ -90,15 +116,12 @@ namespace InControl
 #endif
 
 			var touchPosition = touch.position;
-
-			// Deal with Unity Remote weirdness.
-			if (touchPosition.x < 0.0f)
-			{
-				touchPosition.x = Screen.width + touchPosition.x;
-			}
+			touchPosition.x = Mathf.Clamp( touchPosition.x, 0.0f, Screen.width );
+			touchPosition.y = Mathf.Clamp( touchPosition.y, 0.0f, Screen.height );
 
 			if (phase == TouchPhase.Began)
 			{
+				startPosition = touchPosition;
 				deltaPosition = Vector2.zero;
 				lastPosition = touchPosition;
 				position = touchPosition;
@@ -120,7 +143,7 @@ namespace InControl
 		}
 
 
-		internal bool SetWithMouseData( ulong updateTick, float deltaTime )
+		internal bool SetWithMouseData( int button, ulong updateTick, float deltaTime )
 		{
 			// Unity Remote and possibly some platforms like WP8 simulates mouse with
 			// touches so detect that situation and reject the mouse.
@@ -131,7 +154,7 @@ namespace InControl
 
 			var mousePosition = new Vector2( Mathf.Round( Input.mousePosition.x ), Mathf.Round( Input.mousePosition.y ) );
 
-			if (Input.GetMouseButtonDown( 0 ))
+			if (Input.GetMouseButtonDown( button ))
 			{
 				phase = TouchPhase.Began;
 				pressure = 1.0f;
@@ -139,7 +162,9 @@ namespace InControl
 
 				tapCount = 1;
 				type = TouchType.Mouse;
+				mouseButton = button;
 
+				startPosition = mousePosition;
 				deltaPosition = Vector2.zero;
 				lastPosition = mousePosition;
 				position = mousePosition;
@@ -150,7 +175,7 @@ namespace InControl
 				return true;
 			}
 
-			if (Input.GetMouseButtonUp( 0 ))
+			if (Input.GetMouseButtonUp( button ))
 			{
 				phase = TouchPhase.Ended;
 				pressure = 0.0f;
@@ -158,6 +183,7 @@ namespace InControl
 
 				tapCount = 1;
 				type = TouchType.Mouse;
+				mouseButton = button;
 
 				deltaPosition = mousePosition - lastPosition;
 				lastPosition = position;
@@ -169,7 +195,7 @@ namespace InControl
 				return true;
 			}
 
-			if (Input.GetMouseButton( 0 ))
+			if (Input.GetMouseButton( button ))
 			{
 				phase = TouchPhase.Moved;
 				pressure = 1.0f;
@@ -177,6 +203,7 @@ namespace InControl
 
 				tapCount = 1;
 				type = TouchType.Mouse;
+				mouseButton = button;
 
 				deltaPosition = mousePosition - lastPosition;
 				lastPosition = position;

@@ -455,6 +455,58 @@ namespace InControl
 		}
 
 
+		public static string GetPlatformName( bool uppercase = true )
+		{
+#if (UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN) && !NETFX_CORE && !UNITY_WEBPLAYER && !UNITY_WEBGL && !UNITY_EDITOR_OSX
+			var platformName = GetWindowsVersion();
+#elif UNITY_WEBGL && !UNITY_EDITOR_OSX
+			// MAC OS X 10_14_6 CHROME 76
+			// MAC OS X 10.14 FIREFOX 68
+			// MAC OS X 10_14_6 SAFARI 12.1
+			// WINDOWS EDGE 17.17134
+
+			// Normalize operating system name and remove version numbers.
+			var operatingSystem = SystemInfo.operatingSystem.ToUpper();
+			if (operatingSystem.Contains( "MAC" ))
+			{
+				operatingSystem = "Mac";
+			}
+			else if (operatingSystem.Contains( "WINDOWS" ))
+			{
+				operatingSystem = "Windows";
+			}
+			else if (operatingSystem.Contains( "LINUX" ))
+			{
+				operatingSystem = "Linux";
+			}
+
+			// Normalize browser name and remove version numbers.
+			var browser = SystemInfo.deviceModel.ToUpper();
+			if (browser.Contains( "CHROME" ))
+			{
+				browser = "Chrome";
+			}
+			else if (browser.Contains( "FIREFOX" ))
+			{
+				browser = "Firefox";
+			}
+			else if (browser.Contains( "SAFARI" ))
+			{
+				browser = "Safari";
+			}
+			else if (browser.Contains( "EDGE" ))
+			{
+				browser = "Edge";
+			}
+
+			var platformName = operatingSystem + " " + browser;
+#else
+			var platformName = SystemInfo.operatingSystem + " " + SystemInfo.deviceModel;
+#endif
+			return uppercase ? platformName.ToUpper() : platformName;
+		}
+
+
 #if !NETFX_CORE && !UNITY_WEBPLAYER && !UNITY_EDITOR_OSX && (UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN)
 		static string GetHumanUnderstandableWindowsVersion()
 		{
@@ -464,11 +516,11 @@ namespace InControl
 			{
 				switch (version.Minor)
 				{
-					case 2:
+					case 3:
 						return "8.1";
-					case 1:
+					case 2:
 						return "8";
-					case 0:
+					case 1:
 						return "7";
 					default:
 						return "Vista";

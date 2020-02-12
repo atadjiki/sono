@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PlayStation4SteamLinkMacProfile : UnityInputDeviceProfile
 	{
 		// TODO: Seems like this could be any controller, not just PS4?

@@ -1,7 +1,7 @@
 ﻿namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class BuffaloClassicAmazonProfile : UnityInputDeviceProfile
 	{
 		// Right Bumper, Start and Select aren't supported.

@@ -1,9 +1,7 @@
 namespace InControl.NativeProfile
 {
-	using System;
-
-
 	// @cond nodoc
+	[AutoDiscover, Preserve]
 	public class HoriBlueSoloControllerMacProfile : Xbox360DriverMacProfile
 	{
 		public HoriBlueSoloControllerMacProfile()
@@ -11,14 +9,17 @@ namespace InControl.NativeProfile
 			Name = "Hori Blue Solo Controller ";
 			Meta = "Hori Blue Solo Controller	on Mac";
 
-			Matchers = new[] {
-				new NativeInputDeviceMatcher {
+			Matchers = new[]
+			{
+				new NativeInputDeviceMatcher
+				{
 					VendorID = 0x1bad,
 					ProductID = 0xfa01,
 				},
 			};
 		}
 	}
+
 	// @endcond
 }
 

@@ -22,7 +22,6 @@ namespace InControl
 	public class TouchStickControl : TouchControl
 	{
 		[Header( "Position" )]
-
 		[SerializeField]
 		TouchControlAnchor anchor = TouchControlAnchor.BottomLeft;
 
@@ -40,8 +39,8 @@ namespace InControl
 
 
 		[Header( "Options" )]
-
 		public AnalogTarget target = AnalogTarget.LeftStick;
+
 		public SnapAngles snapAngles = SnapAngles.None;
 		public LockAxis lockToAxis = LockAxis.None;
 
@@ -62,8 +61,8 @@ namespace InControl
 
 
 		[Header( "Sprites" )]
-
 		public TouchSprite ring = new TouchSprite( 20.0f );
+
 		public TouchSprite knob = new TouchSprite( 10.0f );
 		public float knobRange = 7.5f;
 
@@ -140,13 +139,13 @@ namespace InControl
 				if (resetWhenDone && KnobPosition != resetPosition)
 				{
 					var ringKnobDelta = KnobPosition - RingPosition;
-					RingPosition = Vector3.MoveTowards( RingPosition, resetPosition, ringResetSpeed * Time.deltaTime );
+					RingPosition = Vector3.MoveTowards( RingPosition, resetPosition, ringResetSpeed * Time.unscaledDeltaTime );
 					KnobPosition = RingPosition + ringKnobDelta;
 				}
 
 				if (KnobPosition != RingPosition)
 				{
-					KnobPosition = Vector3.MoveTowards( KnobPosition, RingPosition, knobResetSpeed * Time.deltaTime );
+					KnobPosition = Vector3.MoveTowards( KnobPosition, RingPosition, knobResetSpeed * Time.unscaledDeltaTime );
 				}
 			}
 		}
@@ -182,8 +181,7 @@ namespace InControl
 				KnobPosition = beganPosition;
 				currentTouch = touch;
 			}
-			else
-			if (insideControl)
+			else if (insideControl)
 			{
 				KnobPosition = beganPosition;
 				beganPosition = RingPosition;
@@ -213,8 +211,7 @@ namespace InControl
 			{
 				movedPosition.y = beganPosition.y;
 			}
-			else
-			if (lockToAxis == LockAxis.Vertical && allowDraggingAxis == DragAxis.Vertical)
+			else if (lockToAxis == LockAxis.Vertical && allowDraggingAxis == DragAxis.Vertical)
 			{
 				movedPosition.x = beganPosition.x;
 			}
@@ -238,8 +235,7 @@ namespace InControl
 				{
 					dragDelta.y = 0.0f;
 				}
-				else
-				if (allowDraggingAxis == DragAxis.Vertical)
+				else if (allowDraggingAxis == DragAxis.Vertical)
 				{
 					dragDelta.x = 0.0f;
 				}
@@ -266,8 +262,7 @@ namespace InControl
 			{
 				movedPosition.y = beganPosition.y;
 			}
-			else
-			if (lockToAxis == LockAxis.Vertical)
+			else if (lockToAxis == LockAxis.Vertical)
 			{
 				movedPosition.x = beganPosition.x;
 			}
@@ -453,4 +448,3 @@ namespace InControl
 		}
 	}
 }
-

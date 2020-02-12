@@ -3,7 +3,7 @@
 	// D-Pad doesn't work.
 	//
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class NykoPlayPadProAmazonProfile : UnityInputDeviceProfile
 	{
 		public NykoPlayPadProAmazonProfile()

@@ -1,7 +1,7 @@
 namespace InControl
 {
 	// @cond nodoc
-	[AutoDiscover]
+	[AutoDiscover, Preserve]
 	public class PlayStation4MacUSBProfile : UnityInputDeviceProfile
 	{
 		public PlayStation4MacUSBProfile()
