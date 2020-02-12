@@ -69,6 +69,11 @@ public class Mixer
         mixer.SetFloat("Vol Fragment " + mixerGroupIndex, newVolume);
     }
 
+    public void SetMasterVolume(float newVolume)
+    {
+        mixer.SetFloat("Vol Master", newVolume);
+    }
+
     public IEnumerator FadeOutMixerGroup(int mixerGroupIndex)
     {
         float timer = 0; //-80dB to 0dB
@@ -175,6 +180,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int NoOfAudioTracksPerDock = 3;
     public int NoOfVoidLevels = 3;
+    [SerializeField] private int MaxVolume;
 
     [Header("Metronome")]
     [Header("BPM")]
@@ -214,14 +220,14 @@ public class ScoreManager : MonoBehaviour
         if(bpm != 0)
             nextTick = startTick + (60.0 / bpm);
 
-        float maxVolume;
-        docks[0].mixer.GetFloat("Vol Master", out maxVolume);
+        //float maxVolume;
+        //docks[0].mixer.GetFloat("Vol Master", out maxVolume);
 
         for (int i = 0; i < docks.Length; i++)
         {
             docks[i].NumberOfAudioTracks = NoOfAudioTracksPerDock;
             docks[i].CreateSources(gameObject);
-            docks[i].maxVolume = maxVolume;
+            docks[i].maxVolume = MaxVolume;
         }
     }
 
@@ -239,10 +245,13 @@ public class ScoreManager : MonoBehaviour
         
 
         Play(0);
+
+        Debug.Log("Resetting Audio");
     }
 
     public void ResetToDefault(int dockIndex)
     {
+        docks[dockIndex].SetMasterVolume(MaxVolume);
         for (int i = 1; i <= 3; i++)
              docks[dockIndex].SetVolume(i, -80);
         docks[dockIndex].SetHighPassDuck(false);
