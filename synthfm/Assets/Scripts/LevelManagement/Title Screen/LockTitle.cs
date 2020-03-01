@@ -27,7 +27,8 @@ public class LockTitle : MonoBehaviour
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = false;
         FXToggle.instance.AllFXOff();
-         StartCoroutine(Lock());
+        
+        StartCoroutine(Lock());
 
         
     }
@@ -36,8 +37,11 @@ public class LockTitle : MonoBehaviour
     {
         Debug.Log("Title screen " + Time.time + " secs");
         //navPoint.active = false;
+        yield return new WaitForSecondsRealtime(0);
+        rbPlayer.GetComponent<PlayerInput.TurntableController>().enabled = false;
         yield return new WaitForSecondsRealtime(lockTime);
 
+        rbPlayer.GetComponent<PlayerInput.TurntableController>().enabled = true;
         rbPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         rbPlayer.GetComponent<Rigidbody2D>().simulated = true;
        // navPoint.Unlock();
