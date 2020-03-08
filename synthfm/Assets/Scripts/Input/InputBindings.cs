@@ -63,14 +63,17 @@
             playerActions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
             playerActions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
 
-            playerActions.Left.AddDefaultBinding(InputControlType.RightStickLeft);
-            playerActions.Right.AddDefaultBinding(InputControlType.RightStickRight);
+            playerActions.Left.AddDefaultBinding(InputControlType.DPadLeft);
+            playerActions.Right.AddDefaultBinding(InputControlType.DPadRight);
 
             playerActions.SlowDown.AddDefaultBinding(Key.S);
             playerActions.SlowDown.AddDefaultBinding(InputControlType.LeftTrigger);
+            playerActions.SlowDown.AddDefaultBinding(InputControlType.DPadDown);
+
 
             playerActions.SpeedUp.AddDefaultBinding(Key.W);
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.RightTrigger);
+            playerActions.SpeedUp.AddDefaultBinding(InputControlType.DPadUp);
 
             playerActions.Pause.AddDefaultBinding(Key.Escape);
             playerActions.Pause.AddDefaultBinding(InputControlType.Menu);
@@ -81,9 +84,11 @@
             playerActions.FastSpeed.AddDefaultBinding(Key.Key3);
 
             playerActions.Menu_Up.AddDefaultBinding(InputControlType.LeftStickUp);
+            playerActions.Menu_Up.AddDefaultBinding(InputControlType.DPadUp);
             playerActions.Menu_Up.AddDefaultBinding(Key.W);
             playerActions.Menu_Up.AddDefaultBinding(Key.UpArrow);
             playerActions.Menu_Down.AddDefaultBinding(InputControlType.LeftStickDown);
+            playerActions.Menu_Down.AddDefaultBinding(InputControlType.DPadDown);
             playerActions.Menu_Down.AddDefaultBinding(Key.S);
             playerActions.Menu_Down.AddDefaultBinding(Key.DownArrow);
             playerActions.Menu_Select.AddDefaultBinding(InputControlType.Action1);
