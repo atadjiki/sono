@@ -27,6 +27,9 @@ public class LevelManager : MonoBehaviour
     {
         Cursor.visible = false;
 
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+
         if (SavedData.instance == null)
         {
             SavedData.instance = new SavedData();
