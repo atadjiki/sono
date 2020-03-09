@@ -69,11 +69,13 @@
             playerActions.SlowDown.AddDefaultBinding(Key.S);
             playerActions.SlowDown.AddDefaultBinding(InputControlType.LeftTrigger);
             playerActions.SlowDown.AddDefaultBinding(InputControlType.DPadDown);
+            playerActions.SlowDown.AddDefaultBinding(InputControlType.Action2);
 
 
             playerActions.SpeedUp.AddDefaultBinding(Key.W);
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.RightTrigger);
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.DPadUp);
+            playerActions.SpeedUp.AddDefaultBinding(InputControlType.Action1);
 
             playerActions.Pause.AddDefaultBinding(Key.Escape);
             playerActions.Pause.AddDefaultBinding(InputControlType.Menu);
@@ -95,8 +97,8 @@
             playerActions.Menu_Select.AddDefaultBinding(Key.Return);
             playerActions.Menu_Select.AddDefaultBinding(Key.Space);
 
-            playerActions.Debug_Puzzle_Complete.AddDefaultBinding(Key.Space);
-            playerActions.Debug_Puzzle_Complete.AddDefaultBinding(InputControlType.Action2);
+            //playerActions.Debug_Puzzle_Complete.AddDefaultBinding(Key.Space);
+            //playerActions.Debug_Puzzle_Complete.AddDefaultBinding(InputControlType.Action2);
 
             playerActions.Screen_Touch.AddDefaultBinding(Mouse.LeftButton);
 
