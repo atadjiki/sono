@@ -67,12 +67,14 @@
             playerActions.Right.AddDefaultBinding(InputControlType.DPadRight);
 
             playerActions.SlowDown.AddDefaultBinding(Key.S);
+            playerActions.SlowDown.AddDefaultBinding(Key.DownArrow);
             playerActions.SlowDown.AddDefaultBinding(InputControlType.LeftTrigger);
             playerActions.SlowDown.AddDefaultBinding(InputControlType.DPadDown);
             playerActions.SlowDown.AddDefaultBinding(InputControlType.Action2);
 
 
             playerActions.SpeedUp.AddDefaultBinding(Key.W);
+            playerActions.SpeedUp.AddDefaultBinding(Key.UpArrow);
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.RightTrigger);
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.DPadUp);
             playerActions.SpeedUp.AddDefaultBinding(InputControlType.Action1);
@@ -103,7 +105,7 @@
             playerActions.Screen_Touch.AddDefaultBinding(Mouse.LeftButton);
 
             playerActions.ListenOptions.IncludeUnknownControllers = true;
-            playerActions.ListenOptions.MaxAllowedBindings = 4;
+            playerActions.ListenOptions.MaxAllowedBindings = 5;
             playerActions.ListenOptions.UnsetDuplicateBindingsOnSet = true;
 
 
