@@ -25,10 +25,10 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
-
-        QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+
+        Cursor.visible = false;
 
         if (SavedData.instance == null)
         {

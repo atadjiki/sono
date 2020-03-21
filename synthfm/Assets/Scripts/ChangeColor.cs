@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.HDPipeline;
+using UnityEngine.Rendering.Universal;
 
 public class ChangeColor : MonoBehaviour
 {    
     [SerializeField] private float lerpDuration;
-    [SerializeField] private HDAdditionalCameraData mainCam;
+    [SerializeField] private UniversalAdditionalCameraData mainCam;
     [SerializeField] private MeshRenderer playerBody;
     [SerializeField] private TrailRenderer playerTrail;
 
@@ -62,7 +62,7 @@ public class ChangeColor : MonoBehaviour
         shouldchangeColor = false;
         t = 0f;
         currentTrailColor = playerTrail.startColor;
-        currentColor = mainCam.backgroundColorHDR;
+        //currentColor = mainCam.backgroundColorHDR;
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public class ChangeColor : MonoBehaviour
             playerCol = Color.Lerp(currentPlayercolor, playercolorToChangeTo, t);
             playerBody.material.SetColor("Color_D2FAE4B8", playerCol);
             playerTrail.startColor = Color.Lerp(currentTrailColor, trailColortoChangeTo, t);
-            mainCam.backgroundColorHDR = Color.Lerp(currentColor, bgcolorToChangeTo, t);
+            //mainCam.backgroundColorHDR = Color.Lerp(currentColor, bgcolorToChangeTo, t);
             t += Time.deltaTime / lerpDuration;
         }
     }
@@ -89,7 +89,7 @@ public class ChangeColor : MonoBehaviour
         yield return new WaitForSeconds(lerpDuration);
         currentPlayercolor = (playerBody.material.GetColor("Color_D2FAE4B8"));
         currentTrailColor = playerTrail.startColor;
-        currentColor = mainCam.backgroundColorHDR;
+        //currentColor = mainCam.backgroundColorHDR;
         shouldchangeColor = false;
         t = 0f;
     }

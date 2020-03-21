@@ -119,6 +119,7 @@ MonoBehaviour:
   setPieceCamera: {fileID: 0}
   center: {fileID: 6718803103173378500}
   FinalZone: 0
+  IsPattern: 0
   Complete: 0
   disableCameraOnComplete: 1
   fragmentCase: {fileID: 6044672277052875922}
@@ -327,10 +328,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104597055206}
     m_Modifications:
-    - target: {fileID: 5863697302354160310, guid: f13e94f16290ffc438cefe7fd7e253fe,
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
         type: 3}
-      propertyPath: m_Name
-      value: Puzzle02_Big
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 68635786cf25cd9429b8e15063160119,
+        type: 3}
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
+      value: 367.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Overridden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5863697302354160305, guid: f13e94f16290ffc438cefe7fd7e253fe,
         type: 3}
@@ -387,37 +409,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
-        type: 3}
-      propertyPath: m_Asset
-      value: 
-      objectReference: {fileID: 8926484042661614526, guid: 68635786cf25cd9429b8e15063160119,
-        type: 3}
-    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
-      value: 998
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 367.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863697302354160304, guid: f13e94f16290ffc438cefe7fd7e253fe,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5863697302354160306, guid: f13e94f16290ffc438cefe7fd7e253fe,
         type: 3}
       propertyPath: VE
       value: 
       objectReference: {fileID: 5216141143780985358}
+    - target: {fileID: 5863697302354160310, guid: f13e94f16290ffc438cefe7fd7e253fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Puzzle02_Big
+      objectReference: {fileID: 0}
     - target: {fileID: 5863697302354160311, guid: f13e94f16290ffc438cefe7fd7e253fe,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -455,6 +456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979491357586931722, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_Name
@@ -530,10 +535,6 @@ PrefabInstance:
       propertyPath: GateReact
       value: 
       objectReference: {fileID: 2518942972245520803}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!114 &6790281009318157742 stripped
@@ -567,10 +568,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
-    - target: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Name
-      value: FragmentCase
-      objectReference: {fileID: 0}
     - target: {fileID: 178670977, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.5
@@ -615,26 +612,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragmentNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: fragment
-      value: 
-      objectReference: {fileID: 6044672275210539548}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: Ping
-      value: 
-      objectReference: {fileID: 6044672276937664984}
-    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: Pickup
-      value: 
-      objectReference: {fileID: 6044672275428578081}
     - target: {fileID: 773851866, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: currentWorld
       value: 2
@@ -647,9 +624,9 @@ PrefabInstance:
       propertyPath: TrackIndex
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.91
+    - target: {fileID: 1194783008, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1459050426, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
       propertyPath: m_LocalScale.x
@@ -668,6 +645,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2daeda031aa448b499aefab1bf4f1663,
         type: 3}
+    - target: {fileID: 1557199955, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_Name
+      value: FragmentCase
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragmentNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: fragment
+      value: 
+      objectReference: {fileID: 6044672275210539548}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: Ping
+      value: 
+      objectReference: {fileID: 6044672276937664984}
+    - target: {fileID: 1557199956, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: Pickup
+      value: 
+      objectReference: {fileID: 6044672275428578081}
+    - target: {fileID: 1679008920, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.91
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472ede1e5d4d3974db213d411c4253e4, type: 3}
 --- !u!1 &6044672276937664984 stripped
@@ -725,6 +726,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979491357586931722, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_Name
@@ -800,10 +805,6 @@ PrefabInstance:
       propertyPath: GateReact
       value: 
       objectReference: {fileID: 6718803102891814326}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!2083052967 &6718803102891814326 stripped
@@ -837,6 +838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979491357586931722, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_Name
@@ -912,10 +917,6 @@ PrefabInstance:
       propertyPath: GateReact
       value: 
       objectReference: {fileID: 6718803103110905894}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!114 &2446301236243442731 stripped
@@ -949,6 +950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979491357586931722, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_Name
@@ -1024,10 +1029,6 @@ PrefabInstance:
       propertyPath: GateReact
       value: 
       objectReference: {fileID: 6718803104747784827}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &1340482232828572592 stripped
@@ -1061,6 +1062,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979491357586931722, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_Name
@@ -1136,10 +1141,6 @@ PrefabInstance:
       propertyPath: GateReact
       value: 
       objectReference: {fileID: 6718803104834100457}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &1340482233011348770 stripped
@@ -1173,6 +1174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6718803104232203756}
     m_Modifications:
+    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979491357586931722, guid: ae18b2cc3c373464ea5668aefe278d77,
         type: 3}
       propertyPath: m_Name
@@ -1248,10 +1253,6 @@ PrefabInstance:
       propertyPath: GateReact
       value: 
       objectReference: {fileID: 8357117820753809699}
-    - target: {fileID: 561892302, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae18b2cc3c373464ea5668aefe278d77, type: 3}
 --- !u!4 &4349862403277498600 stripped

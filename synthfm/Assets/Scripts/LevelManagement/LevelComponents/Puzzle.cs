@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Experimental.VFX;
+using UnityEngine.VFX;
 
 using InControl;
 using PlayerInput;
