@@ -83,6 +83,10 @@
         private Vector3 lastMousePosition;
         private float timeSinceLastClick = 0;
 
+        private bool movingTowardsTouch = false;
+        private Vector3 lastTouchPosition;
+        private float timeSinceLastTouch = 0;
+
         private float angle_threshold = 5f;
 
         public float camera_lerp = 0.08f;
@@ -177,6 +181,7 @@
             {
                 DoAltInput();
                 //DoMouseInput();
+                DoTouchInput();
             }
             DoMIDIInput();
 
@@ -392,6 +397,79 @@
 
             previousRight = rightTurntable;
         }
+
+
+        void DoTouchInput()
+        {
+
+            Vector3 centerPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            Vector3 up = this.transform.up;
+
+            if (TouchManager.TouchCount > 0)
+            {
+
+                //get most recent touch
+                InControl.Touch mostRecentTouch = TouchManager.GetTouch(0);
+                Vector3 touchPosition = mostRecentTouch.position; touchPosition.z = 0;
+
+
+                //Vector3 targetDir = touchPosition - centerPosition;
+                //float angleBetween = Vector3.Angle(targetDir, up);
+
+                //if (mostRecentTouch.phase == TouchPhase.Began)
+                //{
+                //    lastTouchPosition = touchPosition;
+                    //movingTowardsTouch = true;
+                    //timeSinceLastTouch = Time.time;
+                //}
+
+                //  if (movingTowardsTouch && lastTouchPosition != null)
+                //  if(lastTouchPosition != null)
+                //     {
+                // Vector3 targetDir = lastTouchPosition - centerPosition;
+
+                //float angleTo = Vector3.Angle(targetDir, up);
+                //float angleFrom = Vector3.Angle(up, targetDir);
+
+                //if (angleTo < angle_threshold)
+                //{
+                //    movingTowardsTouch = false;
+                //}
+                //else if (angleFrom < angle_threshold)
+                //{
+                //    movingTowardsTouch = false;
+                //}
+                //else
+                //{
+
+                if (touchPosition.x < centerPosition.x)
+                {
+                    rigidbody.AddTorque(1 * getTorque());
+
+                }
+                else
+                {
+                    rigidbody.AddTorque(-1 * getTorque());
+                }
+
+                //if (angleTo > angleFrom)
+                //{
+
+                //    TorqueTowardsPoint(centerPosition, lastTouchPosition, angleTo);
+                //}
+                //else
+                //{
+                //    TorqueTowardsPoint(lastTouchPosition, centerPosition, angleFrom);
+
+                //}
+
+                //   }
+                //}
+
+
+            }
+        }
+
 
         //https://answers.unity.com/questions/855976/make-a-player-model-rotate-towards-mouse-location.html
         void DoMouseInput()

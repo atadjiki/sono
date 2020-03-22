@@ -61,6 +61,25 @@ public class InGameMenu : MonoBehaviour
         }
     }
 
+
+    public void Resume(PlayerInput.TurntableController i_controller)
+    {
+        i_controller.toggleMenu();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Hub");
+        Time.timeScale = 1;
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exit Requested");
+        Application.Quit();
+    }
+
+
     public void scroll(bool up) // true = up , false = down
     {
         // change state and highlight
