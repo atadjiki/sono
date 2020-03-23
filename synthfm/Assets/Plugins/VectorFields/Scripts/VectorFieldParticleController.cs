@@ -46,8 +46,8 @@ namespace JangaFX
 	
 		void Update ()
 		{
-			if ((particles == null) || (ps.maxParticles != particles.Length))
-				particles = new ParticleSystem.Particle[ps.maxParticles];
+			if ((particles == null) || (ps.main.maxParticles != particles.Length))
+				particles = new ParticleSystem.Particle[ps.main.maxParticles];
 			
 			int numParticles = ps.GetParticles(particles);
 

@@ -26,10 +26,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
-      propertyPath: m_Name
-      value: BiomeFiber_FX
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1096
@@ -86,10 +82,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 228.2567
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
+      propertyPath: m_Name
+      value: BiomeFiber_FX Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 592e8a8830ea2814382c52ee27f83590, type: 2}
+    - target: {fileID: 2300000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5d6a302c6a382b4d8be37c5bfb0bab2, type: 3}
 --- !u!1 &3792820313195315331 stripped

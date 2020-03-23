@@ -92,7 +92,7 @@ namespace InControl
 
 			if (dontDestroyOnLoad)
 			{
-				DontDestroyOnLoad( this );
+				//DontDestroyOnLoad( this );
 			}
 		}
 

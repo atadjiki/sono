@@ -255,6 +255,8 @@ VisualEffect:
   m_GameObject: {fileID: 1025575911}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: c7f924278e8880348a1dfb469bab2bca, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -294,6 +296,7 @@ VFXRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -359,6 +362,8 @@ VisualEffect:
   m_GameObject: {fileID: 1194783006}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 552f3127e71e0744dbabd397b94a06ca, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -398,6 +403,7 @@ VFXRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -467,6 +473,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -744,12 +751,13 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679008919}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -838,31 +846,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 178670977}
     m_Modifications:
-    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: Pickup
-      value: 
-      objectReference: {fileID: 1929451584604128802}
-    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: cc
-      value: 
-      objectReference: {fileID: 1929451585230730661}
-    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2244682443739969335, guid: 1cc22c58a718c4e48a99031ab80d24f9,
-        type: 3}
-      propertyPath: m_Name
-      value: PickUpAnimation Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 2244682443739969338, guid: 1cc22c58a718c4e48a99031ab80d24f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -932,6 +915,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244682443739969335, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: m_Name
+      value: PickUpAnimation Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: Pickup
+      value: 
+      objectReference: {fileID: 1929451584604128802}
+    - target: {fileID: 2244682443123852478, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: cc
+      value: 
+      objectReference: {fileID: 1929451585230730661}
+    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244682443123852479, guid: 1cc22c58a718c4e48a99031ab80d24f9,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc22c58a718c4e48a99031ab80d24f9, type: 3}

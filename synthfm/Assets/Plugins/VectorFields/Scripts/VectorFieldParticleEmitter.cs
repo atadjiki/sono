@@ -43,8 +43,8 @@ namespace JangaFX
 			ps.Stop();
 			emitParams = new ParticleSystem.EmitParams();
 			emitParams.startColor = ps.startColor;
-			emitParams.startSize = ps.startSize;
-			emitParams.startLifetime = ps.startLifetime;
+			emitParams.startSize = ps.main.startSizeMultiplier;
+			emitParams.startLifetime = ps.main.startLifetimeMultiplier;
 			emissionRate = 1f / ps.emission.rateOverTime.constant;
 		}
 

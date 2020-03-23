@@ -211,7 +211,7 @@ public class ScoreManager : MonoBehaviour
         else if (_instance != this)
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         double startTick = AudioSettings.dspTime;
         sampleRate = AudioSettings.outputSampleRate;

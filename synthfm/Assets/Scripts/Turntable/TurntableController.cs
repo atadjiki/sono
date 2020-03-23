@@ -784,15 +784,15 @@
 
             AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-            if (slowId == animStateInfo.nameHash)
+            if (slowId == animStateInfo.fullPathHash)
             {
                 //  Debug.Log("Current state is Slow");
             }
-            else if (normalId == animStateInfo.nameHash)
+            else if (normalId == animStateInfo.fullPathHash)
             {
                 //  Debug.Log("Current state is Normal");
             }
-            else if (fastId == animStateInfo.nameHash)
+            else if (fastId == animStateInfo.fullPathHash)
             {
                 //  Debug.Log("Current state is Fast");
 
