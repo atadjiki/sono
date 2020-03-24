@@ -29,11 +29,11 @@ public class ResetLevel : MonoBehaviour
             m_Fading = false;
         }
 
-        /*if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R))
         {
             Scene loadedLevel = SceneManager.GetActiveScene();
             SceneManager.LoadScene(loadedLevel.buildIndex);
-        }*/
+        }
     }
 
     IEnumerator FadeOut()

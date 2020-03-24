@@ -18,13 +18,13 @@ public class Switchafterpuzzends : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U))
         {
 
             print("Nice");
             VE.SetFloat("SwitchInt", Complete);
             VE.SetFloat("Offandover", hange);
             VE.SetFloat("OFF", Over);
-        }*/
+        }
     }
 }
