@@ -6,9 +6,9 @@ namespace InControl
 	using UnityEngine;
 
 
-	#if NETFX_CORE
+#if NETFX_CORE
 	using System.Reflection;
-	#endif
+#endif
 
 
 	public static class InputManager
@@ -91,6 +91,19 @@ namespace InControl
 		}
 
 
+		/// <summary>
+		/// DEPRECATED: Use the InControlManager component instead.
+		/// </summary>
+		/// @deprecated
+		/// Calling this method directly is no longer supported. Use the InControlManager component to
+		/// manage the lifecycle of the input manager instead.
+		[Obsolete( "Calling InputManager.Setup() directly is no longer supported. Use the InControlManager component to manage the lifecycle of the input manager instead.", true )]
+		public static void Setup()
+		{
+			SetupInternal();
+		}
+
+
 		internal static bool SetupInternal()
 		{
 			if (IsSetup)
@@ -133,40 +146,40 @@ namespace InControl
 				enableUnityInput = false;
 			}
 
-			#if ENABLE_WINMD_SUPPORT && !UNITY_XBOXONE && !UNITY_EDITOR
+#if ENABLE_WINMD_SUPPORT && !UNITY_XBOXONE && !UNITY_EDITOR
 			if (UWPDeviceManager.Enable())
 			{
 				enableUnityInput = false;
 			}
-			#endif
+#endif
 
-			#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
 			if (EnableXInput && enableUnityInput)
 			{
 				XInputDeviceManager.Enable();
 			}
-			#endif
+#endif
 
-			#if UNITY_IOS || UNITY_TVOS
+#if UNITY_IOS || UNITY_TVOS
 			if (EnableICade)
 			{
 				ICadeDeviceManager.Enable();
 			}
-			#endif
+#endif
 
-			#if UNITY_XBOXONE
+#if UNITY_XBOXONE
 			if (XboxOneInputDeviceManager.Enable())
 			{
 				enableUnityInput = false;
 			}
-			#endif
+#endif
 
-			#if UNITY_SWITCH
+#if UNITY_SWITCH
 			if (NintendoSwitchInputDeviceManager.Enable())
 			{
 				enableUnityInput = false;
 			}
-			#endif
+#endif
 
 			// TODO: Can this move further down after the UnityInputDeviceManager is added, which is more intuitive?
 			// Currently, it allows use of InputManager.HideDevicesWithProfile() to be called in OnSetup, which is possibly useful?
@@ -176,9 +189,9 @@ namespace InControl
 				OnSetup = null;
 			}
 
-			#if UNITY_ANDROID && INCONTROL_OUYA && !UNITY_EDITOR
+#if UNITY_ANDROID && INCONTROL_OUYA && !UNITY_EDITOR
 			enableUnityInput = false;
-			#endif
+#endif
 
 			if (enableUnityInput)
 			{
@@ -188,6 +201,18 @@ namespace InControl
 			return true;
 		}
 
+
+		/// <summary>
+		/// DEPRECATED: Use the InControlManager component instead.
+		/// </summary>
+		/// @deprecated
+		/// Calling this method directly is no longer supported. Use the InControlManager component to
+		/// manage the lifecycle of the input manager instead.
+		[Obsolete( "Calling InputManager.Reset() method directly is no longer supported. Use the InControlManager component to manage the lifecycle of the input manager instead.", true )]
+		public static void Reset()
+		{
+			ResetInternal();
+		}
 
 		internal static void ResetInternal()
 		{
@@ -215,14 +240,16 @@ namespace InControl
 
 
 		/// <summary>
-		/// Calling this method is not recommended unless you are trying to do manual update ticks in a simulation.
-		/// Generally, you should have the InControlManager component to manage the lifecycle and update InControl.
+		/// DEPRECATED: Use the InControlManager component instead.
 		/// </summary>
+		/// @deprecated
+		/// Calling this method directly is no longer supported. Use the InControlManager component to
+		/// manage the lifecycle of the input manager instead.
+		[Obsolete( "Calling InputManager.Update() directly is no longer supported. Use the InControlManager component to manage the lifecycle of the input manager instead.", true )]
 		public static void Update()
 		{
 			UpdateInternal();
 		}
-
 
 		internal static void UpdateInternal()
 		{
@@ -613,11 +640,11 @@ namespace InControl
 		/// <param name="type">Type.</param>
 		public static void HideDevicesWithProfile( Type type )
 		{
-			#if NETFX_CORE
-			if (type.GetTypeInfo().IsAssignableFrom( typeof( InputDeviceProfile ).GetTypeInfo() ))
-			#else
-			if (type.IsSubclassOf( typeof(InputDeviceProfile) ))
-				#endif
+#if NETFX_CORE
+			if (type.GetTypeInfo().IsAssignableFrom( typeof( UnityInputDeviceProfile ).GetTypeInfo() ))
+#else
+			if (type.IsSubclassOf( typeof(UnityInputDeviceProfile) ))
+#endif
 			{
 				InputDeviceProfile.Hide( type );
 			}
@@ -758,7 +785,7 @@ namespace InControl
 
 
 		/// <summary>
-		/// Set Native Input on Windows to use Microsoft's XInput API.
+		/// Set Native Input on Windows to use XInput.
 		/// When set to true (default), XInput will be utilized which better supports
 		/// compatible controllers (such as Xbox 360 and Xbox One gamepads) including
 		/// vibration control and proper separated triggers, but limits the number of
@@ -767,14 +794,6 @@ namespace InControl
 		/// DirectInput will be used for all non-XInput-compatible controllers.
 		/// </summary>
 		public static bool NativeInputEnableXInput { get; internal set; }
-
-
-		/// <summary>
-		/// Set Native Input on macOS, iOS and tvOS to use Apple MFi Game Controller API.
-		/// When set to true (default), MFi will be utilized which better supports
-		/// compatible controllers (such as Xbox One S, Dual Shock 4 and licensed MFi gamepads).
-		/// </summary>
-		public static bool NativeInputEnableMFi { get; internal set; }
 
 
 		/// <summary>

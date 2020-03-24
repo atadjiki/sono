@@ -10,8 +10,8 @@ namespace InControl
 		const float deviceRefreshInterval = 1.0f;
 		float deviceRefreshTimer = 0.0f;
 
-		readonly List<InputDeviceProfile> systemDeviceProfiles;
-		readonly List<InputDeviceProfile> customDeviceProfiles;
+		readonly List<UnityInputDeviceProfileBase> systemDeviceProfiles = new List<UnityInputDeviceProfileBase>( UnityInputDeviceProfileList.Profiles.Length );
+		readonly List<UnityInputDeviceProfileBase> customDeviceProfiles = new List<UnityInputDeviceProfileBase>();
 
 		string[] joystickNames;
 		int lastJoystickCount;
@@ -22,9 +22,6 @@ namespace InControl
 
 		public UnityInputDeviceManager()
 		{
-			systemDeviceProfiles = new List<InputDeviceProfile>( UnityInputDeviceProfileList.Profiles.Length );
-			customDeviceProfiles = new List<InputDeviceProfile>();
-
 			AddSystemDeviceProfiles();
 			// LoadDeviceProfiles();
 			QueryJoystickInfo();
@@ -70,18 +67,8 @@ namespace InControl
 
 		void AttachDevices()
 		{
-			try
-			{
-				for (var i = 0; i < joystickCount; i++)
-				{
-					DetectJoystickDevice( i + 1, joystickNames[i] );
-				}
-			}
-			catch (Exception e)
-			{
-				Logger.LogError( e.Message );
-				Logger.LogError( e.StackTrace );
-			}
+			AttachKeyboardDevices();
+			AttachJoystickDevices();
 
 			lastJoystickCount = joystickCount;
 			lastJoystickHash = joystickHash;
@@ -112,6 +99,37 @@ namespace InControl
 		{
 			devices.Add( device );
 			InputManager.AttachDevice( device );
+		}
+
+
+		void AttachKeyboardDevices()
+		{
+			var deviceProfileCount = systemDeviceProfiles.Count;
+			for (var i = 0; i < deviceProfileCount; i++)
+			{
+				var deviceProfile = systemDeviceProfiles[i];
+				if (deviceProfile.IsNotJoystick && deviceProfile.IsSupportedOnThisPlatform)
+				{
+					AttachDevice( new UnityInputDevice( deviceProfile ) );
+				}
+			}
+		}
+
+
+		void AttachJoystickDevices()
+		{
+			try
+			{
+				for (var i = 0; i < joystickCount; i++)
+				{
+					DetectJoystickDevice( i + 1, joystickNames[i] );
+				}
+			}
+			catch (Exception e)
+			{
+				Logger.LogError( e.Message );
+				Logger.LogError( e.StackTrace );
+			}
 		}
 
 
@@ -183,14 +201,34 @@ namespace InControl
 #endif
 				)
 				{
-					if (string.IsNullOrEmpty( unityJoystickName ))
+					if (String.IsNullOrEmpty( unityJoystickName ))
 					{
 						return;
 					}
 				}
 			}
 
-			var deviceProfile = DetectDevice( unityJoystickName );
+			UnityInputDeviceProfileBase deviceProfile = null;
+
+			if (deviceProfile == null)
+			{
+				deviceProfile = customDeviceProfiles.Find( config => config.HasJoystickName( unityJoystickName ) );
+			}
+
+			if (deviceProfile == null)
+			{
+				deviceProfile = systemDeviceProfiles.Find( config => config.HasJoystickName( unityJoystickName ) );
+			}
+
+			if (deviceProfile == null)
+			{
+				deviceProfile = customDeviceProfiles.Find( config => config.HasLastResortRegex( unityJoystickName ) );
+			}
+
+			if (deviceProfile == null)
+			{
+				deviceProfile = systemDeviceProfiles.Find( config => config.HasLastResortRegex( unityJoystickName ) );
+			}
 
 			if (deviceProfile == null)
 			{
@@ -205,36 +243,19 @@ namespace InControl
 			{
 				var joystickDevice = new UnityInputDevice( deviceProfile, unityJoystickId, unityJoystickName );
 				AttachDevice( joystickDevice );
-				// Debug.Log( "[InControl] Joystick " + unityJoystickId + ": \"" + unityJoystickName + "\"" );
-				Logger.LogInfo( "Device " + unityJoystickId + " matched profile " + deviceProfile.GetType().Name + " (" + deviceProfile.DeviceName + ")" );
+				//				Debug.Log( "[InControl] Joystick " + unityJoystickId + ": \"" + unityJoystickName + "\"" );
+				Logger.LogInfo( "Device " + unityJoystickId + " matched profile " + deviceProfile.GetType().Name + " (" + deviceProfile.Name + ")" );
 			}
 			else
 			{
-				Logger.LogInfo( "Device " + unityJoystickId + " matching profile " + deviceProfile.GetType().Name + " (" + deviceProfile.DeviceName + ")" + " is hidden and will not be attached." );
+				Logger.LogInfo( "Device " + unityJoystickId + " matching profile " + deviceProfile.GetType().Name + " (" + deviceProfile.Name + ")" + " is hidden and will not be attached." );
 			}
 		}
 
 
-		InputDeviceProfile DetectDevice( string unityJoystickName )
+		void AddSystemDeviceProfile( UnityInputDeviceProfile deviceProfile )
 		{
-			// Try to find a matching profile for this device.
-			InputDeviceProfile deviceProfile = null;
-
-			var deviceInfo = new InputDeviceInfo { name = unityJoystickName };
-
-			// ReSharper disable once ConstantNullCoalescingCondition
-			deviceProfile = deviceProfile ?? customDeviceProfiles.Find( profile => profile.Matches( deviceInfo ) );
-			deviceProfile = deviceProfile ?? systemDeviceProfiles.Find( profile => profile.Matches( deviceInfo ) );
-			deviceProfile = deviceProfile ?? customDeviceProfiles.Find( profile => profile.LastResortMatches( deviceInfo ) );
-			deviceProfile = deviceProfile ?? systemDeviceProfiles.Find( profile => profile.LastResortMatches( deviceInfo ) );
-
-			return deviceProfile;
-		}
-
-
-		void AddSystemDeviceProfile( InputDeviceProfile deviceProfile )
-		{
-			if (deviceProfile != null && deviceProfile.IsSupportedOnThisPlatform)
+			if (deviceProfile.IsSupportedOnThisPlatform)
 			{
 				systemDeviceProfiles.Add( deviceProfile );
 			}
@@ -243,11 +264,18 @@ namespace InControl
 
 		void AddSystemDeviceProfiles()
 		{
-			for (var i = 0; i < UnityInputDeviceProfileList.Profiles.Length; i++)
+			foreach (var typeName in UnityInputDeviceProfileList.Profiles)
 			{
-				var typeName = UnityInputDeviceProfileList.Profiles[i];
-				var deviceProfile = InputDeviceProfile.CreateInstanceOfType( typeName );
-				AddSystemDeviceProfile( deviceProfile );
+				var type = Type.GetType( typeName );
+				if (type == null)
+				{
+					Debug.Log( "Cannot find type: " + typeName + "(is it being IL2CPP stripping level too high?)" );
+				}
+				else
+				{
+					var deviceProfile = (UnityInputDeviceProfile) Activator.CreateInstance( type );
+					AddSystemDeviceProfile( deviceProfile );
+				}
 			}
 		}
 

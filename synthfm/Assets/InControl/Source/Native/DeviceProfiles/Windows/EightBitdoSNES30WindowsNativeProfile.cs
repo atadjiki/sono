@@ -1,19 +1,13 @@
-// ReSharper disable StringLiteralTypo
-// ReSharper disable IdentifierTypo
-// ReSharper disable InconsistentNaming
-// ReSharper disable UnusedType.Global
-namespace InControl.NativeDeviceProfiles
+namespace InControl.NativeProfile
 {
 	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class EightBitdoSNES30WindowsNativeProfile : InputDeviceProfile
+	[AutoDiscover, Preserve]
+	public class EightBitdoSNES30WindowsNativeProfile : NativeInputDeviceProfile
 	{
-		public override void Define()
+		public EightBitdoSNES30WindowsNativeProfile()
 		{
-			base.Define();
-
-			DeviceName = "8Bitdo SNES30 Controller";
-			DeviceNotes = "8Bitdo SNES30 Controller on Windows";
+			Name = "8Bitdo SNES30 Controller";
+			Meta = "8Bitdo SNES30 Controller on Windows";
 			// Link = "https://www.amazon.com/Wireless-Bluetooth-Controller-Classic-Joystick/dp/B014QP2H1E";
 
 			DeviceClass = InputDeviceClass.Controller;
@@ -26,13 +20,13 @@ namespace InControl.NativeDeviceProfiles
 
 			Matchers = new[]
 			{
-				new InputDeviceMatcher
+				new NativeInputDeviceMatcher
 				{
 					VendorID = 0x2dc8,
 					ProductID = 0xab20,
 					// VersionNumber = 0x0,
 				},
-				new InputDeviceMatcher
+				new NativeInputDeviceMatcher
 				{
 					VendorID = 0x2dc8,
 					ProductID = 0x2840,
@@ -44,49 +38,49 @@ namespace InControl.NativeDeviceProfiles
 			{
 				new InputControlMapping
 				{
-					Name = "A",
+					Handle = "A",
 					Target = InputControlType.Action2,
 					Source = Button( 0 ),
 				},
 				new InputControlMapping
 				{
-					Name = "B",
+					Handle = "B",
 					Target = InputControlType.Action1,
 					Source = Button( 1 ),
 				},
 				new InputControlMapping
 				{
-					Name = "X",
+					Handle = "X",
 					Target = InputControlType.Action4,
 					Source = Button( 3 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Y",
+					Handle = "Y",
 					Target = InputControlType.Action3,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Left Trigger",
+					Handle = "Left Trigger",
 					Target = InputControlType.LeftTrigger,
 					Source = Button( 6 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Right Trigger",
+					Handle = "Right Trigger",
 					Target = InputControlType.RightTrigger,
 					Source = Button( 7 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Select",
+					Handle = "Select",
 					Target = InputControlType.Select,
 					Source = Button( 10 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Start",
+					Handle = "Start",
 					Target = InputControlType.Start,
 					Source = Button( 11 ),
 				},
@@ -96,35 +90,35 @@ namespace InControl.NativeDeviceProfiles
 			{
 				new InputControlMapping
 				{
-					Name = "DPad Up",
+					Handle = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Analog( 2 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Down",
+					Handle = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Analog( 2 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Left",
+					Handle = "DPad Left",
 					Target = InputControlType.DPadLeft,
 					Source = Analog( 3 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Right",
+					Handle = "DPad Right",
 					Target = InputControlType.DPadRight,
 					Source = Analog( 3 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 			};
 		}

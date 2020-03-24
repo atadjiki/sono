@@ -5,184 +5,102 @@ namespace InControl
 	using UnityEngine;
 
 
-	[Preserve, Serializable]
-	public class InputDeviceProfile
+	[Preserve]
+	public abstract class InputDeviceProfile
 	{
-		static readonly HashSet<Type> hiddenProfiles = new HashSet<Type>();
+		// [SerializeField]
+		public string Name { get; protected set; }
 
+		// [SerializeField]
+		public string Meta { get; protected set; }
 
-		#region Fields
+		// [SerializeField]
+		public InputControlMapping[] AnalogMappings { get; protected set; }
 
-		[SerializeField]
-		InputDeviceProfileType profileType;
+		// [SerializeField]
+		public InputControlMapping[] ButtonMappings { get; protected set; }
 
-		[SerializeField]
-		string deviceName = "";
+		// [SerializeField]
+		public string[] IncludePlatforms { get; protected set; }
 
-		[SerializeField, TextArea]
-		string deviceNotes = "";
+		// [SerializeField]
+		public string[] ExcludePlatforms { get; protected set; }
 
-		[SerializeField]
-		InputDeviceClass deviceClass = InputDeviceClass.Unknown;
+		// [SerializeField]
+		public int MaxSystemBuildNumber { get; protected set; }
 
-		[SerializeField]
-		InputDeviceStyle deviceStyle = InputDeviceStyle.Unknown;
+		// [SerializeField]
+		public int MinSystemBuildNumber { get; protected set; }
 
-		// TODO: Rename to defaultSensitivity (or remove sensitivity?)
-		[SerializeField]
+		// [SerializeField]
+		public InputDeviceClass DeviceClass { get; protected set; }
+
+		// [SerializeField]
+		public InputDeviceStyle DeviceStyle { get; protected set; }
+
+		static HashSet<Type> hideList = new HashSet<Type>();
+
 		float sensitivity = 1.0f;
-
-		// TODO: Rename to defaultLowerDeadZone
-		[SerializeField]
-		float lowerDeadZone = 0.2f;
-
-		// TODO: Rename to defaultUpperDeadZone
-		[SerializeField]
-		float upperDeadZone = 0.9f;
-
-		[SerializeField]
-		string[] includePlatforms = new string[0];
-
-		[SerializeField]
-		string[] excludePlatforms = new string[0];
-
-		// TODO: Convert to a nullable type
-		[SerializeField]
-		int minSystemBuildNumber = 0;
-
-		// TODO: Convert to a nullable type
-		[SerializeField]
-		int maxSystemBuildNumber = 0;
-
-		[SerializeField]
-		VersionInfo minUnityVersion = VersionInfo.Min;
-
-		[SerializeField]
-		VersionInfo maxUnityVersion = VersionInfo.Max;
-
-		[SerializeField]
-		InputDeviceMatcher[] matchers = new InputDeviceMatcher[0];
-
-		[SerializeField]
-		InputDeviceMatcher[] lastResortMatchers = new InputDeviceMatcher[0];
-
-		[SerializeField]
-		InputControlMapping[] analogMappings = new InputControlMapping[0];
-
-		[SerializeField]
-		InputControlMapping[] buttonMappings = new InputControlMapping[0];
-
-		#endregion
+		float lowerDeadZone = 0.0f;
+		float upperDeadZone = 1.0f;
 
 
-		#region Properties
-
-		public InputDeviceProfileType ProfileType { get { return profileType; } protected set { profileType = value; } }
-		public string DeviceName { get { return deviceName; } protected set { deviceName = value; } }
-		public string DeviceNotes { get { return deviceNotes; } protected set { deviceNotes = value; } }
-		public InputDeviceClass DeviceClass { get { return deviceClass; } protected set { deviceClass = value; } }
-		public InputDeviceStyle DeviceStyle { get { return deviceStyle; } protected set { deviceStyle = value; } }
-		public float Sensitivity { get { return sensitivity; } protected set { sensitivity = Mathf.Clamp01( value ); } }
-		public float LowerDeadZone { get { return lowerDeadZone; } protected set { lowerDeadZone = Mathf.Clamp01( value ); } }
-		public float UpperDeadZone { get { return upperDeadZone; } protected set { upperDeadZone = Mathf.Clamp01( value ); } }
-		public InputControlMapping[] AnalogMappings { get { return analogMappings; } protected set { analogMappings = value; } }
-		public InputControlMapping[] ButtonMappings { get { return buttonMappings; } protected set { buttonMappings = value; } }
-
-		// Requirements for profile to match a platform and device.
-		public string[] IncludePlatforms { get { return includePlatforms; } protected set { includePlatforms = value; } }
-		public string[] ExcludePlatforms { get { return excludePlatforms; } protected set { excludePlatforms = value; } }
-		public int MinSystemBuildNumber { get { return minSystemBuildNumber; } protected set { minSystemBuildNumber = value; } }
-		public int MaxSystemBuildNumber { get { return maxSystemBuildNumber; } protected set { maxSystemBuildNumber = value; } }
-		public VersionInfo MinUnityVersion { get { return minUnityVersion; } protected set { minUnityVersion = value; } }
-		public VersionInfo MaxUnityVersion { get { return maxUnityVersion; } protected set { maxUnityVersion = value; } }
-		public InputDeviceMatcher[] Matchers { get { return matchers; } protected set { matchers = value; } }
-		public InputDeviceMatcher[] LastResortMatchers { get { return lastResortMatchers; } protected set { lastResortMatchers = value; } }
-
-		#endregion
-
-
-		// void Awake()
-		// {
-		// 	Debug.Log( "Awake() => " + deviceName );
-		// }
-
-
-		// void OnEnable()
-		// {
-		// 	Debug.Log( "OnEnable() => " + deviceName );
-		// }
-
-
-		public static InputDeviceProfile CreateInstanceOfType( Type type )
+		public InputDeviceProfile()
 		{
-			var profile = (InputDeviceProfile) Activator.CreateInstance( type );
-			// var profile = (InputDeviceProfile) ScriptableObject.CreateInstance( type );
-			profile.Define();
-			return profile;
+			Name = "";
+			Meta = "";
+
+			AnalogMappings = new InputControlMapping[0];
+			ButtonMappings = new InputControlMapping[0];
+
+			IncludePlatforms = new string[0];
+			ExcludePlatforms = new string[0];
+
+			MinSystemBuildNumber = 0;
+			MaxSystemBuildNumber = 0;
+
+			DeviceClass = InputDeviceClass.Unknown;
+			DeviceStyle = InputDeviceStyle.Unknown;
 		}
 
 
-		public static InputDeviceProfile CreateInstanceOfType( string typeName )
+		// [SerializeField]
+		public float Sensitivity
 		{
-			var type = Type.GetType( typeName );
-			if (type == null)
-			{
-				Debug.Log( "Cannot find type: " + typeName + "(is the IL2CPP stripping level too high?)" );
-				return null;
-			}
-
-			return CreateInstanceOfType( type );
+			get { return sensitivity; }
+			protected set { sensitivity = Mathf.Clamp01( value ); }
 		}
 
 
-		public virtual void Define()
+		// [SerializeField]
+		public float LowerDeadZone
 		{
-			var hasNativeProfileAttribute = GetType().GetCustomAttributes( typeof(NativeInputDeviceProfileAttribute), false ).Length > 0;
-			profileType = hasNativeProfileAttribute ? InputDeviceProfileType.Native : InputDeviceProfileType.Unity;
+			get { return lowerDeadZone; }
+			protected set { lowerDeadZone = Mathf.Clamp01( value ); }
 		}
 
 
-		public bool Matches( InputDeviceInfo deviceInfo )
+		// [SerializeField]
+		public float UpperDeadZone
 		{
-			return Matches( deviceInfo, Matchers );
+			get { return upperDeadZone; }
+			protected set { upperDeadZone = Mathf.Clamp01( value ); }
 		}
 
 
-		public bool LastResortMatches( InputDeviceInfo deviceInfo )
+		[Obsolete( "This property has been renamed to IncludePlatforms.", false )]
+		public string[] SupportedPlatforms
 		{
-			return Matches( deviceInfo, LastResortMatchers );
+			get { return IncludePlatforms; }
+
+			protected set { IncludePlatforms = value; }
 		}
 
 
-		// ReSharper disable once SuggestBaseTypeForParameter
-		public bool Matches( InputDeviceInfo deviceInfo, InputDeviceMatcher[] matchers )
-		{
-			if (matchers != null)
-			{
-				var matchersCount = matchers.Length;
-				for (var i = 0; i < matchersCount; i++)
-				{
-					if (matchers[i].Matches( deviceInfo ))
-					{
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
-
-
-		public bool IsSupportedOnThisPlatform
+		public virtual bool IsSupportedOnThisPlatform
 		{
 			get
 			{
-				var unityVersion = VersionInfo.UnityVersion();
-				if (unityVersion < MinUnityVersion || unityVersion > MaxUnityVersion)
-				{
-					return false;
-				}
-
 				var systemBuildNumber = Utility.GetSystemBuildNumber();
 				if (MaxSystemBuildNumber > 0 && systemBuildNumber > MaxSystemBuildNumber)
 				{
@@ -206,7 +124,7 @@ namespace InControl
 					}
 				}
 
-				// If no platforms are explicitly included, we just include everything.
+				// TODO: This is weird... what uses this condition? Only UnknownUnityDeviceProfile?
 				if (IncludePlatforms == null || IncludePlatforms.Length == 0)
 				{
 					return true;
@@ -229,15 +147,15 @@ namespace InControl
 		}
 
 
-		public static void Hide( Type type )
+		internal static void Hide( Type type )
 		{
-			hiddenProfiles.Add( type );
+			hideList.Add( type );
 		}
 
 
-		public bool IsHidden
+		internal bool IsHidden
 		{
-			get { return hiddenProfiles.Contains( GetType() ); }
+			get { return hideList.Contains( GetType() ); }
 		}
 
 
@@ -251,321 +169,5 @@ namespace InControl
 		{
 			get { return ButtonMappings.Length; }
 		}
-
-
-		#region InputControlSource helpers
-
-		protected static InputControlSource Button( int index )
-		{
-			return new InputControlSource( InputControlSourceType.Button, index );
-		}
-
-		protected static InputControlSource Analog( int index )
-		{
-			return new InputControlSource( InputControlSourceType.Analog, index );
-		}
-
-		protected static readonly InputControlSource MenuKey = new InputControlSource( KeyCode.Menu );
-		protected static readonly InputControlSource EscapeKey = new InputControlSource( KeyCode.Escape );
-
-		#endregion
-
-
-		#region InputDeviceMapping helpers
-
-		protected static InputControlMapping LeftStickLeftMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Stick Left",
-				Target = InputControlType.LeftStickLeft,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping LeftStickRightMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Stick Right",
-				Target = InputControlType.LeftStickRight,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping LeftStickUpMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Stick Up",
-				Target = InputControlType.LeftStickUp,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping LeftStickDownMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Stick Down",
-				Target = InputControlType.LeftStickDown,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping LeftStickUpMapping2( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Stick Up",
-				Target = InputControlType.LeftStickUp,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping LeftStickDownMapping2( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Stick Down",
-				Target = InputControlType.LeftStickDown,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping RightStickLeftMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Stick Left",
-				Target = InputControlType.RightStickLeft,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping RightStickRightMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Stick Right",
-				Target = InputControlType.RightStickRight,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping RightStickUpMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Stick Up",
-				Target = InputControlType.RightStickUp,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping RightStickDownMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Stick Down",
-				Target = InputControlType.RightStickDown,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping RightStickUpMapping2( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Stick Up",
-				Target = InputControlType.RightStickUp,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping RightStickDownMapping2( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Stick Down",
-				Target = InputControlType.RightStickDown,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping LeftTriggerMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Left Trigger",
-				Target = InputControlType.LeftTrigger,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.MinusOneToOne,
-				TargetRange = InputRangeType.ZeroToOne,
-				IgnoreInitialZeroValue = true
-			};
-		}
-
-		protected static InputControlMapping RightTriggerMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "Right Trigger",
-				Target = InputControlType.RightTrigger,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.MinusOneToOne,
-				TargetRange = InputRangeType.ZeroToOne,
-				IgnoreInitialZeroValue = true
-			};
-		}
-
-		protected static InputControlMapping DPadLeftMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "DPad Left",
-				Target = InputControlType.DPadLeft,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping DPadRightMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "DPad Right",
-				Target = InputControlType.DPadRight,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping DPadUpMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "DPad Up",
-				Target = InputControlType.DPadUp,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping DPadDownMapping( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "DPad Down",
-				Target = InputControlType.DPadDown,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping DPadUpMapping2( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "DPad Up",
-				Target = InputControlType.DPadUp,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		protected static InputControlMapping DPadDownMapping2( int analog )
-		{
-			return new InputControlMapping
-			{
-				Name = "DPad Down",
-				Target = InputControlType.DPadDown,
-				Source = Analog( analog ),
-				SourceRange = InputRangeType.ZeroToMinusOne,
-				TargetRange = InputRangeType.ZeroToOne
-			};
-		}
-
-		#endregion
-
-
-		#region Serialization
-
-		/*
-		public string Save()
-		{
-			var data = JSON.Dump( this, EncodeOptions.PrettyPrint | EncodeOptions.NoTypeHints );
-
-			// Somewhat silly, but removes all default values for brevity.
-			data = Regex.Replace( data, @"\t""JoystickRegex"": null,?\n", "" );
-			data = Regex.Replace( data, @"\t""LastResortRegex"": null,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""Invert"": false,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""Scale"": 1,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""Raw"": false,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""IgnoreInitialZeroValue"": false,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""Sensitivity"": 1,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""LowerDeadZone"": 0,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""UpperDeadZone"": 1,?\n", "" );
-			data = Regex.Replace( data, @"\t""Sensitivity"": 1,?\n", "" );
-			data = Regex.Replace( data, @"\t""LowerDeadZone"": 0.2,?\n", "" );
-			data = Regex.Replace( data, @"\t""UpperDeadZone"": 0.9,?\n", "" );
-			data = Regex.Replace( data, @"\t\t\t""(Source|Target)Range"": {\n\t\t\t\t""Value0"": -1,\n\t\t\t\t""Value1"": 1\n\t\t\t},?\n", "" );
-			data = Regex.Replace( data, @"\t""MinUnityVersion"": {\n\t\t""Major"": 3,\n\t\t""Minor"": 0,\n\t\t""Patch"": 0,\n\t\t""Build"": 0\n\t},?\n", "" );
-			data = Regex.Replace( data, @"\t""MaxUnityVersion"": {\n\t\t""Major"": 9,\n\t\t""Minor"": 0,\n\t\t""Patch"": 0,\n\t\t""Build"": 0\n\t},?\n", "" );
-
-			return data;
-		}
-
-
-		public static UnityInputDeviceProfile Load( string data )
-		{
-			return JSON.Load( data ).Make<UnityInputDeviceProfile>();
-		}
-
-
-		public void SaveToFile( string filePath )
-		{
-			var data = Save();
-			Utility.WriteToFile( filePath, data );
-		}
-
-
-		public static UnityInputDeviceProfile LoadFromFile( string filePath )
-		{
-			var data = Utility.ReadFromFile( filePath );
-			return Load( data );
-		}
-		*/
-
-		#endregion
 	}
 }

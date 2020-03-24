@@ -4,12 +4,12 @@ using UnityEditor;
 
 namespace InControl
 {
-	using System;
 	using UnityEngine;
 	using Internal;
+	using ReorderableList;
 
 
-	[CustomEditor( typeof(InControlManager) )]
+	[CustomEditor( typeof( InControlManager ) )]
 	public class InControlManagerEditor : Editor
 	{
 		SerializedProperty logDebugInfo;
@@ -17,7 +17,8 @@ namespace InControl
 		SerializedProperty useFixedUpdate;
 		SerializedProperty dontDestroyOnLoad;
 		SerializedProperty suspendInBackground;
-		SerializedProperty updateMode;
+
+//		SerializedProperty customProfiles;
 
 		SerializedProperty enableICade;
 
@@ -29,7 +30,6 @@ namespace InControl
 
 		SerializedProperty enableNativeInput;
 		SerializedProperty nativeInputEnableXInput;
-		SerializedProperty nativeInputEnableMFi;
 		SerializedProperty nativeInputPreventSleep;
 		SerializedProperty nativeInputOverrideUpdateRate;
 		SerializedProperty nativeInputUpdateRate;
@@ -44,7 +44,8 @@ namespace InControl
 			useFixedUpdate = serializedObject.FindProperty( "useFixedUpdate" );
 			dontDestroyOnLoad = serializedObject.FindProperty( "dontDestroyOnLoad" );
 			suspendInBackground = serializedObject.FindProperty( "suspendInBackground" );
-			updateMode = serializedObject.FindProperty( "updateMode" );
+
+//			customProfiles = serializedObject.FindProperty( "customProfiles" );
 
 			enableICade = serializedObject.FindProperty( "enableICade" );
 
@@ -56,7 +57,6 @@ namespace InControl
 
 			enableNativeInput = serializedObject.FindProperty( "enableNativeInput" );
 			nativeInputEnableXInput = serializedObject.FindProperty( "nativeInputEnableXInput" );
-			nativeInputEnableMFi = serializedObject.FindProperty( "nativeInputEnableMFi" );
 			nativeInputPreventSleep = serializedObject.FindProperty( "nativeInputPreventSleep" );
 			nativeInputOverrideUpdateRate = serializedObject.FindProperty( "nativeInputOverrideUpdateRate" );
 			nativeInputUpdateRate = serializedObject.FindProperty( "nativeInputUpdateRate" );
@@ -80,35 +80,16 @@ namespace InControl
 			EditorUtility.SetTintColor();
 			var versionStyle = new GUIStyle( EditorUtility.wellStyle );
 			versionStyle.alignment = TextAnchor.MiddleCenter;
-			GUILayout.Box( "Version " + InputManager.Version, versionStyle, GUILayout.ExpandWidth( true ) );
+			GUILayout.Box( "Version " + InputManager.Version.ToString(), versionStyle, GUILayout.ExpandWidth( true ) );
 			EditorUtility.PopTintColor();
 
 			EditorUtility.BeginGroup( "General Settings" );
 
 			logDebugInfo.boolValue = EditorGUILayout.ToggleLeft( "Log Debug Info", logDebugInfo.boolValue, EditorUtility.labelStyle );
 			invertYAxis.boolValue = EditorGUILayout.ToggleLeft( "Invert Y Axis", invertYAxis.boolValue, EditorUtility.labelStyle );
-
-			// This is deprecated and replaced by updateMode
-			// useFixedUpdate.boolValue = EditorGUILayout.ToggleLeft( "Use Fixed Update", useFixedUpdate.boolValue, EditorUtility.labelStyle );
-
+			useFixedUpdate.boolValue = EditorGUILayout.ToggleLeft( "Use Fixed Update", useFixedUpdate.boolValue, EditorUtility.labelStyle );
 			dontDestroyOnLoad.boolValue = EditorGUILayout.ToggleLeft( "Don't Destroy On Load", dontDestroyOnLoad.boolValue, EditorUtility.labelStyle );
 			suspendInBackground.boolValue = EditorGUILayout.ToggleLeft( "Suspend In Background", suspendInBackground.boolValue, EditorUtility.labelStyle );
-
-			GUILayout.Space( 5.0f );
-			var rect = EditorGUILayout.GetControlRect( false, 1 );
-			rect.height = 1;
-			EditorGUI.DrawRect( rect, EditorGUIUtility.isProSkin ? new Color( 1, 1, 1, 0.2f ) : new Color( 0, 0, 0, 0.2f ) );
-			GUILayout.Space( 5.0f );
-
-			var selectedUpdateMode = (InControlUpdateMode) Enum.GetValues( typeof(InControlUpdateMode) ).GetValue( updateMode.enumValueIndex );
-			if (useFixedUpdate.boolValue)
-			{
-				selectedUpdateMode = InControlUpdateMode.FixedUpdate;
-				useFixedUpdate.boolValue = false;
-			}
-
-			updateMode.enumValueIndex = (int) (InControlUpdateMode) EditorGUILayout.EnumPopup( "Update Mode", selectedUpdateMode );
-			// EditorGUILayout.PropertyField( updateMode );
 
 			EditorUtility.EndGroup();
 
@@ -137,21 +118,20 @@ namespace InControl
 			}
 
 
-			EditorUtility.GroupTitle( "Enable Native Input (Windows/macOS/iOS/tvOS only)", enableNativeInput );
+			EditorUtility.GroupTitle( "Enable Native Input (Mac/Windows only)", enableNativeInput );
 			if (enableNativeInput.boolValue)
 			{
 				EditorUtility.BeginGroup();
 
 				var text1 = "" +
-				            //							"<b>Warning: <color=#cc0000>This feature is in BETA!</color></b>\n" +
-				            "Enabling native input will disable using Unity input internally, " +
-				            "but should provide more efficient and robust input support.";
+//							"<b>Warning: <color=#cc0000>This feature is in BETA!</color></b>\n" +
+							"Enabling native input will disable using Unity input internally, " +
+							"but should provide more efficient and robust input support.";
 				EditorUtility.SetTintColor();
 				GUILayout.Box( text1, EditorUtility.wellStyle, GUILayout.ExpandWidth( true ) );
 				EditorUtility.PopTintColor();
 
-				nativeInputEnableXInput.boolValue = EditorGUILayout.ToggleLeft( "Enable XInput Support <color=#777>(Windows Only)</color>", nativeInputEnableXInput.boolValue, EditorUtility.labelStyle );
-				nativeInputEnableMFi.boolValue = EditorGUILayout.ToggleLeft( "Enable MFi Support On macOS <color=#cc5500>(BETA)</color>", nativeInputEnableMFi.boolValue, EditorUtility.labelStyle );
+				nativeInputEnableXInput.boolValue = EditorGUILayout.ToggleLeft( "Enable XInput Support (Windows only)", nativeInputEnableXInput.boolValue, EditorUtility.labelStyle );
 				nativeInputPreventSleep.boolValue = EditorGUILayout.ToggleLeft( "Prevent Screensaver / Sleep", nativeInputPreventSleep.boolValue, EditorUtility.labelStyle );
 
 				//var text2 = "" +
@@ -166,6 +146,16 @@ namespace InControl
 				EditorUtility.EndGroup();
 			}
 
+//			EditorUtility.SetTintColor();
+//			GUILayout.Space( 4.0f );
+//			GUILayout.BeginVertical( "", EditorUtility.titleStyle );
+//			EditorGUILayout.LabelField( "<b>Custom Profiles</b>  <color=#c00>(DEPRECATED)</color>", EditorUtility.labelStyle );
+//			GUILayout.EndVertical();
+//			EditorUtility.PopTintColor();
+//			GUILayout.Space( -6.0f );
+//			ReorderableListGUI.ListField( customProfiles );
+//			GUILayout.Space( 3.0f );
+
 			GUILayout.Space( 10.0f );
 
 			serializedObject.ApplyModifiedProperties();
@@ -173,3 +163,4 @@ namespace InControl
 	}
 }
 #endif
+

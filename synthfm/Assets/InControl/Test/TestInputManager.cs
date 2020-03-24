@@ -32,7 +32,7 @@ namespace InControl
 
 			Logger.OnLogMessage += logMessage => logMessages.Add( logMessage );
 
-			// InputManager.HideDevicesWithProfile( typeof( UnityDeviceProfiles.Xbox360MacProfile ) );
+			//InputManager.HideDevicesWithProfile( typeof( Xbox360MacProfile ) );
 
 			InputManager.OnDeviceAttached += inputDevice => Debug.Log( "Attached: " + inputDevice.Name );
 			InputManager.OnDeviceDetached += inputDevice => Debug.Log( "Detached: " + inputDevice.Name );
@@ -40,9 +40,7 @@ namespace InControl
 
 			InputManager.OnUpdate += HandleInputUpdate;
 
-			// UnityInputDeviceManager.DumpSystemDeviceProfiles();
-			// Debug.Log( JsonUtility.ToJson( InputDeviceProfile.CreateInstanceOfType( typeof(UnityDeviceProfiles.Xbox360MacUnityProfile) ), true ) );
-			// Debug.Log( VersionInfo.UnityVersion() );
+			//UnityInputDeviceManager.DumpSystemDeviceProfiles();
 
 #if UNITY_TVOS
 			// This turns off the A button being interpreted as Menu on controllers.
@@ -65,7 +63,7 @@ namespace InControl
 			#endif
 
 			// This detects whether the attached device is an Apple TV remote and then
-			// configures it to have an appropriate deadzone and state threshold for
+			// configures it to have an appropriate deadzone and state threshhold for
 			// swiping actions.
 			// You may wish to change these values depending on whether you are in game or
 			// navigating menus / UI.
@@ -434,3 +432,4 @@ namespace InControl
 		}
 	}
 }
+

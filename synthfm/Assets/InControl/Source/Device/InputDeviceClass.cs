@@ -8,6 +8,5 @@
 		Controller,
 		Remote,
 		FlightStick,
-		TouchScreen,
 	}
 }

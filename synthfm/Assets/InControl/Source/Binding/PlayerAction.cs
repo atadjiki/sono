@@ -80,12 +80,9 @@
 		readonly ReadOnlyCollection<BindingSource> bindings;
 		readonly ReadOnlyCollection<BindingSource> unfilteredBindings;
 
-		readonly BindingSourceListener[] bindingSourceListeners =
+		static readonly BindingSourceListener[] bindingSourceListeners =
 		{
-			new DeviceBindingSourceListener(),
-			new UnknownDeviceBindingSourceListener(),
-			new KeyBindingSourceListener(),
-			new MouseBindingSourceListener()
+			new DeviceBindingSourceListener(), new UnknownDeviceBindingSourceListener(), new KeyBindingSourceListener(), new MouseBindingSourceListener()
 		};
 
 		bool triggerBindingEnded;
@@ -229,7 +226,7 @@
 		/// another action.
 		/// </summary>
 		/// <returns><c>true</c>, if binding was inserted, <c>false</c> otherwise.</returns>
-		/// <param name="index">The index at which to insert.</param>
+		/// <param name="binding">The index at which to insert.</param>
 		/// <param name="binding">The BindingSource to insert.</param>
 		public bool InsertBindingAt( int index, BindingSource binding )
 		{

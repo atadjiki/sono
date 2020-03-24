@@ -1,19 +1,13 @@
-// ReSharper disable StringLiteralTypo
-// ReSharper disable IdentifierTypo
-// ReSharper disable InconsistentNaming
-// ReSharper disable UnusedType.Global
-namespace InControl.UnityDeviceProfiles
+namespace InControl
 {
-	// @cond nodoc
-	[Preserve] [UnityInputDeviceProfile]
-	public class PlayStation4MacFirefoxUnityProfile : InputDeviceProfile
+	/* @cond nodoc */
+	[AutoDiscover, Preserve]
+	public class PlayStation4MacFirefoxUnityProfile : UnityInputDeviceProfile
 	{
-		public override void Define()
+		public PlayStation4MacFirefoxUnityProfile()
 		{
-			base.Define();
-
-			DeviceName = "PlayStation 4 Controller";
-			DeviceNotes = "PlayStation 4 Controller on Mac Firefox";
+			Name = "PlayStation 4 Controller";
+			Meta = "PlayStation 4 Controller on Mac Firefox";
 
 			DeviceClass = InputDeviceClass.Controller;
 			DeviceStyle = InputDeviceStyle.PlayStation4;
@@ -23,109 +17,109 @@ namespace InControl.UnityDeviceProfiles
 				"Mac Firefox"
 			};
 
-			Matchers = new[]
+			JoystickNames = new[]
 			{
-				new InputDeviceMatcher { NameLiteral = "54c-5c4-Wireless Controller" },
-				new InputDeviceMatcher { NameLiteral = "54c-9cc-Wireless Controller" }
+				"54c-5c4-Wireless Controller",
+				"54c-9cc-Wireless Controller"
 			};
 
-			LastResortMatchers = new[] { new InputDeviceMatcher { NamePattern = "Wireless Controller" } };
+			LastResortRegex = "Wireless Controller";
 
 			ButtonMappings = new[]
 			{
 				new InputControlMapping
 				{
-					Name = "Cross",
+					Handle = "Cross",
 					Target = InputControlType.Action1,
 					Source = Button( 1 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Circle",
+					Handle = "Circle",
 					Target = InputControlType.Action2,
 					Source = Button( 2 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Square",
+					Handle = "Square",
 					Target = InputControlType.Action3,
 					Source = Button( 0 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Triangle",
+					Handle = "Triangle",
 					Target = InputControlType.Action4,
 					Source = Button( 3 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Left Bumper",
+					Handle = "Left Bumper",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Right Bumper",
+					Handle = "Right Bumper",
 					Target = InputControlType.RightBumper,
 					Source = Button( 5 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Share",
+					Handle = "Share",
 					Target = InputControlType.Share,
 					Source = Button( 8 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Options",
+					Handle = "Options",
 					Target = InputControlType.Options,
 					Source = Button( 9 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Left Stick Button",
+					Handle = "Left Stick Button",
 					Target = InputControlType.LeftStickButton,
 					Source = Button( 10 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Right Stick Button",
+					Handle = "Right Stick Button",
 					Target = InputControlType.RightStickButton,
 					Source = Button( 11 ),
 				},
 				new InputControlMapping
 				{
-					Name = "PlayStation",
+					Handle = "PlayStation",
 					Target = InputControlType.System,
 					Source = Button( 12 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Touch Pad Button",
+					Handle = "Touch Pad Button",
 					Target = InputControlType.TouchPadButton,
 					Source = Button( 13 ),
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Up",
+					Handle = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Button( 14 ),
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Down",
+					Handle = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Button( 15 ),
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Left",
+					Handle = "DPad Left",
 					Target = InputControlType.DPadLeft,
 					Source = Button( 16 ),
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Right",
+					Handle = "DPad Right",
 					Target = InputControlType.DPadRight,
 					Source = Button( 17 ),
 				},
@@ -135,89 +129,89 @@ namespace InControl.UnityDeviceProfiles
 			{
 				new InputControlMapping
 				{
-					Name = "Left Stick Left",
+					Handle = "Left Stick Left",
 					Target = InputControlType.LeftStickLeft,
 					Source = Analog( 0 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Left Stick Right",
+					Handle = "Left Stick Right",
 					Target = InputControlType.LeftStickRight,
 					Source = Analog( 0 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Left Stick Up",
+					Handle = "Left Stick Up",
 					Target = InputControlType.LeftStickUp,
 					Source = Analog( 1 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Left Stick Down",
+					Handle = "Left Stick Down",
 					Target = InputControlType.LeftStickDown,
 					Source = Analog( 1 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Right Stick Left",
+					Handle = "Right Stick Left",
 					Target = InputControlType.RightStickLeft,
 					Source = Analog( 2 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Right Stick Right",
+					Handle = "Right Stick Right",
 					Target = InputControlType.RightStickRight,
 					Source = Analog( 2 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Left Trigger",
+					Handle = "Left Trigger",
 					Target = InputControlType.LeftTrigger,
 					Source = Analog( 3 ),
-					SourceRange = InputRangeType.MinusOneToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.MinusOneToOne,
+					TargetRange = InputRange.ZeroToOne,
 					IgnoreInitialZeroValue = true
 				},
 				new InputControlMapping
 				{
-					Name = "Right Trigger",
+					Handle = "Right Trigger",
 					Target = InputControlType.RightTrigger,
 					Source = Analog( 4 ),
-					SourceRange = InputRangeType.MinusOneToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.MinusOneToOne,
+					TargetRange = InputRange.ZeroToOne,
 					IgnoreInitialZeroValue = true
 				},
 				new InputControlMapping
 				{
-					Name = "Right Stick Up",
+					Handle = "Right Stick Up",
 					Target = InputControlType.RightStickUp,
 					Source = Analog( 5 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "Right Stick Down",
+					Handle = "Right Stick Down",
 					Target = InputControlType.RightStickDown,
 					Source = Analog( 5 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 			};
 		}
 	}
 
-	// @endcond
+	/* @endcond */
 }

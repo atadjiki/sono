@@ -14,14 +14,18 @@ namespace InControl
 
 		public int JoystickId { get; private set; }
 
-		readonly InputDeviceProfile profile;
+		UnityInputDeviceProfileBase profile;
+
+
+		public UnityInputDevice( UnityInputDeviceProfileBase deviceProfile )
+			: this( deviceProfile, 0, "" ) {}
 
 
 		public UnityInputDevice( int joystickId, string joystickName )
 			: this( null, joystickId, joystickName ) {}
 
 
-		public UnityInputDevice( InputDeviceProfile deviceProfile, int joystickId, string joystickName )
+		public UnityInputDevice( UnityInputDeviceProfileBase deviceProfile, int joystickId, string joystickName )
 		{
 			profile = deviceProfile;
 
@@ -38,8 +42,8 @@ namespace InControl
 
 			if (IsKnown)
 			{
-				Name = profile.DeviceName;
-				Meta = profile.DeviceNotes;
+				Name = profile.Name;
+				Meta = profile.Meta;
 
 				DeviceClass = profile.DeviceClass;
 				DeviceStyle = profile.DeviceStyle;
@@ -50,11 +54,11 @@ namespace InControl
 					var analogMapping = profile.AnalogMappings[i];
 					if (Utility.TargetIsAlias( analogMapping.Target ))
 					{
-						Debug.LogError( "Cannot map control \"" + analogMapping.Name + "\" as InputControlType." + analogMapping.Target + " in profile \"" + deviceProfile.DeviceName + "\" because this target is reserved as an alias. The mapping will be ignored." );
+						Debug.LogError( "Cannot map control \"" + analogMapping.Handle + "\" as InputControlType." + analogMapping.Target + " in profile \"" + deviceProfile.Name + "\" because this target is reserved as an alias. The mapping will be ignored." );
 					}
 					else
 					{
-						var analogControl = AddControl( analogMapping.Target, analogMapping.Name );
+						var analogControl = AddControl( analogMapping.Target, analogMapping.Handle );
 						analogControl.Sensitivity = Mathf.Min( profile.Sensitivity, analogMapping.Sensitivity );
 						analogControl.LowerDeadZone = Mathf.Max( profile.LowerDeadZone, analogMapping.LowerDeadZone );
 						analogControl.UpperDeadZone = Mathf.Min( profile.UpperDeadZone, analogMapping.UpperDeadZone );
@@ -69,11 +73,11 @@ namespace InControl
 					var buttonMapping = profile.ButtonMappings[i];
 					if (Utility.TargetIsAlias( buttonMapping.Target ))
 					{
-						Debug.LogError( "Cannot map control \"" + buttonMapping.Name + "\" as InputControlType." + buttonMapping.Target + " in profile \"" + deviceProfile.DeviceName + "\" because this target is reserved as an alias. The mapping will be ignored." );
+						Debug.LogError( "Cannot map control \"" + buttonMapping.Handle + "\" as InputControlType." + buttonMapping.Target + " in profile \"" + deviceProfile.Name + "\" because this target is reserved as an alias. The mapping will be ignored." );
 					}
 					else
 					{
-						var buttonControl = AddControl( buttonMapping.Target, buttonMapping.Name );
+						var buttonControl = AddControl( buttonMapping.Target, buttonMapping.Handle );
 						buttonControl.Passive = buttonMapping.Passive;
 					}
 				}
@@ -109,7 +113,7 @@ namespace InControl
 
 					if (!(analogMapping.IgnoreInitialZeroValue && targetControl.IsOnZeroTick && Utility.IsZero( analogValue )))
 					{
-						var mappedValue = analogMapping.ApplyToValue( analogValue );
+						var mappedValue = analogMapping.MapValue( analogValue );
 						targetControl.UpdateWithValue( mappedValue, updateTick, deltaTime );
 					}
 				}
@@ -169,6 +173,18 @@ namespace InControl
 					}
 				}
 			}
+		}
+
+
+		static string GetAnalogKey( int joystickId, int analogId )
+		{
+			return analogQueries[joystickId - 1, analogId];
+		}
+
+
+		static string GetButtonKey( int joystickId, int buttonId )
+		{
+			return buttonQueries[joystickId - 1, buttonId];
 		}
 
 

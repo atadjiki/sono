@@ -183,7 +183,7 @@ namespace InControl
 		/// Gets the action with the specified action name. If the action does not exist, <c>KeyNotFoundException</c> is thrown.
 		/// </summary>
 		/// <param name="actionName">The name of the action to get.</param>
-		public PlayerAction this[ string actionName ]
+		public PlayerAction this[string actionName]
 		{
 			get
 			{
@@ -192,7 +192,6 @@ namespace InControl
 				{
 					return action;
 				}
-
 				throw new KeyNotFoundException( "Action '" + actionName + "' does not exist in this action set." );
 			}
 		}
@@ -209,7 +208,6 @@ namespace InControl
 			{
 				return action;
 			}
-
 			return null;
 		}
 
@@ -312,7 +310,6 @@ namespace InControl
 						}
 					}
 				}
-
 				return foundDevice;
 			}
 
@@ -420,7 +417,6 @@ namespace InControl
 
 
 		InputDevice activeDevice;
-
 		/// <summary>
 		/// Gets the currently active device (controller) if present, otherwise returns a null device which does nothing.
 		/// The currently active device is defined as the last device that provided input to an action on this set.
@@ -430,7 +426,7 @@ namespace InControl
 		{
 			get
 			{
-				return activeDevice ?? InputDevice.Null;
+				return (activeDevice == null) ? InputDevice.Null : activeDevice;
 			}
 		}
 
@@ -439,11 +435,11 @@ namespace InControl
 
 
 		/// <summary>
-		/// Returns the state of this action set and all bindings encoded into a byte array
+		/// Returns the state of this action set and all bindings encoded into a string
 		/// that you can save somewhere.
-		/// Pass this string to LoadData() to restore the state of this action set.
+		/// Pass this string to Load() to restore the state of this action set.
 		/// </summary>
-		public byte[] SaveData()
+		public string Save()
 		{
 			using (var stream = new MemoryStream())
 			{
@@ -467,16 +463,16 @@ namespace InControl
 					}
 				}
 
-				return stream.ToArray();
+				return Convert.ToBase64String( stream.ToArray() );
 			}
 		}
 
 
 		/// <summary>
-		/// Load a state returned by calling SaveBytes() at a prior time.
+		/// Load a state returned by calling Save() at a prior time.
 		/// </summary>
-		/// <param name="data">The data byte array.</param>
-		public void LoadData( byte[] data )
+		/// <param name="data">The data string.</param>
+		public void Load( string data )
 		{
 			if (data == null)
 			{
@@ -485,7 +481,7 @@ namespace InControl
 
 			try
 			{
-				using (var stream = new MemoryStream( data ))
+				using (var stream = new MemoryStream( Convert.FromBase64String( data ) ))
 				{
 					using (var reader = new BinaryReader( stream ))
 					{
@@ -518,39 +514,6 @@ namespace InControl
 				Reset();
 			}
 		}
-
-
-		/// <summary>
-		/// Returns the state of this action set and all bindings encoded into a string
-		/// that you can save somewhere.
-		/// Pass this string to Load() to restore the state of this action set.
-		/// </summary>
-		public string Save()
-		{
-			return Convert.ToBase64String( SaveData() );
-		}
-
-
-		/// <summary>
-		/// Load a state returned by calling Save() at a prior time.
-		/// </summary>
-		/// <param name="data">The data string.</param>
-		public void Load( string data )
-		{
-			if (data == null)
-			{
-				return;
-			}
-
-			try
-			{
-				LoadData( Convert.FromBase64String( data ) );
-			}
-			catch (Exception e)
-			{
-				Debug.LogError( "Provided state could not be loaded:\n" + e.Message );
-				Reset();
-			}
-		}
 	}
 }
+

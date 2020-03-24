@@ -1,19 +1,13 @@
-// ReSharper disable StringLiteralTypo
-// ReSharper disable IdentifierTypo
-// ReSharper disable InconsistentNaming
-// ReSharper disable UnusedType.Global
-namespace InControl.NativeDeviceProfiles
+namespace InControl.NativeProfile
 {
 	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class BuffaloClassicWindowsNativeProfile : InputDeviceProfile
+	[AutoDiscover, Preserve]
+	public class BuffaloClassicWindowsNativeProfile : NativeInputDeviceProfile
 	{
-		public override void Define()
+		public BuffaloClassicWindowsNativeProfile()
 		{
-			base.Define();
-
-			DeviceName = "iBuffalo Classic Controller";
-			DeviceNotes = "iBuffalo Classic Controller on Windows";
+			Name = "iBuffalo Classic Controller";
+			Meta = "iBuffalo Classic Controller on Windows";
 			// Link = "http://www.amazon.com/Buffalo-Classic-USB-Gamepad-PC/dp/B002B9XB0E";
 
 			DeviceClass = InputDeviceClass.Controller;
@@ -25,7 +19,7 @@ namespace InControl.NativeDeviceProfiles
 
 			Matchers = new[]
 			{
-				new InputDeviceMatcher
+				new NativeInputDeviceMatcher
 				{
 					VendorID = 0x583,
 					ProductID = 0x2060,
@@ -37,49 +31,49 @@ namespace InControl.NativeDeviceProfiles
 			{
 				new InputControlMapping
 				{
-					Name = "A",
+					Handle = "A",
 					Target = InputControlType.Action2,
 					Source = Button( 0 ),
 				},
 				new InputControlMapping
 				{
-					Name = "B",
+					Handle = "B",
 					Target = InputControlType.Action1,
 					Source = Button( 1 ),
 				},
 				new InputControlMapping
 				{
-					Name = "X",
+					Handle = "X",
 					Target = InputControlType.Action4,
 					Source = Button( 2 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Y",
+					Handle = "Y",
 					Target = InputControlType.Action3,
 					Source = Button( 3 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Left Bumper",
+					Handle = "Left Bumper",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Right Bumper",
+					Handle = "Right Bumper",
 					Target = InputControlType.RightBumper,
 					Source = Button( 5 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Select",
+					Handle = "Select",
 					Target = InputControlType.Select,
 					Source = Button( 6 ),
 				},
 				new InputControlMapping
 				{
-					Name = "Start",
+					Handle = "Start",
 					Target = InputControlType.Start,
 					Source = Button( 7 ),
 				},
@@ -89,35 +83,35 @@ namespace InControl.NativeDeviceProfiles
 			{
 				new InputControlMapping
 				{
-					Name = "DPad Up",
+					Handle = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Analog( 0 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Down",
+					Handle = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Analog( 0 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Left",
+					Handle = "DPad Left",
 					Target = InputControlType.DPadLeft,
 					Source = Analog( 1 ),
-					SourceRange = InputRangeType.ZeroToMinusOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToMinusOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Name = "DPad Right",
+					Handle = "DPad Right",
 					Target = InputControlType.DPadRight,
 					Source = Analog( 1 ),
-					SourceRange = InputRangeType.ZeroToOne,
-					TargetRange = InputRangeType.ZeroToOne,
+					SourceRange = InputRange.ZeroToOne,
+					TargetRange = InputRange.ZeroToOne,
 				},
 			};
 		}

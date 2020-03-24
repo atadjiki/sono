@@ -23,12 +23,13 @@ namespace InControl
 
 		static void DiscoverProfiles()
 		{
+			var nativeInputDeviceProfileType = typeof(NativeInputDeviceProfile);
+
 			var names = new List<string>();
 
 			foreach (var type in Reflector.AllAssemblyTypes)
 			{
-				if (type.IsSubclassOf( typeof(InputDeviceProfile) ) &&
-				    type.GetCustomAttributes( typeof(NativeInputDeviceProfileAttribute), false ).Length > 0)
+				if (type.IsSubclassOf( nativeInputDeviceProfileType ))
 				{
 					names.Add( type.FullName );
 				}
@@ -46,8 +47,7 @@ namespace InControl
 			var filePath = AssetDatabase.GetAssetPath( MonoScript.FromScriptableObject( instance ) );
 			UnityEngine.Object.DestroyImmediate( instance );
 
-			const string code1 = @"// ReSharper disable StringLiteralTypo
-namespace InControl
+			const string code1 = @"namespace InControl
 {
 	using UnityEngine;
 
