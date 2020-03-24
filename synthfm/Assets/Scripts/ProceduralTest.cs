@@ -31,12 +31,12 @@ public class ProceduralTest : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.P)){
+        /*if(Input.GetKeyDown(KeyCode.P)){
 
             DespawnAll();
             TakeSnapshot();
             SpawnPuzzles();
-        }
+        }*/
 
     }
 

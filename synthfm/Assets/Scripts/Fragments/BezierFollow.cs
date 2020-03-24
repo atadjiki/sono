@@ -35,7 +35,7 @@ public class BezierFollow : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.L))
+        /*if (Input.GetKeyDown(KeyCode.L))
         {
             List<FragmentController> ToHandle = new List<FragmentController>();
             FragmentController[] fragments = GameObject.FindObjectsOfType<FragmentController>();
@@ -49,7 +49,7 @@ public class BezierFollow : MonoBehaviour
                     //    Debug.Log("Leavoing Fragments behind");
                 }
             }
-        }
+        }*/
 
         if(toStart)
         {
