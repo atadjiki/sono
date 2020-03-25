@@ -1,3 +1,21 @@
+### v1.8.0
+* Added MFi support through Apple's Game Controller framework for iOS and tvOS in the Native Input module. This will always be used when Native Input is enabled.
+* Added MFi support through Apple's Game Controller framework for macOS in the Native Input module. This is currently BETA and must be explicitly enabled.
+* Added `InputDeviceClass.TouchScreen` which is also set on the default touch device.
+* Added `InControlManager.updateMode` which allows triggering custom updates (with `InputManager.Update()`), or using `MonoBehaviour.Update()` (default) or `MonoBehaviour.FixedUpdate()` as before. `InControlManager.useFixedUpdate` has been removed.
+* Added additional Google Stadia controller model to the Windows native profile.
+* Added additional GameCube adapter native profile on Windows.
+* Added `byte[] SaveData()` and `LoadData( byte[] data )` to `PlayerActionSet` which works like `Save()` and `Load()`, but deals in byte arrays.
+* Fixed issue related to Unity calling `Update()` after `OnApplicationQuit()`.
+* Fixed bugs occurring when multiple `PlayerActionSet` instances listen simultaneously.
+* Fixed compilation errors in Xcode build with iCade support in Unity 2019.3+
+* Removed the now unnecessary iOS Xcode Preprocessor. This breaks compatibility with old versions of Unity, but should work with Unity 2017 LTS onward, and future proof support for the newer iOS pipeline going forward.
+* Removed deprecated `CustomInputDeviceProfile`.
+* Removed deprecated `InputManager.Setup()` and `InputManager.Reset()`.
+* Removed deprecated `InputDeviceProfile.SupportedPlatforms` (use `IncludePlatforms` instead).
+* Significant refactoring of `InputDeviceProfile` subclasses to unify how profiles definitions work between Unity profiles and Native profiles, and move toward serializable profiles in the future.
+
+
 ### v1.7.4
 * Added support for a few common controller/browser combinations in WebGL:
   * WebGL Chrome (Mac): Xbox 360, Xbox One, PlayStation 4 and Nintendo Switch Pro controllers.

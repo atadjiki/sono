@@ -158,15 +158,15 @@ namespace InControl
 		internal static void Enable()
 		{
 			var errors = new List<string>();
-			if (XInputDeviceManager.CheckPlatformSupport( errors ))
+			if (CheckPlatformSupport( errors ))
 			{
-				InputManager.HideDevicesWithProfile( typeof(Xbox360WinProfile) );
-				InputManager.HideDevicesWithProfile( typeof(XboxOneWinProfile) );
-				InputManager.HideDevicesWithProfile( typeof(XboxOneWin10Profile) );
-				InputManager.HideDevicesWithProfile( typeof(XboxOneWin10AEProfile) );
-				InputManager.HideDevicesWithProfile( typeof(LogitechF310ModeXWinProfile) );
-				InputManager.HideDevicesWithProfile( typeof(LogitechF510ModeXWinProfile) );
-				InputManager.HideDevicesWithProfile( typeof(LogitechF710ModeXWinProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.Xbox360WindowsUnityProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.XboxOneWindowsUnityProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.XboxOneWindows10UnityProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.XboxOneWindows10AEUnityProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.LogitechF310ModeXWindowsUnityProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.LogitechF510ModeXWindowsUnityProfile) );
+				InputManager.HideDevicesWithProfile( typeof(UnityDeviceProfiles.LogitechF710ModeXWindowsUnityProfile) );
 				InputManager.AddDeviceManager<XInputDeviceManager>();
 			}
 			else

@@ -9,31 +9,36 @@ namespace InControl
 	/// Encapsulates a comparable version number.
 	/// This version number generally conforms to the semantic version system.
 	/// </summary>
+	[Serializable]
 	public struct VersionInfo : IComparable<VersionInfo>
 	{
 		/// <summary>
 		/// The major version component.
 		/// This number changes when significant API changes are made.
 		/// </summary>
-		public int Major;
+		[SerializeField]
+		int major;
 
 		/// <summary>
 		/// The minor version component.
 		/// This number changes when significant functionality is added in a mostly backwards-compatible manner.
 		/// </summary>
-		public int Minor;
+		[SerializeField]
+		int minor;
 
 		/// <summary>
 		/// The patch version component.
 		/// This number is changed when small updates and fixes are added in a backwards-compatible manner.
 		/// </summary>
-		public int Patch;
+		[SerializeField]
+		int patch;
 
 		/// <summary>
 		/// The build version component.
 		/// This number is incremented during development.
 		/// </summary>
-		public int Build;
+		[SerializeField]
+		int build;
 
 
 		/// <summary>
@@ -46,45 +51,42 @@ namespace InControl
 		/// <param name="build">The build version component.</param>
 		public VersionInfo( int major, int minor, int patch, int build )
 		{
-			Major = major;
-			Minor = minor;
-			Patch = patch;
-			Build = build;
+			this.major = major;
+			this.minor = minor;
+			this.patch = patch;
+			this.build = build;
 		}
 
 
 		/// <summary>
-		/// Initialize an instance of <see cref="InControl.VersionInfo"/> with
-		/// the current version of InControl.
+		/// Initialize an instance of <see cref="InControl.VersionInfo"/> with the current version of InControl.
 		/// </summary>
 		/// <returns>The current version of InControl.</returns>
 		public static VersionInfo InControlVersion()
 		{
-			return new VersionInfo()
+			return new VersionInfo
 			{
-				Major = 1,
-				Minor = 7,
-				Patch = 4,
-				Build = 9343
+				major = 1,
+				minor = 8,
+				patch = 0,
+				build = 9351
 			};
 		}
 
 
 		/// <summary>
-		/// Initialize an instance of <see cref="InControl.VersionInfo"/> with
-		/// the current version of Unity.
+		/// Initialize an instance of <see cref="InControl.VersionInfo"/> with the current version of Unity.
 		/// </summary>
 		/// <returns>The current version of Unity.</returns>
 		public static VersionInfo UnityVersion()
 		{
-			var match = Regex.Match( Application.unityVersion, @"^(\d+)\.(\d+)\.(\d+)" );
-			const int build = 0;
-			return new VersionInfo()
+			var match = Regex.Match( Application.unityVersion, @"^(\d+)\.(\d+)\.(\d+)f(\d+)" );
+			return new VersionInfo
 			{
-				Major = Convert.ToInt32( match.Groups[1].Value ),
-				Minor = Convert.ToInt32( match.Groups[2].Value ),
-				Patch = Convert.ToInt32( match.Groups[3].Value ),
-				Build = build
+				major = Convert.ToInt32( match.Groups[1].Value ),
+				minor = Convert.ToInt32( match.Groups[2].Value ),
+				patch = Convert.ToInt32( match.Groups[3].Value ),
+				build = Convert.ToInt32( match.Groups[4].Value ),
 			};
 		}
 
@@ -112,8 +114,14 @@ namespace InControl
 		/// </summary>
 		public VersionInfo Next
 		{
-			get { return new VersionInfo( Major, Minor, Patch, Build + 1 ); }
+			get { return new VersionInfo( major, minor, patch, build + 1 ); }
 		}
+
+		/// <summary>
+		/// The build version component.
+		/// This number is incremented during development.
+		/// </summary>
+		public int Build { get { return build; } }
 
 
 		/// <summary>
@@ -121,14 +129,14 @@ namespace InControl
 		/// </summary>
 		public int CompareTo( VersionInfo other )
 		{
-			if (Major < other.Major) return -1;
-			if (Major > other.Major) return +1;
-			if (Minor < other.Minor) return -1;
-			if (Minor > other.Minor) return +1;
-			if (Patch < other.Patch) return -1;
-			if (Patch > other.Patch) return +1;
-			if (Build < other.Build) return -1;
-			if (Build > other.Build) return +1;
+			if (major < other.major) return -1;
+			if (major > other.major) return +1;
+			if (minor < other.minor) return -1;
+			if (minor > other.minor) return +1;
+			if (patch < other.patch) return -1;
+			if (patch > other.patch) return +1;
+			if (build < other.build) return -1;
+			if (build > other.build) return +1;
 			return 0;
 		}
 
@@ -215,7 +223,7 @@ namespace InControl
 		/// and data structures such as a hash table.</returns>
 		public override int GetHashCode()
 		{
-			return Major.GetHashCode() ^ Minor.GetHashCode() ^ Patch.GetHashCode() ^ Build.GetHashCode();
+			return major.GetHashCode() ^ minor.GetHashCode() ^ patch.GetHashCode() ^ build.GetHashCode();
 		}
 
 
@@ -225,12 +233,12 @@ namespace InControl
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="InControl.VersionInfo"/>.</returns>
 		public override string ToString()
 		{
-			if (Build == 0)
+			if (build == 0)
 			{
-				return string.Format( "{0}.{1}.{2}", Major, Minor, Patch );
+				return string.Format( "{0}.{1}.{2}", major, minor, patch );
 			}
 
-			return string.Format( "{0}.{1}.{2} build {3}", Major, Minor, Patch, Build );
+			return string.Format( "{0}.{1}.{2} build {3}", major, minor, patch, build );
 		}
 
 
@@ -240,12 +248,12 @@ namespace InControl
 		/// <returns>A shorter <see cref="System.String"/> that represents the current <see cref="InControl.VersionInfo"/>.</returns>
 		public string ToShortString()
 		{
-			if (Build == 0)
+			if (build == 0)
 			{
-				return string.Format( "{0}.{1}.{2}", Major, Minor, Patch );
+				return string.Format( "{0}.{1}.{2}", major, minor, patch );
 			}
 
-			return string.Format( "{0}.{1}.{2}b{3}", Major, Minor, Patch, Build );
+			return string.Format( "{0}.{1}.{2}b{3}", major, minor, patch, build );
 		}
 	}
 }

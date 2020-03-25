@@ -1,13 +1,19 @@
-namespace InControl.NativeProfile
+// ReSharper disable StringLiteralTypo
+// ReSharper disable IdentifierTypo
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedType.Global
+namespace InControl.NativeDeviceProfiles
 {
 	// @cond nodoc
-	[AutoDiscover, Preserve]
-	public class XInputWindowsNativeProfile : NativeInputDeviceProfile
+	[Preserve, NativeInputDeviceProfile]
+	public class XInputWindowsNativeProfile : InputDeviceProfile
 	{
-		public XInputWindowsNativeProfile()
+		public override void Define()
 		{
-			Name = "XInput Controller";
-			Meta = "XInput Controller on Windows";
+			base.Define();
+
+			DeviceName = "XInput Controller";
+			DeviceNotes = "XInput Controller on Windows";
 
 			DeviceClass = InputDeviceClass.Controller;
 			DeviceStyle = InputDeviceStyle.XboxOne;
@@ -19,11 +25,11 @@ namespace InControl.NativeProfile
 
 			Matchers = new[]
 			{
-				new NativeInputDeviceMatcher
+				new InputDeviceMatcher
 				{
 					//VendorID = 0xFFFF,
 					//ProductID = 0x0000,
-					DriverType = NativeDeviceDriverType.XInput
+					DriverType = InputDeviceDriverType.XInput
 				},
 			};
 
@@ -31,85 +37,85 @@ namespace InControl.NativeProfile
 			{
 				new InputControlMapping
 				{
-					Handle = "A",
+					Name = "A",
 					Target = InputControlType.Action1,
 					Source = Button( 10 )
 				},
 				new InputControlMapping
 				{
-					Handle = "B",
+					Name = "B",
 					Target = InputControlType.Action2,
 					Source = Button( 11 )
 				},
 				new InputControlMapping
 				{
-					Handle = "X",
+					Name = "X",
 					Target = InputControlType.Action3,
 					Source = Button( 12 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Y",
+					Name = "Y",
 					Target = InputControlType.Action4,
 					Source = Button( 13 )
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Up",
+					Name = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Button( 0 )
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Down",
+					Name = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Button( 1 )
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Left",
+					Name = "DPad Left",
 					Target = InputControlType.DPadLeft,
 					Source = Button( 2 )
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Right",
+					Name = "DPad Right",
 					Target = InputControlType.DPadRight,
 					Source = Button( 3 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Bumper",
+					Name = "Left Bumper",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 8 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Bumper",
+					Name = "Right Bumper",
 					Target = InputControlType.RightBumper,
 					Source = Button( 9 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Stick Button",
+					Name = "Left Stick Button",
 					Target = InputControlType.LeftStickButton,
 					Source = Button( 6 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Stick Button",
+					Name = "Right Stick Button",
 					Target = InputControlType.RightStickButton,
 					Source = Button( 7 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Back",
+					Name = "Back",
 					Target = InputControlType.Back,
 					Source = Button( 5 )
 				},
 				new InputControlMapping
 				{
-					Handle = "Start",
+					Name = "Start",
 					Target = InputControlType.Start,
 					Source = Button( 4 )
 				},
@@ -134,20 +140,20 @@ namespace InControl.NativeProfile
 
 				new InputControlMapping
 				{
-					Handle = "Left Trigger",
+					Name = "Left Trigger",
 					Target = InputControlType.LeftTrigger,
 					Source = Analog( 4 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne
 				},
 
 				new InputControlMapping
 				{
-					Handle = "Right Trigger",
+					Name = "Right Trigger",
 					Target = InputControlType.RightTrigger,
 					Source = Analog( 5 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 			};
 		}

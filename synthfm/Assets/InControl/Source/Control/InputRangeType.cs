@@ -2,6 +2,7 @@
 {
 	public enum InputRangeType : int
 	{
+		// TODO: Can None be removed?
 		None = 0,
 		MinusOneToOne,
 		OneToMinusOne,
@@ -9,10 +10,5 @@
 		ZeroToMinusOne,
 		OneToZero,
 		MinusOneToZero,
-
-		// TODO: These should be deprecated when custom profiles are.
-		ZeroToNegativeInfinity,
-		ZeroToPositiveInfinity,
-		Everything
 	}
 }

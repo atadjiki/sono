@@ -419,6 +419,36 @@ namespace InControl
 		}
 
 
+		public static void ArrayAppend<T>( ref T[] array, T item )
+		{
+			if (array == null)
+			{
+				array = new T[1];
+				array[0] = item;
+			}
+			else
+			{
+				Array.Resize( ref array, array.Length + 1 );
+				array[array.Length - 1] = item;
+			}
+		}
+
+
+		public static void ArrayAppend<T>( ref T[] array, T[] items )
+		{
+			if (array == null)
+			{
+				array = new T[items.Length];
+				Array.Copy( items, array, items.Length );
+			}
+			else
+			{
+				Array.Resize( ref array, array.Length + items.Length );
+				Array.ConstrainedCopy( items, 0, array, array.Length - items.Length, items.Length );
+			}
+		}
+
+
 		public static int NextPowerOfTwo( int value )
 		{
 			if (value > 0)

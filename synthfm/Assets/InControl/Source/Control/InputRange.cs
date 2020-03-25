@@ -1,13 +1,16 @@
 ﻿namespace InControl
 {
+	using System;
 	using UnityEngine;
 
 
 	/// <summary>
 	/// This type represents a range inclusive of two values, and can remap a value from one range to another.
 	/// </summary>
+	[Serializable]
 	public struct InputRange
 	{
+		// TODO: Can None be removed?
 		public static readonly InputRange None = new InputRange( 0.0f, 0.0f, InputRangeType.None );
 		public static readonly InputRange MinusOneToOne = new InputRange( -1.0f, 1.0f, InputRangeType.MinusOneToOne );
 		public static readonly InputRange OneToMinusOne = new InputRange( 1.0f, -1.0f, InputRangeType.OneToMinusOne );
@@ -16,13 +19,10 @@
 		public static readonly InputRange OneToZero = new InputRange( 1.0f, 0.0f, InputRangeType.OneToZero );
 		public static readonly InputRange MinusOneToZero = new InputRange( -1.0f, 0.0f, InputRangeType.MinusOneToZero );
 
-		// TODO: These should be deprecated when custom profiles are.
-		public static readonly InputRange ZeroToNegativeInfinity = new InputRange( 0.0f, float.NegativeInfinity, InputRangeType.ZeroToNegativeInfinity );
-		public static readonly InputRange ZeroToPositiveInfinity = new InputRange( 0.0f, float.PositiveInfinity, InputRangeType.ZeroToPositiveInfinity );
-		public static readonly InputRange Everything = new InputRange( float.NegativeInfinity, float.PositiveInfinity, InputRangeType.Everything );
 
-
-		static readonly InputRange[] TypeToRange = new InputRange[] {
+		static readonly InputRange[] typeToRange =
+		{
+			// TODO: Can None be removed?
 			None,
 			MinusOneToOne,
 			OneToMinusOne,
@@ -30,11 +30,6 @@
 			ZeroToMinusOne,
 			OneToZero,
 			MinusOneToZero,
-
-			// TODO: These should be deprecated when custom profiles are.
-			ZeroToNegativeInfinity,
-			ZeroToPositiveInfinity,
-			Everything
 		};
 
 
@@ -54,11 +49,6 @@
 		public readonly InputRangeType Type;
 
 
-		/// <summary>
-		/// Initializes a new range from two given values.
-		/// </summary>
-		/// <param name="value0">The first value in the range.</param>
-		/// <param name="value1">The second value in the range.</param>
 		InputRange( float value0, float value1, InputRangeType type )
 		{
 			Value0 = value0;
@@ -72,8 +62,8 @@
 		/// </summary>
 		public InputRange( InputRangeType type )
 		{
-			Value0 = TypeToRange[(int) type].Value0;
-			Value1 = TypeToRange[(int) type].Value1;
+			Value0 = typeToRange[(int) type].Value0;
+			Value1 = typeToRange[(int) type].Value1;
 			Type = type;
 		}
 
@@ -94,14 +84,26 @@
 		/// </summary>
 		/// <returns><c>true</c>, if the value falls outside this range, <c>false</c> otherwise.</returns>
 		/// <param name="value">The value to check.</param>
-		public bool Excludes( float value )
+		bool Excludes( float value )
 		{
 			if (Type == InputRangeType.None)
 			{
 				return true;
 			}
 
-			return (value < Mathf.Min( Value0, Value1 ) || value > Mathf.Max( Value0, Value1 ));
+			return value < Mathf.Min( Value0, Value1 ) || value > Mathf.Max( Value0, Value1 );
+		}
+
+
+		/// <summary>
+		/// Check whether a value falls outside of a specified range.
+		/// </summary>
+		/// <returns><c>true</c>, if the value falls outside this range, <c>false</c> otherwise.</returns>
+		/// <param name="rangeType">The range to check against.</param>
+		/// <param name="value">The value to check.</param>
+		public static bool Excludes( InputRangeType rangeType, float value )
+		{
+			return typeToRange[(int) rangeType].Excludes( value );
 		}
 
 
@@ -111,21 +113,28 @@
 		/// <param name="value">The value to remap.</param>
 		/// <param name="sourceRange">The source range to map from.</param>
 		/// <param name="targetRange">The target range to map to.</param>
-		public static float Remap( float value, InputRange sourceRange, InputRange targetRange )
+		static float Remap( float value, InputRange sourceRange, InputRange targetRange )
 		{
 			if (sourceRange.Excludes( value ))
 			{
 				return 0.0f;
 			}
+
 			var sourceValue = Mathf.InverseLerp( sourceRange.Value0, sourceRange.Value1, value );
-			return Mathf.Lerp( targetRange.Value0, targetRange.Value1, sourceValue ); 
+			return Mathf.Lerp( targetRange.Value0, targetRange.Value1, sourceValue );
 		}
 
 
-		internal static float Remap( float value, InputRangeType sourceRangeType, InputRangeType targetRangeType )
+		/// <summary>
+		/// Remap the specified value, from one range to another.
+		/// </summary>
+		/// <param name="value">The value to remap.</param>
+		/// <param name="sourceRangeType">The source range to map from.</param>
+		/// <param name="targetRangeType">The target range to map to.</param>
+		public static float Remap( float value, InputRangeType sourceRangeType, InputRangeType targetRangeType )
 		{
-			var sourceRange = InputRange.TypeToRange[(int) sourceRangeType];
-			var targetRange = InputRange.TypeToRange[(int) targetRangeType];
+			var sourceRange = typeToRange[(int) sourceRangeType];
+			var targetRange = typeToRange[(int) targetRangeType];
 			return Remap( value, sourceRange, targetRange );
 		}
 	}
