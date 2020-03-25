@@ -18,6 +18,7 @@ public class Switchafterpuzzends : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.U))
         {
 
@@ -26,5 +27,6 @@ public class Switchafterpuzzends : MonoBehaviour
             VE.SetFloat("Offandover", hange);
             VE.SetFloat("OFF", Over);
         }
+        */
     }
 }

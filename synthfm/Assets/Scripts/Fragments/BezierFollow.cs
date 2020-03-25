@@ -34,7 +34,7 @@ public class BezierFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
         if (Input.GetKeyDown(KeyCode.L))
         {
             List<FragmentController> ToHandle = new List<FragmentController>();
@@ -50,6 +50,7 @@ public class BezierFollow : MonoBehaviour
                 }
             }
         }
+        */
 
         if(toStart)
         {

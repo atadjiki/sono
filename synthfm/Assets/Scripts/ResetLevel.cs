@@ -28,12 +28,14 @@ public class ResetLevel : MonoBehaviour
             StartCoroutine(FadeOut());
             m_Fading = false;
         }
-
+        
+        /*
         if(Input.GetKeyDown(KeyCode.R))
         {
             Scene loadedLevel = SceneManager.GetActiveScene();
             SceneManager.LoadScene(loadedLevel.buildIndex);
         }
+        */
     }
 
     IEnumerator FadeOut()
