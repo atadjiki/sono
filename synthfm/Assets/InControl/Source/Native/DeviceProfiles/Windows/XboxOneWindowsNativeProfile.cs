@@ -1,13 +1,19 @@
-namespace InControl.NativeProfile
+// ReSharper disable StringLiteralTypo
+// ReSharper disable IdentifierTypo
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedType.Global
+namespace InControl.NativeDeviceProfiles
 {
 	// @cond nodoc
-	[AutoDiscover, Preserve]
-	public class XboxOneWindowsNativeProfile : NativeInputDeviceProfile
+	[Preserve, NativeInputDeviceProfile]
+	public class XboxOneWindowsNativeProfile : InputDeviceProfile
 	{
-		public XboxOneWindowsNativeProfile()
+		public override void Define()
 		{
-			Name = "Xbox One Controller";
-			Meta = "Xbox One Controller on Windows";
+			base.Define();
+
+			DeviceName = "Xbox One Controller";
+			DeviceNotes = "Xbox One Controller on Windows";
 			// Link = "http://www.amazon.com/Microsoft-Xbox-Controller-Cable-Windows/dp/B00O65I2VY";
 
 			DeviceClass = InputDeviceClass.Controller;
@@ -21,12 +27,17 @@ namespace InControl.NativeProfile
 
 			Matchers = new[]
 			{
-				new NativeInputDeviceMatcher
+				new InputDeviceMatcher
 				{
 					VendorID = 0x45e,
 					ProductID = 0x2d1,
 				},
-				new NativeInputDeviceMatcher
+				new InputDeviceMatcher
+				{
+					VendorID = 0x45e,
+					ProductID = 0x2dd,
+				},
+				new InputDeviceMatcher
 				{
 					VendorID = 0x45e,
 					ProductID = 0x2ea,
@@ -37,61 +48,61 @@ namespace InControl.NativeProfile
 			{
 				new InputControlMapping
 				{
-					Handle = "A",
+					Name = "A",
 					Target = InputControlType.Action1,
 					Source = Button( 0 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "B",
+					Name = "B",
 					Target = InputControlType.Action2,
 					Source = Button( 1 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "X",
+					Name = "X",
 					Target = InputControlType.Action3,
 					Source = Button( 2 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Y",
+					Name = "Y",
 					Target = InputControlType.Action4,
 					Source = Button( 3 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Bumper",
+					Name = "Left Bumper",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Bumper",
+					Name = "Right Bumper",
 					Target = InputControlType.RightBumper,
 					Source = Button( 5 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "View",
+					Name = "View",
 					Target = InputControlType.View,
 					Source = Button( 6 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Menu",
+					Name = "Menu",
 					Target = InputControlType.Menu,
 					Source = Button( 7 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Stick Button",
+					Name = "Left Stick Button",
 					Target = InputControlType.LeftStickButton,
 					Source = Button( 8 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Stick Button",
+					Name = "Right Stick Button",
 					Target = InputControlType.RightStickButton,
 					Source = Button( 9 ),
 				},
@@ -101,117 +112,117 @@ namespace InControl.NativeProfile
 			{
 				new InputControlMapping
 				{
-					Handle = "Left Stick Up",
+					Name = "Left Stick Up",
 					Target = InputControlType.LeftStickUp,
 					Source = Analog( 0 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Stick Down",
+					Name = "Left Stick Down",
 					Target = InputControlType.LeftStickDown,
 					Source = Analog( 0 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Stick Left",
+					Name = "Left Stick Left",
 					Target = InputControlType.LeftStickLeft,
 					Source = Analog( 1 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Stick Right",
+					Name = "Left Stick Right",
 					Target = InputControlType.LeftStickRight,
 					Source = Analog( 1 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Stick Up",
+					Name = "Right Stick Up",
 					Target = InputControlType.RightStickUp,
 					Source = Analog( 2 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Stick Down",
+					Name = "Right Stick Down",
 					Target = InputControlType.RightStickDown,
 					Source = Analog( 2 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Stick Left",
+					Name = "Right Stick Left",
 					Target = InputControlType.RightStickLeft,
 					Source = Analog( 3 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Stick Right",
+					Name = "Right Stick Right",
 					Target = InputControlType.RightStickRight,
 					Source = Analog( 3 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "Left Trigger",
+					Name = "Left Trigger",
 					Target = InputControlType.LeftTrigger,
 					Source = Analog( 4 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 					IgnoreInitialZeroValue = true,
 				},
 				new InputControlMapping
 				{
-					Handle = "Right Trigger",
+					Name = "Right Trigger",
 					Target = InputControlType.RightTrigger,
 					Source = Analog( 4 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 					IgnoreInitialZeroValue = true,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Left",
+					Name = "DPad Left",
 					Target = InputControlType.DPadLeft,
 					Source = Analog( 5 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Right",
+					Name = "DPad Right",
 					Target = InputControlType.DPadRight,
 					Source = Analog( 5 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Up",
+					Name = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Analog( 6 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Down",
+					Name = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Analog( 6 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 			};
 		}
@@ -219,3 +230,4 @@ namespace InControl.NativeProfile
 
 	// @endcond
 }
+

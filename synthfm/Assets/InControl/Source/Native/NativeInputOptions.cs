@@ -9,6 +9,7 @@ namespace InControl
 	{
 		public UInt16 updateRate;
 		public Int32 enableXInput;
+		public Int32 enableMFi;
 		public Int32 preventSleep;
 	}
 }

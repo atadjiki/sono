@@ -1,13 +1,19 @@
-namespace InControl.NativeProfile
+// ReSharper disable StringLiteralTypo
+// ReSharper disable IdentifierTypo
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedType.Global
+namespace InControl.NativeDeviceProfiles
 {
 	// @cond nodoc
-	[AutoDiscover, Preserve]
-	public class EightBitdoSNES30MacNativeProfile : NativeInputDeviceProfile
+	[Preserve, NativeInputDeviceProfile]
+	public class EightBitdoSNES30MacNativeProfile : InputDeviceProfile
 	{
-		public EightBitdoSNES30MacNativeProfile()
+		public override void Define()
 		{
-			Name = "8Bitdo SNES30 Controller";
-			Meta = "8Bitdo SNES30 Controller on Mac";
+			base.Define();
+
+			DeviceName = "8Bitdo SNES30 Controller";
+			DeviceNotes = "8Bitdo SNES30 Controller on Mac";
 			// Link = "https://www.amazon.com/Wireless-Bluetooth-Controller-Classic-Joystick/dp/B014QP2H1E";
 
 			DeviceClass = InputDeviceClass.Controller;
@@ -20,13 +26,13 @@ namespace InControl.NativeProfile
 
 			Matchers = new[]
 			{
-				new NativeInputDeviceMatcher
+				new InputDeviceMatcher
 				{
 					VendorID = 0x2820,
 					ProductID = 0x9,
 					// VersionNumber = 0x100,
 				},
-				new NativeInputDeviceMatcher
+				new InputDeviceMatcher
 				{
 					VendorID = 0x1235,
 					ProductID = 0xab20,
@@ -38,49 +44,49 @@ namespace InControl.NativeProfile
 			{
 				new InputControlMapping
 				{
-					Handle = "A",
+					Name = "A",
 					Target = InputControlType.Action2,
 					Source = Button( 0 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "B",
+					Name = "B",
 					Target = InputControlType.Action1,
 					Source = Button( 1 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "X",
+					Name = "X",
 					Target = InputControlType.Action4,
 					Source = Button( 3 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Y",
+					Name = "Y",
 					Target = InputControlType.Action3,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "L",
+					Name = "L",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 6 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "R",
+					Name = "R",
 					Target = InputControlType.RightBumper,
 					Source = Button( 7 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Select",
+					Name = "Select",
 					Target = InputControlType.Select,
 					Source = Button( 10 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Start",
+					Name = "Start",
 					Target = InputControlType.Start,
 					Source = Button( 11 ),
 				},
@@ -90,35 +96,35 @@ namespace InControl.NativeProfile
 			{
 				new InputControlMapping
 				{
-					Handle = "DPad Left",
+					Name = "DPad Left",
 					Target = InputControlType.DPadLeft,
 					Source = Analog( 0 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Right",
+					Name = "DPad Right",
 					Target = InputControlType.DPadRight,
 					Source = Analog( 0 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Up",
+					Name = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Analog( 1 ),
-					SourceRange = InputRange.ZeroToMinusOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToMinusOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 				new InputControlMapping
 				{
-					Handle = "DPad Down",
+					Name = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Analog( 1 ),
-					SourceRange = InputRange.ZeroToOne,
-					TargetRange = InputRange.ZeroToOne,
+					SourceRange = InputRangeType.ZeroToOne,
+					TargetRange = InputRangeType.ZeroToOne,
 				},
 			};
 		}

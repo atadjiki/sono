@@ -1,12 +1,20 @@
-﻿namespace InControl.NativeProfile
+﻿// ReSharper disable StringLiteralTypo
+// ReSharper disable IdentifierTypo
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedType.Global
+namespace InControl.NativeDeviceProfiles
 {
-	[AutoDiscover, Preserve]
-	public class KiwitataNESWindowsNativeProfile : NativeInputDeviceProfile
+	[Preserve, NativeInputDeviceProfile]
+	public class KiwitataNESWindowsNativeProfile : InputDeviceProfile
 	{
-		public KiwitataNESWindowsNativeProfile()
+		/// Kiwitata: https://www.amazon.com/gp/product/B01JYGYAX8
+		/// Mjadore: https://www.amazon.com/gp/product/B071KQN1BP
+		public override void Define()
 		{
-			Name = "Kiwitata NES Controller";
-			Meta = "Kiwitata NES on Windows";
+			base.Define();
+
+			DeviceName = "Kiwitata NES Controller";
+			DeviceNotes = "Kiwitata NES on Windows";
 
 			DeviceClass = InputDeviceClass.Controller;
 			DeviceStyle = InputDeviceStyle.NintendoNES;
@@ -18,7 +26,7 @@
 
 			Matchers = new[]
 			{
-				new NativeInputDeviceMatcher
+				new InputDeviceMatcher
 				{
 					VendorID = 0x79,
 					ProductID = 0x11,
@@ -30,61 +38,61 @@
 			{
 				new InputControlMapping
 				{
-					Handle = "A",
+					Name = "A",
 					Target = InputControlType.Action1,
 					Source = Button( 2 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "B",
+					Name = "B",
 					Target = InputControlType.Action2,
 					Source = Button( 1 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "X",
+					Name = "X",
 					Target = InputControlType.Action3,
 					Source = Button( 3 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Y",
+					Name = "Y",
 					Target = InputControlType.Action4,
 					Source = Button( 0 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "L1",
+					Name = "L1",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "R1",
+					Name = "R1",
 					Target = InputControlType.RightBumper,
 					Source = Button( 5 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "L2",
+					Name = "L2",
 					Target = InputControlType.LeftTrigger,
 					Source = Button( 4 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "R2",
+					Name = "R2",
 					Target = InputControlType.RightTrigger,
 					Source = Button( 5 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Select",
+					Name = "Select",
 					Target = InputControlType.Select,
 					Source = Button( 8 ),
 				},
 				new InputControlMapping
 				{
-					Handle = "Start",
+					Name = "Start",
 					Target = InputControlType.Start,
 					Source = Button( 9 ),
 				},

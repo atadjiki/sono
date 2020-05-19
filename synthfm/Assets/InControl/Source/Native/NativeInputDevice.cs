@@ -1,3 +1,4 @@
+// ReSharper disable InconsistentNaming
 namespace InControl
 {
 	using System;
@@ -12,11 +13,11 @@ namespace InControl
 		const int maxUnknownAnalogs = 20;
 
 		public DeviceHandle Handle { get; private set; }
-		public NativeDeviceInfo Info { get; private set; }
+		public InputDeviceInfo Info { get; private set; }
 
 		Int16[] buttons;
 		Int16[] analogs;
-		NativeInputDeviceProfile profile;
+		InputDeviceProfile profile;
 
 		int skipUpdateFrames = 0;
 
@@ -27,7 +28,7 @@ namespace InControl
 		internal NativeInputDevice() {}
 
 
-		internal void Initialize( DeviceHandle deviceHandle, NativeDeviceInfo deviceInfo, NativeInputDeviceProfile deviceProfile )
+		internal void Initialize( DeviceHandle deviceHandle, InputDeviceInfo deviceInfo, InputDeviceProfile deviceProfile )
 		{
 			Handle = deviceHandle;
 			Info = deviceInfo;
@@ -48,8 +49,9 @@ namespace InControl
 
 			if (IsKnown)
 			{
-				Name = profile.Name ?? Info.name;
-				Meta = profile.Meta ?? Info.name;
+				Name = profile.DeviceName ?? Info.name;
+				Name = Name.Replace( "{NAME}", Info.name ).Trim();
+				Meta = profile.DeviceNotes ?? Info.name;
 
 				DeviceClass = profile.DeviceClass;
 				DeviceStyle = profile.DeviceStyle;
@@ -58,7 +60,7 @@ namespace InControl
 				for (var i = 0; i < analogMappingCount; i++)
 				{
 					var analogMapping = profile.AnalogMappings[i];
-					var analogControl = AddControl( analogMapping.Target, analogMapping.Handle );
+					var analogControl = AddControl( analogMapping.Target, analogMapping.Name );
 					analogControl.Sensitivity = Mathf.Min( profile.Sensitivity, analogMapping.Sensitivity );
 					analogControl.LowerDeadZone = Mathf.Max( profile.LowerDeadZone, analogMapping.LowerDeadZone );
 					analogControl.UpperDeadZone = Mathf.Min( profile.UpperDeadZone, analogMapping.UpperDeadZone );
@@ -70,7 +72,7 @@ namespace InControl
 				for (var i = 0; i < buttonMappingCount; i++)
 				{
 					var buttonMapping = profile.ButtonMappings[i];
-					var buttonControl = AddControl( buttonMapping.Target, buttonMapping.Handle );
+					var buttonControl = AddControl( buttonMapping.Target, buttonMapping.Name );
 					buttonControl.Passive = buttonMapping.Passive;
 				}
 			}
@@ -94,7 +96,7 @@ namespace InControl
 		}
 
 
-		internal void Initialize( DeviceHandle deviceHandle, NativeDeviceInfo deviceInfo )
+		internal void Initialize( DeviceHandle deviceHandle, InputDeviceInfo deviceInfo )
 		{
 			Initialize( deviceHandle, deviceInfo, this.profile );
 		}
@@ -127,9 +129,10 @@ namespace InControl
 					//UpdateWithValue( analogMapping.Target, mappedValue, updateTick, deltaTime );
 
 					var targetControl = GetControl( analogMapping.Target );
-					if (!(analogMapping.IgnoreInitialZeroValue && targetControl.IsOnZeroTick && Utility.IsZero( analogValue )))
+					if (!(analogMapping.IgnoreInitialZeroValue && targetControl.IsOnZeroTick &&
+					      Utility.IsZero( analogValue )))
 					{
-						var mappedValue = analogMapping.MapValue( analogValue );
+						var mappedValue = analogMapping.ApplyToValue( analogValue );
 						targetControl.UpdateWithValue( mappedValue, updateTick, deltaTime );
 					}
 				}
@@ -179,7 +182,7 @@ namespace InControl
 		}
 
 
-		Byte FloatToByte( float value )
+		static Byte FloatToByte( float value )
 		{
 			return (Byte) (Mathf.Clamp01( value ) * 0xFF);
 		}
@@ -203,31 +206,31 @@ namespace InControl
 		}
 
 
-		public bool HasSameVendorID( NativeDeviceInfo deviceInfo )
+		public bool HasSameVendorID( InputDeviceInfo deviceInfo )
 		{
 			return Info.HasSameVendorID( deviceInfo );
 		}
 
 
-		public bool HasSameProductID( NativeDeviceInfo deviceInfo )
+		public bool HasSameProductID( InputDeviceInfo deviceInfo )
 		{
 			return Info.HasSameProductID( deviceInfo );
 		}
 
 
-		public bool HasSameVersionNumber( NativeDeviceInfo deviceInfo )
+		public bool HasSameVersionNumber( InputDeviceInfo deviceInfo )
 		{
 			return Info.HasSameVersionNumber( deviceInfo );
 		}
 
 
-		public bool HasSameLocation( NativeDeviceInfo deviceInfo )
+		public bool HasSameLocation( InputDeviceInfo deviceInfo )
 		{
 			return Info.HasSameLocation( deviceInfo );
 		}
 
 
-		public bool HasSameSerialNumber( NativeDeviceInfo deviceInfo )
+		public bool HasSameSerialNumber( InputDeviceInfo deviceInfo )
 		{
 			return Info.HasSameSerialNumber( deviceInfo );
 		}

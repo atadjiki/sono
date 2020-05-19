@@ -13,13 +13,28 @@ namespace InControl
 #endif
 
 
+	public enum InControlUpdateMode
+	{
+		Default,
+		FixedUpdate,
+		Manual
+	}
+
+
 	public class InControlManager : SingletonMonoBehavior<InControlManager>
 	{
 		public bool logDebugInfo = true;
 		public bool invertYAxis = false;
-		public bool useFixedUpdate = false;
+
+		// ReSharper disable once NotAccessedField.Local
+#pragma warning disable 414
+		[SerializeField]
+		bool useFixedUpdate = false; // This is now deprecated and replaced by updateMode
+#pragma warning restore 414
+
 		public bool dontDestroyOnLoad = true;
 		public bool suspendInBackground = false;
+		public InControlUpdateMode updateMode;
 
 		public bool enableICade = false;
 
@@ -31,11 +46,12 @@ namespace InControl
 
 		public bool enableNativeInput = true;
 		public bool nativeInputEnableXInput = true;
+		public bool nativeInputEnableMFi = false;
 		public bool nativeInputPreventSleep = false;
 		public bool nativeInputOverrideUpdateRate = false;
 		public int nativeInputUpdateRate = 0;
 
-		public List<string> customProfiles = new List<string>();
+		bool applicationHasQuit = false;
 
 
 		void OnEnable()
@@ -55,6 +71,7 @@ namespace InControl
 
 			InputManager.EnableNativeInput = enableNativeInput;
 			InputManager.NativeInputEnableXInput = nativeInputEnableXInput;
+			InputManager.NativeInputEnableMFi = nativeInputEnableMFi;
 			InputManager.NativeInputUpdateRate = (uint) Mathf.Max( nativeInputUpdateRate, 0 );
 			InputManager.NativeInputPreventSleep = nativeInputPreventSleep;
 
@@ -66,23 +83,6 @@ namespace InControl
 					Logger.OnLogMessage -= LogMessage;
 					Logger.OnLogMessage += LogMessage;
 				}
-
-				foreach (var className in customProfiles)
-				{
-					var classType = Type.GetType( className );
-					if (classType == null)
-					{
-						Debug.LogError( "Cannot find class for custom profile: " + className );
-					}
-					else
-					{
-						var customProfileInstance = Activator.CreateInstance( classType ) as UnityInputDeviceProfileBase;
-						if (customProfileInstance != null)
-						{
-							InputManager.AttachDevice( new UnityInputDevice( customProfileInstance ) );
-						}
-					}
-				}
 			}
 
 #if UNITY_5_4_OR_NEWER
@@ -92,7 +92,7 @@ namespace InControl
 
 			if (dontDestroyOnLoad)
 			{
-				//DontDestroyOnLoad( this );
+				DontDestroyOnLoad( this );
 			}
 		}
 
@@ -134,7 +134,8 @@ namespace InControl
 		void Update()
 		{
 			if (IsNotTheSingleton) return;
-			if (!useFixedUpdate || Utility.IsZero( Time.timeScale ))
+			if (applicationHasQuit) return;
+			if (updateMode == InControlUpdateMode.Default || (updateMode == InControlUpdateMode.FixedUpdate && Utility.IsZero( Time.timeScale )))
 			{
 				InputManager.UpdateInternal();
 			}
@@ -144,7 +145,8 @@ namespace InControl
 		void FixedUpdate()
 		{
 			if (IsNotTheSingleton) return;
-			if (useFixedUpdate)
+			if (applicationHasQuit) return;
+			if (updateMode == InControlUpdateMode.FixedUpdate)
 			{
 				InputManager.UpdateInternal();
 			}
@@ -169,6 +171,7 @@ namespace InControl
 		{
 			if (IsNotTheSingleton) return;
 			InputManager.OnApplicationQuit();
+			applicationHasQuit = true;
 		}
 
 
@@ -176,7 +179,10 @@ namespace InControl
 		void OnSceneWasLoaded( Scene scene, LoadSceneMode loadSceneMode )
 		{
 			if (IsNotTheSingleton) return;
-			InputManager.OnLevelWasLoaded();
+			if (loadSceneMode == LoadSceneMode.Single)
+			{
+				InputManager.OnLevelWasLoaded();
+			}
 		}
 #else
 		void OnLevelWasLoaded( int level )

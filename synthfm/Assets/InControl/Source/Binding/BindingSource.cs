@@ -14,7 +14,7 @@
 	/// binding, a specific InputDevice must be provided. Not all bindings require an input
 	/// device. Keyboard or mouse bindings do not.
 	/// </summary>
-	public abstract class BindingSource : InputControlSource, IEquatable<BindingSource>
+	public abstract class BindingSource : IEquatable<BindingSource>
 	{
 		/// <summary>
 		/// Read a float value from the binding source in the context of an optional InputDevice.
@@ -153,4 +153,3 @@
 		#endregion
 	}
 }
-

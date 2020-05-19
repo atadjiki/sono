@@ -4,7 +4,10 @@ namespace InControl
 	{
 		public static readonly InputControl Null = new InputControl { isNullControl = true };
 
+		// TODO: Deprecate and replace with "Name"
 		public string Handle { get; protected set; }
+
+		// TODO: Deprecate and replace with "ControlType"
 		public InputControlType Target { get; protected set; }
 
 		/// <summary>
