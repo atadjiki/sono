@@ -1,3 +1,9 @@
+### v1.8.2
+* Fixed regression (since 1.8.0) in device matching logic causing some devices not to be identified correctly.
+* Fixed PlayStation 4 controller profile for Android and NVidia Shield devices.
+* Fixed NVidia Shield controller profile for Android and NVidia Shield devices.
+* Fixed various `Debug` logging calls to use `InControl.Logger` instead.
+
 ### v1.8.1
 * Added armv7 support to Native Input plugin for iOS.
 * Fixed error in version parsing with some alpha and beta versions of Unity.

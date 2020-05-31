@@ -6,108 +6,83 @@ namespace InControl.UnityDeviceProfiles
 {
 	// @cond nodoc
 	[Preserve] [UnityInputDeviceProfile]
-	public class PlayStation4AndroidUnityProfile : InputDeviceProfile
+	public class NVidiaShield2017NVidiaShieldUnityProfile : InputDeviceProfile
 	{
 		public override void Define()
 		{
 			base.Define();
 
-			DeviceName = "PlayStation 4 Controller";
-			DeviceNotes = "PlayStation 4 Controller on Android";
+			DeviceName = "NVIDIA Shield Controller";
+			DeviceNotes = "NVIDIA Shield Controller on NVIDIA Shield";
 
 			DeviceClass = InputDeviceClass.Controller;
-			DeviceStyle = InputDeviceStyle.PlayStation4;
+			DeviceStyle = InputDeviceStyle.NVIDIAShield;
 
 			IncludePlatforms = new[]
 			{
-				"Android"
-			};
-
-			ExcludePlatforms = new[]
-			{
-				"Amazon AFT"
+				"NVIDIA Shield"
 			};
 
 			Matchers = new[]
 			{
-				new InputDeviceMatcher { NameLiteral = "Wireless Controller" },
-				new InputDeviceMatcher { NameLiteral = "Sony Computer Entertainment Wireless Controller" },
-				new InputDeviceMatcher { NameLiteral = "Sony Interactive Entertainment Wireless Controller" }
+				new InputDeviceMatcher { NamePattern = "NVIDIA Controller v" }
 			};
 
 			ButtonMappings = new[]
 			{
 				new InputControlMapping
 				{
-					Name = "Cross",
+					Name = "A",
 					Target = InputControlType.Action1,
 					Source = Button( 0 )
 				},
 				new InputControlMapping
 				{
-					Name = "Circle",
+					Name = "B",
 					Target = InputControlType.Action2,
 					Source = Button( 1 )
 				},
 				new InputControlMapping
 				{
-					Name = "Square",
+					Name = "X",
 					Target = InputControlType.Action3,
 					Source = Button( 2 )
 				},
 				new InputControlMapping
 				{
-					Name = "Triangle",
+					Name = "Y",
 					Target = InputControlType.Action4,
 					Source = Button( 3 )
 				},
 				new InputControlMapping
 				{
-					Name = "L1",
+					Name = "Left Bumper",
 					Target = InputControlType.LeftBumper,
 					Source = Button( 4 )
 				},
 				new InputControlMapping
 				{
-					Name = "L2",
-					Target = InputControlType.LeftTrigger,
-					Source = Button( 6 )
-				},
-				new InputControlMapping
-				{
-					Name = "R1",
+					Name = "Right Bumper",
 					Target = InputControlType.RightBumper,
 					Source = Button( 5 )
 				},
 				new InputControlMapping
 				{
-					Name = "R2",
-					Target = InputControlType.RightTrigger,
-					Source = Button( 7 )
-				},
-				new InputControlMapping
-				{
-					Name = "TouchPad Button",
-					Target = InputControlType.TouchPadButton,
-					Source = Button( 11 )
-				},
-				new InputControlMapping
-				{
-					Name = "Options",
-					Target = InputControlType.Options,
-					Source = Button( 10 )
-				},
-				new InputControlMapping
-				{
-					Name = "L3",
+					Name = "Left Stick Button",
 					Target = InputControlType.LeftStickButton,
 					Source = Button( 8 )
 				},
 				new InputControlMapping
 				{
-					Name = "R3",
+					Name = "Right Stick Button",
 					Target = InputControlType.RightStickButton,
 					Source = Button( 9 )
+				},
+				new InputControlMapping
+				{
+					Name = "Start",
+					Target = InputControlType.Start,
+					Source = Button( 10 )
 				}
 			};
 
@@ -126,10 +101,24 @@ namespace InControl.UnityDeviceProfiles
 				DPadLeftMapping( 4 ),
 				DPadRightMapping( 4 ),
 				DPadUpMapping( 5 ),
-				DPadDownMapping( 5 )
+				DPadDownMapping( 5 ),
+
+				new InputControlMapping
+				{
+					Name = "Left Trigger",
+					Target = InputControlType.LeftTrigger,
+					Source = Analog( 12 )
+				},
+				new InputControlMapping
+				{
+					Name = "Right Trigger",
+					Target = InputControlType.RightTrigger,
+					Source = Analog( 11 )
+				}
 			};
 		}
 	}
 
 	// @endcond
 }
+
